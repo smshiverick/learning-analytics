@@ -13,6 +13,18 @@
 
 \begin{abstract}
 
+This paper compares predictive models of student performance and identifies features that affect student achievement. 
+
+
+Modeling student performance can help educators to identify students who are struggling and the factors that contribute to student success. Learning analytics approaches can be used by administrators Identify students interested in pursuing higher education but failing to perform and students with no plans to pursue higher education, but who are passing, which may be a source for additional recruitment efforts. . 
+
+
+Comparing predictive models in order to determine the best approach for modeling attributes of student achievement. 
+
+Contribute to better understanding of factors that contribute to student success. 
+
+
+
 The misuse and abuse of prescription opioids (MUPO) has become a major 
 health crisis in the U.S. Predictive modeling provides a useful approach 
 for analyzing pain reliever misuse and abuse and identifying features 
@@ -45,30 +57,82 @@ tradeoff between model complexity and interpretability is discussed.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Over the past two decades the misuse and abuse of prescription opioids 
-(MUPO) has become a major health crisis in the U.S. \cite{volkow14}. In 2015, 
-an estimated 2 million Americans suffered a substance use disorder related 
-to prescription opioid pain relievers such as oxycodone or hydrocodone 
-\cite{nida18}. Opioid dependence and addiction are chronic health conditions. 
-On average, more than 115 people die from an opioid overdose in the U.S. 
-each day \cite{cdc18}, and opioid-related overdose deaths have more than 
-quadrupled from 1999 to 2016. In addition, non-medical use of prescription 
-opioids is a significant risk factor for heroin use \cite{Rudd16}. 
-Supply-based interventions to reduce the availability of prescription opioids 
-have produced a shift to the use of heroin and synthetic opioids such as 
-fentanyl \cite{jones15}. Four in five new heroin users started out misusing 
-prescription painkillers \cite{jones13}. Given that the potency and dosage 
-levels of illicit or synthetic opioids is largely unknown, the risk of overdose
-death is greatly increased. The sharp rise in prescription overdose deaths 
-(POD) and heroin overdose deaths (HOD) are correlated \cite{muhuri13, unick13}. 
-Predictive modeling provides useful methods for analyzing the misuse of 
-prescription opioids and identifying features that contribute to MUPO. 
-Data mining can predict individuals who may be susceptible to opioid addiction 
-and provide insights to inform policy decisions for addressing the opioid 
-crisis. This study compares the performance of several classification models 
-to determine the best approaches for modeling pain reliever misuse and abuse. 
+The exponential increase in computing speed and processing power in recent 
+decades has led to the generation an immense volume of data in higher education 
+\cite{Daniel17}. The development and use of analytic approaches for 
+statistical 'analysis and predictive modeling allows researchers to discover 
+patterns in data and provide insights about learning for effective decision 
+making. Learning Analytics (LA) is an emerging, multidisciplinary field at 
+the intersection of learning science, social science, statistics, and computer 
+science that leverages big data to understand learning and the environments 
+in which it occurs \cite{siemens13}. The development of LA as a field of 
+inquiry have been primarily driven by big data in education and the shift 
+toward online learning. The primary stakeholders for LA are learners, educators, 
+researchers and administrators. The ability to mine large scale data from online 
+learning platforms has applications for student success, course design, and 
+institutional programs \cite{Lester19}. This paper reviews LA methodologies, 
+applications, and considers challenges and opportunities for implementing 
+LA in education.
+
+Predictive modeling provides useful methods for analyzing the student 
+performance and identifying features that contribute to successful learning. 
+Data mining can predict individuals who may be susceptible to failing or 
+dropping out and provide insights for improving student retention. This study 
+compares the performance of several classification models to determine the 
+best approaches for modeling student performance and success. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Learning Analytics (LA) and Educational Data Mining (EDM)
+
+LA is a form of education data mining (EDM) that uses research methods and predictive analysis to implement platforms for improving student performance and instructional design (Baker R. & Yacef, 2009; Lester, et al. 2019). LA and EDM share similar goals at the intersection of learning science and data-driven analytics, but these approaches differ in origins, emphasis, techniques, and knowledge discovery (Siemens & Baker, 2012). For example, EDM takes a reductionist approach to analyzing individual components in the learning process that focuses on automated discovery and adaptive learning (e.g., intelligent tutoring). By contrast, LA takes a holistic viewpoint to understand the complexity of learning, by leveraging human judgment to inform and empower instructors and learners (Papamitsiou & Economides, 2014). The development of LA as a separate field of inquiry from EDM has shown a gradual shift from a technological focus toward an educational focus or learner-focused analytics (Ferguson, 2012). Despite the differences in origin and goals of LA and EDM, they can be seen as complementary approaches using similar methodologies. 
+
+Historically, education institutions have examined factors such as persistence and social integration as influential for learning and used analytic methods to track student drop-out rates (Ferguson, 2012). The development of the web opened up new avenues for collecting information from online sources along with methods for processing and sharing content. As extensive educational datasets became available for analysis, EDM researchers use a variety of data mining techniques (e.g., classification, clustering, association rule mining) to discover potentially useful patterns in data for understanding students and the settings in which they learn (Baker & Yucef, 2009). To a large extent, EDM emerged from a computational approach to analyzing logs of student-computer interactions with data mined from LMS, ITS (intelligent tutoring system), and technology enhanced learning (TEL) systems to evaluate learning processes, enhance web-based learning and help learners (Pena-Ayala, 2014; Romero, et al., 2010). Thus, EDM research has focused more on the technical challenge of extracting value about learning from big data in education. Practitioners distinguish LA as a separate field of research by a more holistic, education-focused approach to learning, which seeks to ground analytics in learning theory, to benefit learners and teachers, and optimize learning in online environments (Lang, et al., 2017; Papamitsiou & Economides, 2014). 
+
+Together, LA and EDM represent an ecosystem of methodologies and techniques for gathering, processing, and acting on data to promote learning. These procedures facilitate the preparation, measurement, and collection of data about learning activities for subsequent analysis, interpretation, and reporting. Much LA/EDM research data is collected within a virtual learning environment (VLE), learning management system (LMS), or massive open online course (MOOC), which can automatically track student participation by login frequency, number of resources accessed, time to solve tasks, response times to answer questions, number of discussion posts or chat messages between participants, questions submitted to instructors. In addition to quantitative measures, meaningful analytics systems will include qualitative measures about the content or type of contribution (on-topic, evaluative, question). Researchers have also studied how affective states (e.g., boredom, frustration, confusion, happiness) influence engagement and learning outcomes (Pardos, et al., 2014). Merging LMS data with institutional data about student performance (i.e., past grades) can provide valuable insights about the conditions for successful learning and decision making (Hora, 2019). 
+
+Learning is a complex phenomenon that is not always directly observable and often inferred from student behavior in online learning platforms. Theories of learning reveal the importance of collaboration; from the social constructivist perspective, knowledge is constructed through interaction with more knowledgeable partners, parents, teachers, or peers (Vygotsky, 1978). Sociological research has investigated the characteristic structure of social networks, showing the strength of weak social connections (Granovetter, 1973). Social network analysis (SNA) provides a valuable tool for exploring interactions among learners in various contexts. Visualization tools help to reveal connections in large datasets and analyze collaboration in online learning platforms (Dawson, 2009). Content analysis and automated recommender systems have also been used to guide learners toward more personalized learning environments (PLE) (Siemens, 2012, 2013). Individual differences in metacognitive (e.g., self-reflection, self-awareness), disposition, experience and motivation are influential for developing learning relationships (Dawson, et al., 2014; Gašević, et al., 2015). 
+
+LA/EDM consists of a diverse set of methodologies and approaches for addressing challenges in higher education such as underprepared students, decreased retention, and foster student success. The most common approaches in LA research are modeling students and student behavior, predicting performance, dropout, and retention, increasing (self-)reflection and (self-)awareness, analyzing connections among learners, improving feedback and assessment, and recommending educational resources (Lang, et al., 2017; Lester et al., 2019; Papamitsiou & Economides, 2014). Descriptive, correlational, and predictive methodologies are used to study learning processes and context, including predictive modeling, relationship mining, similarity grouping, content analysis, and social network analysis. Classification is the most commonly used data analytic method, followed by clustering, regression (logistic, multiple), and predictive modeling (discovery with models). Several performance metrics are used to evaluate different methods: precision, accuracy, sensitivity, coherence, fitness measures, similarity weights (Baker & Yucef, 2009). 
+
+Student / Student Behavior Modeling. Modeling student characteristics takes a descriptive approach to reveal factors for learning such as domain knowledge, motivation, metacognition, attitudes, affect, metacognitive states, learning strategies, and behavior (Papamitsiou & Economides, 2014). Student characteristics can be combined with data from the LMS system 
+about support, teacher feedback, curriculum, and course sequencing. Modeling student characteristics is most often based on frequency, but can involve correlation analysis, similarity grouping or clustering (k-means), content analysis (i.e., text mining, NLP). 
+Quantitative data about activities and behavior (e.g., response time, or time reflecting on hints) are helpful for modeling engagement or disengagement in learning activities, and provide information that allows software to respond to individual differences. Discovery and modeling of behaviors during learner interactions in a MOOC.  Clustering can be used to grouping similar individuals together based on learner profiles and to aid in the development of more personalized learning environment (PLE)(Vellido, Castro, & Nebot, 2010). Analysis of qualitative data, may rely on human judgment, can reveal deeper concepts about learning, such as inferring reasoning strategies from interaction with a cognitive tutor (Fournier, 2011). 
+Predictive approaches are used also for modeling student behavior and assessing functionality in intelligent tutoring systems (ITS) (Pena-Ayala, 2014). 
+
+Predicting Performance. Predictive methodologies can lead to a better understanding of student engagement in online education, behavior patterns that predict successful performance, and factors that influence student failure and non-retention. The Course Signals program developed at Purdue University is one of the most well known platforms for predicting students at-risk of falling behind using statistical analysis of LMS data (Arnold & Pistilli, 2012). In addition to grades, demographic information, academic history, and student interaction on the Blackboard LMS were used to track student performance. A predictive algorithm was used to calculate likelihood of student success based on performance, effort, history, and student characteristics. The course signals provided students with real-time feedback about their status via the LMS as traffic signal indicators (i.e., red=high risk, yellow=moderate risk, green=low risk). Instructors enacted interventions for high risk students providing them with actionable information about their performance in emails, texts, referrals to academic advising, or academic resources center, and face to face meetings. Courses that implemented the Signals program and provided feedback for students showed an increase in satisfactory grades, decrease in withdrawals, and improved retention. Course signals helped to integrate students into the university academically in several ways: first, by facilitating contact between faculty and students, second, by providing high risk students with resources for student success, and third, by using analytics with real time data about student performance. in terms of academic success and retention, underprepared students in difficult courses using the signals program fared better than more well-prepared students in courses that were not using the signals program. Furthermore, LA provided faculty with a useful tool for identifying struggling students and encouraging them to take corrective actions.  
+
+
+The most common approach used to predict student performance, dropout, and retention is classification, which operationalizes performance as a binary outcome. Classification methods include logistic regression, naive Bayes models, decision trees, machine learning algorithms, and neural networks (Lykourentzou, et al. 2009). Past empirical findings indicate that the number of quizzes successfully passed is the most influential predictor of final grades, in addition to engagement, participation in course activities, number of posts, frequency of events, and time spent in the course LMS (Papamitsiou & Economides, 2014; Romero-Zaldivar, 2012). Affect and motivation are also influential for predicting performance; notably, concentration and frustration are significantly correlated with final grades, but boredom and confusion were negatively related to performance (Pardos et al., 2013). Using data-driven machine learning algorithms on student profiles and data about activity within the LMS can facilitate early detection of at-risk students (Dekkar et al. 2009). Furthermore, students’ sense of belonging in a course is essential for engagement and improved satisfaction which can reduces student dropout.measures of student satisfaction can vary according to their perceived usefulness or efficiency of training courses. The most common reasons for  student disengagement in MOOCs were personal commitments, work conflict and course overload (Kizilcec, 2013). 
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
 
 \subsection{Predictive Modeling}
 
@@ -359,9 +423,9 @@ to improve model accuracy.
     \toprule
      & &  \textbf{Actual Outcome} & \\
     \midrule
-    \textbf{Predicted} & \textbf{Outcome} & No Misuse & PRL Misuse \\
+    \textbf{Predicted} & \textbf{Outcome} & Pass & Fail \\
     \midrule
-    & No Misuse & \textit{True Negative} & False Negative \\
+    & No & \textit{True Negative} & False Negative \\
     & & (TN) & (FN) \\
     \midrule
     & PRL Misuse & False Positive & \textit{True Positive} \\
