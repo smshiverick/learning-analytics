@@ -448,7 +448,11 @@ than the other class, as it takes into account both recall and precision
   \label{tab:freq}
   \begin{tabular}{ll}
     \toprule
-    \textit{Predictor Variables} &  Label  \\
+    \textit{Target Variable} & Label \\
+    \midrule
+    Course final grade (0=Fail, 1=Pass) & PASS \\
+    \midrule    
+    \textit{Predictor Variables} &    \\
     \midrule
     Sex (0=Male,1=Female) & SEX  \\  
     Age (15, 16, 17, 18, 19+ years) & AGE  \\
@@ -480,10 +484,6 @@ than the other class, as it takes into account both recall and precision
     Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
     First period grade (0=Lowest, 20=Highest) & GR1  \\
     Second period grade (0=Lowest, 20=Highest) & GR2  \\
-    \midrule    
-    \textit{Target Variable} &  \\
-    \midrule
-    Final grade (Range: 0-20) & GR3  \\
     \bottomrule
   \end{tabular}
 \end{table*}
