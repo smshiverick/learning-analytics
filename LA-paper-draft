@@ -1030,6 +1030,22 @@ increase in the independent variable  \cite{gujarati09}.
   \end{tabular}
 \end{table}
 
+Intercept)  0.90978    0.51472   1.768 0.077142 .  
+failures    -1.567    0.22455  -6.978 2.99e-12 ***
+course      -1.121    0.18670  -6.003 1.93e-09 ***
+higher       1.18218    0.35109   3.367 0.000759 ***
+Fedu         0.25601    0.08549   2.994 0.002749 ** 
+schoolsup   -0.79216    0.26910  -2.944 0.003243 ** 
+Walc        -0.18401    0.07632  -2.411 0.015905 *  
+internet     0.44453    0.21805   2.039 0.041482 *  
+goout       -0.16926    0.08583  -1.972 0.048620 *  
+
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 For a one unit increase in cocaine use, the odds of misusing or abusing pain 
@@ -1161,40 +1177,25 @@ single tree (Figure 4).
     Health              &  &  13.68 \\
     Study Time          &  &  13.21 \\ 
     Family Relations    &  &  12.31 \\
-    Sex                 &  &  11.59 \\
-    Treatment           &  &  10.24 \\
+    Father's Job        &  &  11.59 \\
+    Travel Time         &  &  10.24 \\
     \bottomrule
   \end{tabular}
 \end{table}
-a         course            
-            16.31
 
-Walc              14.56
-Fedu              13.79
-            13.68
-studytime         13.21
-famrel            12.31
-Fjob              11.59
-traveltime        10.24
-
-Dalc               8.86
-guardian           8.02
-sex                7.46
-higher             7.00
-paid               6.90
-famsup             6.33
-famsize            6.24
-romantic           6.35
-activities         6.30
-internet           6.16
-area               5.87
-schoolsup          5.73
-parents            3.54
-
-
-
-
-
+%Dalc               8.86
+%guardian           8.02
+%sex                7.46
+%higher             7.00
+%paid               6.90
+%romantic           6.35
+%famsup             6.33
+%activities         6.30
+%famsize            6.24
+%internet           6.16
+%area               5.87
+%schoolsup          5.73
+%parents            3.54
 
 
 
