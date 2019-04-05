@@ -697,62 +697,49 @@ performance, and interpretability are discussed.
 
 \subsection{The Data}
 
+The student performance dataset was downloaded from the UC-Irvine Machine 
+Learning Repository (UCI-MLR) and saved as data frame objects in a python 
+interactive notebook. The data was collected from two secondary schools in 
+the Alentejo region of Portugal during the 2005-2006 school year and 
+contained information from a questionnaire and school reports of student 
+grades \cite{cortez09}. The dataset includes thirty predictor variables 
+consisting of demographic information (e.g. family size, parental education 
+and employment status), social/ emotional attributes (e.g. extracurricular 
+activities, romantic relationship, alcohol consumption), school related 
+variables (e.g., weekly time studying, past class failures, absences) related 
+to student  (see Table 1). Student performance was evaluated on a 20 point 
+scale-as in other European countries (e.g., France)-at three points during 
+the school year (i.e., G1, G2, G3) for two courses, mathematics (n=395) and 
+Portugese (n=649). The target outcome was the final grade. A binary dummy 
+variable was created based on the final exam grades, where scores greater than 
+10 indicated a passing grades and scores below 10 indicated failing grades. 
+The student performance data was modeled using binary classification.
+
+The sample consisted of 1044 students (56.6\% female, Mage=16.71, SD=1.19). 
+Descriptive statistics are provided in Table 2 according to the binary 
+measure of student performance. The majority of students (73.7\%) were 
+from urban areas, from families larger than three members (70.7\%), and 
+with parents living together in the sam household (88%).
+
+
+Ten individuals between 20 and 22 were added to the category of 19+ years. 
+
+
 The NSDUH public data files for 2015, 2016, and 2017 were downloaded from 
 the Substance Abuse and Mental Health Data Archive (SAMHDA) \cite{samhsa18}. 
-The data sets were extracted and saved as data frame objects in a python 
-interactive notebook \cite{mckinney17, vanderplas17}. Data from the three
-years ($n_1$=57146, $n_2$=56897, $n_3$=56276) were combined to create a 
-single data set. Two outliers were identified and removed, resulting in a
-total sample of N=170317 observations (80913 male, 89404 female). 
-According to the NSHUD codebook, the sampling design is weighted across 
-states by population size, drawing more heavily from eight states with 
-the largest populations (i.e., CA, FL, IL, MI, NY, OH, PA, TX), for a 
-representative distribution that accounts for approximately 48 percent 
-of the U.S. population. Identifying information in the NSDUH public use files 
-is collapsed (e.g. age categories); variables related to ethnicity, immigration 
-status, and state identifiers are removed to ensure confidentiality. The data 
-frames were subset by column to select approximately 90 variables that 
-included common demographic characteristics, physical health, mental health, 
-medication usage, and illicit drug use. Inconsistencies in the data were 
-detected and removed with the following steps: (a) Remove missing values 
-(i.e. NaN); (b) Recode blanks, non-responses, or legitimate skips 
-(e.g., 99, 991, 993) to zero; (c) Recode dichotomous responses (e.g., 0=No, 
-1=Yes); (d) Recode ordinal variables to be consistent with amount or 
-degree (e.g., 1=low, 2=medium, 3=high). 
+
+The data sets were extracted and 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Aggregated Variables}
-
-Related features were combined to created aggregated variables. For example, 
-a single variable indicating overall history of health problems (HEALTH) 
-was created by combining responses for overall health (reverse scored), any
-previous diagnosis of STDs, hepatitis, HIV, cancer, and any hospitalization. 
-A mental health variable (MENTHLTH) aggregated responses for adult depression, 
-emotional distress, and suicidal thoughts or plans. Binary responses for ten 
-of the most commonly used prescription pain medications (e.g., Hydrocodone, 
-Oxycodone, Tramadol, Morphine, Fentanyl, Oxymorphone, Demerol, Hydromorphone) 
-were aggregated into a variable for any prescription opioid pain reliever use 
-(ANYPRLUSE) in the past year. The majority of questions related to substance 
-use had dichotomous responses that were summed to create single measures for: 
-Tranquilizers, Sedatives, Heroin, Cocaine, and Amphetamines. Because 
-hallucinogens varied greatly in type and potency (e.g., marijuana, psilocybin, 
-MDMA, LSD), they were not included in the analysis. Variables for drug 
-treatment and mental health treatment combined responses for any inpatient 
-care, outpatient care, treatment at a clinic, emergency room visits, or 
-hospital stays. The target variable was any prescription opioid pain reliever 
-misuse or abuse (PRLMISEVR). The subset data frame consisted of 19 features 
-and 170317 observations was exported to a CSV file. Four variables were highly 
-correlated with other variables and excluded (PRLANY, PRLMISAB, HEROINUSE, 
-HEROINFQY). Table 2 shows the list of predictor variables used for 
-constructing the classifier models. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Model Construction and Evaluation}
 
-The dataset was divided using a 75 to 25 percent split to create the training
-set ($n_1$=127738) and testing set ($n_2$=42579). The same general procedure 
+The dataset was divided using a 70 to 30 percent split to create the training
+set ($n_1$=731) and testing set ($n_2$=313). The same general procedure 
 was used for constructing and evaluating each classification model: (i) The 
 model was fit to the training set; (ii) New values were predicted on the 
 holdout scores in the testing set; and (iii) Model performance on the test 
@@ -773,41 +760,106 @@ vector classifier (SVC), naive Bayes classifier, and neural network
               & Pass & & & Fail & \\
               & N & \% &  & N & \% \\
     \midrule
-    \textbf{Total} & 661 & .7\% & & 383 & 36.7\% \\
-    Male      & 277 & 50.9\% & & 71634 & 47.1\%  \\
-    Female    & 384 & 49.1\% & & 80446 & 52.9\%  \\
+    \textbf{Total} & 661 & 63.3\% & & 383 & 36.7\% \\
+    \midrule
+    Male      & 277 & 61.1\% & & 176 & 38.9\%  \\
+    Female    & 384 & 65.0\% & & 207 & 35.0\%  \\
     \midrule
     \textbf{Age Group} &  &  &  &  & \\
-    12-17     & 2262 & 12.4\% & & 39315 & 25.9\% \\
-    18-25     & 5577 & 30.6\% & & 36476 & 24.0\% \\
-    26-35     & 4370 & 24.0\% & & 22251 & 14.6\% \\
-    36-49     & 4173 & 22.0\% & & 29571 & 19.4\% \\
-    50+       & 1855 & 10.2\% & & 24467 & 16.1\% \\
+    15     & 139 & 71.6\% & &  55 & 28.4\% \\
+    16     & 194 & 69.0\% & &  87 & 31.0\% \\
+    17     & 171 & 61.7\% & & 106 & 38.3\% \\
+    18     & 128 & 56.8\% & &  96 & 43.2\% \\
+    19+    & 31 &  44.7\% & &  39 & 55.7\% \\
     \midrule
-    \textbf{Education} Level &  &  &  &  & \\
-    School Age & 2262 & 12.4\% & & 39315 & 25.9\% \\
-    Some H.S.  & 1849 & 10.1\% & & 15334 & 10.1\% \\
-    H.S. Grad  & 4134 & 22.7\% & & 30223 & 19.9\% \\
-    Some Coll. & 5997 & 32.9\% & & 37230 & 24.5\% \\
-    Coll. Grad & 3995 & 21.9\% & & 29978 & 19.7\% \\
+    \textbf{Area} &  &  &  &  & \\
+    Rural    & 155 & 54.4\% & & 130 & 45.6\%  \\
+    Urban    & 506 & 66.7\% & & 253 & 33.3\%  \\ 
     \midrule
-    \textbf{Marital Status} &  &  &  &  & \\
-    Single    & 6777 & 37.2\% & & 64022 & 42.1\% \\
-    Divorced  & 6497 & 35.6\% & & 46183 & 30.4\% \\
-    Widowed   & 1225 &  6.7\% & &  7995 &  5.3\% \\
-    Married   & 3738 & 20.5\% & & 33880 & 22.3\% \\
+    \textbf{Parents Status} &  &  &  &  & \\
+    Apart     &  81 & 66.9\% & & 107 & 33.2\%  \\
+    Together  & 580 & 62.6\% & & 276 & 37.2\%  \\
+    \midrule
+    \textbf{Family Size} &  &  &  &  & \\
+    Less than 3  & 199 & 65.0\% & & 107 & 35.0\%  \\
+    3 or More    & 461 & 62.6\% & & 276 & 37.4\%  \\
+    \midrule
+    \textbf{Activities} &  &  &  &  & \\
+    No Activities & 326 & 61.7\% & & 202 & 38.0\%  \\
+    Activities    & 335 & 64.9\% & & 181 & 35.1\%  \\
+    \midrule
+    \textbf{Higher Education Plans} &  &  &  &  & \\
+    No Plans  &  21 & 23.6\% & &  68 & 45.6\%  \\
+    Planned   & 640 & 67.0\% & & 315 & 33.0\%  \\
+    \midrule
+    \textbf{Internet} &  &  &  &  & \\
+    No        & 118 & 54.4\% & &  99 & 45.6\%  \\
+    Ye        & 543 & 65.7\% & & 284 & 34.3\%  \\
+    \midrule
+    \textbf{Romantic Relationship} &  &  &  &  & \\
+    No Relationship & 440 & 65.4\% & & 233 & 34.6\%  \\
+    Relationship    & 221 & 59.6\% & & 150 & 40.4\%  \\    
+    \midrule
+    \textbf{Course} &  &  &  &  & \\
+    Portugese  & 452 & 69.6\% & & 197 & 30.4\%  \\
+    Math       & 209 & 52.9\% & & 253 & 47.1\%  \\
     \bottomrule
   \end{tabular}
 \end{table}
 
+
+% \begin{table}
+%  \caption{Frequency of Pain Reliever Misuse and Abuse
+%  by Demographics Features for NSDUH 2015-2017 Sample.}
+%  \label{tab:freq}
+%  \begin{tabular}{llllll}
+%    \toprule
+%   \textbf{Area} & 661 & 63.3\% & & 383 & 36.7\% \\
+%    Parent Apart     &  81 & 66.9\% & & 107 & 33.2\%  \\
+%    Parents Together & 580 & 62.6\% & & 276 & 37.2\%  \\
+%    \midrule
+%    \textbf{Activities} & 661 & 63.3\% & & 383 & 36.7\% \\
+%    No Activities      & 277 & 41.9\% & & 176 & 46.0\%  \\
+%    Activities    & 384 & 58.1\% & & 207 & 54.0\%  \\
+%    \midrule
+%    \textbf{Education} Level &  &  &  &  & \\
+%   School Age & 2262 & 12.4\% & & 39315 & 25.9\% \\
+%    Some H.S.  & 1849 & 10.1\% & & 15334 & 10.1\% \\
+%    H.S. Grad  & 4134 & 22.7\% & & 30223 & 19.9\% \\
+%    Some Coll. & 5997 & 32.9\% & & 37230 & 24.5\% \\
+%    Coll. Grad & 3995 & 21.9\% & & 29978 & 19.7\% \\
+%    \midrule
+%    \textbf{Marital Status} &  &  &  &  & \\
+%    Single    & 6777 & 37.2\% & & 64022 & 42.1\% \\
+%    Divorced  & 6497 & 35.6\% & & 46183 & 30.4\% \\
+%    Widowed   & 1225 &  6.7\% & &  7995 &  5.3\% \\
+%    Married   & 3738 & 20.5\% & & 33880 & 22.3\% \\
+%    \midrule
+%    \textbf{Age Group} &  &  &  &  & \\
+%    15     & 139 & 21.0\% & &  55 & 14.4\% \\
+%    16     & 194 & 29.3\% & &  87 & 22.7\% \\
+%    17     & 171 & 25.9\% & & 106 & 27.7\% \\
+%    18     & 128 & 19.1\% & &  96 & 25.1\% \\
+%    19+    & 31 &   4.7\% & &  39 & 10.2\% \\
+%    \midrule
+%    \textbf{Education} Level &  &  &  &  & \\
+%    School Age & 2262 & 12.4\% & & 39315 & 25.9\% \\
+%    Some H.S.  & 1849 & 10.1\% & & 15334 & 10.1\% \\
+%    H.S. Grad  & 4134 & 22.7\% & & 30223 & 19.9\% \\
+%    Some Coll. & 5997 & 32.9\% & & 37230 & 24.5\% \\
+%    Coll. Grad & 3995 & 21.9\% & & 29978 & 19.7\% \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
-  \caption{Proportion of Pain Reliever Misuse and Abuse
-  as a function of Heroin Use.}
-  \label{f:Figure3}
-\end{figure}
+%\begin{figure}[!ht]
+%  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+%  \caption{Proportion of Pain Reliever Misuse and Abuse
+%  as a function of Heroin Use.}
+%  \label{f:Figure3}
+%\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
@@ -819,69 +871,63 @@ vector classifier (SVC), naive Bayes classifier, and neural network
     \toprule
     Model& & Confusion Matrix & & Accuracy & Sensitivity & Precision & F1-Score \\
     \midrule
-    K-Nearest Neighbors & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37567 & 453 & 89.8\% & 0.900 & 0.870 & 0.870 \\
-     & PRL Misuse & 3905 & 654 &  &  &  & \\
+    K-Nearest Neighbors & & Fail & Pass &  &  &  & \\
+     & Fail & 37567 & 453 & 89.8\% & 0.900 & 0.870 & 0.870 \\
+     & Pass & 3905 & 654 &  &  &  & \\
+    
     \midrule
-    Logistic Regression & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37618 & 3478 & 90.7\% & 0.987 & 0.915 & 0.950 \\
-     & PRL Misuse &  495 &  988 &  &  &  & \\
+    Logistic Regression & & Fail & Pass &  &  &  & \\
+     & Fail & 56 &  21 & 74.1\% & 0.48 & 0.727 & 0.580 \\
+     & Pass & 60 & 176 &  &  &  & \\
     \midrule
-    Linear Discriminant Analysis (LDA) & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37063 & 3073 & 90.3\% & 0.973 & 0.923 & 0.947 \\
-     & PRL Misuse & 1050 & 1393 &  &  &  & \\
+    Linear Discriminant Analysis (LDA) & & Fail & Pass &  &  &  & \\
+     & Fail & 55 &  24 & 72.8\% & 0.474 & 0.696 & 0.564 \\
+     & Pass & 61 & 173 &  &  &  & \\
     \midrule
-    Quadratic Discriminant Analysis (QDA) & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 34786 & 2426 & 86.5\% & 0.913 & 0.935 & 0.924 \\
-     & PRL Misuse & 3327 & 2040 &  &  &  & \\
+    Quadratic Discriminant Analysis (QDA) & & Fail & Pass &  &  &  & \\
+     & Fail & 66 &  21 & 77.3\% & 0.569 & 0.759 & 0.650 \\
+     & Pass & 50 & 176 &  &  &  & \\
+    
     \midrule
-    Support Vector Machines (SVM) & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37660 & 360 & 90.3\% & 0.900 & 0.880 & 0.880 \\
-     & PRL Misuse & 3776 & 783 &  &  &  & \\
+    Support Vector Machines (SVM) & & Fail & Pass &  &  &  & \\
+     & Fail & 37660 & 360 & 90.3\% & 0.900 & 0.880 & 0.880 \\
+     & Pass & 3776 & 783 &  &  &  & \\
     \midrule
-    Naive Bayes & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 38110 & 4431 & 89.6\% & 0.999 & 0.896 & 0.945 \\
-     & PRL Misuse & 3 & 35 &  &  &  & \\
+    Naive Bayes & & Fail & Pass &  &  &  & \\
+     & Fail & 67 &  24 & 76.7\% & 0.578 & 0.736 & 0.648 \\
+     & Pass & 49 & 173 &  &  &  & \\
     \midrule
-    Neural Network (MLP) & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37488 & 534 & 90.6\% & 0.90 & 0.89 & 0.880 \\
-     & PRL Misuse & 3542 & 1016 &  &  &  & \\
+    Neural Network (MLP) & & Fail & Pass &  &  &  & \\
+     & Fail & 378 & 534 & 90.6\% & 0.90 & 0.89 & 0.880 \\
+     & Pass & 342 & 116 &  &  &  & \\
+    
     \midrule
-    Decision Trees & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37655 & 3597 & 90.5\% & 0.988 & 0.913 & 0.949 \\
-     & PRL Misuse &  458 &  869 &  &  &  & \\
+    Decision Trees & & Fail & Pass &  &  &  & \\
+     & Fail &  58 &  25 & 73.5\% & 0.50 & 0.699 & 0.583 \\
+     & Pass &  58 & 172 &  &  &  & \\
     \midrule
-    Random Forests & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37556 & 3397 & 90.1\% & 0.985 & 0.917 & 0.950 \\
-     & PRL Misuse &  557 & 1069 &  &  &  & \\
+    Random Forests & & Fail & Pass &  &  &  & \\
+     & Fail &  57 &  22 & 74.1\% & 0.491 & 0.722 & 0.585 \\
+     & Pass &  59 & 175 &  &  &  & \\
     \midrule
-    Gradient Boosted Trees & & No Misuse & PRL Misuse &  &  &  & \\
-     & No Misuse & 37955 &  65 & 89.9\% & 0.90 & 0.89 & 0.895 \\
-     & PRL Misuse & 4261 & 298 &  &  &  & \\
+    Gradient Boosted Trees & & Fail & Pass &  &  &  & \\
+     & Fail & 37955 &  65 & 89.9\% & 0.90 & 0.89 & 0.895 \\
+     & Pass & 4261 & 298 &  &  &  & \\
     \bottomrule
   \end{tabular}
 \end{table*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
-\begin{table}
-  \caption{Main Parameters for Non-linear Classification Models of 
-  Pain Reliever Misuse and Abuse.}
-  \label{tab:freq}
-  \begin{tabular}{ll}
-    \toprule
-    Model & Main Parameters \\
-    \midrule
-    K-Nearest Neighbors & Number of Neighbors = 4 \\
-    Support Vector Machines (RBF) & C = 10, gamma = 0.1 \\
-    Naive Bayes & Cost = 0.01 \\
-    Neural Network & Hidden Layers = 1 \\
-    Decision Trees & Maximum Depth = 4 \\ 
-    Random Forests & Number of Trees = 1000 \\
-    Boosted Trees & Learning Rate = 0.01 \\ 
-    \bottomrule
-  \end{tabular}
-\end{table}
+Main Parameters
+K-Nearest Neighbors & Number of Neighbors = 4 
+Support Vector Machines (RBF) & C = 10, gamma = 0.1
+Naive Bayes & Cost = 0.01 
+Neural Network & Hidden Layers = 1
+Decision Trees & Maximum Depth = 4
+Random Forests & Number of Trees = 1000 
+Boosted Trees & Learning Rate = 0.01 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
@@ -971,25 +1017,16 @@ increase in the independent variable  \cite{gujarati09}.
     \toprule
     Predictor&  Estimate& Std. Err.& Z-Value & Odds Ratio \\    
     \midrule
-    (Intercept)   & -1.901 &  0.307 &  -6.19 *** &   \\
-    Cocaine       &  0.672 &  0.015 &  44.43 *** & 1.96  \\
-    Amphetamines  &  0.592 &  0.017 &  35.55 *** & 1.81  \\
-    Tranquilizers &  0.393 &  0.011 &  34.57 *** & 1.48  \\
-    Mental Health &  0.133 &  0.005 &  26.96 *** & 1.14  \\
-    Heroin use    &  0.750 &  0.041 &  18.25 *** & 2.12  \\
-    Age Category  & -0.185 &  0.011 & -17.28 *** & 1.20  \\
-    Employment    &  0.191 &  0.013 &  14.60 *** & 1.21  \\
-    Treatment     &  0.203 &  0.015 &  13.57 *** & 1.23  \\
-    Sedatives     &  0.264 &  0.024 &  10.98 *** & 1.30  \\
-    Education     &  0.105 &  0.010 &  10.12 *** & 1.11  \\
-    Health        &  0.093 &  0.010 &   9.15 *** & 1.10  \\
-    Sex           & -0.153 &  0.021 &  -7.28 *** & 1.17  \\
-    Married       &  0.052 &  0.010 &   5.42 *** & 1.05  \\
-    Year          & -0.071 &  0.020 &  -3.58 *** & 1.07  \\
-    City/Metro    & -0.040 &  0.013 &  -3.08 **  & 1.04  \\
-    MH Treatment  & -0.001 &  0.014 &  -0.07     & 1.00  \\
+    (Intercept)       &  0.211 &  0.449 &   0.47     &   \\
+    Area              &  0.323 &  0.198 &   1.64     & 1.38  \\
+    Guardian          & -0.338 &  0.154 &  -2.20 *   & 1.40  \\
+    Study Time        &  0.188 &  0.110 &   1.72     & 1.21  \\
+    Failures          & -1.587 &  0.331 &  -7.18 *** & 4.89  \\
+    School Support    & -0.712 &  0.264 &  -2.69 **  & 2.04  \\
+    Higher Education  &  1.250 &  0.349 &   3.58 *** & 3.49  \\
+    Course            & -1.021 &  0.181 &  -5.65 *** & 2.77  \\
     \bottomrule 
-    Note: p-value& $<$ 0.001***  & $<$ 0.01** &  &   
+    Note: p-value& $<$ 0.05*  & $<$ 0.01** & $<$ 0.001*** &   
   \end{tabular}
 \end{table}
 
@@ -1111,25 +1148,56 @@ single tree (Figure 4).
     Predictor&  & Mean Decrease  \\    
              &  & in Gini Score  \\
     \midrule
-    Cocaine       &  &  1990.45 \\
-    Amphetamines  &  &  1340.20 \\
-    Mental Health &  &  1314.92 \\ 
-    Health        &  &  1015.29 \\
-    Tranquilizers &  &   978.70 \\
-    Age Group     &  &   899.45 \\
-    Education     &  &   893.39 \\
-    Heroin Use    &  &   780.27 \\
-    City/Metro    &  &   664.99 \\
-    MH Treatment  &  &   615.17 \\
-    Married       &  &   565.02 \\
-    Employment    &  &   564.11 \\ 
-    Year          &  &   472.63 \\
-    Sex           &  &   392.41 \\
-    Treatment     &  &   388.30 \\
-    Sedatives     &  &   223.47 \\
+    Failures            &  &  35.99 \\
+    Absences            &  &  25.51 \\
+    Courses             &  &  17.00 \\ 
+    Going Out           &  &  16.31 \\
+    Age                 &  &  15.89 \\
+    Mother's Education  &  &  15.84 \\
+    Free Time           &  &  15.47 \\
+    Mother's Job        &  &  14.96 \\
+    Weekly Alcohol      &  &  14.56 \\
+    Father's Education  &  &  13.79 \\
+    Health              &  &  13.68 \\
+    Study Time          &  &  13.21 \\ 
+    Family Relations    &  &  12.31 \\
+    Sex                 &  &  11.59 \\
+    Treatment           &  &  10.24 \\
     \bottomrule
   \end{tabular}
 \end{table}
+a         course            
+            16.31
+
+Walc              14.56
+Fedu              13.79
+            13.68
+studytime         13.21
+famrel            12.31
+Fjob              11.59
+traveltime        10.24
+
+Dalc               8.86
+guardian           8.02
+sex                7.46
+higher             7.00
+paid               6.90
+famsup             6.33
+famsize            6.24
+romantic           6.35
+activities         6.30
+internet           6.16
+area               5.87
+schoolsup          5.73
+parents            3.54
+
+
+
+
+
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
