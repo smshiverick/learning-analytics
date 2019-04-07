@@ -190,22 +190,7 @@ The most common approach used to predict student performance, dropout, and reten
 
 
 
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
 
 \subsection{Predictive Modeling}
 
@@ -626,14 +611,6 @@ than the other class, as it takes into account both recall and precision
 \end{table*}
 
 
-
-
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Training Accuracy and Test Set Accuracy}
@@ -732,7 +709,13 @@ The data sets were extracted and
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -750,6 +733,112 @@ decision trees classifier, random forests classifier, gradient boosted trees
 were constructed using the caret package. The KNN classifier, support 
 vector classifier (SVC), naive Bayes classifier, and neural network 
 (multilayer perceptron) were built using scikit-learn. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{figure}[!ht]
+%  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+%  \caption{Proportion of Pain Reliever Misuse and Abuse
+%  as a function of Heroin Use.}
+%  \label{f:Figure3}
+%\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\begin{table*}[ht]
+  \caption{Confusion Matrices and Performance Metrics for Classification 
+  Models of Pain Reliever Misuse and Abuse}
+  \label{tab:freq}
+  \begin{tabular}{llllllll}
+    \toprule
+    Model& & Confusion Matrix & & Accuracy & Sensitivity & Precision & F1-Score \\
+    \midrule
+    K-Nearest Neighbors & & Fail & Pass &  &  &  & \\
+     & Fail & 37567 & 453 & 89.8\% & 0.900 & 0.870 & 0.870 \\
+     & Pass & 3905 & 654 &  &  &  & \\
+    
+    \midrule
+    Logistic Regression & & Fail & Pass &  &  &  & \\
+     & Fail & 56 &  21 & 74.1\% & 0.48 & 0.727 & 0.580 \\
+     & Pass & 60 & 176 &  &  &  & \\
+    \midrule
+    Linear Discriminant Analysis (LDA) & & Fail & Pass &  &  &  & \\
+     & Fail & 55 &  24 & 72.8\% & 0.474 & 0.696 & 0.564 \\
+     & Pass & 61 & 173 &  &  &  & \\
+    \midrule
+    Quadratic Discriminant Analysis (QDA) & & Fail & Pass &  &  &  & \\
+     & Fail & 66 &  21 & 77.3\% & 0.569 & 0.759 & 0.650 \\
+     & Pass & 50 & 176 &  &  &  & \\
+    
+    \midrule
+    Support Vector Machines (SVM) & & Fail & Pass &  &  &  & \\
+     & Fail & 37660 & 360 & 90.3\% & 0.900 & 0.880 & 0.880 \\
+     & Pass & 3776 & 783 &  &  &  & \\
+    \midrule
+    Naive Bayes & & Fail & Pass &  &  &  & \\
+     & Fail & 67 &  24 & 76.7\% & 0.578 & 0.736 & 0.648 \\
+     & Pass & 49 & 173 &  &  &  & \\
+    \midrule
+    Neural Network (MLP) & & Fail & Pass &  &  &  & \\
+     & Fail & 378 & 534 & 90.6\% & 0.90 & 0.89 & 0.880 \\
+     & Pass & 342 & 116 &  &  &  & \\
+    
+    \midrule
+    Decision Trees & & Fail & Pass &  &  &  & \\
+     & Fail &  58 &  25 & 73.5\% & 0.50 & 0.699 & 0.583 \\
+     & Pass &  58 & 172 &  &  &  & \\
+    \midrule
+    Random Forests & & Fail & Pass &  &  &  & \\
+     & Fail &  57 &  22 & 74.1\% & 0.491 & 0.722 & 0.585 \\
+     & Pass &  59 & 175 &  &  &  & \\
+    \midrule
+    Gradient Boosted Trees & & Fail & Pass &  &  &  & \\
+     & Fail & 37955 &  65 & 89.9\% & 0.90 & 0.89 & 0.895 \\
+     & Pass & 4261 & 298 &  &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+Main Parameters
+K-Nearest Neighbors  Number of Neighbors = 4 
+Support Vector Machines (RBF)  C = 10, gamma = 0.1
+Naive Bayes  Cost = 0.01 
+Neural Network  Hidden Layers = 1
+Decision Trees  Maximum Depth = 4
+Random Forests  Number of Trees = 1000 
+Boosted Trees  Learning Rate = 0.01 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\section{Results}
+
+\subsection{Exploratory Data Analysis}
+
+Table X provides the frequency and percent of respondents who passed or
+failed the final evaluation by demographic characteristics. Sixty-three percent 
+of the student sample passed their courses (61\% male, 65\% female) and 
+approximately 37\% failed their courses (39\% male, 35\% female). The 
+proportion of pass/ fail between males and females was not significant. 
+
+
+Pain reliever misuse was most frequent among individuals who described 
+themselves as single, divorced, or with some college education. The 
+proportion of pain reliever misuse and abuse was highest among individuals 
+between 18 to 25 years of age and decreased among older age groups. Two 
+percent of respondents (n=3433) disclosed ever using heroin (2019 males; 
+1414 females). Among respondents who reported using pain relievers in the 
+past year, the rate of misuse and abuse of pain relievers was twice as 
+large for individuals who reported using heroin than those who had not 
+used heroin (shown in Figure 3), which is consistent with past findings 
+that indicate a connection between MUPO and heroin use 
+\cite{muhuri13, unick13}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
   \caption{Frequency of Pain Reliever Misuse and Abuse
@@ -852,109 +941,16 @@ vector classifier (SVC), naive Bayes classifier, and neural network
 %  \end{tabular}
 %\end{table}
 
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
-%  \caption{Proportion of Pain Reliever Misuse and Abuse
-%  as a function of Heroin Use.}
-%  \label{f:Figure3}
-%\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\begin{table*}[ht]
-  \caption{Confusion Matrices and Performance Metrics for Classification 
-  Models of Pain Reliever Misuse and Abuse}
-  \label{tab:freq}
-  \begin{tabular}{llllllll}
-    \toprule
-    Model& & Confusion Matrix & & Accuracy & Sensitivity & Precision & F1-Score \\
-    \midrule
-    K-Nearest Neighbors & & Fail & Pass &  &  &  & \\
-     & Fail & 37567 & 453 & 89.8\% & 0.900 & 0.870 & 0.870 \\
-     & Pass & 3905 & 654 &  &  &  & \\
-    
-    \midrule
-    Logistic Regression & & Fail & Pass &  &  &  & \\
-     & Fail & 56 &  21 & 74.1\% & 0.48 & 0.727 & 0.580 \\
-     & Pass & 60 & 176 &  &  &  & \\
-    \midrule
-    Linear Discriminant Analysis (LDA) & & Fail & Pass &  &  &  & \\
-     & Fail & 55 &  24 & 72.8\% & 0.474 & 0.696 & 0.564 \\
-     & Pass & 61 & 173 &  &  &  & \\
-    \midrule
-    Quadratic Discriminant Analysis (QDA) & & Fail & Pass &  &  &  & \\
-     & Fail & 66 &  21 & 77.3\% & 0.569 & 0.759 & 0.650 \\
-     & Pass & 50 & 176 &  &  &  & \\
-    
-    \midrule
-    Support Vector Machines (SVM) & & Fail & Pass &  &  &  & \\
-     & Fail & 37660 & 360 & 90.3\% & 0.900 & 0.880 & 0.880 \\
-     & Pass & 3776 & 783 &  &  &  & \\
-    \midrule
-    Naive Bayes & & Fail & Pass &  &  &  & \\
-     & Fail & 67 &  24 & 76.7\% & 0.578 & 0.736 & 0.648 \\
-     & Pass & 49 & 173 &  &  &  & \\
-    \midrule
-    Neural Network (MLP) & & Fail & Pass &  &  &  & \\
-     & Fail & 378 & 534 & 90.6\% & 0.90 & 0.89 & 0.880 \\
-     & Pass & 342 & 116 &  &  &  & \\
-    
-    \midrule
-    Decision Trees & & Fail & Pass &  &  &  & \\
-     & Fail &  58 &  25 & 73.5\% & 0.50 & 0.699 & 0.583 \\
-     & Pass &  58 & 172 &  &  &  & \\
-    \midrule
-    Random Forests & & Fail & Pass &  &  &  & \\
-     & Fail &  57 &  22 & 74.1\% & 0.491 & 0.722 & 0.585 \\
-     & Pass &  59 & 175 &  &  &  & \\
-    \midrule
-    Gradient Boosted Trees & & Fail & Pass &  &  &  & \\
-     & Fail & 37955 &  65 & 89.9\% & 0.90 & 0.89 & 0.895 \\
-     & Pass & 4261 & 298 &  &  &  & \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-Main Parameters
-K-Nearest Neighbors & Number of Neighbors = 4 
-Support Vector Machines (RBF) & C = 10, gamma = 0.1
-Naive Bayes & Cost = 0.01 
-Neural Network & Hidden Layers = 1
-Decision Trees & Maximum Depth = 4
-Random Forests & Number of Trees = 1000 
-Boosted Trees & Learning Rate = 0.01 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
- 
-\section{Results}
 
-\subsection{Exploratory Data Analysis}
 
-Twenty-six percent of the total sample (n=44596) reported taking any pain 
-relievers in the past year (19558 males, 25038 females). 
-Table 4 provides the frequency and percent of respondents who reported 
-pain reliever misuse and abuse by demographic characteristics. 
-Approximately 11\% of the sample had misused or abused prescription pain 
-relievers at some point; this same rate of pain reliever misuse and abuse 
-was found in both the training set and test sets. A larger number of females 
-reported using any prescription opioid pain relievers in the past year than 
-males, though more males reported misusing or abusing opioid pain relievers. 
-Pain reliever misuse was most frequent among individuals who described 
-themselves as single, divorced, or with some college education. The 
-proportion of pain reliever misuse and abuse was highest among individuals 
-between 18 to 25 years of age and decreased among older age groups. Two 
-percent of respondents (n=3433) disclosed ever using heroin (2019 males; 
-1414 females). Among respondents who reported using pain relievers in the 
-past year, the rate of misuse and abuse of pain relievers was twice as 
-large for individuals who reported using heroin than those who had not 
-used heroin (shown in Figure 3), which is consistent with past findings 
-that indicate a connection between MUPO and heroin use 
-\cite{muhuri13, unick13}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1011,43 +1007,26 @@ increase in the independent variable  \cite{gujarati09}.
 
 \begin{table}
   \caption{Parameter Estimates for Logistic Regression Model and Log-odds 
-  Ratios for Pain Reliever Misuse and Abuse (Training Set).}
+  Ratios (Training Set).}
   \label{tab:freq}
   \begin{tabular}{lllll}
     \toprule
     Predictor&  Estimate& Std. Err.& Z-Value & Odds Ratio \\    
     \midrule
     (Intercept)         &   0.910 &  0.514 &   1.77     &   \\
-    Failures            &  -1.567 &  0.225 &  -6.98 ***  & 1074.92  \\
-    Course              &  -1.121 &  0.187 &  -6.00 ***  &  403.43  \\
-    Higher Ed Plans     &   1.182 &  0.351 &   3.37 ***  &    3.49  \\
-    Father's Education  &   0.256 &  0.085 &   2.99 **   &    3.49  \\ 
-    School Support      &  -0.792 &  0.269 &  -2.94 **   &    2.04  \\
-    Weekly Alcohol      &  -0.184 &  0.076 &  -2.41 *    &    1.21  \\
-    Guardian            &  -0.328 &  0.156 &  -2.11 *    &    1.40  \\
-    Internet            &   0.445 &  0.218 &   2.04 *    &    4.89  \\
-    Going Out w/ Friends & -0.169 &  0.085 &  -1.97 *    &    4.89  \\
-    
-
+    Failures            &  -1.567 &  0.225 &  -6.98 ***  &  4.79  \\
+    Course              &  -1.121 &  0.187 &  -6.00 ***  &  3.07  \\
+    Higher Ed Plans     &   1.182 &  0.351 &   3.37 ***  &  3.26  \\
+    Father's Education  &   0.256 &  0.085 &   2.99 **   &  1.29  \\ 
+    School Support      &  -0.792 &  0.269 &  -2.94 **   &  2.21  \\
+    Weekly Alcohol      &  -0.184 &  0.076 &  -2.41 *    &  1.20  \\
+    Guardian            &  -0.328 &  0.156 &  -2.11 *    &  1.39  \\
+    Internet            &   0.445 &  0.218 &   2.04 *    &  1.56  \\
+    Going Out           & -0.169 &  0.085 &  -1.97 *    &  1.18  \\
     \bottomrule 
-    Note: p-value& $<$ 0.05*  & $<$ 0.01** & $<$ 0.001*** &   
+    Note: p-value& *$<$ 0.05  & **$<$ 0.01 & ***$<$ 0.001 &   
   \end{tabular}
 \end{table}
-
-Intercept)  0.90978    0.51472   1.768 0.077142 .  
-failures    -1.567     0.22455  -6.978 2.99e-12 ***
-course      -1.121     0.18670  -6.003 1.93e-09 ***
-higher       1.18218    0.35109   3.367 0.000759 ***
-Fedu         0.25601    0.08549   2.994 0.002749 ** 
-schoolsup   -0.79216    0.26910  -2.944 0.003243 ** 
-Walc        -0.18401    0.07632  -2.411 0.015905 *  
- guardian    -0.32793    0.15577  -2.105 0.035270 *  
-internet     0.44453    0.21805   2.039 0.041482 *  
-goout       -0.16926    0.08583  -1.972 0.048620 *  
-
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1121,7 +1100,8 @@ PRLMISAB was 0.28 or 28\%. The branch to the right represented n=3119
 observations with moderate to high tranquilizer use, of which 0.52 or 52\% 
 reported PRLMISAB. The rate of pain reliever misuse and abuse for individuals 
 with moderate to high tranquilizer use was almost twice as large as for 
-those reporting no to low tranquilizer use. The fourth split was based on age category; the branch to the left represented n=1394 individuals age 36 or older, 
+those reporting no to low tranquilizer use. The fourth split was based on age 
+category; the branch to the left represented n=1394 individuals age 36 or older, 
 of which 0.38 or 38\% reported PRLMISAB. The branch to the right represented 
 n=1725 individuals age 35 and younger, of whom 0.63 or 63\% reported PRLMISAB. 
 This findings shows that pain reliever misuse and abuse was much more likely
