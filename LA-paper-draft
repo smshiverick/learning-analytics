@@ -125,22 +125,22 @@ and EDM, they can be seen as complementary approaches using similar methodologie
 
 Historically, education institutions have examined factors such as persistence 
 and social integration as influential for learning and used analytic methods to 
-track student drop-out rates (Ferguson, 2012). The development of the web opened 
+track student drop-out rates \cite{ferguson12}. The development of the web opened 
 up new avenues for collecting information from online sources along with methods 
 for processing and sharing content. As extensive educational datasets became 
 available for analysis, EDM researchers use a variety of data mining techniques 
 (e.g., classification, clustering, association rule mining) to discover 
 potentially useful patterns in data for understanding students and the settings 
-in which they learn (Baker & Yucef, 2009). To a large extent, EDM emerged from 
+in which they learn \cite{bakerYucef09}. To a large extent, EDM emerged from 
 a computational approach to analyzing logs of student-computer interactions with
 data mined from LMS, ITS (intelligent tutoring system), and technology enhanced 
 learning (TEL) systems to evaluate learning processes, enhance web-based learning 
-and help learners (Pena-Ayala, 2014; Romero, et al., 2010). Thus, EDM research 
-has focused more on the technical challenge of extracting value about learning 
-from big data in education. Practitioners distinguish LA as a separate field of 
-research by a more holistic, education-focused approach to learning, which seeks 
-to ground analytics in learning theory, to benefit learners and teachers, and 
-optimize learning in online environments (Lang, et al., 2017; Papamitsiou14). 
+and help learners \cite{penaAyala14, romero10}. Thus, EDM research has focused 
+more on the technical challenge of extracting value about learning from big data 
+in education. Practitioners distinguish LA as a separate field of research by a 
+more holistic, education-focused approach to learning, which seeks to ground 
+analytics in learning theory, to benefit learners and teachers, and optimize 
+learning in online environments \cite{lang17, papamitsiou14}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -158,37 +158,103 @@ measures, meaningful analytics systems will include qualitative measures about
 the content or type of contribution (on-topic, evaluative, question). 
 Researchers have also studied how affective states (e.g., boredom, 
 frustration, confusion, happiness) influence engagement and learning outcomes 
-(Pardos, et al., 2014). Merging LMS data with institutional data about student 
+\cite{pardos14}. Merging LMS data with institutional data about student 
 performance (i.e., past grades) can provide valuable insights about the 
 conditions for successful learning and decision making (Hora, 2019). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-LA/EDM consists of a diverse set of methodologies and approaches for addressing challenges in higher education such as underprepared students, decreased retention, and foster student success. The most common approaches in LA research are modeling students and student behavior, predicting performance, dropout, and retention, increasing (self-)reflection and (self-)awareness, analyzing connections among learners, improving feedback and assessment, and recommending educational resources (Lang, et al., 2017; Lester et al., 2019; Papamitsiou & Economides, 2014). Descriptive, correlational, and predictive methodologies are used to study learning processes and context, including predictive modeling, relationship mining, similarity grouping, content analysis, and social network analysis. Classification is the most commonly used data analytic method, followed by clustering, regression (logistic, multiple), and predictive modeling (discovery with models). Several performance metrics are used to evaluate different methods: precision, accuracy, sensitivity, coherence, fitness measures, similarity weights (Baker & Yucef, 2009). 
-
-Student / Student Behavior Modeling. Modeling student characteristics takes a descriptive approach to reveal factors for learning such as domain knowledge, motivation, metacognition, attitudes, affect, metacognitive states, learning strategies, and behavior (Papamitsiou & Economides, 2014). Student characteristics can be combined with data from the LMS system 
-about support, teacher feedback, curriculum, and course sequencing. Modeling student characteristics is most often based on frequency, but can involve correlation analysis, similarity grouping or clustering (k-means), content analysis (i.e., text mining, NLP). 
-Quantitative data about activities and behavior (e.g., response time, or time reflecting on hints) are helpful for modeling engagement or disengagement in learning activities, and provide information that allows software to respond to individual differences. Discovery and modeling of behaviors during learner interactions in a MOOC.  Clustering can be used to grouping similar individuals together based on learner profiles and to aid in the development of more personalized learning environment (PLE)(Vellido, Castro, & Nebot, 2010). Analysis of qualitative data, may rely on human judgment, can reveal deeper concepts about learning, such as inferring reasoning strategies from interaction with a cognitive tutor (Fournier, 2011). 
-Predictive approaches are used also for modeling student behavior and assessing functionality in intelligent tutoring systems (ITS) (Pena-Ayala, 2014). 
-
-Predicting Performance. Predictive methodologies can lead to a better understanding of student engagement in online education, behavior patterns that predict successful performance, and factors that influence student failure and non-retention. The Course Signals program developed at Purdue University is one of the most well known platforms for predicting students at-risk of falling behind using statistical analysis of LMS data (Arnold & Pistilli, 2012). In addition to grades, demographic information, academic history, and student interaction on the Blackboard LMS were used to track student performance. A predictive algorithm was used to calculate likelihood of student success based on performance, effort, history, and student characteristics. The course signals provided students with real-time feedback about their status via the LMS as traffic signal indicators (i.e., red=high risk, yellow=moderate risk, green=low risk). Instructors enacted interventions for high risk students providing them with actionable information about their performance in emails, texts, referrals to academic advising, or academic resources center, and face to face meetings. Courses that implemented the Signals program and provided feedback for students showed an increase in satisfactory grades, decrease in withdrawals, and improved retention. Course signals helped to integrate students into the university academically in several ways: first, by facilitating contact between faculty and students, second, by providing high risk students with resources for student success, and third, by using analytics with real time data about student performance. in terms of academic success and retention, underprepared students in difficult courses using the signals program fared better than more well-prepared students in courses that were not using the signals program. Furthermore, LA provided faculty with a useful tool for identifying struggling students and encouraging them to take corrective actions.  
-
-
-The most common approach used to predict student performance, dropout, and retention is classification, which operationalizes performance as a binary outcome. Classification methods include logistic regression, naive Bayes models, decision trees, machine learning algorithms, and neural networks (Lykourentzou, et al. 2009). Past empirical findings indicate that the number of quizzes successfully passed is the most influential predictor of final grades, in addition to engagement, participation in course activities, number of posts, frequency of events, and time spent in the course LMS (Papamitsiou & Economides, 2014; Romero-Zaldivar, 2012). Affect and motivation are also influential for predicting performance; notably, concentration and frustration are significantly correlated with final grades, but boredom and confusion were negatively related to performance (Pardos et al., 2013). Using data-driven machine learning algorithms on student profiles and data about activity within the LMS can facilitate early detection of at-risk students (Dekkar et al. 2009). Furthermore, students’ sense of belonging in a course is essential for engagement and improved satisfaction which can reduces student dropout.measures of student satisfaction can vary according to their perceived usefulness or efficiency of training courses. The most common reasons for  student disengagement in MOOCs were personal commitments, work conflict and course overload (Kizilcec, 2013). 
-
-
-
-
-
-
-
-
+LA/EDM consists of a diverse set of methodologies and approaches for 
+addressing challenges in higher education such as underprepared students, 
+decreased retention, and foster student success. The most common approaches in 
+LA research are modeling students and student behavior, predicting performance, 
+dropout, and retention, increasing (self-)reflection and (self-)awareness, 
+analyzing connections among learners, improving feedback and assessment, and 
+recommending educational resources \cite{lang17, lester19, papamitsiou14}. 
+Descriptive, correlational, and predictive methodologies are used to study 
+learning processes and context, including predictive modeling, relationship 
+mining, similarity grouping, content analysis, and social network analysis. 
+Classification is the most commonly used data analytic method, followed by 
+clustering, regression (logistic, multiple), and predictive modeling (discovery
+with models). Several performance metrics are used to evaluate different 
+methods: precision, accuracy, sensitivity, coherence, fitness measures, 
+similarity weights \cite{bakerYucef09}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\emph{Student / Student Behavior Modeling}.
+Modeling student characteristics takes a descriptive approach to reveal factors 
+for learning such as domain knowledge, 
+motivation, metacognition, attitudes, affect, metacognitive states, learning 
+strategies, and behavior \cite{Papamitsiou14}. Student characteristics can be 
+combined with data from the LMS system about support, teacher feedback, 
+curriculum, and course sequencing. Modeling student characteristics is most 
+often based on frequency, but can involve correlation analysis, similarity 
+grouping or clustering (k-means), content analysis (i.e., text mining, NLP). 
+Quantitative data about activities and behavior (e.g., response time, or 
+time reflecting on hints) are helpful for modeling engagement or disengagement 
+in learning activities, and provide information that allows software to respond 
+to individual differences. Discovery and modeling of behaviors during learner 
+interactions in a MOOC.  Clustering can be used to grouping similar individuals 
+together based on learner profiles and to aid in the development of more 
+personalized learning environment (PLE)\cite{Vellido10}. Analysis of qualitative 
+data, may rely on human judgment, can reveal deeper concepts about learning, 
+such as inferring reasoning strategies from interaction with a cognitive tutor 
+\cite{Fournier11}. Predictive approaches are used also for modeling student 
+behavior and assessing functionality in intelligent tutoring systems (ITS)
+\cote{penaayala14}. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Predicting Performance. Predictive methodologies can lead to a better 
+understanding of student engagement in online education, behavior patterns 
+that predict successful performance, and factors that influence student failure 
+and non-retention. The Course Signals program developed at Purdue University 
+is one of the most well known platforms for predicting students at-risk of 
+falling behind using statistical analysis of LMS data \cite{arnoldPistilli12}. 
+In addition to grades, demographic information, academic history, and student 
+interaction on the Blackboard LMS were used to track student performance. A 
+predictive algorithm was used to calculate likelihood of student success based 
+on performance, effort, history, and student characteristics. The course signals 
+provided students with real-time feedback about their status via the LMS as 
+traffic signal indicators (i.e., red=high risk, yellow=moderate risk, green=low 
+risk). Instructors enacted interventions for high risk students providing them 
+with actionable information about their performance in emails, texts, referrals
+to academic advising, or academic resources center, and face to face meetings.
+Courses that implemented the Signals program and provided feedback for students
+showed an increase in satisfactory grades, decrease in withdrawals, and 
+improved retention. Course signals helped to integrate students into the 
+university academically in several ways: first, by facilitating contact 
+between faculty and students, second, by providing high risk students with 
+resources for student success, and third, by using analytics with real time 
+data about student performance. in terms of academic success and retention, 
+underprepared students in difficult courses using the signals program fared 
+better than more well-prepared students in courses that were not using the 
+signals program. Furthermore, LA provided faculty with a useful tool for 
+identifying struggling students and encouraging them to take corrective actions.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The most common approach used to predict student performance, dropout, and 
+retention is classification, which operationalizes performance as a binary 
+outcome. Classification methods include logistic regression, naive Bayes 
+models, decision trees, machine learning algorithms, and neural networks 
+\cite{Lykourentzou09}. Past empirical findings indicate that the number of 
+quizzes successfully passed is the most influential predictor of final grades, 
+in addition to engagement, participation in course activities, number of posts, 
+frequency of events, and time spent in the course LMS 
+\cite{Papamitsiou14, romerozaldivar12}. Affect and motivation are also 
+influential for predicting performance; notably, concentration and 
+frustration are significantly correlated with final grades, but boredom and 
+confusion were negatively related to performance (Pardos et al., 2013). 
+Using data-driven machine learning algorithms on student profiles and data 
+about activity within the LMS can facilitate early detection of at-risk 
+students \cite{Dekkar09}. Furthermore, students’ sense of belonging in a 
+course is essential for engagement and improved satisfaction which can 
+reduces student dropout.measures of student satisfaction can vary according 
+to their perceived usefulness or efficiency of training courses. The most 
+common reasons for  student disengagement in MOOCs were personal commitments, 
+work conflict and course overload (Kizilcec, 2013). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -745,64 +811,7 @@ vector classifier (SVC), naive Bayes classifier, and neural network
 %  \label{f:Figure3}
 %\end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\begin{table*}[ht]
-  \caption{Confusion Matrices and Performance Metrics for Classification 
-  Models of Pain Reliever Misuse and Abuse}
-  \label{tab:freq}
-  \begin{tabular}{llllllll}
-    \toprule
-    Model& & Confusion Matrix & & Accuracy & Sensitivity & Precision & F1-Score \\
-    \midrule
-    K-Nearest Neighbors & & Fail & Pass &  &  &  & \\
-     & Fail & 37567 & 453 & 89.8\% & 0.900 & 0.870 & 0.870 \\
-     & Pass & 3905 & 654 &  &  &  & \\
-    
-    \midrule
-    Logistic Regression & & Fail & Pass &  &  &  & \\
-     & Fail & 56 &  21 & 74.1\% & 0.48 & 0.727 & 0.580 \\
-     & Pass & 60 & 176 &  &  &  & \\
-    \midrule
-    Linear Discriminant Analysis (LDA) & & Fail & Pass &  &  &  & \\
-     & Fail & 55 &  24 & 72.8\% & 0.474 & 0.696 & 0.564 \\
-     & Pass & 61 & 173 &  &  &  & \\
-    \midrule
-    Quadratic Discriminant Analysis (QDA) & & Fail & Pass &  &  &  & \\
-     & Fail & 66 &  21 & 77.3\% & 0.569 & 0.759 & 0.650 \\
-     & Pass & 50 & 176 &  &  &  & \\
-    
-    \midrule
-    Support Vector Machines (SVM) & & Fail & Pass &  &  &  & \\
-     & Fail & 37660 & 360 & 90.3\% & 0.900 & 0.880 & 0.880 \\
-     & Pass & 3776 & 783 &  &  &  & \\
-    \midrule
-    Naive Bayes & & Fail & Pass &  &  &  & \\
-     & Fail & 67 &  24 & 76.7\% & 0.578 & 0.736 & 0.648 \\
-     & Pass & 49 & 173 &  &  &  & \\
-    \midrule
-    Neural Network (MLP) & & Fail & Pass &  &  &  & \\
-     & Fail & 378 & 534 & 90.6\% & 0.90 & 0.89 & 0.880 \\
-     & Pass & 342 & 116 &  &  &  & \\
-    
-    \midrule
-    Decision Trees & & Fail & Pass &  &  &  & \\
-     & Fail &  58 &  25 & 73.5\% & 0.50 & 0.699 & 0.583 \\
-     & Pass &  58 & 172 &  &  &  & \\
-    \midrule
-    Random Forests & & Fail & Pass &  &  &  & \\
-     & Fail &  57 &  22 & 74.1\% & 0.491 & 0.722 & 0.585 \\
-     & Pass &  59 & 175 &  &  &  & \\
-    \midrule
-    Gradient Boosted Trees & & Fail & Pass &  &  &  & \\
-     & Fail & 37955 &  65 & 89.9\% & 0.90 & 0.89 & 0.895 \\
-     & Pass & 4261 & 298 &  &  &  & \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
 Main Parameters
 K-Nearest Neighbors  Number of Neighbors = 4 
 Support Vector Machines (RBF)  C = 10, gamma = 0.1
@@ -897,61 +906,6 @@ that indicate a connection between MUPO and heroin use
 \end{table}
 
 
-% \begin{table}
-%  \caption{Frequency of Pain Reliever Misuse and Abuse
-%  by Demographics Features for NSDUH 2015-2017 Sample.}
-%  \label{tab:freq}
-%  \begin{tabular}{llllll}
-%    \toprule
-%   \textbf{Area} & 661 & 63.3\% & & 383 & 36.7\% \\
-%    Parent Apart     &  81 & 66.9\% & & 107 & 33.2\%  \\
-%    Parents Together & 580 & 62.6\% & & 276 & 37.2\%  \\
-%    \midrule
-%    \textbf{Activities} & 661 & 63.3\% & & 383 & 36.7\% \\
-%    No Activities      & 277 & 41.9\% & & 176 & 46.0\%  \\
-%    Activities    & 384 & 58.1\% & & 207 & 54.0\%  \\
-%    \midrule
-%    \textbf{Education} Level &  &  &  &  & \\
-%   School Age & 2262 & 12.4\% & & 39315 & 25.9\% \\
-%    Some H.S.  & 1849 & 10.1\% & & 15334 & 10.1\% \\
-%    H.S. Grad  & 4134 & 22.7\% & & 30223 & 19.9\% \\
-%    Some Coll. & 5997 & 32.9\% & & 37230 & 24.5\% \\
-%    Coll. Grad & 3995 & 21.9\% & & 29978 & 19.7\% \\
-%    \midrule
-%    \textbf{Marital Status} &  &  &  &  & \\
-%    Single    & 6777 & 37.2\% & & 64022 & 42.1\% \\
-%    Divorced  & 6497 & 35.6\% & & 46183 & 30.4\% \\
-%    Widowed   & 1225 &  6.7\% & &  7995 &  5.3\% \\
-%    Married   & 3738 & 20.5\% & & 33880 & 22.3\% \\
-%    \midrule
-%    \textbf{Age Group} &  &  &  &  & \\
-%    15     & 139 & 21.0\% & &  55 & 14.4\% \\
-%    16     & 194 & 29.3\% & &  87 & 22.7\% \\
-%    17     & 171 & 25.9\% & & 106 & 27.7\% \\
-%    18     & 128 & 19.1\% & &  96 & 25.1\% \\
-%    19+    & 31 &   4.7\% & &  39 & 10.2\% \\
-%    \midrule
-%    \textbf{Education} Level &  &  &  &  & \\
-%    School Age & 2262 & 12.4\% & & 39315 & 25.9\% \\
-%    Some H.S.  & 1849 & 10.1\% & & 15334 & 10.1\% \\
-%    H.S. Grad  & 4134 & 22.7\% & & 30223 & 19.9\% \\
-%    Some Coll. & 5997 & 32.9\% & & 37230 & 24.5\% \\
-%    Coll. Grad & 3995 & 21.9\% & & 29978 & 19.7\% \\
-%    \bottomrule
-%  \end{tabular}
-%\end{table}
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Classifier Model Performance}
@@ -975,30 +929,79 @@ classification models are presented in Table 6. The results for the
 three top performing models are described below.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\begin{table*}[ht]
+  \caption{Confusion Matrices and Performance Metrics for Classification 
+  Models of Pain Reliever Misuse and Abuse}
+  \label{tab:freq}
+  \begin{tabular}{llllllll}
+    \toprule
+    Model& & Confusion Matrix & & Accuracy & Sensitivity & Precision & F1-Score \\
+    \midrule
+    K-Nearest Neighbors & & Fail & Pass &  &  &  & \\
+     & Fail & 37567 & 453 & 89.8\% & 0.900 & 0.870 & 0.870 \\
+     & Pass & 3905 & 654 &  &  &  & \\
+    
+    \midrule
+    Logistic Regression & & Fail & Pass &  &  &  & \\
+     & Fail & 56 &  20 & 74.1\% & 0.48 & 0.727 & 0.598 \\
+     & Pass & 58 & 177 &  &  &  & \\
+    \midrule
+    Linear Discriminant Analysis (LDA) & & Fail & Pass &  &  &  & \\
+     & Fail & 55 &  24 & 72.8\% & 0.474 & 0.696 & 0.564 \\
+     & Pass & 61 & 173 &  &  &  & \\
+    \midrule
+    Quadratic Discriminant Analysis (QDA) & & Fail & Pass &  &  &  & \\
+     & Fail & 66 &  21 & 77.3\% & 0.569 & 0.759 & 0.650 \\
+     & Pass & 50 & 176 &  &  &  & \\
+    
+    \midrule
+    Support Vector Machines (SVM) & & Fail & Pass &  &  &  & \\
+     & Fail & 37660 & 360 & 90.3\% & 0.900 & 0.880 & 0.880 \\
+     & Pass & 3776 & 783 &  &  &  & \\
+    \midrule
+    Naive Bayes & & Fail & Pass &  &  &  & \\
+     & Fail & 67 &  24 & 76.7\% & 0.578 & 0.736 & 0.648 \\
+     & Pass & 49 & 173 &  &  &  & \\
+    \midrule
+    Neural Network (MLP) & & Fail & Pass &  &  &  & \\
+     & Fail & 378 & 534 & 90.6\% & 0.90 & 0.89 & 0.880 \\
+     & Pass & 342 & 116 &  &  &  & \\
+    
+    \midrule
+    Decision Trees & & Fail & Pass &  &  &  & \\
+     & Fail &  58 &  25 & 73.5\% & 0.50 & 0.699 & 0.583 \\
+     & Pass &  58 & 172 &  &  &  & \\
+    \midrule
+    Random Forests & & Fail & Pass &  &  &  & \\
+     & Fail &  57 &  22 & 74.1\% & 0.491 & 0.722 & 0.585 \\
+     & Pass &  59 & 175 &  &  &  & \\
+    \midrule
+    Gradient Boosted Trees & & Fail & Pass &  &  &  & \\
+     & Fail & 37955 &  65 & 89.9\% & 0.90 & 0.89 & 0.895 \\
+     & Pass & 4261 & 298 &  &  &  & \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Logistic Regression}
 
-The parameter estimates and odds ratios for the logistic regression model 
-are presented in Table 7. The coefficient estimates were all statistically 
-significant with the exception of mental health treatment. The model was 
-rerun leaving out the non-significant variable, but the performance metrics 
-did not change and the full model with all of the predictors was retained. 
-The coefficient estimates ($\beta_i$...$\beta_j$) are interpreted as the 
-change in the log of the odds of the dependent variable (PRLMISAB) occurring 
-given a one unit change in each independent variable ($X_i$...$X_j$), holding
+An initial logistic regression on student performance was run including all 
+the predictor variables; the model was rerun leaving out non-significant 
+features. The parameter estimates, error, z-values, and odds ratios for the 
+second model are presented in Table 7. The coefficient estimates are 
+interpreted as the multiplicative increase (or decrease) in the odds of the 
+dependent variable event happening given a one unit change in the value of 
+the predictor variable (for interval scale), or if the event represented 
+by a dichotomous predictor variable occurs (e.g., parents together), holding
 constant the effects of other independent variables. The parameters relate to 
 the log of the odds ratio rather than to the dependent variable directly. 
 The odds are calculated as the probability of the event occurring divided 
 by the probability of the event not occurring ( \(\frac{P}{P-1}\) ). The 
 odds ratio is obtained by taking the antilog of the estimated coefficient, 
-which is the exponentiated parameter estimate ($e^x$). For an interval scaled 
-independent variable, the odds ratio is interpreted as the multiplicative 
-increase in the odds of the dependent variable event happening given a 
-one unit change in the value of the independent variable, assuming the 
-effects of all other independent variables are held constant. For a 
-dichotomous variable (i.e., sex), it represents the multiplicative increase 
-in the odds of the dependent variable event happening if the event
-represented by the independent variable occurs. In general, taking the 
+which is the exponentiated parameter estimate ($e^x$). In general, taking the 
 antilog of the coefficient estimate, subtracting 1 from it, and multiplying 
 the result by 100, provides the percent change in the odds for a unit 
 increase in the independent variable  \cite{gujarati09}.  
@@ -1013,41 +1016,44 @@ increase in the independent variable  \cite{gujarati09}.
     \toprule
     Predictor&  Estimate& Std. Err.& Z-Value & Odds Ratio \\    
     \midrule
-    (Intercept)         &   0.910 &  0.514 &   1.77     &   \\
-    Failures            &  -1.567 &  0.225 &  -6.98 ***  &  4.79  \\
+    (Intercept)         &   0.91 &  0.52 &   1.77     &   \\
+    Failures            &  -1.567 &  0.224 &  -6.98 ***  &  4.79  \\
     Course              &  -1.121 &  0.187 &  -6.00 ***  &  3.07  \\
     Higher Ed Plans     &   1.182 &  0.351 &   3.37 ***  &  3.26  \\
     Father's Education  &   0.256 &  0.085 &   2.99 **   &  1.29  \\ 
-    School Support      &  -0.792 &  0.269 &  -2.94 **   &  2.21  \\
+    School Support      &  -0.792 &  0.269 &  -2.94 **   &  2.21  \\    
     Weekly Alcohol      &  -0.184 &  0.076 &  -2.41 *    &  1.20  \\
     Guardian            &  -0.328 &  0.156 &  -2.11 *    &  1.39  \\
     Internet            &   0.445 &  0.218 &   2.04 *    &  1.56  \\
-    Going Out           & -0.169 &  0.085 &  -1.97 *    &  1.18  \\
+    Going Out           &  -0.169 &  0.086 &  -1.97 *    &  1.18  \\
     \bottomrule 
     Note: p-value& *$<$ 0.05  & **$<$ 0.01 & ***$<$ 0.001 &   
   \end{tabular}
 \end{table}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-For a one unit increase in cocaine use, the odds of misusing or abusing pain 
-relievers increased by 1.96 times or 96\% , holding the effects of all other
-variables constant. For a one unit increase in amphetamine use, the odds of 
-pain reliever misuse and abuse (PRLMISAB) increased by 1.81 times or 81\%. 
-A one unit increase in tranquilizer use was associated with a 1.48 or 48\% 
-increase in the odds of PRLMISAB. For a unit increase in mental health issues, 
-the odds for PRLMISAB increased by 1.14 or 14\%. For a one unit increase in 
-heroin use, the odds of PRLMISAB increased by 2.12 times or 112\%. 
-For a one unit increase in age category, the odds of PRLMISAB decreased by 
-1.20 times or 20\%. A one unit increase in employment is associated with a 
-1.21 or 21\% increase in the odds of PRLMISAB. For a unit increase in 
-substance treatment, the odds for PRLMISAB increased by 1.23 or 23\%. 
-For a one unit increase in sedative use, the odds of PRLMISAB increased by 
-1.30 times or 30\%. In terms of sex, the odds of misusing or abusing pain 
-relievers for females decreased by 1.17 times compared to males; in other 
-words, the odds of PRLMISAB for females was 17\% lower than for males. The 
-odds ratio indicates the ratio of the positive event to the negative event, 
+As past failures increased by one unit, the odds of successfully passing the 
+course decreased by 4.79 times (379\% increase), holding the effects of other 
+variables constant. In terms of course, the odds of successfully passing the 
+course in mathematics decreased 3.07 times compared to course in Portugese. 
+in other words, the odds of students passing the math course was 207\% lower 
+than students in the Portugese course. For students with plans to pursue 
+higher education, the odds of successfully passing increased by 3.26 times 
+(226\%) compared to students with no plans for higher education. A one unit 
+increase in father's education level was associated with a 1.29 or 29\% 
+increase in a passing final grade. In addition, the odds of passing increased
+by 1.56 for internet access; the odds of passing for students with internet 
+access at home was 56\% higher than for students without internet access.  
+Several factors had a negative impact on student success. For example, the 
+odds of passing decreased 2.21 for students who received school support
+compared to students who did not receive school support. A one-unit increase
+in weekly alcohol consumption decreased the odds of successfully passing by 1.20 
+(20\%). The odds of successfully passing increased by 1.39 (39\%) given a unit 
+change in custodian guardian ('other', 'father', 'mother'). Finally, a one-unit 
+increase in going out with friends decreased the odds of passing by 1.18 (18\%). 
+
+The odds ratio indicates the ratio of the positive event to the negative event, 
 but does not reveal the probability of the positive outcome. The terms in the 
 logistic regression equation can be rearranged to obtain the function of the 
 event probability, as presented in equation 3: 
