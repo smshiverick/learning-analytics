@@ -18,32 +18,28 @@ features that affect student achievement.
 
 
 Modeling student performance can help educators to identify students who are 
-struggling and the factors that contribute to student success. Learning 
-analytics approaches can be used by administrators Identify students interested 
-in pursuing higher education but failing to perform and students with no plans 
-to pursue higher education, but who are passing, which may be a source for 
-additional recruitment efforts. . 
+struggling and the factors that contribute to student success. 
 
+Learning analytics approaches can be used by administrators Identify students interested in pursuing higher education but failing to perform and students 
+with no plans to pursue higher education, but who are passing, which may be a 
+source for additional recruitment efforts. . 
+
+
+
+
+Predictive modeling provides a useful approach for analyzing student achievement 
+and identifying features that contribute to MUPO. 
+
+Contribute to better understanding of factors that contribute to student success. 
 
 Comparing predictive models in order to determine the best approach for 
 modeling attributes of student achievement. 
 
-Contribute to better understanding of factors that contribute to student success. 
-
-
-
-The misuse and abuse of prescription opioids (MUPO) has become a major 
-health crisis in the U.S. Predictive modeling provides a useful approach 
-for analyzing pain reliever misuse and abuse and identifying features 
-that contribute to MUPO. 
 
 This study compared ten classification models 
 using four performance metrics: accuracy, sensitivity (i.e. recall), 
-precision, and $f_1$-score. Data from 
-
-three years of the National Survey 
-on Drug Use and Health (2015-2017) was combined into a sample of N = 170317 
-observations. 
+precision, and $f_1$-score. Data on student performance datset from the UCI Machine
+Learning Repository consisted of N=1044 observations. 
 
 Twenty-six percent of respondents reported using prescription 
 opioid medications in the past year, 11\% reported misusing or abusing pain 
@@ -56,11 +52,12 @@ misuse and abuse.
 
 Model performance was evaluated on the testing set. The
 $f_1$-score was used as the performance metric due to unbalanced classes in
-the data. Logistic regression, random forests, and decision trees had the 
+the data. 
+
+Logistic regression, random forests, and decision trees had the 
 highest $f_1$-scores compared to other models. 
 
-All three models identified 
-cocaine use as the most informative feature for predicting pain reliever 
+All three models identified cocaine use as the most informative feature for predicting pain reliever 
 misuse and abuse. Amphetamine use was selected as the second most important 
 variable by logistic regression and random forests.
 
@@ -104,7 +101,7 @@ best approaches for modeling student performance and success.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Learning Analytics (LA) and Educational Data Mining (EDM)
+\subsection{Learning Analytics (LA) and Educational Data Mining (EDM)}
 
 LA is a form of education data mining (EDM) that uses research methods and 
 predictive analysis to implement platforms for improving student performance and 
@@ -182,7 +179,7 @@ similarity weights \cite{bakerYucef09}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Student / Student Behavior Modeling}.
+\subsubheading{Student / Student Behavior Modeling}.
 Modeling student characteristics takes a descriptive approach to reveal factors 
 for learning such as domain knowledge, 
 motivation, metacognition, attitudes, affect, metacognitive states, learning 
@@ -206,7 +203,9 @@ behavior and assessing functionality in intelligent tutoring systems (ITS)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Predicting Performance. Predictive methodologies can lead to a better 
+\subsubheading{Predicting Performance} 
+
+Predictive methodologies can lead to a better 
 understanding of student engagement in online education, behavior patterns 
 that predict successful performance, and factors that influence student failure 
 and non-retention. The Course Signals program developed at Purdue University 
@@ -306,6 +305,84 @@ were demographic features (e.g., age, sex, education, etc.), use of medications
 (e.g., tranquilizers, sedatives), and illicit drugs (e.g., cocaine, 
 amphetamines, heroin). 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Method}
+
+\subsection{The Data}
+
+The student performance dataset was downloaded from the UC-Irvine Machine 
+Learning Repository (UCI-MLR) and saved as data frame objects in a python 
+interactive notebook. The data was collected from two secondary schools in 
+the Alentejo region of Portugal during the 2005-2006 school year and 
+contained information from a questionnaire and school reports of student 
+grades \cite{cortez09}. The dataset includes thirty predictor variables 
+consisting of demographic information (e.g. family size, parental education 
+and employment status), social/ emotional attributes (e.g. extracurricular 
+activities, romantic relationship, alcohol consumption), school related 
+variables (e.g., weekly time studying, past class failures, absences) related 
+to student  (see Table 1). Student performance was evaluated on a 20 point 
+scale-as in other European countries (e.g., France)-at three points during 
+the school year (i.e., G1, G2, G3) for two courses, mathematics (n=395) and 
+Portugese (n=649). The target outcome was the final grade. A binary dummy 
+variable was created based on the final exam grades, where scores greater than 
+10 indicated a passing grades and scores below 10 indicated failing grades. 
+The student performance data was modeled using binary classification.
+
+The sample consisted of 1044 students (56.6\% female, Mage=16.71, SD=1.19). 
+Descriptive statistics are provided in Table 2 according to the binary 
+measure of student performance. The majority of students (73.7\%) were 
+from urban areas, from families larger than three members (70.7\%), and 
+with parents living together in the sam household (88%).
+
+Ten individuals between 20 and 22 were added to the category of 19+ years. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Model Construction and Evaluation}
+
+The dataset was divided using a 70 to 30 percent split to create the training
+set ($n_1$=731) and testing set ($n_2$=313). The same general procedure 
+was used for constructing and evaluating each classification model: (i) The 
+model was fit to the training set; (ii) New values were predicted on the 
+holdout scores in the testing set; and (iii) Model performance on the test 
+set was evaluated in a confusion matrix. The performance metrics of accuracy, 
+sensitivity or recall, precision, and $f_1$-score were obtained or derived 
+from the confusion matrix. The logistic regression classifier, LDA, QDA, 
+decision trees classifier, random forests classifier, gradient boosted trees 
+were constructed using the caret package. The KNN classifier, support 
+vector classifier (SVC), naive Bayes classifier, and neural network 
+(multilayer perceptron) were built using scikit-learn. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{figure}[!ht]
+%  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+%  \caption{Proportion of Pain Reliever Misuse and Abuse
+%  as a function of Heroin Use.}
+%  \label{f:Figure3}
+%\end{figure}
+
+
+Main Parameters
+K-Nearest Neighbors  Number of Neighbors = 4 
+Support Vector Machines (RBF)  C = 10, gamma = 0.1
+Naive Bayes  Cost = 0.01 
+Neural Network  Hidden Layers = 1
+Decision Trees  Maximum Depth = 4
+Random Forests  Number of Trees = 1000 
+Boosted Trees  Learning Rate = 0.01 
+
+
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Classification Models}
@@ -342,6 +419,9 @@ $\beta_0$, is the log of the odds ratio when X is 0 \cite{gujarati09}.
 \begin{equation}
   \ ln\frac{P_i}{1-P_i} = \beta_0 + \beta_1X_1 + \beta_1X_2 +... \beta_pX_p \
 \end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \emph{Linear discriminant analysis} (LDA) is an alternative approach to 
 estimating probabilities that models the distribution of predictors 
@@ -538,6 +618,13 @@ boosting and random forests perform well on similar tasks and data. A common
 approach is to first perform random forests and then include gradient boosting 
 to improve model accuracy. 
 
+
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
@@ -659,7 +746,7 @@ than the other class, as it takes into account both recall and precision
     Family educational support (0=No, 1=Tes) & FAMSUP  \\
     Paid classes within course subject (Math or Portuguese) (0=No, 1=Tes) & TUTOR  \\
     Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
-    wants to take higher education (b0=No, 1=Tes) & HIGHER  \\
+    Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
     Internet access at home (0=No, 1=Tes) & INTERNET  \\
     In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
     Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
@@ -736,90 +823,9 @@ performance, and interpretability are discussed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Method}
-
-\subsection{The Data}
-
-The student performance dataset was downloaded from the UC-Irvine Machine 
-Learning Repository (UCI-MLR) and saved as data frame objects in a python 
-interactive notebook. The data was collected from two secondary schools in 
-the Alentejo region of Portugal during the 2005-2006 school year and 
-contained information from a questionnaire and school reports of student 
-grades \cite{cortez09}. The dataset includes thirty predictor variables 
-consisting of demographic information (e.g. family size, parental education 
-and employment status), social/ emotional attributes (e.g. extracurricular 
-activities, romantic relationship, alcohol consumption), school related 
-variables (e.g., weekly time studying, past class failures, absences) related 
-to student  (see Table 1). Student performance was evaluated on a 20 point 
-scale-as in other European countries (e.g., France)-at three points during 
-the school year (i.e., G1, G2, G3) for two courses, mathematics (n=395) and 
-Portugese (n=649). The target outcome was the final grade. A binary dummy 
-variable was created based on the final exam grades, where scores greater than 
-10 indicated a passing grades and scores below 10 indicated failing grades. 
-The student performance data was modeled using binary classification.
-
-The sample consisted of 1044 students (56.6\% female, Mage=16.71, SD=1.19). 
-Descriptive statistics are provided in Table 2 according to the binary 
-measure of student performance. The majority of students (73.7\%) were 
-from urban areas, from families larger than three members (70.7\%), and 
-with parents living together in the sam household (88%).
-
-
-Ten individuals between 20 and 22 were added to the category of 19+ years. 
-
-
-The NSDUH public data files for 2015, 2016, and 2017 were downloaded from 
-the Substance Abuse and Mental Health Data Archive (SAMHDA) \cite{samhsa18}. 
-
-The data sets were extracted and 
 
 
 
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Model Construction and Evaluation}
-
-The dataset was divided using a 70 to 30 percent split to create the training
-set ($n_1$=731) and testing set ($n_2$=313). The same general procedure 
-was used for constructing and evaluating each classification model: (i) The 
-model was fit to the training set; (ii) New values were predicted on the 
-holdout scores in the testing set; and (iii) Model performance on the test 
-set was evaluated in a confusion matrix. The performance metrics of accuracy, 
-sensitivity or recall, precision, and $f_1$-score were obtained or derived 
-from the confusion matrix. The logistic regression classifier, LDA, QDA, 
-decision trees classifier, random forests classifier, gradient boosted trees 
-were constructed using the caret package. The KNN classifier, support 
-vector classifier (SVC), naive Bayes classifier, and neural network 
-(multilayer perceptron) were built using scikit-learn. 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
-%  \caption{Proportion of Pain Reliever Misuse and Abuse
-%  as a function of Heroin Use.}
-%  \label{f:Figure3}
-%\end{figure}
-
-
-Main Parameters
-K-Nearest Neighbors  Number of Neighbors = 4 
-Support Vector Machines (RBF)  C = 10, gamma = 0.1
-Naive Bayes  Cost = 0.01 
-Neural Network  Hidden Layers = 1
-Decision Trees  Maximum Depth = 4
-Random Forests  Number of Trees = 1000 
-Boosted Trees  Learning Rate = 0.01 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
