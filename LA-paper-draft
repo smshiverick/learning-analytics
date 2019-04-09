@@ -282,29 +282,257 @@ reliever misuse and abuse as a binary outcome.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the era of `big data', large amounts of health information are being 
-generated from electronic medical records (EMRs), clinical research data, and 
-population-level health data \cite{herland14}. Although it can be difficult 
-to obtain reliable information about opioid use based on self-reports, surveys 
-provide data on a range of issues that people may be reluctant to disclose 
-such as illicit drug use and mental health problems. The data for the present 
-study was obtained from the National Survey on Drug Use and Health (NSDUH) 
-which is a major source of information for the use of illicit drugs and mental 
-health issues among the U.S. population aged 12 or older \cite{samhsa18}. 
-The NSDUH is a comprehensive public survey that includes a diverse array 
-of questions and variables related to the use, misuse, and abuse of substances 
-including alcohol, tobacco, prescription medications, and illicit drugs. In 
-addition to typical demographic information, the survey includes self-reported
-measures on items related to physical health, mental health (e.g., depression, 
-anxiety, suicide), as well as counseling, and drug or alcohol treatment. Data 
-from the NSDUH has been used for identifying groups at high risk for substance 
-use and the co-occurrence of substance use and mental health disorders. The 
-target variable for the study was any previous misuse or abuse of prescription 
-opioid pain relievers (e.g., oxycodone, hydrocodone). The predictor variables 
-were demographic features (e.g., age, sex, education, etc.), use of medications 
-(e.g., tranquilizers, sedatives), and illicit drugs (e.g., cocaine, 
-amphetamines, heroin). 
+Educational institutions collect large volumes of data about students yet 
+much student information is protected to ensure privacy. 
 
+Data on student performance used in the present study was obtained from the
+UC-Irvine machine learning repository (UCI-MLR) from two secondary schools 
+in Portugal \cite{cortez09}. The dataset includes information collected using
+students surveys and school grade records. The predictor variables of interest
+were demographic information about family characteristics (e.g., tranquilizers, sedatives), and illicit drugs (e.g., cocaine, 
+amphetamines, heroin), the data includes self-reported measures of 
+
+The target variable was student achievement (pass/fail) assessed by the 
+final grade report in two courses, mathematics and Portugese language. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Classification Models}
+
+Several classifier models were compared to determine which model(s) perform 
+best for predicting student performance and factors that influence 
+achievement. 
+
+\subsubsection{Linear Models}
+
+Logistic regression models the conditional distribution of probabilities 
+for a binary response as a combination of a set of predictor variables. The 
+decision boundary for the logistic regression classifier is a linear function 
+of the input that separates two or more classes using a line, plane, or 
+hyperplane. The model uses a maximum likelihood method to predict the 
+coefficient estimates that correspond as closely as possible to the default 
+state (i.e., `pass`) . The probability values for the outcome range between 
+0 and 1, and the model predicts a number 
+close to one for individuals with a final passing score and a number close to  
+zero for individuals who do not. 
+
+The distribution of conditional probabilities 
+in the logit model has an S-shaped curve. By taking the natural log of the left 
+side of the regression equation, we obtain the logit function which is linear 
+in the parameters, where X = ($X_1$...$X_p$) predictor variables (equation 1). 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\emph{Linear discriminant analysis} (LDA) is an alternative approach to 
+estimating probabilities that models the distribution of predictors 
+separately in each of the response classes and then uses Bayes' theorem 
+to `flip' these into estimates for, $Pr(Y=k | X=x)$ \cite{james13}. The term 
+linear in LDA refers to the the discriminant functions being linear functions 
+of the predictors. For distributions assumed to be normal (i.e., multivariate 
+Gaussian), LDA provides a model that is similar in form to logistic regression, 
+but more stable. LDA is also preferred for outcomes with more than two response 
+classes. The important assumptions for LDA are, first, a common covariance 
+matrix for all classes, and second, the class boundaries are linear functions 
+of the predictors. \emph{Quadratic Discriminant Analysis} (QDA) is an approach 
+that assumes each class has its own covariance matrix and the decision 
+boundaries are quadratically curvilinear in the predictor space \cite{kuhn13}. 
+LDA is less flexible as a classifier than QDA, but can perform better with 
+relatively few training observations or when the majority of predictors in the 
+data represent discrete categories. QDA is recommended over LDA with a very 
+large training set or when the decision boundary between two classes is 
+non-linear. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Non-linear Models}
+
+The performance of linear classifiers suffers when there is a non-linear 
+relationship between the predictors and target outcome. With training
+observations that can be separated by hyperplane, the maximal marginal 
+classifier provides the maximum distance (i.e., margin) from each observation
+to the hyperplane \cite{james13}. The test observations are classified based 
+on which side of the hyperplane they fall; however, in many cases no separating 
+hyperplane exists. The \emph{support vector classifier} (SVC) extends the 
+maximal margin classifier by using a soft margin that allows a small number 
+of observations to be misclassified on the wrong side of the hyperplane 
+\cite{kuhn13, cortes95}. The observations that fall directly on the margin or 
+on the wrong side of the hyperplane are called `support vectors'. The parameter 
+`C' indicates the number of observations that can violate the margin; if $C>0$, 
+no more than C observations can be on the wrong side of the hyperplane. 
+SVC addresses the problem of non-linear boundaries between classes by 
+enlarging the feature space with higher order (e.g., quadratic, cubic, 
+polynomial) functions of the predictors. 
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Decision Boundary and Support Vectors for Support Vector Machine 
+  (SVM) with Nonlinear Kernel \cite{muller17}}
+  \label{f:Figure1}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\emph{Support vector machines} (SVM) are an extension of SVC that use a 
+kernel trick to reduce computational load. The radial basis function (RBF) 
+kernel (i.e., Gaussian kernel) is one of the most commonly used approaches. 
+In training the model, only a subset of data points is used to construct the 
+decision boundary, namely the support vectors that lie on the border that 
+separates the two classes. In predicting classes for new observations, the 
+algorithm calculates the distance to each of the support vectors measured 
+by the Guassian kernel \cite{muller17}. Figure 1 shows an example of the 
+non-linear decision boundary obtained with SVM using the RBF kernel; the 
+decision boundary is a smooth curve and the support vectors are the large 
+points in bold outline. Even with the default settings, the RBF kernel 
+provides a decision boundary that is decidedly non-linear. The parameters 
+for SVM are `C', which regulates the importance of each data point, and 
+`gamma' which controls the width of the Guassian kernel. A small value of 
+C indicates a restricted model in which the influence of each data point is 
+limited and the algorithm adjusts to the majority of data points. With larger 
+values of C, more importance is given to each data point and the model tries 
+to correctly classify as many training observations as possible, which results 
+in more curvature in the decision boundary. Large values of gamma mean that 
+only close values are relevant for classification, resulting in a smooth 
+decision boundary. Small values of gamma mean that far points are similar. 
+If the values of both C and gamma are large, each point can have a large 
+influence in a small region, which produces a choppy decision boundary. 
+If the values of C and gamma are both small, the decision boundary becomes 
+close to linear.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Bayes' rule was mentioned above in relation to LDA; in this section, the 
+\emph{Naive Bayes Classifier} is considered as a non-linear model.
+The Bayes theorem (equation 2) is represented by a set of probabilities 
+that answer the question, ``Based on a given set of predictors, 
+what is the probability than an outcome belongs to a particular class?''
+
+\begin{equation}
+  \ P(Y=cl|X) = \frac{P(Y)*P(X|Y=cl)}{P(X)}\
+\end{equation}
+
+The prior probability, P(Y), is the expected probability of a given class 
+based on what is known (e.g. rate of disease in the population). P(X) 
+is the probability of the predictor variables. The conditional probability,
+$P(X=cl|Y)$, is the probability of observing the predictor variables for data 
+associated with a given class. The naive Bayes model assumes that all of the 
+predictor variables are independent, which is not always realistic. The 
+conditional probabilities are calculated based on the probability densities 
+for each individual predictor \cite{kuhn13}. For categorical predictors, the 
+observed frequencies in the training set data can be used to determine the 
+probability distributions. The prior probability allows us to tilt the final 
+probability toward a particular class. Class probabilities are created and 
+the predicted class is the one that is associated with the largest class
+probability. Despite the somewhat unrealistic assumption of independence among
+predictors, the naive Bayes model is computationally quick, even with large 
+training sets, and performs competitively compared to other models. The naive 
+Bayes model encounters issues when dealing with frequencies or probabilities 
+equal to zero, especially for small sample sizes. In addition, as the number 
+of predictors increases relative to the size of the sample, the posterior 
+probabilities will become more extreme.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\emph{Neural Networks} are powerful models for classification and regression 
+that are based on theories of connectivity in the brain \cite{kuhn13}. 
+The present study considers a simple method called a multilayer perceptron 
+(MLP) which is a feed-forward neural network \cite{muller17, raschka17}. 
+The outcome is modeled by an intermediary set of unobserved variables called 
+hidden units, which are linear combinations of the original predictors
+(see Appendix). Each hidden unit is a combination of some or all of the 
+predictors which are then transformed by a nonlinear function (e.g. 
+sigmoidal). A neural network usually has multiple hidden units used 
+to model the outcome. The MLP classifier computes weights between the inputs 
+and hidden units, and weights between the layers of hidden units and the 
+output. After computing each hidden unit, the output is modeled by a nonlinear 
+combination of the hidden units. The nonlinear function allows the neural 
+network to fit more complicated functions than a linear model; however, 
+neural networks are sensitive to the scaling of the features and can require
+extensive data preprocessing. There are several ways to modify the complexity 
+of a neural network: by selecting the number of hidden layers, the number of 
+units within each layer, and the regularization parameter (L2) which shrinks 
+the weights towards zero. The feature weights provide an estimate of feature 
+importance. Although neural networks can capture information in large amounts 
+of data with very complex models, they tend to overfit data used to train the 
+model and can be difficult to interpret. Neural networks may work best with 
+homogenous datasets where the predictor variables all have similar meanings 
+\cite{muhuri13}. For datasets with many different kinds of features, 
+tree-based methods offer a better approach.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Decision trees} are based on a hierarchy of \emph{`if-else'}
+questions starting from a root node and proceeding through a series of binary decisions or choices. Each node in the tree represents either 
+a question or a terminal node (i.e., leaf) that contains the outcome. Applied to 
+a binary classification task, the decision tree algorithm learns the sequence
+of if-else questions that arrives at the outcome most quickly. For continuous 
+features, questions are expressed in the form: ``Is feature x larger than 
+value y?'' In constructing the tree, the algorithm searches through all 
+possible tests and finds a solution that is most informative about the target 
+outcome \cite{muller17}. The recursive branching process yields a binary tree 
+of decisions, with each node representing a test for a single feature. This 
+process of partitioning is repeated until each leaf in the decision tree 
+contains only a single target. 
+
+
+Prediction for a new data point proceeds by 
+checking which region of the partition the point falls in, and predicting the 
+majority in that feature space. The main advantage of tree models is that they 
+require little adjustment and are easy to interpret. 
+
+A drawback is that they 
+can lead to complex models which are highly overfit to the training data. 
+`Prepruning' can help reduce overfitting by limiting the maximum depth of the 
+tree, or the maximum number of leaves. Another approach is to set the minimum 
+number of points in a node required for splitting. Decision trees work well 
+with features measured on different scales, or with data that has a mix of 
+binary and continuous features. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\emph{Random Forests} is an ensemble approach that combines many simple trees 
+that each overfit the data in different ways. By building many trees and 
+averaging their results, random forests help to reduce overfitting. In 
+constructing the forests, the user selects the number of trees to build 
+(e.g., 1000). Randomness is introduced using a bootstrapping method that 
+repeatedly draws random samples of size \textit{n} from the data set, with 
+replacement. The decision trees are built on these random samples 
+of the same size, with some points missing and some data points repeated 
+\cite{muller17,raschka17}. The algorithm makes a random selection of 
+\textit{p}-features, and uses a different set of features at each node branch. 
+These processes ensure that all of the decision trees in the random forest are 
+different. Random forests is one of the most widely used supervised learning 
+algorithms and works well without very much parameter tuning or scaling of data. 
+A limitation is that random forests do not perform well with high-dimensional 
+data, or data that is sparse (e.g., text).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\emph{Gradient Boosting} combines multiple decision trees in a serial fashion, 
+with each tree trying to correct for mistakes of the previous one. Gradient 
+boosted regression trees use strong prepruning, with shallow trees of a depth 
+of one to five. Each tree only provides a good estimate of part of the data; 
+combining many shallow trees (i.e., ``weak learners'') iteratively improves 
+performance. Gradient boosting and random forests perform well on similar tasks 
+and data. A common approach is to first perform random forests and then include 
+gradient boosting to improve model accuracy. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Imbalanced Classes}
+
+The present study compares the classifier models described above using four 
+performance metrics (accuracy, sensitivity, precision, $f_1$-score). 
+Typically, model performance is evaluated on the basis of model accuracy.
+In some cases, the $f_1$-score is considered a better measure of performance 
+than accuracy with data that have imbalanced classes in the target variable, 
+and instances of one class greatly outnumber instances of another class, 
+as it takes into account both recall and precision. The study also identifies 
+features important for predicting student achievement. The tradeoff between 
+model complexity and interpretability is discussed. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -312,28 +540,29 @@ amphetamines, heroin).
 
 \subsection{The Data}
 
-The student performance dataset was downloaded from the UC-Irvine Machine 
-Learning Repository (UCI-MLR) and saved as data frame objects in a python 
-interactive notebook. The data was collected from two secondary schools in 
-the Alentejo region of Portugal during the 2005-2006 school year and 
-contained information from a questionnaire and school reports of student 
-grades \cite{cortez09}. The dataset includes thirty predictor variables 
-consisting of demographic information (e.g. family size, parental education 
-and employment status), social/ emotional attributes (e.g. extracurricular 
-activities, romantic relationship, alcohol consumption), school related 
-variables (e.g., weekly time studying, past class failures, absences) related 
-to student  (see Table 1). Student performance was evaluated on a 20 point 
-scale-as in other European countries (e.g., France)-at three points during 
-the school year (i.e., G1, G2, G3) for two courses, mathematics (n=395) and 
-Portugese (n=649). The target outcome was the final grade. A binary dummy 
-variable was created based on the final exam grades, where scores greater than 
-10 indicated a passing grades and scores below 10 indicated failing grades. 
+The student performance dataset was downloaded from the UCI-MLR and saved as 
+a data frame object in a python interactive notebook. The data was collected 
+from two secondary schools in the Alentejo region of Portugal during the 
+2005-2006 school year and contained information from a questionnaire and 
+school reports of student grades \cite{cortez09}. The dataset includes thirty 
+predictor variables consisting of demographic information (e.g. family size, 
+parental education and employment status), social/ emotional attributes 
+(e.g. extracurricular activities, romantic relationship, alcohol consumption), 
+school related variables (e.g., weekly time studying, past class failures, 
+absences) related to student  (see Table 1). Student performance was evaluated 
+on a 20 point scale-as in other European countries (e.g., France)-at three 
+points during the school year (i.e., G1, G2, G3) for two courses, mathematics 
+(n=395) and Portugese (n=649). The target outcome was the final grade. A binary 
+dummy variable was created based on the final exam grades, where scores greater
+than 10 indicated a passing grades and scores at or below 10 indicated a 
+failing grade. 
+
 The student performance data was modeled using binary classification.
 
 The sample consisted of 1044 students (56.6\% female, Mage=16.71, SD=1.19). 
-Descriptive statistics are provided in Table 2 according to the binary 
-measure of student performance. The majority of students (73.7\%) were 
-from urban areas, from families larger than three members (70.7\%), and 
+Descriptive statistics according to the binary measure of student achievement 
+(i.e., pass/fail) are provided in Table 2 . The majority of students (73.7\%) 
+were from urban areas, from families larger than three members (70.7\%), and 
 with parents living together in the sam household (88%).
 
 Ten individuals between 20 and 22 were added to the category of 19+ years. 
@@ -500,7 +729,6 @@ close to linear.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Bayes' rule was mentioned above in relation to LDA; in this section, the 
 \emph{Naive Bayes Classifier} is considered as a non-linear model.
 The Bayes theorem (equation 2) is represented by a set of probabilities 
 that answer the question, ``Based on a given set of predictors, 
@@ -618,12 +846,89 @@ boosting and random forests perform well on similar tasks and data. A common
 approach is to first perform random forests and then include gradient boosting 
 to improve model accuracy. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[ht]
+  \caption{Variables Included in the Sample Data for Model Construction.}
+  \label{tab:freq}
+  \begin{tabular}{ll}
+    \toprule
+    \textit{Target Variable} & Label \\
+    \midrule
+    Course final grade (0=Fail, 1=Pass) & PASS \\
+    \midrule    
+    \textit{Predictor Variables} &    \\
+    \midrule
+    Sex (0=Male,1=Female) & SEX  \\  
+    Age (15, 16, 17, 18, 19+ years) & AGE  \\
+    Home address type (0=Rural, 1=Urban) & AREA  \\
+    Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
+    Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
+    Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
+    Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
+    Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
+    Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
+    Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
+    Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
+    Number of past class failures (numeric: n if 1<=n<3, else 4) & FAILURES  \\
+    Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
+    Family educational support (0=No, 1=Tes) & FAMSUP  \\
+    Paid classes within course subject (Math or Portuguese) (0=No, 1=Tes) & TUTOR  \\
+    Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
+    Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
+    Internet access at home (0=No, 1=Tes) & INTERNET  \\
+    In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
+    Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
+    Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
+    Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
+    Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
+    Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
+    Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
+    Number of school absences (Count range: 0 to 93) & ABSENCES  \\
+    Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
+    First period grade (0=Lowest, 20=Highest) & GR1  \\
+    Second period grade (0=Lowest, 20=Highest) & GR2  \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{Training Accuracy and Test Set Accuracy}
+
+In constructing and evaluating predictive models it is important to select 
+a model that performs well not only with the data used to train the model, 
+but also with new observations. A standard practice is to divide the sample 
+data into a \emph{training set} and a \emph{testing set} of observations 
+that is set aside and used to evaluate model performance. By convention, 
+approximately 70 to 80 percent of observations are used in the training set 
+and the remaining portion is held in the test set. Two main problems in 
+evaluating model performance are \emph{overfitting} and \emph{underfitting}. 
+In the case of overfitting, a model can have high accuracy on the training 
+set but perform poorly with new data in the test set because the model is 
+overly fit to the training data. By contrast, in the case of underfitting, 
+a simple model may not generalize well to new observations as it does not 
+include all of the features relevant for predicting the target outcome. 
+One of the simplest classification models, K-Nearest Neighbors (KNN) 
+provides an example of the tradeoff between training accuracy and test 
+set accuracy. KNN classifies observations by assigning the label that 
+is most frequent among the \textit{'k'}-number of nearest training samples 
+(k is a parameter selected by the user). The accuracy of the KNN classifier 
+for the training set and testing set is plotted in Figure 2 as a function
+of the parameter k-neighbors. The plot shows that increased accuracy on 
+the training set is associated with lower testing set accuracy; conversely, 
+increased accuracy on the testing set is related to a decrease in training 
+set accuracy. The ideal model is one that optimizes test set accuracy while 
+striking a balance between the problems of overfitting and underfitting. 
+In the case of KNN, testing set increases slightly between 2 and 4 neighbors, 
+but does not improve much beyond 5 neighbors. Therefore, a model with k=4 
+neighbors provides a reasonable solution for the data. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -715,114 +1020,6 @@ than the other class, as it takes into account both recall and precision
     \bottomrule
   \end{tabular}
 \end{table}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table*}[ht]
-  \caption{Variables Included in the Sample Data for Model Construction.}
-  \label{tab:freq}
-  \begin{tabular}{ll}
-    \toprule
-    \textit{Target Variable} & Label \\
-    \midrule
-    Course final grade (0=Fail, 1=Pass) & PASS \\
-    \midrule    
-    \textit{Predictor Variables} &    \\
-    \midrule
-    Sex (0=Male,1=Female) & SEX  \\  
-    Age (15, 16, 17, 18, 19+ years) & AGE  \\
-    Home address type (0=Rural, 1=Urban) & AREA  \\
-    Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
-    Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
-    Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
-    Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
-    Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
-    Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
-    Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
-    Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
-    Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
-    Number of past class failures (numeric: n if 1<=n<3, else 4) & FAILURES  \\
-    Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
-    Family educational support (0=No, 1=Tes) & FAMSUP  \\
-    Paid classes within course subject (Math or Portuguese) (0=No, 1=Tes) & TUTOR  \\
-    Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
-    Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
-    Internet access at home (0=No, 1=Tes) & INTERNET  \\
-    In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
-    Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
-    Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
-    Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
-    Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
-    Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
-    Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
-    Number of school absences (Count range: 0 to 93) & ABSENCES  \\
-    Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
-    First period grade (0=Lowest, 20=Highest) & GR1  \\
-    Second period grade (0=Lowest, 20=Highest) & GR2  \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Training Accuracy and Test Set Accuracy}
-
-In constructing and evaluating predictive models it is important to select 
-a model that performs well not only with the data used to train the model, 
-but also with new observations. A standard practice is to divide the sample 
-data into a \emph{training set} and a \emph{testing set} of observations 
-that is set aside and used to evaluate model performance. By convention, 
-approximately 70 to 80 percent of observations are used in the training set 
-and the remaining portion is held in the test set. Two main problems in 
-evaluating model performance are \emph{overfitting} and \emph{underfitting}. 
-In the case of overfitting, a model can have high accuracy on the training 
-set but perform poorly with new data in the test set because the model is 
-overly fit to the training data. By contrast, in the case of underfitting, 
-a simple model may not generalize well to new observations as it does not 
-include all of the features relevant for predicting the target outcome. 
-One of the simplest classification models, K-Nearest Neighbors (KNN) 
-provides an example of the tradeoff between training accuracy and test 
-set accuracy. KNN classifies observations by assigning the label that 
-is most frequent among the \textit{'k'}-number of nearest training samples 
-(k is a parameter selected by the user). The accuracy of the KNN classifier 
-for the training set and testing set is plotted in Figure 2 as a function
-of the parameter k-neighbors. The plot shows that increased accuracy on 
-the training set is associated with lower testing set accuracy; conversely, 
-increased accuracy on the testing set is related to a decrease in training 
-set accuracy. The ideal model is one that optimizes test set accuracy while 
-striking a balance between the problems of overfitting and underfitting. 
-In the case of KNN, testing set increases slightly between 2 and 4 neighbors, 
-but does not improve much beyond 5 neighbors. Therefore, a model with k=4 
-neighbors provides a reasonable solution for the data. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Imbalanced Classes}
-
-Previous studies have analyzed the misuse and abuse of prescription opioids
-(MUPO) using logistic regression and identified factors that influence MUPO 
-such as gender and mental illness \cite{rice12, unick13, jones15, mccabe12}. 
-The present study extends previous work by comparing the performance of ten 
-classifier models of pain reliever misuse and abuse and evaluating each model 
-using four performance metrics (accuracy, sensitivity, precision, $f_1$-score). 
-The sample data set has imbalanced classes in the target variable as the 
-number of instances of the negative class greatly outnumber instances of 
-the positive class. A difficulty of using traditional classification 
-algorithms with imbalanced data is that they tend to classify observations
-as belonging to the majority class when the class of interest (positive) is 
-represented by the minority of observations \cite{brown12, yun09}. This can 
-produce a result that underestimates the occurrence of positive cases which 
-are misclassified as false negatives. Efforts to address the issue of 
-imbalanced data have included sampling methods such as `boosting'. 
-As described above, the $f_1$-score is considered a better measure of 
-performance than accuracy with data that have imbalanced classes as it 
-takes into account both recall and precision. The study also identified 
-features important for predicting MUPO. Tradeoffs between model complexity,
-performance, and interpretability are discussed. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 
@@ -935,6 +1132,38 @@ classification models are presented in Table 6. The results for the
 three top performing models are described below.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Imbalanced Classes}
+
+Previous studies have analyzed the misuse and abuse of prescription opioids
+(MUPO) using logistic regression and identified factors that influence MUPO 
+such as gender and mental illness \cite{rice12, unick13, jones15, mccabe12}. 
+The present study extends previous work by comparing the performance of ten 
+classifier models of pain reliever misuse and abuse and evaluating each model 
+using four performance metrics (accuracy, sensitivity, precision, $f_1$-score). 
+The sample data set has imbalanced classes in the target variable as the 
+number of instances of the negative class greatly outnumber instances of 
+the positive class. A difficulty of using traditional classification 
+algorithms with imbalanced data is that they tend to classify observations
+as belonging to the majority class when the class of interest (positive) is 
+represented by the minority of observations \cite{brown12, yun09}. This can 
+produce a result that underestimates the occurrence of positive cases which 
+are misclassified as false negatives. Efforts to address the issue of 
+imbalanced data have included sampling methods such as `boosting'. 
+As described above, the $f_1$-score is considered a better measure of 
+performance than accuracy with data that have imbalanced classes as it 
+takes into account both recall and precision. The study also identified 
+features important for predicting MUPO. Tradeoffs between model complexity,
+performance, and interpretability are discussed. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \begin{table*}[ht]
   \caption{Confusion Matrices and Performance Metrics for Classification 
@@ -1011,6 +1240,18 @@ which is the exponentiated parameter estimate ($e^x$). In general, taking the
 antilog of the coefficient estimate, subtracting 1 from it, and multiplying 
 the result by 100, provides the percent change in the odds for a unit 
 increase in the independent variable  \cite{gujarati09}.  
+
+The coefficient estimates are selected to maximize the likelihood function, 
+and are interpreted as an indication of the log-odds change in the outcome 
+variable that is associated with a one-unit increase in the predictor variable, 
+holding the effects of other predictor variables constant. The intercept, 
+$\beta_0$, is the log of the odds ratio when X is 0 \cite{gujarati09}.
+
+\begin{equation}
+  \ ln\frac{P_i}{1-P_i} = \beta_0 + \beta_1X_1 + \beta_1X_2 +... \beta_pX_p \
+\end{equation}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
