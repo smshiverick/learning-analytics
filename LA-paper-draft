@@ -14,7 +14,7 @@
 \begin{abstract}
 
 This paper compares predictive models of student performance and identifies 
-features that affect student achievement. 
+features that affect achievement. 
 
 
 Modeling student performance can help educators to identify students who are 
@@ -24,9 +24,6 @@ Learning analytics approaches can be used by administrators Identify students in
 with no plans to pursue higher education, but who are passing, which may be a 
 source for additional recruitment efforts. . 
 
-
-
-
 Predictive modeling provides a useful approach for analyzing student achievement 
 and identifying features that contribute to MUPO. 
 
@@ -35,11 +32,10 @@ Contribute to better understanding of factors that contribute to student success
 Comparing predictive models in order to determine the best approach for 
 modeling attributes of student achievement. 
 
+Ten classification models were compared using four performance metrics: accuracy, sensitivity (i.e. recall), 
+precision, and $f_1$-score. 
 
-This study compared ten classification models 
-using four performance metrics: accuracy, sensitivity (i.e. recall), 
-precision, and $f_1$-score. Data on student performance datset from the UCI Machine
-Learning Repository consisted of N=1044 observations. 
+Data on student performance was obtained from the UCI Machine Learning Repository consisted of N=1044 observations. 
 
 Twenty-six percent of respondents reported using prescription 
 opioid medications in the past year, 11\% reported misusing or abusing pain 
@@ -47,8 +43,8 @@ relievers, and 2\% reported heroin use.
 
 The classifier models were fit to 
 a training set using sixteen features that included demographic variables, 
-medications, and illicit drugs. The binary target variable was pain reliever
-misuse and abuse. 
+medications, and illicit drugs. The target variable, student performance, was 
+evaluated as a binary outcome (pass, fail). 
 
 Model performance was evaluated on the testing set. The
 $f_1$-score was used as the performance metric due to unbalanced classes in
@@ -62,9 +58,8 @@ misuse and abuse. Amphetamine use was selected as the second most important
 variable by logistic regression and random forests.
 
 The models differed in 
-the importance they assigned to heroin use, tranquilizer use, age category, 
-and mental health as predictors of pain reliever misuse and abuse. 
-Advantages and limitations of the classifier models are considered and the 
+the importance they assigned to
+Advantages and limitations of the classifier models are considered, The 
 tradeoff between model complexity and interpretability is discussed. 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.}
 
@@ -300,43 +295,36 @@ final grade report in two courses, mathematics and Portugese language.
 
 \subsection{Classification Models}
 
-Several classifier models were compared to determine which model(s) perform 
-best for predicting student performance and factors that influence 
-achievement. 
+There are several classifier algorithms for building predictive models of
+education data. The following models were compared in order to determine
+which model is best for predicting student performance and identifying
+factors that influence student achievement. 
 
-\subsubsection{Linear Models}
-
-Logistic regression models the conditional distribution of probabilities 
-for a binary response as a combination of a set of predictor variables. The 
-decision boundary for the logistic regression classifier is a linear function 
-of the input that separates two or more classes using a line, plane, or 
-hyperplane. The model uses a maximum likelihood method to predict the 
+\subsubsection{Logistic regression} models the conditional distribution of 
+probabilities for a binary response as a combination of a set of predictor 
+variables. The decision boundary for the logistic regression classifier is a 
+linear function of the input that separates two or more classes using a line, 
+plane, or hyperplane. The model uses a maximum likelihood method to predict the 
 coefficient estimates that correspond as closely as possible to the default 
 state (i.e., `pass`) . The probability values for the outcome range between 
-0 and 1, and the model predicts a number 
-close to one for individuals with a final passing score and a number close to  
-zero for individuals who do not. 
-
-The distribution of conditional probabilities 
-in the logit model has an S-shaped curve. By taking the natural log of the left 
-side of the regression equation, we obtain the logit function which is linear 
-in the parameters, where X = ($X_1$...$X_p$) predictor variables (equation 1). 
-
-
+0 and 1, and the model predicts a number close to one for individuals with a 
+final passing score and a number close to zero for individuals who do not. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Linear discriminant analysis} (LDA) is an alternative approach to 
-estimating probabilities that models the distribution of predictors 
-separately in each of the response classes and then uses Bayes' theorem 
-to `flip' these into estimates for, $Pr(Y=k | X=x)$ \cite{james13}. The term 
-linear in LDA refers to the the discriminant functions being linear functions 
-of the predictors. For distributions assumed to be normal (i.e., multivariate 
-Gaussian), LDA provides a model that is similar in form to logistic regression, 
-but more stable. LDA is also preferred for outcomes with more than two response 
-classes. The important assumptions for LDA are, first, a common covariance 
+\emph{Linear discriminant analysis} (LDA) models the distribution of predictors 
+separately in each of the response classes and uses Bayes' theorem to `flip' 
+these into estimates for, $Pr(Y=k | X=x)$ \cite{james13}. The discriminant 
+functions are linear functions of the predictors. For distributions assumed to 
+be normal, LDA is similar to logistic regression, but more stable. 
+
+LDA is also preferred for outcomes with more than two response classes. 
+
+The important assumptions for LDA are, first, a common covariance 
 matrix for all classes, and second, the class boundaries are linear functions 
-of the predictors. \emph{Quadratic Discriminant Analysis} (QDA) is an approach 
+of the predictors. 
+
+\emph{Quadratic Discriminant Analysis} (QDA) is an approach 
 that assumes each class has its own covariance matrix and the decision 
 boundaries are quadratically curvilinear in the predictor space \cite{kuhn13}. 
 LDA is less flexible as a classifier than QDA, but can perform better with 
@@ -1241,11 +1229,24 @@ antilog of the coefficient estimate, subtracting 1 from it, and multiplying
 the result by 100, provides the percent change in the odds for a unit 
 increase in the independent variable  \cite{gujarati09}.  
 
+The distribution of conditional probabilities 
+in the logit model has an S-shaped curve. By taking the natural log of the left 
+side of the regression equation, we obtain the logit function which is linear 
+in the parameters, where X = ($X_1$...$X_p$) predictor variables (equation 1). 
+
+
+
+
+
+
 The coefficient estimates are selected to maximize the likelihood function, 
 and are interpreted as an indication of the log-odds change in the outcome 
 variable that is associated with a one-unit increase in the predictor variable, 
 holding the effects of other predictor variables constant. The intercept, 
 $\beta_0$, is the log of the odds ratio when X is 0 \cite{gujarati09}.
+
+
+
 
 \begin{equation}
   \ ln\frac{P_i}{1-P_i} = \beta_0 + \beta_1X_1 + \beta_1X_2 +... \beta_pX_p \
