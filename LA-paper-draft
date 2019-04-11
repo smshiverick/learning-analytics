@@ -354,23 +354,19 @@ SVC addresses the problem of non-linear boundaries between classes by
 enlarging the feature space with higher order (e.g., quadratic, cubic, 
 polynomial) functions of the predictors. 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-  \caption{Decision Boundary and Support Vectors for Support Vector Machine 
-  (SVM) with Nonlinear Kernel \cite{muller17}}
-  \label{f:Figure1}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Support vector machines} (SVM) are an extension of SVC that use a 
+\subsubsection{Support vector machines} (SVM) are an extension of SVC that use a 
 kernel trick to reduce computational load. The radial basis function (RBF) 
 kernel (i.e., Gaussian kernel) is one of the most commonly used approaches. 
 In training the model, only a subset of data points is used to construct the 
 decision boundary, namely the support vectors that lie on the border that 
 separates the two classes. In predicting classes for new observations, the 
 algorithm calculates the distance to each of the support vectors measured 
-by the Guassian kernel \cite{muller17}. Figure 1 shows an example of the 
+by the Guassian kernel \cite{muller17}. 
+
+Figure 1 shows an example of the 
 non-linear decision boundary obtained with SVM using the RBF kernel; the 
 decision boundary is a smooth curve and the support vectors are the large 
 points in bold outline. Even with the default settings, the RBF kernel 
@@ -391,8 +387,8 @@ close to linear.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Bayes' rule was mentioned above in relation to LDA; in this section, the 
-\emph{Naive Bayes Classifier} is considered as a non-linear model.
+
+The \subsubsection{Naive Bayes Classifier} is considered as a non-linear model.
 The Bayes theorem (equation 2) is represented by a set of probabilities 
 that answer the question, ``Based on a given set of predictors, 
 what is the probability than an outcome belongs to a particular class?''
@@ -423,19 +419,19 @@ probabilities will become more extreme.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Neural Networks} are powerful models for classification and regression 
-that are based on theories of connectivity in the brain \cite{kuhn13}. 
-The present study considers a simple method called a multilayer perceptron 
-(MLP) which is a feed-forward neural network \cite{muller17, raschka17}. 
-The outcome is modeled by an intermediary set of unobserved variables called 
-hidden units, which are linear combinations of the original predictors
-(see Appendix). Each hidden unit is a combination of some or all of the 
-predictors which are then transformed by a nonlinear function (e.g. 
-sigmoidal). A neural network usually has multiple hidden units used 
-to model the outcome. The MLP classifier computes weights between the inputs 
+\emph{Neural Network} models are based on theories of connectivity in the brain \cite{kuhn13}. The multilayer perceptron (MLP) which is a feed-forward network 
+in which the outcome is modeled by an intermediary set of unobserved variables called hidden units, which are linear combinations of the original predictors. 
+Each hidden unit is a combination of some or all of the predictors which are 
+then transformed by a nonlinear function (e.g. sigmoidal). A neural network 
+usually has multiple hidden units used 
+to model the outcome. 
+
+The MLP classifier computes weights between the inputs 
 and hidden units, and weights between the layers of hidden units and the 
 output. After computing each hidden unit, the output is modeled by a nonlinear 
-combination of the hidden units. The nonlinear function allows the neural 
+combination of the hidden units. 
+
+The nonlinear function allows the neural 
 network to fit more complicated functions than a linear model; however, 
 neural networks are sensitive to the scaling of the features and can require
 extensive data preprocessing. There are several ways to modify the complexity 
