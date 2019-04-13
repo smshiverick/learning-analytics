@@ -13,14 +13,15 @@
 
 \begin{abstract}
 
-This paper compares predictive models of student performance and identifies 
+This paper compared predictive models of student performance and identified 
 features that affect achievement. 
 
 
 Modeling student performance can help educators to identify students who are 
 struggling and the factors that contribute to student success. 
 
-Learning analytics approaches can be used by administrators Identify students interested in pursuing higher education but failing to perform and students 
+Learning analytics approaches can be used by administrators Identify students
+interested in pursuing higher education but failing to perform and students 
 with no plans to pursue higher education, but who are passing, which may be a 
 source for additional recruitment efforts. . 
 
@@ -32,10 +33,11 @@ Contribute to better understanding of factors that contribute to student success
 Comparing predictive models in order to determine the best approach for 
 modeling attributes of student achievement. 
 
-Ten classification models were compared using four performance metrics: accuracy, sensitivity (i.e. recall), 
-precision, and $f_1$-score. 
+Ten classification models were compared using four performance metrics: accuracy, 
+sensitivity (i.e. recall), precision, and $f_1$-score. 
 
-Data on student performance was obtained from the UCI Machine Learning Repository consisted of N=1044 observations. 
+The student performance dataset obtained consisted of N=1044 observations from
+two secondary schools in Portugal \cite{cortez08}. 
 
 Twenty-six percent of respondents reported using prescription 
 opioid medications in the past year, 11\% reported misusing or abusing pain 
@@ -53,12 +55,14 @@ the data.
 Logistic regression, random forests, and decision trees had the 
 highest $f_1$-scores compared to other models. 
 
-All three models identified cocaine use as the most informative feature for predicting pain reliever 
-misuse and abuse. Amphetamine use was selected as the second most important 
+All three models identified as the most informative feature for predicting 
+student performance. 
+
+was selected as the second most important 
 variable by logistic regression and random forests.
 
-The models differed in 
-the importance they assigned to
+The models differed in the importance they assigned to
+
 Advantages and limitations of the classifier models are considered, The 
 tradeoff between model complexity and interpretability is discussed. 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.}
@@ -174,7 +178,7 @@ similarity weights \cite{bakerYucef09}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubheading{Student / Student Behavior Modeling}.
+\subsection{Student / Student Behavior Modeling}.
 Modeling student characteristics takes a descriptive approach to reveal factors 
 for learning such as domain knowledge, 
 motivation, metacognition, attitudes, affect, metacognitive states, learning 
@@ -198,7 +202,7 @@ behavior and assessing functionality in intelligent tutoring systems (ITS)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubheading{Predicting Performance} 
+\subsection{Predicting Performance} 
 
 Predictive methodologies can lead to a better 
 understanding of student engagement in online education, behavior patterns 
@@ -300,7 +304,7 @@ education data. The following models were compared in order to determine
 which model is best for predicting student performance and identifying
 factors that influence student achievement. 
 
-\subsubsection{Logistic regression} models the conditional distribution of 
+\subsection{Logistic regression} models the conditional distribution of 
 probabilities for a binary response as a combination of a set of predictor 
 variables. The decision boundary for the logistic regression classifier is a 
 linear function of the input that separates two or more classes using a line, 
@@ -312,7 +316,7 @@ final passing score and a number close to zero for individuals who do not.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Linear discriminant analysis} (LDA) models the distribution of predictors 
+\subsection{Linear discriminant analysis} (LDA) models the distribution of predictors 
 separately in each of the response classes and uses Bayes' theorem to `flip' 
 these into estimates for, $Pr(Y=k | X=x)$ \cite{james13}. The discriminant 
 functions are linear functions of the predictors. For distributions assumed to 
@@ -324,7 +328,7 @@ The important assumptions for LDA are, first, a common covariance
 matrix for all classes, and second, the class boundaries are linear functions 
 of the predictors. 
 
-\emph{Quadratic Discriminant Analysis} (QDA) is an approach 
+\subsection{Quadratic Discriminant Analysis} (QDA) is an approach 
 that assumes each class has its own covariance matrix and the decision 
 boundaries are quadratically curvilinear in the predictor space \cite{kuhn13}. 
 LDA is less flexible as a classifier than QDA, but can perform better with 
@@ -335,7 +339,7 @@ non-linear.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Non-linear Models}
+\subsection{Non-linear Models}
 
 The performance of linear classifiers suffers when there is a non-linear 
 relationship between the predictors and target outcome. With training
@@ -343,7 +347,16 @@ observations that can be separated by hyperplane, the maximal marginal
 classifier provides the maximum distance (i.e., margin) from each observation
 to the hyperplane \cite{james13}. The test observations are classified based 
 on which side of the hyperplane they fall; however, in many cases no separating 
-hyperplane exists. The \emph{support vector classifier} (SVC) extends the 
+hyperplane exists. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Support vector machines (SVM)} 
+
+The \emph{support vector classifier} 
+(SVC) extends the 
 maximal margin classifier by using a soft margin that allows a small number 
 of observations to be misclassified on the wrong side of the hyperplane 
 \cite{kuhn13, cortes95}. The observations that fall directly on the margin or 
@@ -355,9 +368,7 @@ enlarging the feature space with higher order (e.g., quadratic, cubic,
 polynomial) functions of the predictors. 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Support vector machines} (SVM) are an extension of SVC that use a 
+(SVM) are an extension of SVC that use a 
 kernel trick to reduce computational load. The radial basis function (RBF) 
 kernel (i.e., Gaussian kernel) is one of the most commonly used approaches. 
 In training the model, only a subset of data points is used to construct the 
@@ -370,20 +381,10 @@ Figure 1 shows an example of the
 non-linear decision boundary obtained with SVM using the RBF kernel; the 
 decision boundary is a smooth curve and the support vectors are the large 
 points in bold outline. Even with the default settings, the RBF kernel 
-provides a decision boundary that is decidedly non-linear. The parameters 
-for SVM are `C', which regulates the importance of each data point, and 
-`gamma' which controls the width of the Guassian kernel. A small value of 
-C indicates a restricted model in which the influence of each data point is 
-limited and the algorithm adjusts to the majority of data points. With larger 
-values of C, more importance is given to each data point and the model tries 
-to correctly classify as many training observations as possible, which results 
-in more curvature in the decision boundary. Large values of gamma mean that 
-only close values are relevant for classification, resulting in a smooth 
-decision boundary. Small values of gamma mean that far points are similar. 
-If the values of both C and gamma are large, each point can have a large 
-influence in a small region, which produces a choppy decision boundary. 
-If the values of C and gamma are both small, the decision boundary becomes 
-close to linear.
+provides a decision boundary that is decidedly non-linear. 
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -657,34 +658,6 @@ non-linear.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Non-linear Models}
-
-The performance of linear classifiers suffers when there is a non-linear 
-relationship between the predictors and target outcome. With training
-observations that can be separated by hyperplane, the maximal marginal 
-classifier provides the maximum distance (i.e., margin) from each observation
-to the hyperplane \cite{james13}. The test observations are classified based 
-on which side of the hyperplane they fall; however, in many cases no separating 
-hyperplane exists. The \emph{support vector classifier} (SVC) extends the 
-maximal margin classifier by using a soft margin that allows a small number 
-of observations to be misclassified on the wrong side of the hyperplane 
-\cite{kuhn13, cortes95}. The observations that fall directly on the margin or 
-on the wrong side of the hyperplane are called `support vectors'. The parameter 
-`C' indicates the number of observations that can violate the margin; if $C>0$, 
-no more than C observations can be on the wrong side of the hyperplane. 
-SVC addresses the problem of non-linear boundaries between classes by 
-enlarging the feature space with higher order (e.g., quadratic, cubic, 
-polynomial) functions of the predictors. 
-
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-  \caption{Decision Boundary and Support Vectors for Support Vector Machine 
-  (SVM) with Nonlinear Kernel \cite{muller17}}
-  \label{f:Figure1}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \emph{Support vector machines} (SVM) are an extension of SVC that use a 
 kernel trick to reduce computational load. The radial basis function (RBF) 
 kernel (i.e., Gaussian kernel) is one of the most commonly used approaches. 
@@ -695,8 +668,10 @@ algorithm calculates the distance to each of the support vectors measured
 by the Guassian kernel \cite{muller17}. Figure 1 shows an example of the 
 non-linear decision boundary obtained with SVM using the RBF kernel; the 
 decision boundary is a smooth curve and the support vectors are the large 
-points in bold outline. Even with the default settings, the RBF kernel 
-provides a decision boundary that is decidedly non-linear. The parameters 
+points in bold outline. 
+
+Even with the default settings, the RBF kernel provides a decision boundary 
+that is decidedly non-linear. The parameters 
 for SVM are `C', which regulates the importance of each data point, and 
 `gamma' which controls the width of the Guassian kernel. A small value of 
 C indicates a restricted model in which the influence of each data point is 
@@ -717,10 +692,6 @@ close to linear.
 The Bayes theorem (equation 2) is represented by a set of probabilities 
 that answer the question, ``Based on a given set of predictors, 
 what is the probability than an outcome belongs to a particular class?''
-
-\begin{equation}
-  \ P(Y=cl|X) = \frac{P(Y)*P(X|Y=cl)}{P(X)}\
-\end{equation}
 
 The prior probability, P(Y), is the expected probability of a given class 
 based on what is known (e.g. rate of disease in the population). P(X) 
