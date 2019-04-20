@@ -748,14 +748,6 @@ in weekly alcohol consumption decreased the odds of successfully passing by 1.20
 change in custodian guardian ('other', 'father', 'mother'). Finally, a one-unit 
 increase in going out with friends decreased the odds of passing by 1.18 (18\%). 
 
-The odds ratio indicates the ratio of the positive event to the negative event, 
-but does not reveal the probability of the positive outcome. The terms in the 
-logistic regression equation can be rearranged to obtain the function of the 
-event probability, as presented in equation 3: 
-
-\begin{equation}
-  \ \textit{P} = \frac{1}{1+exp[-(\beta_0 + \beta_1X_1 + \beta_1X_2 +... \beta_p*X_p)]} \
-\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -782,7 +774,7 @@ the proportion of pain reliever misuse and abuse was more than five times as
 large for individuals who reported using cocaine than those who had not. 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \centering\includegraphics[width=\pagewidth]{images/Figure1.pdf}
   \caption{Decision Tree Model of Pain Reliever Misuse and Abuse
   fit to the Training Set.}
   \label{f:Figure1}
@@ -809,6 +801,7 @@ This findings shows that pain reliever misuse and abuse was much more likely
 among respondents age 35 or younger than among individuals older than 35 years. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Feature Importance for the Random Forests Model}
 
 The random forest model was fit using 1000 trees, with all of the features 
@@ -839,53 +832,54 @@ important features in the random forests model, followed by tranquilizers,
 age category, and heroin use, which were ranked as more influential in the 
 single tree (Figure 4). 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
-  \caption{Decision Tree Model of Pain Reliever Misuse and Abuse
-  fit to the Training Set.}
-  \label{f:Figure2}
-\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
+%\begin{figure}[!ht]
+%  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+%  \caption{Feature importance for Random Forests Model.}
+%  \label{f:Figure2}
+%\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
-  \caption{Feature Importance for Gradient Boosted Model}
+  \caption{Feature Importance for Random Forests Model}
   \label{tab:freq}
-  \begin{tabular}{lll}
+  \begin{tabular}{llll}
     \toprule
-    Predictor&  & Relative Influence  \\    
+            & Random & Forests & Gradient Boosted \\    
+    \midrule   
+    
+    Predictor Variables & Inc. MSE & Node Purity & Rel. Imp. \\    
     \midrule
-    Absences                &  &  13.66 \\
-    Failures                &  &   7.69 \\
-    Going Out               &  &   5.68 \\
-    Courses                 &  &   5.55 \\ 
-    Free Time               &  &   5.29 \\
-    Father's Job            &  &   5.21 \\   
-    Mother's Job            &  &   4.94 \\   
-    Health                  &  &   4.85 \\  
-    Age                     &  &   4.65 \\
-    Study Time              &  &   4.23 \\   
-    Mother's Education      &  &   3.79 \\
-    Weekly Alcohol          &  &   3.64 \\
-    Family Relations        &  &   3.43 \\    
-    Father's Education      &  &   3.32 \\
-    Daily Alcohol           &  &   2.30 \\
-    School Support          &  &   2.22 \\    
-    Romantic Relationship   &  &   2.10 \\
-    Sex                     &  &   2.05 \\
-    Family Support          &  &   1.89 \\
-    Student Guardian        &  &   1.85 \\
-    Extracurricular Activities &  &1.81 \\
-    Travel Time             &  &   1.80 \\    
-    Paid extra courses      &  &   1.69 \\
-    Higher Education Plans  &  &   1.63 \\
-    Family Size             &  &   1.59 \\
-    Area                    &  &   1.44 \\
-    Internet Access         &  &   1.20 \\
-    Parents Relationship    &  &   0.52 \\
+    Failures            & 25.89 & 896.51 &  7.69 \\    
+    Absences            &  9.08 & 568.34 & 13.66 \\
+    Mother's Job        &  7.83 & 449.28 &  4.94 \\   
+    Going Out           &  4.02 & 426.00 &  5.68 \\
+    Age                 &  9.00 & 407.77 &  4.65 \\
+    Mother's Education  & 11.35 & 383.32 &  3.79 \\
+    Free Time           &  7.49 & 382.20 &  5.29 \\
+    Father's Job        &  7.32 & 367.77 &  5.21 \\       
+    Study Time          &  5.99 & 346.16 &  4.23 \\       
+    Courses             &  7.25 & 344.43 &  5.55 \\ 
+    Health              &  1.56 & 341.38 &  4.85 \\ 
+    Weekly Alcohol      &  6.61 & 335.49 &  3.64 \\
+    Father's Education  &  6.08 & 334.26 &  3.32 \\    
+    Family Relations    &  4.39 & 314.83 &  3.43 \\    
+    Daily Alcohol       &  6.32 & 258.02 &  2.30 \\
+    Higher Education    & 13.65 & 251.74 &  1.63 \\   
+    Travel Time         &  1.60 & 196.75 &  1.80 \\       
+    Student Guardian    &  3.79 & 193.83 &  1.85 \\
+    Sex                 &  4.87 & 169.87 &  2.05 \\
+    Paid extra courses  &  5.34 & 165.76 &  1.69 \\
+    Rom. Relationship   &  3.29 & 160.21 &  2.10 \\
+    Area                &  2.83 & 153.56 &  1.44 \\
+    Family Support      &  3.53 & 151.48 &  1.89 \\
+    Extra Activities    &  2.73 & 149.95 &  1.81 \\
+    Family Size         &  7.00 & 148.53 &  1.59 \\
+    School Support      & 10.88 & 146.88 &  2.22 \\    
+    Internet Access     &  4.17 & 128.53 &  1.20 \\
+    Parents             &  1.40 &  83.33 &  0.52 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -954,28 +948,21 @@ misuse or abuse was 17 percent lower for females as for males.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \subsection{Limitations}
 
-A surprising finding is that several models which typically perform well for 
-binary classification tasks (gradient boosting, SVM, neural networks) did not 
-perform better than was observed in this study. This may be due to imbalanced 
-classes in the sample data. A limitation of the study is that the default 
+A surprising finding is that 
+
+A limitation of the study is that the default 
 settings were used in constructing the classifier models. Many complex models 
 are sensitive to parameter settings and scaling of the data. Additional 
-parameter tuning could have improved performance of complex models. Cross-
-validation can be used to select hyperparameters that optimize model 
-performance. Another limitation is that the aggregated features represent a 
-subset of the entire range of features in the NSDUH datasets. In a future 
-study, it may be useful to include a more comprehensive set of features to 
-identify additional variables for predicting opioid dependence and addiction. 
-Given the large proportion of the sample that had not previously used any
-prescription opioid pain relievers, it may be useful to classify pain reliever 
-misuse and abuse using a subset of individuals who have previously used pain 
-medications, although this would result in a reduced sample. It is a widely
-accepted truism in predictive analatics that, ``more data is always better''. 
+parameter tuning could have improved performance of complex models. 
+
+Another limitation is that the aggregated features represent a 
+subset of the entire range of features in the NSDUH datasets. 
+
+In a future study, it may be useful to include a more comprehensive set of features 
+to 
+A widely accepted truism in predictive analytics that more data is always better. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1033,24 +1020,5 @@ to address the opioid crisis and reduce the risk of overdose death.
 \bibliographystyle{unsrt} %%ACM-Reference-Format%%
 \bibliography{report} 
 
-\appendix
-
-\section{Appendix}
-
-\subsection{Supplemental Figure}
-
-\subsubsection{Neural Network} The multilayer perceptron (MLP) is a simple
-back-propogation neural network that takes the features as input; a single 
-hidden layer comprises the weighted combination of the input variables, and 
-the output layer represents a response probability. During model training, 
-the weights of the predictor variables are first randomly initialized and 
-then iteratively adjusted to minimize an error function (e.g. gradient 
-descent) \cite{brown12}.
-
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
-  \caption{Neural Net Classifier: Multilayer Perceptron with a Single Hidden Layer.}
-  \label{f:Figure5}
-\end{figure}
 
 \end{document} 
