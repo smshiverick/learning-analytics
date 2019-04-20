@@ -13,19 +13,13 @@
 
 \begin{abstract}
 
-This paper compared predictive models of student performance and identified 
-features that affect achievement. 
+Modeling student performance can help educators to identify factors that 
+contribute to student achievement and students who are struggling. This 
+paper modeled student performance as a continuous variable using linear 
+regression, regression trees, regression random forests, and gradient 
+boosted models. 
 
-Modeling student performance can help educators to identify students who are 
-struggling and the factors that contribute to student success. 
-
-Predictive modeling provides a useful approach for analyzing student achievement 
-and identifying features that contribute to MUPO. 
-
-Contribute to better understanding of factors that contribute to student success. 
-
-Comparing predictive models in order to determine the best approach for 
-modeling attributes of student achievement. 
+Student performance was assessed by final course grade (range: 1-20).
 
 The student performance dataset obtained consisted of N=1044 observations from
 two secondary schools in Portugal \cite{cortez08}. 
@@ -51,9 +45,12 @@ Advantages and limitations of the different models are  discussed.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-The exponential increase in computing speed and processing power in recent 
-decades has led to the generation an immense volume of data in higher education 
-\cite{Daniel17}. The development and use of analytic approaches for 
+an immense volume of data in higher education The exponential increase in 
+computing speed and processing power in recent 
+decades has led to the generation 
+\cite{Daniel17}. 
+
+The development and use of analytic approaches for 
 statistical 'analysis and predictive modeling allows researchers to discover 
 patterns in data and provide insights about learning for effective decision 
 making. Learning Analytics (LA) is an emerging, multidisciplinary field at 
@@ -96,9 +93,9 @@ and EDM, they can be seen as complementary approaches using similar methodologie
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Historically, education institutions have examined factors such as persistence 
-and social integration as influential for learning and used analytic methods to 
-track student drop-out rates \cite{ferguson12}. The development of the web opened 
+Education institutions have examined factors such as persistence and social 
+integration as influential for learning and used analytic methods to track 
+student drop-out rates \cite{ferguson12}. The development of the web opened 
 up new avenues for collecting information from online sources along with methods 
 for processing and sharing content. As extensive educational datasets became 
 available for analysis, EDM researchers use a variety of data mining techniques 
@@ -181,10 +178,7 @@ behavior and assessing functionality in intelligent tutoring systems (ITS)
 
 \subsection{Predicting Performance} 
 
-Predictive methodologies can lead to a better 
-understanding of student engagement in online education, behavior patterns 
-that predict successful performance, and factors that influence student failure 
-and non-retention. The Course Signals program developed at Purdue University 
+The Course Signals program developed at Purdue University 
 is one of the most well known platforms for predicting students at-risk of 
 falling behind using statistical analysis of LMS data \cite{arnoldPistilli12}. 
 In addition to grades, demographic information, academic history, and student 
@@ -234,6 +228,12 @@ work conflict and course overload (Kizilcec, 2013).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Intro 3. Predictive Modeling}
+
+
+Predictive methodologies can lead to a better 
+understanding of student engagement in online education, behavior patterns 
+that predict successful performance, and factors that influence student failure 
+and non-retention. 
 
 Predictive modeling, statistical learning, or machine learning describe a 
 set of procedures and automated processes for extracting knowledge from 
@@ -548,22 +548,6 @@ decrease in training set accuracy. The ideal model is one that optimizes test
 set accuracy while striking a balance between the problems of overfitting 
 and underfitting. 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table*}[ht]
@@ -571,42 +555,40 @@ and underfitting.
   \label{tab:freq}
   \begin{tabular}{ll}
     \toprule
-    \textit{Target Variable} & Label \\
-    \midrule
-    Course final grade (0=Lowest, 20=Highest) & PASS \\
-    \midrule    
     \textit{Predictor Variables} &    \\
     \midrule
-    Sex (0=Male,1=Female) & SEX  \\  
-    Age (15, 16, 17, 18, 19+ years) & AGE  \\
-    Home address type (0=Rural, 1=Urban) & AREA  \\
-    Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
-    Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
-    Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
-    Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
-    Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
-    Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
-    Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
-    Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
-    Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
-    Number of past class failures (numeric: n if 1<=n<3, else 4) & FAILURES  \\
-    Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
-    Family educational support (0=No, 1=Tes) & FAMSUP  \\
-    Paid classes within course subject (Math or Portuguese) (0=No, 1=Tes) & TUTOR  \\
-    Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
-    Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
-    Internet access at home (0=No, 1=Tes) & INTERNET  \\
-    In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
-    Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
-    Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
-    Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
-    Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
-    Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
-    Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
-    Number of school absences (Count range: 0 to 93) & ABSENCES  \\
-    Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
-    First period grade (0=Lowest, 20=Highest) & GR1  \\
-    Second period grade (0=Lowest, 20=Highest) & GR2  \\
+    1. Sex (0=Male,1=Female) & SEX  \\  
+    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
+    3. Home address type (0=Rural, 1=Urban) & AREA  \\
+    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
+    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
+    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
+    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
+    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
+    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
+    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
+    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
+    13. Number of past class failures (numeric: n if 1<=n<3, else 4) & FAILURES  \\
+    14. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
+    15. Family educational support (0=No, 1=Tes) & FAMSUP  \\
+    16, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
+    17. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
+    18. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
+    19. Internet access at home (0=No, 1=Tes) & INTERNET  \\
+    20. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
+    21. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
+    22. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
+    23. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
+    24. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
+    25. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
+    26. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
+    27. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
+    28. Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
+    \midrule
+    \textit{Target Variable} &  \\
+    \midrule
+    29. Final course grade (0=Lowest, 20=Highest) & GRADE \\
     \bottomrule
   \end{tabular}
 \end{table*}
@@ -622,8 +604,6 @@ and underfitting.
 \section{Results}
 
 \subsection{Exploratory Data Analysis}
-
-
 
 Table X provides a summary of descriptives statistics for the main
 predictor variables according to the target outcome 
@@ -659,57 +639,57 @@ that indicate a connection between MUPO and heroin use
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
-  \caption{Frequency of Pain Reliever Misuse and Abuse
-  by Demographics Features for NSDUH 2015-2017 Sample.}
+  \caption{Summary Table of Student Performance for Final Course Grade 
+  (Pass$>=$10, Fail$<$10) by Predictor Variables }
   \label{tab:freq}
   \begin{tabular}{llllll}
     \toprule
               & Pass & & & Fail & \\
-              & N & \% &  & N & \% \\
+    Attribute & N & \% &  & N & \% \\
     \midrule
     \textbf{Total} & 661 & 63.3\% & & 383 & 36.7\% \\
     \midrule
     Male      & 277 & 61.1\% & & 176 & 38.9\%  \\
     Female    & 384 & 65.0\% & & 207 & 35.0\%  \\
     \midrule
-    \textbf{Age Group} &  &  &  &  & \\
-    15     & 139 & 71.6\% & &  55 & 28.4\% \\
-    16     & 194 & 69.0\% & &  87 & 31.0\% \\
-    17     & 171 & 61.7\% & & 106 & 38.3\% \\
-    18     & 128 & 56.8\% & &  96 & 43.2\% \\
-    19+    & 31 &  44.7\% & &  39 & 55.7\% \\
+    \textbf{Past Course Failures} &  &  &  &  & \\
+    None      & 622 & 72.2\% & &  239 & 27.8\% \\
+    One       & 33  & 27.5\% & &   87 & 72.5\% \\
+    Two       & 5   & 15.2\% & &   28 & 84.8\% \\
+    Three     & 1   &  3.0\% & &   29 & 96.7.0\% \\
     \midrule
-    \textbf{Area} &  &  &  &  & \\
+    \textbf{Higher Education Plans} &  &  &  &  & \\
+    Planned   & 640 & 67.0\% & & 315 & 33.0\%  \\
+    No Plans  &  21 & 23.6\% & &  68 & 76.4\%  \\
+    \midrule
+    \textbf{Study Time} &  &  &  &  &     \\
+    More than 10 hrs. &  45 & 72.6\% & &  17 & 27.4\% \\
+    5 to 10 hrs.      & 123 & 75.9\% & &  39 & 24.1\% \\
+    2 to 5 hrs.       & 321 & 63.8\% & & 182 & 36.2\% \\    
+    Less than 2 hrs.  & 172 & 54.3\% & & 145 & 45.7\% \\
+    \midrule
+    \textbf{Course} &  &  &  &  & \\
+    Portugese  & 452 & 69.6\% & & 197 & 30.4\%  \\
+    Math       & 209 & 52.9\% & & 186 & 47.1\%  \\  
+    \midrule
+    \textbf{School Support} &  &  &  &  & \\
     Rural    & 155 & 54.4\% & & 130 & 45.6\%  \\
     Urban    & 506 & 66.7\% & & 253 & 33.3\%  \\ 
     \midrule
-    \textbf{Parents Status} &  &  &  &  & \\
-    Apart     &  81 & 66.9\% & & 107 & 33.2\%  \\
-    Together  & 580 & 62.6\% & & 276 & 37.2\%  \\
-    \midrule
-    \textbf{Family Size} &  &  &  &  & \\
-    Less than 3  & 199 & 65.0\% & & 107 & 35.0\%  \\
-    3 or More    & 461 & 62.6\% & & 276 & 37.4\%  \\
-    \midrule
-    \textbf{Activities} &  &  &  &  & \\
-    No Activities & 326 & 61.7\% & & 202 & 38.0\%  \\
-    Activities    & 335 & 64.9\% & & 181 & 35.1\%  \\
-    \midrule
-    \textbf{Higher Education Plans} &  &  &  &  & \\
-    No Plans  &  21 & 23.6\% & &  68 & 45.6\%  \\
-    Planned   & 640 & 67.0\% & & 315 & 33.0\%  \\
-    \midrule
-    \textbf{Internet} &  &  &  &  & \\
-    No        & 118 & 54.4\% & &  99 & 45.6\%  \\
-    Ye        & 543 & 65.7\% & & 284 & 34.3\%  \\
-    \midrule
+    \textbf{Mother's Education} &  &  &  &  & \\
+    Higher Ed     & 235 & 76.8\% & &  71 & 23.2\% \\
+    Secondary     & 143 & 49.5\% & &  95 & 32.9\% \\
+    Grades 5 to 9 & 180 & 75.6\% & & 109 & 45.8\% \\
+    Primary       &  98 & 47.5\% & & 106 & 52.5\% \\
+    None          &   7 & 77.8\% & &   2 & 22.2\% \\
+    \midrule    
     \textbf{Romantic Relationship} &  &  &  &  & \\
     No Relationship & 440 & 65.4\% & & 233 & 34.6\%  \\
     Relationship    & 221 & 59.6\% & & 150 & 40.4\%  \\    
     \midrule
-    \textbf{Course} &  &  &  &  & \\
-    Portugese  & 452 & 69.6\% & & 197 & 30.4\%  \\
-    Math       & 209 & 52.9\% & & 253 & 47.1\%  \\
+    \textbf{Internet} &  &  &  &  & \\
+    No        & 118 & 54.4\% & &  99 & 45.6\%  \\
+    Yes        & 543 & 65.7\% & & 284 & 34.3\%  \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -719,7 +699,7 @@ that indicate a connection between MUPO and heroin use
 
 \begin{table*}[ht]
   \caption{Coefficient Estimates for Regression Models of Student Performance on 
-  the Training Set and Testing Set}
+  Training Set and Testing Set}
   \label{tab:freq}
   \begin{tabular}{lllllll}
     \toprule
@@ -727,21 +707,21 @@ that indicate a connection between MUPO and heroin use
     \midrule
     Variables & Coefficient & Est.S.E. & t-value & Coefficient & Est.S.E.& t-Value  \\
     \midrule
-    Intercept           &       10.315***   & 0.873 & 11.811&       7.31***     & 1.473 &  4.96 \\
-    Failures            & \textbf{-1.546}***& 0.206 & -7.49 & \textbf{-1.574}***& 0.307 & -5.14 \\
-    Higher Ed           & \textbf{1.070}**  & 0.476 &  2.25 & \textbf{3.210}*** & 0.752 &  4.27 \\
-    Study Time          & \textbf{0.300}**  & 0.151 &  1.98 & \textbf{0.780}*** & 0.250 &  3.12 \\
-    Course              & \textbf{-1.918}***& 0.256 & -7.49 & \textbf{-1.041}** & 0.427 & -2.44 \\
-    School Support      & \textbf{-1.204}***& 0.392 & -3.07 & \textbf{-1.347}** & 0.617 & -2.19 \\
-    Mother's Education  & \textbf{0.382}*** & 0.119 &  3.22 & \textbf{0.381}*   & 0.203 &  1.88 \\
-    Romantic Relationship& \textbf{-0.633}**& 0.255 & -2.49 & \textbf{-0.807}*  & 0.441 & -1.83 \\
-    Internet Access     & \textbf{0.800}**  & 0.311 &  2.57 &        0.224      & 0.521 &  0.43 \\
-    Family Relations    & \textbf{0.249*}   & 0.136 &  1.83 &       -0.047      & 0.206 & -0.23 \\
-    Going Out           & \textbf{-0.412}***& 0.109 & -3.77 &       -0.031      & 0.170 & -0.18 \\
-    Father's Job        & \textbf{0.269}*   & 0.139 &  1.92 &       -0.008      & 0.234 & -0.03 \\
-    Health              & \textbf{-0.219}** & 0.086 & -2.56 &        0.002      & 0.145 &  0.02 \\
+    Intercept           &       10.315***    & 0.873 & 11.811 &          7.31***    & 1.473 &  4.96 \\
+    Failures            & \textbf{-1.546}*** & 0.206 & -7.49  & \textbf{-1.574}***  & 0.307 & -5.14 \\
+    Higher Ed           & \textbf{ 1.070}**  & 0.476 &   2.25 & \textbf{ 3.210}***  & 0.752 &  4.27 \\
+    Study Time          & \textbf{ 0.300}**  & 0.151 &   1.98 & \textbf{ 0.780}***  & 0.250 &  3.12 \\
+    Course              & \textbf{-1.918}*** & 0.256 & -7.49  & \textbf{-1.041}**   & 0.427 & -2.44 \\
+    School Support      & \textbf{-1.204}*** & 0.392 & -3.07  & \textbf{-1.347}**   & 0.617 & -2.19 \\
+    Mother's Education  & \textbf{ 0.382}*** & 0.119 &   3.22 & \textbf{ 0.381}*    & 0.203 &  1.88 \\
+    Romantic Relationship& \textbf{-0.633}** & 0.255 &  -2.49 & \textbf{-0.807}*    & 0.441 & -1.83 \\
+    Internet Access     & \textbf{ 0.800}**  & 0.311 &   2.57 &          0.224      & 0.521 &  0.43 \\
+    Family Relations    & \textbf{ 0.249*}   & 0.136 &  1 .83 &         -0.047      & 0.206 & -0.23 \\
+    Going Out           & \textbf{-0.412}*** & 0.109 &  -3.77 &         -0.031      & 0.170 & -0.18 \\
+    Father's Job        & \textbf{ 0.269}*   & 0.139 &   1.92 &         -0.008      & 0.234 & -0.03 \\
+    Health              & \textbf{-0.219}**  & 0.086 &  -2.56 &          0.002      & 0.145 &  0.02 \\
     \bottomrule
-    Note. significance levels & *\<0.10           & **\<0.05  & ***\<0.01 & & & \\
+    Note. significance levels & *\<0.10           & **\<0.05  & ***\<0.01 & & &
   \end{tabular}
 \end{table*}
 
@@ -802,10 +782,10 @@ the proportion of pain reliever misuse and abuse was more than five times as
 large for individuals who reported using cocaine than those who had not. 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
   \caption{Decision Tree Model of Pain Reliever Misuse and Abuse
   fit to the Training Set.}
-  \label{f:Figure4}
+  \label{f:Figure1}
 \end{figure}
 
 The second split was based on heroin use; the left branch included n=12876 
@@ -859,51 +839,56 @@ important features in the random forests model, followed by tranquilizers,
 age category, and heroin use, which were ranked as more influential in the 
 single tree (Figure 4). 
 
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \caption{Decision Tree Model of Pain Reliever Misuse and Abuse
+  fit to the Training Set.}
+  \label{f:Figure2}
+\end{figure}
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
-  \caption{Feature Importance for the Random Forest Model.}
+  \caption{Feature Importance for Gradient Boosted Model}
   \label{tab:freq}
   \begin{tabular}{lll}
     \toprule
-    Predictor&  & Mean Decrease  \\    
-             &  & in Gini Score  \\
+    Predictor&  & Relative Influence  \\    
     \midrule
-    Failures            &  &  35.99 \\
-    Absences            &  &  25.51 \\
-    Courses             &  &  17.00 \\ 
-    Going Out           &  &  16.31 \\
-    Age                 &  &  15.89 \\
-    Mother's Education  &  &  15.84 \\
-    Free Time           &  &  15.47 \\
-    Mother's Job        &  &  14.96 \\
-    Weekly Alcohol      &  &  14.56 \\
-    Father's Education  &  &  13.79 \\
-    Health              &  &  13.68 \\
-    Study Time          &  &  13.21 \\ 
-    Family Relations    &  &  12.31 \\
-    Father's Job        &  &  11.59 \\
-    Travel Time         &  &  10.24 \\
+    Absences                &  &  13.66 \\
+    Failures                &  &   7.69 \\
+    Going Out               &  &   5.68 \\
+    Courses                 &  &   5.55 \\ 
+    Free Time               &  &   5.29 \\
+    Father's Job            &  &   5.21 \\   
+    Mother's Job            &  &   4.94 \\   
+    Health                  &  &   4.85 \\  
+    Age                     &  &   4.65 \\
+    Study Time              &  &   4.23 \\   
+    Mother's Education      &  &   3.79 \\
+    Weekly Alcohol          &  &   3.64 \\
+    Family Relations        &  &   3.43 \\    
+    Father's Education      &  &   3.32 \\
+    Daily Alcohol           &  &   2.30 \\
+    School Support          &  &   2.22 \\    
+    Romantic Relationship   &  &   2.10 \\
+    Sex                     &  &   2.05 \\
+    Family Support          &  &   1.89 \\
+    Student Guardian        &  &   1.85 \\
+    Extracurricular Activities &  &1.81 \\
+    Travel Time             &  &   1.80 \\    
+    Paid extra courses      &  &   1.69 \\
+    Higher Education Plans  &  &   1.63 \\
+    Family Size             &  &   1.59 \\
+    Area                    &  &   1.44 \\
+    Internet Access         &  &   1.20 \\
+    Parents Relationship    &  &   0.52 \\
     \bottomrule
   \end{tabular}
 \end{table}
-
-%Dalc               8.86
-%guardian           8.02
-%sex                7.46
-%higher             7.00
-%paid               6.90
-%romantic           6.35
-%famsup             6.33
-%activities         6.30
-%famsize            6.24
-%internet           6.16
-%area               5.87
-%schoolsup          5.73
-%parents            3.54
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -968,47 +953,7 @@ misuse or abuse was 17 percent lower for females as for males.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Model Complexity and Interpretability}
 
-Every classification model has advantages and limitations. There is a 
-tradeoff between model complexity, performance, and interpretability.
-Simple models provide interpretable solutions but have lower accuracy, 
-whereas complex models yield improved performance but are more difficult 
-to interpret. The advantage of logistic regression is that it provides 
-coefficient estimates for individual features that can be interpreted in 
-terms of odds ratios. The predicted outcome (Y-hat) is represented by the
-weighted combination of all the independent variables. The logit function 
-is linear in the parameters, but the probabilities of the expected outcome 
-are non-linear. The drawbacks of logistic regression are that it does not 
-perform well for modeling non-linear relationships between the target
-outcome and predictor variables, or with high dimensional data (e.g., $p>n$). 
-
-Decision trees are useful for modeling nonlinear data and can be 
-interpreted in terms of the frequency or proportion of observations selected 
-at each branch. A single tree visually represents the decision process in a 
-manner that is effective for communicating results; however, a disadvantage 
-is that decision can become very complex without pruning, especially as the 
-number of predictors increases. Limiting the decision tree to a depth of four 
-nodes improves the interpretability, but reduces the generalizability of the 
-model to new observations. Random forests reduce overfitting by averaging
-multiple different trees to identify class membership, which improves 
-generalizability to new data. A limitation of random forests is that feature 
-importance is determined by the mean decrease in Gini score, a measure of node
-purity that is difficult to interpret in terms of the outcome. Gradient 
-boosting typically improves accuracy using many simple models iteratively and 
-correcting for individual trees; however, in the present study, the boosting 
-model did not perform better than random forests. 
-
-As the complexity of a model increases, interpretation becomes more difficult, 
-as seen with neural networks. The multilayer perceptron (MLP) is one of the 
-most widely used neural network models for classification. With a limited 
-number of predictor variables and single hidden layer, it is possible to 
-interpret the relations among weights and nodes in the hidden layer 
-(see Appendix). As the number of predictors and hidden layers increases, 
-complex neural network become opaque to interpretation and represent a 
-``black box'' model that is not comprehensible at a human level. In 
-applying sophisticated algorithms in predictive modeling, interpretability 
-is often sacrificed for greater model accuracy \cite{elgin18}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1056,11 +1001,15 @@ relationships (Dawson, et al., 2014; Gašević, et al., 2015).
 
 \section{Conclusion}
 
+A general conclusion is that... 
+The findings...
+
+
 Predictive modeling offers several useful approaches for analyzing the misuse
 and abuse of prescription opioids and identifying factors that contribute to 
 MUPO. This study compared ten classification models of pain reliever misuse 
 and abuse using the $f_1$-score to evaluate model performance with unbalanced 
-classes in the data. Logistic regression, random forests, and decision trees 
+classes in the data. Linear regression, random forests, and decision trees 
 had the best performance compared to other models. Cocaine use was selected 
 as the most informative variable by all three models, followed by amphetamine 
 use which was selected as the second most important feature by the logistic
@@ -1069,8 +1018,10 @@ they assigned to heroin use, tranquilizers, and demographic features such as
 age group, mental health, and health problems. A general conclusion is that 
 there are tradeoffs between model complexity, performance, and 
 interpretability. A simple decision tree provides an interpretable model 
-that is prone to overfitting. Random forests reduce overfitting and improve 
-generalizability, but are difficult to interpret. Logistic regression strikes 
+that is prone to overfitting. 
+
+Random forests reduce overfitting and improve 
+generalizability, but are difficult to interpret. Linear regression strikes 
 a balance between complexity and interpretability, but does not perform well
 with non-linear relationships or high-dimensional data. Additional research 
 is needed to understand the relationships among the variables identified by 
@@ -1078,15 +1029,6 @@ predictive models. The findings may inform decision making and policy efforts
 to address the opioid crisis and reduce the risk of overdose death. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{acks}
-
-Portions of this paper were completed as part of a course project for
-`Big Data Applications and Analytics' taught by Professor Gregor von Laszewski 
-at Indiana University in Fall 2017. Thanks to the teaching assistants Juliette 
-Zurick and Miao Jiang. Thanks to Dallas J. Elgin for encouragement and 
-Ed Miles for helpful comments. 
-
-\end{acks}
 
 \bibliographystyle{unsrt} %%ACM-Reference-Format%%
 \bibliography{report} 
