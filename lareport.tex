@@ -751,6 +751,69 @@ increase in going out with friends decreased the odds of passing by 1.18 (18\%).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsubsection{Decision Tree Regression} inv
+
+olve stratifying or segmenting the
+predictor space into a number of simple regions, and making a prediction for 
+a new observation using the mean of the training observations in the region 
+to which it belongs. A good strategy for building a regression tree is to
+grow a very large tree and then prune it back to obtain a subtree that
+provides the lowest test error rate. Steps in building a decision tree are:
+(1) Use a recursive binary splitting to grow a large tree on training data, 
+stopping only when each terminal node has fewer than some minimum number of 
+observations. (2) Apply a cost complexity (i.e., weakest link) pruning  to 
+the large tee to obtain a sequence of best subtrees, as a function of alpha. 
+(3) Use k-fold cross-validation to choose alpha, dividing the training 
+observations into k-folds, and for each k=1...K, (a) repeate steps 1 and 2,
+(b) evaluate the mean square predictoin error on data in the left-out k-fold,
+as a function of alpha, averaging the results for each level of alpha, and 
+picking a value of alpha that minimizes the average error. (4) Return the 
+subtree that corresponds to the chosen value of alpha. 
+
+The tree library was loaded in R, and a random seed was set for consistency. 
+For this analysis, SUICATT, PRLANY were removed from the opioid dataset. The 
+training set of 40000 rows was constructed based on a 70/30 split. The tree
+was fit to the training data, and the regression returned a tree with 6
+terminal nodes, with a residual mean variance of 3.22. The summary of the 
+regression tree showed that four features were used in the construction of 
+the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. 
+
+Cross-validation 
+was used to determine optimal tree complexity with produces a small reduction
+in the residual mean variance of 3.18. Figure X shows the pruned decision tree 
+for PRLMISAB with the root node of TRTMENT. 
+
+The left branch shows a low 
+score for treatment, and the feature at the next branch was Cocaine use. 
+The branche to the right indicates a high score on cocaine then lead to 
+the feature heroin use. This shows that respondents with higher scores for 
+concaine and heroin use were also more likely to have a high score on 
+opioid pain reliever misuse and abuse. Following the right branch of the 
+root node, for cases with a high scores for treatment, the next decision 
+feature was Tranquilizers, which indicates that for individuals in treatment, 
+tranquilizer use was associated with opioid pain reliever misuse and abuse. 
+The regression tree model was evaluated on the test set; Figure 9 shows 
+the prediction (yhat) plotted against data in the test set.
+
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \caption{Decision Tree Model of Student Performance on Training Set}
+  \label{f:Figure3}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \caption{Feature importance for Random Forests Model on Test Set}
+  \label{f:Figure4}
+\end{figure}
+
+
+
+
+
+
+
 \subsubsection{Decision Trees} 
 
 The decision tree model was prepruned to a maximum depth of 4, which means 
@@ -773,12 +836,17 @@ of which 0.39 or 39\% reported pain reliever misuse or abuse. This means that
 the proportion of pain reliever misuse and abuse was more than five times as 
 large for individuals who reported using cocaine than those who had not. 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\pagewidth]{images/Figure1.pdf}
-  \caption{Decision Tree Model of Pain Reliever Misuse and Abuse
-  fit to the Training Set.}
-  \label{f:Figure1}
-\end{figure}
+%\begin{figure}[!ht]
+%  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+%  \caption{Decision Tree Model of Student Performance on Training Set}
+%  \label{f:Figure1}
+%\end{figure}
+
+%\begin{figure}[!ht]
+%  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+%  \caption{Feature importance for Random Forests Model on Test Set}
+%  \label{f:Figure2}
+%\end{figure}
 
 The second split was based on heroin use; the left branch included n=12876 
 respondents who had not used heroin, of which 0.34 or 34\% reported pain
@@ -800,9 +868,25 @@ n=1725 individuals age 35 and younger, of whom 0.63 or 63\% reported PRLMISAB.
 This findings shows that pain reliever misuse and abuse was much more likely
 among respondents age 35 or younger than among individuals older than 35 years. 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Feature Importance for the Random Forests Model}
+
+
+Random forests build many different decision trees, that are decorrelated, and 
+then averages the trees to reduce variance. The advantage of randome forests is 
+that it provides a more accurate model, but the tradeoff is that the large 
+ensemble of trees can be more difficult to interpret. The random forest package 
+was loaded into R, and the random forests regression model was fit on PRLMISAB, 
+with 500 trees, and three variables considered at each split (e.g., mtry=3).
+The mean of the squared residuals was 2.99, which shows better performance
+in terms of error than a single decision tree. The model accounted for 26
+percent of the variance in opioid pain reliever misuse and abuse. Figure 10
+shows the feature importance for the random forest regression model by the
+percent increase in MSE on the left panel, and as a function of the increase
+in node purity on the right panel. 
+
 
 The random forest model was fit using 1000 trees, with all of the features 
 considered at each node to determine the randomness of each tree. After a 
@@ -834,16 +918,24 @@ single tree (Figure 4).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
-%  \caption{Feature importance for Random Forests Model.}
-%  \label{f:Figure2}
-%\end{figure}
+\subsubsection{Gradient Boosting Regression}
+
+Similar to random forests, gradient boosting builds many smaller trees, but 
+each new tree tries to correct for deficiencies of the current ensemble of 
+trees. Gradient boosting grows smaller, stubbier trees, and goes after bias. 
+The gbm package ("Gradient Boosted Machines", Friedman) was loaded, and the 
+gbm() function was called on PRLMISAB using the Gaussian distribution, with
+10000 shallow trees, a shrinkage parameters=0.01, and interaction depth of 
+4 splits. The relative influence plot in Table 3 shows that the most 
+influential features in the gradient boosting model were: TRQLZRS, TRTMENT,
+HEROINUSE, COCAINE use, and AMPHETMN. Figure 11 shows the influential 
+features of the gradient boosting regression as a horizontal barplot. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
-  \caption{Feature Importance for Random Forests Model}
+  \caption{Feature Importance for Student Performance from the Random Forests 
+  (Node Purity) and Gradient Boosted Model}
   \label{tab:freq}
   \begin{tabular}{llll}
     \toprule
@@ -889,61 +981,37 @@ single tree (Figure 4).
 
 \section{DISCUSSION}
 
-The results show that there were imbalanced classes in the sample data given 
-that the proportion of respondents who reported no MUPO (i.e., negative class)
-was much larger than the 11 percent of respondents who reported pain reliever 
-misuse and abuse. Logistic regression, random forests, and decision trees
-performed better than other classifier models using the $f_1$-score as the 
-appropriate performance metric. Traditional algorithms tend to classify new 
-observations based on the majority class, as seen with the naive Bayes model, 
-which had a relatively high $f_1$-score despite identifying only 35 true 
-positive instances and having a high number of false negatives. The random 
-forests model performed slightly better than the other models as it correctly 
-predicted more true positive instances than the logistic regression and had 
-fewer false negative errors than the single decision tree. The QDA and LDA 
-models both identified the largest number of true positives, but each correctly 
-labeled fewer true negatives compared to the logistic regression model, which 
-had higher $f_1$-score and accuracy overall. This finding indicates that the 
-decision boundary for classifying pain reliever misuse and abuse can be modeled 
-as a linear function of the predictor variables \cite{james13, raschka17}. 
-The decision tree and random forests models would be preferred if pain reliever 
-misuse and abuse were modeled as a non-linear function of the predictors,
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Cocaine use was selected by all three models as the most informative predictor 
-of pain reliever misuse and abuse (PRLMISAB). The odds of PRLMISAB increased 
-99 percent given a one unit increase in cocaine use, holding other independent
-variables constant. In terms of frequency, the proportion of PRLMISAB among 
-individuals who reported moderate to high cocaine use was more than five times 
-as large as for individuals who reported no or low cocaine use. Logistic 
-regression and random forests both identified amphetamine use as the second 
-most important feature for predicting PRLMISAB. The odds of PRLMISAB
-increased by 84 percent for a unit increase in amphetamine use. In contrast, 
-the single decision tree identified heroin use as the second most important 
-predictor. Of those respondents who disclosed heroin use, more than two-thirds 
-reported misusing or abusing pain relievers. In other words, the proportion of 
-PRLMISAB was twice as large for respondents who had used heroin as for those 
-who had not, Similarly, logistic regression model revealed that the odds of 
-PRLMISAB increased by 112 percent given previous heroin use, holding other 
-variables constant. These findings are consistent with past studies that
-indicate a connection between pain reliever misuse and abuse and heroin use
-\cite{jones13, jones15, muhuri13, unick13}. Tranquilizers were identified as 
-the third most important variable by both the decision tree and logistic 
-regression models. The odds of PRLMISAB increased 1.46 times for a one unit 
-increase in tranquilizer use. Similar to the pattern observed for heroin, the 
-proportion of PRLMISAB was nearly twice as large for respondents with moderate 
-to high tranquilizer use as for individuals with no to low tranquilizer use. 
-
-Age category, mental health, health issues, education level, and previous 
-drug or alcohol treatment were also identified as important features for 
-predicting PRLMISAB; however, the models differed in the importance they 
-assigned to these variables. A general finding related to age is that pain 
-reliever misuse and abuse was more prevalent among respondents between
-18 to 25 years of age and decreased among older individuals. Although more 
-females reported using pain relievers than males, more males reported 
-misusing or abusing pain relievers than females, and the odds of pain reliever 
-misuse or abuse was 17 percent lower for females as for males. 
+The results showed that prescription opioid use, misuse, and abuse in this 
+sample was higher than use of illicit opioids such as heroin and fentanyl. 
+The use of Hydrocodone (Vicodan) was double that of Oxycodone (Oxycodone) 
+across almost all age groups. Illicit drug use was highest between the ages 
+of 18 to 25. Almost twice as many young adults reported a need for substance 
+use treatment, but had not received treatment, compared to the youngest age 
+group. Of individuals who reported misusing prescription opioid medications, 
+twice as many said they had used heroin than had not (see Figure 1), which is 
+consistent with the hypothesis that prescription opioid misuse is associated 
+with heroin use. The different learning models provided different estimates 
+of the features important for predicting pain reliever misuse and abuse. 
+The multiple regression showed multiple features together significantly 
+predicted pain reliever abuse, but there may be non-linear trends in the data.
+Compared to ridge regression, the lasso performed variable selection, 
+indicating that a model with five features (Treatment, Heroin, Cocaine, 
+Amphetamine, Any Pain Relievers) explained a significant portion of
+variabilty in pain reliever abuse, and adding more factors did not improve
+the performance greatly. The regression tree model created a solution
+with four features (Treatment, Cocaine, Heroin, Tranquilizers), and the
+random forest regression selected Tranquilizers as most informative of
+pain reliever misuse, which is consistent with the results of the gradient
+boosting model tree ensemble (shown in Table 3). Overall, the models 
+agreed in selecting the top five most influential predictors of pain
+reliever abuse, but there was some variation in the ordering of importance. 
+The linear models showed that substance treatment had the highest
+coefficients (followed by heroin use), whereas the tree ensemble methods
+indicated that tranquilizer use was the most important feature. Given the 
+relatively low rates of prescription opioid and heroin use in the sample, 
+additional evidence is needed to clarify questions regarding the importance
+of various features for predicting opioid misuse and abuse. 
+ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -952,17 +1020,29 @@ misuse or abuse was 17 percent lower for females as for males.
 
 A surprising finding is that 
 
-A limitation of the study is that the default 
-settings were used in constructing the classifier models. Many complex models 
-are sensitive to parameter settings and scaling of the data. Additional 
-parameter tuning could have improved performance of complex models. 
-
-Another limitation is that the aggregated features represent a 
-subset of the entire range of features in the NSDUH datasets. 
-
-In a future study, it may be useful to include a more comprehensive set of features 
-to 
-A widely accepted truism in predictive analytics that more data is always better. 
+A limitation of the study is that only a small proportion of the sample 
+reported having used or misused prescription opioids. It is possible that the 
+level of opioid use in the sample was not representative of opioid use in the 
+general population. According to the Centers for Disease Control, the rate
+of heroin use in the general population of adults is 2.6 percent, whereas
+the rate of heroin use in the NSDUH-2015 sample was 1.6 percent \cite{cdc16}. 
+Obtaining reliable information about medication consumption can be difficult 
+based on self-reports. Survey data can be biased by under-reporting or by 
+minimizing reports of illicit substance use. People may also be reluctant to 
+disclose mental health issues or health problems (e.g., STDs, HIV, suicide 
+attempts). Another consideration is that, owing to the nature of the methods 
+used in the study, it was not possible to determine the direction of the 
+relationship between prescription opioid use and heroin use. Individuals who 
+misuse or abuse prescription opioid medications may turn to synthetic opioids 
+or heroin as cheaper, more readily available than prescription medications. 
+Alternatively, individuals who used heroin may be inclined to abuse 
+prescription opioids based on availability. Past research has shown that drug 
+dosage and medication type play a significant role in opioid misuse: Treatment 
+with high daily dose opioids (e.g., more than 120 mg/ day) and short-acting 
+schedule II opioids increases the risk of misuse, abuse, and drug overdose 
+\cite{sullivan10}. The results of the present analysis showed that demographic 
+characteristics played a relatively minor role compared to the use of illicit 
+drugs or tranquilizers. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -991,26 +1071,29 @@ relationships (Dawson, et al., 2014; Gašević, et al., 2015).
 A general conclusion is that... 
 The findings...
 
+A general conclusion is that people who reported misusing prescription opioids 
+were also likely to have received substance treatment. More than any other 
+demographic features, a history of prescription medication use, or illicit drug 
+use, both seemed to contribute highly to the abuse of pain reliever medications, 
+particularly for those who reported using tranquilizers, heroin, cocaine, or 
+amphetamines. The findings suggest that the opioid crisis may be driven by the 
+widespread availability of prescription medications. Even for people with no 
+previous history of mental health issues, exposure to highly addictive opioid 
+medications puts people at risk for drug dependency and addiction. As mentioned 
+in the introduction, even for those who have been in drug treatment programs, 
+a lack of continuity in treatment can leave many people in recovery at risk 
+for relapse or possible overdose as they are released back into environments 
+associated with their drug use. The sharp increase in overdose deaths in the 
+U.S. due to synthetic opioids (other than methadone) has coincided with the 
+increased availability of illicitly manufactured fentanyl \cite{nida17}. 
+Because the dosage levels and potency of illicit opioids are largely unknown, 
+there is greater risk of drug overdose death. Recent findings suggest the 
+opioid overdose epidemic is getting worse, and requires urgent action to prevent 
+opioid abuse, addiction, and death. The findings reported here seek to raise 
+awareness about the risk factors for prescription opioid addiction for patients 
+and health care providers in order to help reduce opioid overdose deaths. 
 
-Predictive modeling offers several useful approaches for analyzing the misuse
-and abuse of prescription opioids and identifying factors that contribute to 
-MUPO. This study compared ten classification models of pain reliever misuse 
-and abuse using the $f_1$-score to evaluate model performance with unbalanced 
-classes in the data. Linear regression, random forests, and decision trees 
-had the best performance compared to other models. Cocaine use was selected 
-as the most informative variable by all three models, followed by amphetamine 
-use which was selected as the second most important feature by the logistic
-regression and random forests models. The models differed in  the importance 
-they assigned to heroin use, tranquilizers, and demographic features such as 
-age group, mental health, and health problems. A general conclusion is that 
-there are tradeoffs between model complexity, performance, and 
-interpretability. A simple decision tree provides an interpretable model 
-that is prone to overfitting. 
-
-Random forests reduce overfitting and improve 
-generalizability, but are difficult to interpret. Linear regression strikes 
-a balance between complexity and interpretability, but does not perform well
-with non-linear relationships or high-dimensional data. Additional research 
+Additional research 
 is needed to understand the relationships among the variables identified by 
 predictive models. The findings may inform decision making and policy efforts 
 to address the opioid crisis and reduce the risk of overdose death. 
