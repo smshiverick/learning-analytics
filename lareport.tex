@@ -13,6 +13,8 @@
 
 \begin{abstract}
 
+Model interpretation is an important aspect of predictive analytics.
+
 Modeling student performance can help educators to identify factors that 
 contribute to student achievement and students who are struggling. This 
 paper modeled student performance as a continuous variable using linear 
@@ -272,6 +274,52 @@ final grade report in two courses, mathematics and Portugese language.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[ht]
+  \caption{Variables Included in the Sample Data for Model Construction.}
+  \label{tab:freq}
+  \begin{tabular}{ll}
+    \toprule
+    \textit{Predictor Variables} &    \\
+    \midrule
+    1. Sex (0=Male,1=Female) & SEX  \\  
+    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
+    3. Home address type (0=Rural, 1=Urban) & AREA  \\
+    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
+    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
+    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
+    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
+    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
+    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
+    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
+    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
+    13. Failures in past classes (numeric: n if 1<=n<3, else 4) & FAILURES  \\
+    14. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
+    15. Family educational support (0=No, 1=Tes) & FAMSUP  \\
+    16, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
+    17. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
+    18. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
+    19. Internet access at home (0=No, 1=Tes) & INTERNET  \\
+    20. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
+    21. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
+    22. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
+    23. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
+    24. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
+    25. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
+    26. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
+    27. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
+    28. Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
+    \midrule
+    \textit{Target Variable} &  \\
+    \midrule
+    29. Final course grade (0=Lowest, 20=Highest) & GRADE \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Supervised Machine Learning} 
@@ -548,51 +596,6 @@ decrease in training set accuracy. The ideal model is one that optimizes test
 set accuracy while striking a balance between the problems of overfitting 
 and underfitting. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table*}[ht]
-  \caption{Variables Included in the Sample Data for Model Construction.}
-  \label{tab:freq}
-  \begin{tabular}{ll}
-    \toprule
-    \textit{Predictor Variables} &    \\
-    \midrule
-    1. Sex (0=Male,1=Female) & SEX  \\  
-    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
-    3. Home address type (0=Rural, 1=Urban) & AREA  \\
-    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
-    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
-    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
-    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
-    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
-    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
-    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
-    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
-    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
-    13. Number of past class failures (numeric: n if 1<=n<3, else 4) & FAILURES  \\
-    14. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
-    15. Family educational support (0=No, 1=Tes) & FAMSUP  \\
-    16, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
-    17. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
-    18. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
-    19. Internet access at home (0=No, 1=Tes) & INTERNET  \\
-    20. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
-    21. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
-    22. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
-    23. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
-    24. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
-    25. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
-    26. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
-    27. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
-    28. Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
-    \midrule
-    \textit{Target Variable} &  \\
-    \midrule
-    29. Final course grade (0=Lowest, 20=Highest) & GRADE \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -703,9 +706,9 @@ that indicate a connection between MUPO and heroin use
   \label{tab:freq}
   \begin{tabular}{lllllll}
     \toprule
-     & Training Set & (N = 730)&& Testing Set& (N = 314)&  \\
+                        & Training Set  &           &         & Testing Set &         &          \\
     \midrule
-    Variables & Coefficient & Est.S.E. & t-value & Coefficient & Est.S.E.& t-Value  \\
+    Variables           & Coefficient   & Est.S.E.  & t-value & Coefficient & Est.S.E.& t-Value  \\
     \midrule
     Intercept           &       10.315***    & 0.873 & 11.811 &          7.31***    & 1.473 &  4.96 \\
     Failures            & \textbf{-1.546}*** & 0.206 & -7.49  & \textbf{-1.574}***  & 0.307 & -5.14 \\
@@ -720,8 +723,14 @@ that indicate a connection between MUPO and heroin use
     Going Out           & \textbf{-0.412}*** & 0.109 &  -3.77 &         -0.031      & 0.170 & -0.18 \\
     Father's Job        & \textbf{ 0.269}*   & 0.139 &   1.92 &         -0.008      & 0.234 & -0.03 \\
     Health              & \textbf{-0.219}**  & 0.086 &  -2.56 &          0.002      & 0.145 &  0.02 \\
+    \midrule
+    \textit{n}          & 730                &       &        &         314         &       &       \\
+    \textit{F-Value}    & \textbf{3.29}***   &       &        & \textbf{3.50}***    &       &       \\
+    \textit{df}         & (12, 717)          &       &        &         (12, 301)   &       &       \\
+    \textit{R-square}   &      0.267         &       &        &         0.265       &       &       \\ 
+    \textit{Adj. R-square} &   0.255         &       &        &         0.236       &       &       \\
     \bottomrule
-    Note. significance levels & *\<0.10           & **\<0.05  & ***\<0.01 & & &
+    Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
   \end{tabular}
 \end{table*}
 
@@ -747,6 +756,27 @@ in weekly alcohol consumption decreased the odds of successfully passing by 1.20
 (20\%). The odds of successfully passing increased by 1.39 (39\%) given a unit 
 change in custodian guardian ('other', 'father', 'mother'). Finally, a one-unit 
 increase in going out with friends decreased the odds of passing by 1.18 (18\%). 
+
+
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Ridge Regression Coefficients for Student Performance on Training Set
+  with L2 Shrinkage as a function of Lambda}
+  \label{f:Figure1}
+\end{figure}
+
+
+
+
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \caption{Lasso Regression Coefficients for Student Performance on Test Set 
+  with L1 Shrinkage as a function of Lambda}
+  \label{f:Figure2}
+\end{figure}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
