@@ -617,8 +617,7 @@ of the student sample passed their courses (61\% male, 65\% female) and
 approximately 37\% failed their courses (39\% male, 35\% female). The 
 proportion of pass/ fail between males and females was not significant. 
 
-
-Pain reliever misuse was most frequent among individuals who described 
+ most frequent among individuals who described 
 themselves as single, divorced, or with some college education. The 
 proportion of pain reliever misuse and abuse was highest among individuals 
 between 18 to 25 years of age and decreased among older age groups. Two 
@@ -629,15 +628,6 @@ large for individuals who reported using heroin than those who had not
 used heroin (shown in Figure 3), which is consistent with past findings 
 that indicate a connection between MUPO and heroin use 
 \cite{muhuri13, unick13}.
-
-
-
-
-
-
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -728,7 +718,7 @@ that indicate a connection between MUPO and heroin use
     \textit{F-Value}    & \textbf{3.29}***   &       &        & \textbf{3.50}***    &       &       \\
     \textit{df}         & (12, 717)          &       &        &         (12, 301)   &       &       \\
     \textit{R-square}   &      0.267         &       &        &         0.265       &       &       \\ 
-    \textit{Adj. R-square} &   0.255         &       &        &         0.236       &       &       \\
+    \textit{Adj. $R^2$} &   0.255            &       &        &         0.236       &       &       \\
     \bottomrule
     Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
   \end{tabular}
@@ -737,7 +727,67 @@ that indicate a connection between MUPO and heroin use
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As past failures increased by one unit, the odds of successfully passing the 
+\subsubsection{Linear Regression Mpdel}
+
+A multivariate linear regression of student performance including all 28 
+independent variables was conducted on the training set. The regression model 
+was rerun excluding non-significant predictors, an anova revealed that there 
+was no significant difference between the two models and the simpler model
+was retained as more parsimonious. Table X provides the coefficient estimates, 
+standard error, t-values, F-values, defrees of freedom, R-squared, and adjusted 
+R-squared for the training set and testing set. The final regression model
+demonstrated the significant relationship between student performance and the 
+independent variables on both the training and test sets (both ps$<$0.01),
+Overall, between 25.5\% to 23.6\% of the variation in the predicted value of 
+student performance was due to changes in the independent variables, taking 
+into account the number of independent variables (adjusted $R^2$). On the 
+training set, 12 out of the 28 predictor variables were significant, but
+only 7 of the 12 predictors in the testing set were significant. This 
+difference in variability accounted for may suggest overfitting to the 
+training set, but the difference in adjusted R-squared between the two 
+models may also be due to the smaller sample size of the test set. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+As seen in Table 4, previous course failures, course topic, school support, 
+being in a romantic relationship, going out with friends, and overall health
+were negatively correlated with student performance, whereas plans for higher 
+education, study time, mother's education, internet access, quality of family 
+relations, and father's job were positively related to student achievement. 
+
+A one-unit change in past course failures yielded a -1.55 decrease in the 
+predicted value of student, holding the effect of other independent variables 
+constant. Students in the math course showed a -1.98 decrease in performance 
+compared to students in the Portugese course, controlling for all other factors.
+Students receiving school support had a -1.20 lower final grade score than 
+students who did not, controlling for other factors.
+
+
+
+Similarly, there was a -0.17 decrease in PRLMISAB 
+for females compared to males, all other factors considered equal. A one-unit 
+change in Marital Status was associated with -0.158 decrease in PRLMA, holding
+constant other variables. And a one-unit increase in Educational Level was 
+associated with -0.130 decrease in PRLMA, with other predictors held constant. 
+
+Use of prescription medications and illicit drugs was positively correlated with 
+Pain Reliever Misuse and Abuse in the MUPO subset. A one-unit increase in Any 
+Pain Reliever Misuse or Abuse yielded a 0.289 unit increase in PRLMA, holding 
+other variables constant. Likewise, a one-unit increase in Tranquilizer use was 
+linked to a 0.114 unit increase in PRLMA. In terms of illicit drugs, a one-unit 
+increase in Heroin use was associated with a 0.244 unit increase in PRLMA, as 
+expected, holding constant the effects of other independent variables. 
+A one-unit increase in Cocaine use was associated with a 0.102 increase in PRLMA. 
+Finally, a one-unit increase in Amphetamine use was related to a 0.231 unit 
+increase in Pain Reliever Misuse and Abuse.  
+
+
+
+
+
+
+
+A one unit increase in past failures was associated with a   the odds of successfully passing the 
 course decreased by 4.79 times (379\% increase), holding the effects of other 
 variables constant. In terms of course, the odds of successfully passing the 
 course in mathematics decreased 3.07 times compared to course in Portugese. 
@@ -781,7 +831,7 @@ increase in going out with friends decreased the odds of passing by 1.18 (18\%).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Decision Tree Regression} inv
+\subsubsection{Decision Tree Regression}
 
 olve stratifying or segmenting the
 predictor space into a number of simple regions, and making a prediction for 
