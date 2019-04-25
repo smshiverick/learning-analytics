@@ -559,11 +559,15 @@ final exam grades (Pass$>$10, Fail$<=$10) for comparison.
 In constructing and evaluating models it is important to select a model that 
 performs well not only with the data used to train the model, but also with 
 new observations. The sample was divided using a 70 to 30 percent split to 
-create the training set ($n_1$=731) and testing set ($n_2$=313). The following 
-models were constructed on the training data and evaluated on the test set 
-using R including: multivariate linear regression, ridge regression (L2 
-penalty), lasso regression (L1 Penalty), regression trees, random forests
-regression, and gradient boosted regression. 
+create the training set ($n_1$=731) and testing set ($n_2$=313). Regression
+analysis proceeded by first fitting the model to training data and then 
+evaluating the model on the testing set. All regression models were constructed
+in R, including multivariate linear regression, ridge regression (L2 penalty), 
+lasso regression (L1 Penalty), regression trees, random forests regression, and gradient boosted regression \cite{james09}. 
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -661,7 +665,6 @@ relationship received a passing grade, but a slightly larger proportion of
 students who were not in a relationship received a passing grade compared 
 to students who in a relationship. 
 
- 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{figure}[!ht]
@@ -670,7 +673,6 @@ to students who in a relationship.
   Function of Passing or Failing Final Course Grades}
   \label{f:Figure1}
 \end{figure}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -701,7 +703,7 @@ to students who in a relationship.
     \textit{n}          & 730                &       &        &         314         &       &       \\
     \textit{F-Value}    & \textbf{3.29}***   &       &        & \textbf{3.50}***    &       &       \\
     \textit{df}         & (12, 717)          &       &        &         (12, 301)   &       &       \\
-    \textit{R-square}   &      0.267         &       &        &         0.265       &       &       \\ 
+    \textit{$R^2$}      &      0.267         &       &        &         0.265       &       &       \\ 
     \textit{Adj. $R^2$} &      0.255         &       &        &         0.236       &       &       \\
     \bottomrule
     Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
@@ -713,27 +715,33 @@ to students who in a relationship.
 
 \subsubsection{Linear Regression Model}
 
-Before conducting regression analyses, correlations among the variables were 
-examined. The three course grade variables (G1, G2, G3) were significantly 
-positively intercorrelated (all \textit{p}s$<$0.001). The first and second course 
-grade variables were excluded from subsequent analyses to control for 
-multicolinearity. A multivariate linear regression of student performance 
-including 28 independent variables (Table 1) was conducted on the training set.
-The regression model was rerun excluding non-significant predictors, an anova 
-revealed that there was no significant difference between the two models and 
-the simpler model was retained as more parsimonious. Table X provides the 
-coefficient estimates, standard error, t-values, F-values, degrees of freedom,
-R-squared, and adjusted R-squared for the training set and testing set. The 
-final regression model demonstrated the significant relationship between
-student performance and the independent variables on both the training and 
-test sets (both ps$<$0.01). Overall, between 25.5\% to 23.6\% of the variation 
-in the predicted value of student performance was due to changes in the 
-independent variables, taking into account the number of independent variables 
-(adjusted $R^2$). On the training set, 12 out of the 28 predictor variables 
-were significant, but only 7 of the 12 predictors in the testing set were 
-significant. This difference in variability accounted for may suggest 
-overfitting to the training set, but the difference in adjusted R-squared 
-between the two models may be due to the smaller sample size of the test set. 
+Before conducting regression analyses, the correlations matrix among the 
+variables was examined. The three course grade variables (G1, G2, G3) were 
+highly inter-correlated (all \textit{p}s$<$0.001). The first and second course 
+grade variables were excluded from subsequent analyses to control for
+multicolinearity. Student performance was regressed on the 28 independent 
+variables with the training set; this regression was statistically significant, 
+\textit{F}(28, 701) = 9.57, \textit{p} $<$ 0.001, ($R^2$ = 0.277, adjusted 
+$R^2$ = 0.248). The regression model was rerun excluding non-significant 
+predictors and this model was also statistically significant,
+\textit{F}(12, 717) = 21.79, \textit{p} $<$ 0.001, ($R^2$ = 0.267, adjusted 
+$R^2$ = 0.255). An anova revealed no significant difference between the two 
+models (\textit{F}$<$ 1.0, \textit{p} $=$ 0.91) and the simpler model was 
+retained as more parsimonious. The final model was evaluated on the testing 
+set and yielded a statistically significant relationship between student 
+performance and the independent variables, \textit{F}(12, 301) = 9.05, 
+\textit{p} $<$ 0.001, ($R^2$ = 0.265, adjusted $R^2$ = 0.236). 
+
+Table 3 provides the coefficient estimates, standard errors, and t-values of 
+predictor variables on the final model for the training and testing sets.
+Overall, between 25.5\% to 23.6\% of the variation in the predicted value of 
+student performance was due to changes in the independent variables, taking 
+into account the number of independent variables in the model. On the training 
+set, 12 out of the 28 predictor variables were statistically significant; 
+however, only 7 of the 12 predictors in the testing set were significant. 
+This difference in variability accounted for may indicate overfitting to the 
+training set data, but the lower adjusted R-squared of the test set may be 
+due to decreased sample size. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
