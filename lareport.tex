@@ -529,17 +529,18 @@ for predicting new observations, and provides an interpretable solution.
 
 \section{Method}
 
-\subsection{The Data}
+\subsection{Data}
 
-The sample consisted of 1044 students (56.6\% female, Mean= 16.71 years, 
-sd=1.19, median=17 years). Age was measured as a categorical variable with 
-(minimum=15, maximum=22); n=10 individuals between 20 and 22 were added to 
-the category of 19+ years. The student performance dataset was downloaded 
-from the UCI-MLR and saved as a data frame object in a python interactive
-notebook. The data was collected from two secondary schools in the Alentejo
-region of Portugal during the 2005-2006 school year and contained information
-from a questionnaire and school reports of student grades \cite{cortez09}. 
-The dataset included thirty predictor variables consisting of demographic 
+The sample consisted of 1044 students (56.6\% female, \textit{M} age=16.71 
+years, \textit{SD}=1.19, \textit{Median}=17 years). Age was measured as 
+a categorical variable (\textit{minimum}=15, \textit{maximum}=22); 
+\textit{n}=10 individuals between 20 and 22 were added to the category of 
+19+ years. The student performance dataset was downloaded from the UCI-MLR 
+and saved as a data frame object in a python interactive notebook. The data 
+was collected from two secondary schools in the Alentejo region of Portugal 
+during the 2005-2006 school year and contained information from a 
+questionnaire and school reports of student grades \cite{cortez09}. 
+The dataset included thirty independent variables consisting of demographic 
 information (e.g. family size, parental education and employment status), 
 social/ emotional attributes (e.g. extracurricular activities, romantic
 relationship, alcohol consumption), school related variables (e.g., weekly 
@@ -547,94 +548,22 @@ time studying, past class failures, absences) related to student
 (see Table 1). Student performance was evaluated on a 20 point scale--as in 
 other European countries (e.g., France)--at three points during the school 
 year (i.e., G1, G2, G3) for two courses, mathematics (n=395) and Portugese 
-(n=649). The target outcome was the final course grade. A binary binary 
-measure of student performance was calculated based on final exam grades 
-(Pass$>$10, Fail$<=$10) for purposes of comparison.
+(n=649). The target outcome was the final course grade. A binary dummy
+variable of student performance was calculated based on the measure of 
+final exam grades (Pass$>$10, Fail$<=$10) for comparison.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Training Test Sets}
+\subsubsection{Model Construction}
 
 In constructing and evaluating models it is important to select a model that 
 performs well not only with the data used to train the model, but also with 
-new observations. The sample dataset was divided using a 70 to 30 percent 
-split to create the training set ($n_1$=731) and testing set ($n_2$=313). 
-The following models were constructed on the training data and evaluated on 
-the test set using R: linear regression, ridge regression, lasso regression, 
-regression trees, random forests regression, gradient boosted regression. 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
- 
-\section{Results}
-
-\subsection{Exploratory Data Analysis}
-
-Table 2 provides a summary of descriptive statistics for selected attributes
-according ). The was no significant difference in the proportion of males 
-and females who passed or failed (Chi-squared test, p=0.20). Student 
-performance did vary however according to past course failures. The 
-proportion of students who received a passing final grade was significantly 
-different for those with no previous course failures compared to those with 
-one or more previous failures (Chi-squared test, p<0.001). 
-
-The proportion of students who received a passing grade was significantly 
-different for students with plans to pursue higher education than 
-students with no plans for higher education (Chi-squared test, p<0.001).
-
-The proportion of pass/fail for students who studied for less than 2 hours 
-per week was also significantly different than students who studied for 
-2 hours or more per week (Chi-squared test, p<0.001). 
-
-and with parents living together in the same 
-household (88%).
-
- 
-
-frequency and percent of respondents who passed or
-failed the final evaluation by demographic characteristics. Sixty-three percent 
-of the student sample passed their courses (61\% male, 65\% female) and 
-approximately 37\% failed their courses (39\% male, 35\% female). The 
-proportion of pass/ fail between males and females was not significant. 
-
- most frequent among individuals who described 
-themselves as single, divorced, or with some college education. The 
-proportion of pain reliever misuse and abuse was highest among individuals 
-between 18 to 25 years of age and decreased among older age groups. Two 
-percent of respondents (n=3433) disclosed ever using heroin (2019 males; 
-1414 females). Among respondents who reported using pain relievers in the 
-past year, the rate of misuse and abuse of pain relievers was twice as 
-large for individuals who reported using heroin than those who had not 
-used heroin (shown in Figure 3), which is consistent with past findings 
-that indicate a connection between MUPO and heroin use 
-\cite{muhuri13, unick13}.
-
-Of the total sample of N=57,146 respondents, 26,736 were male and 30,410 
-female; 6,343 individuals reported misusing pain medication at some point
-(3221 males, 3122 females), but only 956 respondents had used heroin (570 males, 
-386 females). Table 1 shows the raw counts of individual substance use by age 
-group (with the sample size for each age group), listing the ten most commonly 
-used opioid pain medications, self-reported misuse of prescription opioid pain 
-relievers (i.e., PRL Misuse Ever), use of prescription Tranquilizers, Sedatives, 
-and Methadone. In addition, self-reported use of illicit drugs such as heroin, 
-cocaine, amphetamines, methamphetamine, hallucinogens, including LSD and 
-Ecstasy (MDMA). This summary table shows that substance use seems to be highest 
-for individuals between the ages of 18 to 25 and from 35 to 49 years. Of the
-prescription relievers, Hydrocodone use (e.g., `Vicodan`)  was almost double 
-the rate of Oxycodone use (e.g., `Oxycontin`) for each age group, and was 
-significantly higher than any other prescription opioid medication. Use of 
-prescription Fentanyl and Demerol, two powerful opioids, and synthetic morphines 
-such as Oxymorphone and Hydromorphone, was very low. The rate of prescription 
-Tranquilizer use was several orders of magnitude higher than Sedative use or 
-Methadone use. Compared to other illicit drugs such as Cocaine, Amphetamines, 
-Hallucinogens, heroin use was not very common in this sample. The highest rates 
-of heroin use were seen between the ages of 18 to 49, and was lowest for
-respondents in the youngest age group 12 to 17, and individuals over 50. 
-
-
-
-
-
+new observations. The sample was divided using a 70 to 30 percent split to 
+create the training set ($n_1$=731) and testing set ($n_2$=313). The following 
+models were constructed on the training data and evaluated on the test set 
+using R including: multivariate linear regression, ridge regression (L2 
+penalty), lasso regression (L1 Penalty), regression trees, random forests
+regression, and gradient boosted regression. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -653,14 +582,14 @@ respondents in the youngest age group 12 to 17, and individuals over 50.
     Female    & 384 & 65.0\% & & 207 & 35.0\%  \\
     \midrule
     \textbf{Past Course Failures} &  &  &  &  & \\
-    None      & 622 & 72.2\% & &  239 & 27.8\% \\
-    One       & 33  & 27.5\% & &   87 & 72.5\% \\
-    Two       & 5   & 15.2\% & &   28 & 84.8\% \\
-    Three     & 1   &  3.0\% & &   29 & 96.7.0\% \\
+    None            & 622 & 72.2\% & &  239 & 27.8\% \\
+    One             & 33  & 27.5\% & &   87 & 72.5\% \\
+    Two             & 5   & 15.2\% & &   28 & 84.8\% \\
+    Three           & 1   &  3.0\% & &   29 & 96.7.0\% \\
     \midrule
     \textbf{Higher Education Plans} &  &  &  &  & \\
-    Planned   & 640 & 67.0\% & & 315 & 33.0\%  \\
-    No Plans  &  21 & 23.6\% & &  68 & 76.4\%  \\
+    Planned         & 640 & 67.0\% & & 315 & 33.0\%  \\
+    No Plans        &  21 & 23.6\% & &  68 & 76.4\%  \\
     \midrule
     \textbf{Study Time} &  &  &  &  &     \\
     More than 10 hrs. &  45 & 72.6\% & &  17 & 27.4\% \\
@@ -669,19 +598,19 @@ respondents in the youngest age group 12 to 17, and individuals over 50.
     Less than 2 hrs.  & 172 & 54.3\% & & 145 & 45.7\% \\
     \midrule
     \textbf{Course} &  &  &  &  & \\
-    Portugese  & 452 & 69.6\% & & 197 & 30.4\%  \\
-    Math       & 209 & 52.9\% & & 186 & 47.1\%  \\  
+    Portugese       & 452 & 69.6\% & & 197 & 30.4\%  \\
+    Math            & 209 & 52.9\% & & 186 & 47.1\%  \\  
     \midrule
     \textbf{School Support} &  &  &  &  & \\
-    Rural    & 155 & 54.4\% & & 130 & 45.6\%  \\
-    Urban    & 506 & 66.7\% & & 253 & 33.3\%  \\ 
+    Received        &  63 & 52.9\% & &  56 & 47.1\%  \\
+    None            & 598 & 64.6\% & & 327 & 33.4\%  \\ 
     \midrule
     \textbf{Mother's Education} &  &  &  &  & \\
-    Higher Ed     & 235 & 76.8\% & &  71 & 23.2\% \\
-    Secondary     & 143 & 49.5\% & &  95 & 32.9\% \\
-    Grades 5 to 9 & 180 & 75.6\% & & 109 & 45.8\% \\
-    Primary       &  98 & 47.5\% & & 106 & 52.5\% \\
-    None          &   7 & 77.8\% & &   2 & 22.2\% \\
+    Higher Ed       & 235 & 76.8\% & &  71 & 23.2\% \\
+    Secondary       & 143 & 49.5\% & &  95 & 32.9\% \\
+    Grades 5 to 9   & 180 & 75.6\% & & 109 & 45.8\% \\
+    Primary         &  98 & 47.5\% & & 106 & 52.5\% \\
+    None            &   7 & 77.8\% & &   2 & 22.2\% \\
     \midrule    
     \textbf{Romantic Relationship} &  &  &  &  & \\
     No Relationship & 440 & 65.4\% & & 233 & 34.6\%  \\
@@ -693,6 +622,54 @@ respondents in the youngest age group 12 to 17, and individuals over 50.
     \bottomrule
   \end{tabular}
 \end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+\section{Results}
+
+\subsection{Exploratory Data Analysis}
+
+Table 2 provides a summary of descriptive statistics for selected attributes. 
+Chi-squared tests of independence were conducted to examine the proportion of 
+passing and failing students for each attribute. Student performance did not 
+vary significantly by sex (\textit{p}$=$0.20). There was a significant association
+between student performance and previous course failures (\textit{p}$<$0.001). 
+The majority of students with no past failures received a passing course grade,
+whereas the majority of students with one or more failures in previous courses 
+received a failing grade. In addition, student performance was significantly 
+related to students' plans for higher education (\textit{p}$<$0.001). Two-thirds 
+of students who received a passing grade had plans to pursue higher education, 
+but more than three-quarters of students who received failing grades had no 
+plans for higher education. Study time was significantly associated with 
+students performance (\textit{p}$<$0.001). The proportion of passing and failing
+grades for students who studied 5 to 10 hours or more per week was 
+significantly different than students who studied less than 5 hours per week. 
+
+Student performance also varied by course; more than two-thirds of students in 
+the Portugese course received a passing grade, but only slightly more than half 
+of the students in the Math course received a passing final grade. There was 
+a significant relationship between extra educational school support and 
+student performance (\textit{p}$<$0.001). Just over half of students who 
+received extra educational support school received a passing grade compared
+to nearly two-thirds of students who received no extra educational support,
+Mother's education was also related to student performance (\textit{p}$<$0.05). 
+As shown in Table 2, the proportion of passing and failing grades varies by 
+level of mother's education, but the pattern is non-linear. The relationship
+between internet access and student performance was marginally significant 
+(\textit{p}$<$0.06). The majority of students in a relationship or not in a
+relationship received a passing grade, but a slightly larger proportion of 
+students who were not in a relationship received a passing grade compared 
+to students who in a relationship. 
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Proportion of Students with Plans for Higher Education as a 
+  Function of Passing or Failing Final Course Grades}
+  \label{f:Figure1}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -738,7 +715,7 @@ respondents in the youngest age group 12 to 17, and individuals over 50.
 
 Before conducting regression analyses, correlations among the variables were 
 examined. The three course grade variables (G1, G2, G3) were significantly 
-positively intercorrelated (all \textit{p}s<.001). The first and second course 
+positively intercorrelated (all \textit{p}s$<$0.001). The first and second course 
 grade variables were excluded from subsequent analyses to control for 
 multicolinearity. A multivariate linear regression of student performance 
 including 28 independent variables (Table 1) was conducted on the training set.
@@ -790,10 +767,10 @@ for the effect of other independent variables.
 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
   \caption{Ridge Regression Coefficients for Student Performance on Training Set
   with L2 Shrinkage as a function of Lambda}
-  \label{f:Figure1}
+  \label{f:Figure2}
 \end{figure}
 
 
@@ -801,10 +778,10 @@ for the effect of other independent variables.
 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
   \caption{Lasso Regression Coefficients for Student Performance on Test Set 
   with L1 Shrinkage as a function of Lambda}
-  \label{f:Figure2}
+  \label{f:Figure3}
 \end{figure}
 
 
@@ -857,15 +834,15 @@ the prediction (yhat) plotted against data in the test set.
 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
   \caption{Decision Tree Model of Student Performance on Training Set}
-  \label{f:Figure3}
+  \label{f:Figure4}
 \end{figure}
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
   \caption{Feature importance for Random Forests Model on Test Set}
-  \label{f:Figure4}
+  \label{f:Figure5}
 \end{figure}
 
 
