@@ -531,75 +531,37 @@ for predicting new observations, and provides an interpretable solution.
 
 \subsection{The Data}
 
-The student performance dataset was downloaded from the UCI-MLR and saved as 
-a data frame object in a python interactive notebook. The data was collected 
-from two secondary schools in the Alentejo region of Portugal during the 
-2005-2006 school year and contained information from a questionnaire and 
-school reports of student grades \cite{cortez09}. The dataset includes thirty 
-predictor variables consisting of demographic information (e.g. family size, 
-parental education and employment status), social/ emotional attributes 
-(e.g. extracurricular activities, romantic relationship, alcohol consumption), 
-school related variables (e.g., weekly time studying, past class failures, 
-absences) related to student  (see Table 1). Student performance was evaluated 
-on a 20 point scale-as in other European countries (e.g., France)-at three 
-points during the school year (i.e., G1, G2, G3) for two courses, mathematics 
-(n=395) and Portugese (n=649). The target outcome was the final grade. A binary 
-dummy variable was created based on the final exam grades, where scores greater
-than 10 indicated a passing grades and scores at or below 10 indicated a 
-failing grade. 
-
-The sample consisted of 1044 students (56.6\% female, Mage=16.71, SD=1.19). 
-Descriptive statistics according to the binary measure of student achievement 
-(i.e., pass/fail) are provided in Table 2 . The majority of students (73.7\%) 
-were from urban areas, from families larger than three members (70.7\%), and 
-with parents living together in the sam household (88%).
-
-Ten individuals between 20 and 22 were added to the category of 19+ years. 
+The sample consisted of 1044 students (56.6\% female, Mean= 16.71 years, 
+sd=1.19, median=17 years). Age was measured as a categorical variable with 
+(minimum=15, maximum=22); n=10 individuals between 20 and 22 were added to 
+the category of 19+ years. The student performance dataset was downloaded 
+from the UCI-MLR and saved as a data frame object in a python interactive
+notebook. The data was collected from two secondary schools in the Alentejo
+region of Portugal during the 2005-2006 school year and contained information
+from a questionnaire and school reports of student grades \cite{cortez09}. 
+The dataset included thirty predictor variables consisting of demographic 
+information (e.g. family size, parental education and employment status), 
+social/ emotional attributes (e.g. extracurricular activities, romantic
+relationship, alcohol consumption), school related variables (e.g., weekly 
+time studying, past class failures, absences) related to student
+(see Table 1). Student performance was evaluated on a 20 point scale--as in 
+other European countries (e.g., France)--at three points during the school 
+year (i.e., G1, G2, G3) for two courses, mathematics (n=395) and Portugese 
+(n=649). The target outcome was the final course grade. A binary binary 
+measure of student performance was calculated based on final exam grades 
+(Pass$>$10, Fail$<=$10) for purposes of comparison.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Training Test Sets}
 
-The dataset was divided using a 70 to 30 percent split to create the training
-set ($n_1$=731) and testing set ($n_2$=313). The same general procedure 
-was used for constructing and evaluating each classification model: (i) The 
-model was fit to the training set; (ii) New values were predicted on the 
-holdout scores in the testing set; and (iii) Model performance on the test 
-set was evaluated in a confusion matrix. The performance metrics of accuracy, 
-sensitivity or recall, precision, and $f_1$-score were obtained or derived 
-from the confusion matrix. The logistic regression classifier, LDA, QDA, 
-decision trees classifier, random forests classifier, gradient boosted trees 
-were constructed using the caret package. The KNN classifier, support 
-vector classifier (SVC), naive Bayes classifier, and neural network 
-(multilayer perceptron) were built using scikit-learn. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Training Accuracy and Test Set Accuracy}
-
-In constructing and evaluating models it is important to select a model 
-that performs well not only with the data used to train the model, but 
-also with new observations. A standard practice is to divide the sample 
-data into a \emph{training set} and a \emph{testing set} of observations 
-that is set aside and used to evaluate model performance. By convention, 
-approximately 70 to 80 percent of observations are used in the training set 
-and the remaining portion is held in the test set. Two main problems in 
-evaluating model performance are \emph{overfitting} and \emph{underfitting}. 
-In the case of overfitting, a model can have high accuracy on the training 
-set but perform poorly with new data in the test set because the model is 
-overly fit to the training data. By contrast, in the case of underfitting, 
-a simple model may not generalize well to new observations as it does not 
-include all of the features relevant for predicting the target outcome. 
-Increased accuracy on the training set is associated with lower testing set 
-accuracy; conversely, increased accuracy on the testing set is related to a 
-decrease in training set accuracy. The ideal model is one that optimizes test 
-set accuracy while striking a balance between the problems of overfitting 
-and underfitting. 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+In constructing and evaluating models it is important to select a model that 
+performs well not only with the data used to train the model, but also with 
+new observations. The sample dataset was divided using a 70 to 30 percent 
+split to create the training set ($n_1$=731) and testing set ($n_2$=313). 
+The following models were constructed on the training data and evaluated on 
+the test set using R: linear regression, ridge regression, lasso regression, 
+regression trees, random forests regression, gradient boosted regression. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -608,8 +570,26 @@ and underfitting.
 
 \subsection{Exploratory Data Analysis}
 
-Table X provides a summary of descriptives statistics for the main
-predictor variables according to the target outcome 
+Table 2 provides a summary of descriptive statistics for selected attributes
+according ). The was no significant difference in the proportion of males 
+and females who passed or failed (Chi-squared test, p=0.20). Student 
+performance did vary however according to past course failures. The 
+proportion of students who received a passing final grade was significantly 
+different for those with no previous course failures compared to those with 
+one or more previous failures (Chi-squared test, p<0.001). 
+
+The proportion of students who received a passing grade was significantly 
+different for students with plans to pursue higher education than 
+students with no plans for higher education (Chi-squared test, p<0.001).
+
+The proportion of pass/fail for students who studied for less than 2 hours 
+per week was also significantly different than students who studied for 
+2 hours or more per week (Chi-squared test, p<0.001). 
+
+and with parents living together in the same 
+household (88%).
+
+ 
 
 frequency and percent of respondents who passed or
 failed the final evaluation by demographic characteristics. Sixty-three percent 
@@ -628,6 +608,33 @@ large for individuals who reported using heroin than those who had not
 used heroin (shown in Figure 3), which is consistent with past findings 
 that indicate a connection between MUPO and heroin use 
 \cite{muhuri13, unick13}.
+
+Of the total sample of N=57,146 respondents, 26,736 were male and 30,410 
+female; 6,343 individuals reported misusing pain medication at some point
+(3221 males, 3122 females), but only 956 respondents had used heroin (570 males, 
+386 females). Table 1 shows the raw counts of individual substance use by age 
+group (with the sample size for each age group), listing the ten most commonly 
+used opioid pain medications, self-reported misuse of prescription opioid pain 
+relievers (i.e., PRL Misuse Ever), use of prescription Tranquilizers, Sedatives, 
+and Methadone. In addition, self-reported use of illicit drugs such as heroin, 
+cocaine, amphetamines, methamphetamine, hallucinogens, including LSD and 
+Ecstasy (MDMA). This summary table shows that substance use seems to be highest 
+for individuals between the ages of 18 to 25 and from 35 to 49 years. Of the
+prescription relievers, Hydrocodone use (e.g., `Vicodan`)  was almost double 
+the rate of Oxycodone use (e.g., `Oxycontin`) for each age group, and was 
+significantly higher than any other prescription opioid medication. Use of 
+prescription Fentanyl and Demerol, two powerful opioids, and synthetic morphines 
+such as Oxymorphone and Hydromorphone, was very low. The rate of prescription 
+Tranquilizer use was several orders of magnitude higher than Sedative use or 
+Methadone use. Compared to other illicit drugs such as Cocaine, Amphetamines, 
+Hallucinogens, heroin use was not very common in this sample. The highest rates 
+of heroin use were seen between the ages of 18 to 49, and was lowest for
+respondents in the youngest age group 12 to 17, and individuals over 50. 
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
