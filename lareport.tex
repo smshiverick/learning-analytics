@@ -231,11 +231,9 @@ work conflict and course overload (Kizilcec, 2013).
 
 \subsection{Intro 3. Predictive Modeling}
 
-
-Predictive methodologies can lead to a better 
-understanding of student engagement in online education, behavior patterns 
-that predict successful performance, and factors that influence student failure 
-and non-retention. 
+Predictive methodologies can lead to a better understanding of student 
+engagement, characteristics that contribute to successful performance, and 
+potential failure and non-retention. 
 
 Predictive modeling, statistical learning, or machine learning describe a 
 set of procedures and automated processes for extracting knowledge from 
@@ -248,7 +246,9 @@ learning methods can help to reveal underlying structure in the data
 on input provided to a model, when examples of input/output pairs are 
 available in the data \cite{muller17}. A statistical learning model is 
 constructed using a set of observations to train the model and then make
-predictions with new observations. Two main approaches for supervised learning 
+predictions with new observations.
+
+Two main approaches for supervised learning 
 problems are regression and classification. When the target variable
 is continuous or there is continuity in the outcome (e.g. home prices), a 
 regression model tests how a set of features predicts the target variable. 
@@ -274,51 +274,6 @@ final grade report in two courses, mathematics and Portugese language.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table*}[ht]
-  \caption{Variables Included in the Sample Data for Model Construction.}
-  \label{tab:freq}
-  \begin{tabular}{ll}
-    \toprule
-    \textit{Predictor Variables} &    \\
-    \midrule
-    1. Sex (0=Male,1=Female) & SEX  \\  
-    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
-    3. Home address type (0=Rural, 1=Urban) & AREA  \\
-    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
-    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
-    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
-    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
-    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
-    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
-    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
-    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
-    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
-    13. Failures in past classes (numeric: n if 1<=n<3, else 4) & FAILURES  \\
-    14. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
-    15. Family educational support (0=No, 1=Tes) & FAMSUP  \\
-    16, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
-    17. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
-    18. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
-    19. Internet access at home (0=No, 1=Tes) & INTERNET  \\
-    20. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
-    21. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
-    22. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
-    23. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
-    24. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
-    25. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
-    26. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
-    27. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
-    28. Course in mathematics or Portugese (0=Portugese, 1=Math) & COURSES  \\
-    \midrule
-    \textit{Target Variable} &  \\
-    \midrule
-    29. Final course grade (0=Lowest, 20=Highest) & GRADE \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -402,8 +357,7 @@ in bias for a large decrease in variance. A disadvantage of ridge regression
 is that, because it includes all predictors in the model, the penalty shrinks
 the coefficients toward zero, but does not set any of them exactly to zero, 
 which can create a problem for model interpretation with a dataset that
-has a very large number of predictor variables. The Lasso is a relatively
-recent approach to overcome this limitation. 
+has a very large number of predictor variables. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{The Lasso and the L1 Penalty} 
@@ -522,6 +476,53 @@ illicit drug use, (iii) Identify the model that gives the best accuracy
 for predicting new observations, and provides an interpretable solution. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[ht]
+  \caption{Variables in the Student Performance Dataset \cite{cortez08}}
+  \label{tab:freq}
+  \begin{tabular}{ll}
+    \toprule
+    \textit{Predictor Variables} &    \\
+    \midrule
+    1. Sex (0=Male,1=Female) & SEX  \\  
+    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
+    3. Home address type (0=Rural, 1=Urban) & AREA  \\
+    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
+    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
+    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
+    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
+    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
+    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
+    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
+    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
+    13. Failures in previous courses (0=none, 1 $<=$n$<=$3) & FAILURES  \\
+    14. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
+    15. Family educational support (0=No, 1=Tes) & FAMSUP  \\
+    16, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
+    17. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
+    18. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
+    19. Internet access at home (0=No, 1=Tes) & INTERNET  \\
+    20. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
+    21. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
+    22. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
+    23. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
+    24. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
+    25. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
+    26. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
+    27. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
+    28. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
+    29. First term evaluation grade (0=Lowest, 20=Highest) & G1 \\ 
+    30. First term evaluation grade (0=Lowest, 20=Highest) & G1 \\ 
+    \midrule
+    \textit{Target Variable} &  \\
+    \midrule
+    31. Final course grade (0=Lowest, 20=Highest) & G3 \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
 
 
 
@@ -713,7 +714,7 @@ to students who in a relationship.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Linear Regression Model}
+\subsection{Linear Regression Model}
 
 Before conducting regression analyses, the correlations matrix among the 
 variables was examined. The three course grade variables (G1, G2, G3) were 
@@ -796,7 +797,7 @@ for the effect of other independent variables.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Decision Tree Regression}
+\subsection{Decision Tree Regression}
 
 olve stratifying or segmenting the
 predictor space into a number of simple regions, and making a prediction for 
