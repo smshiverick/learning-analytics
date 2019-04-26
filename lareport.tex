@@ -425,7 +425,7 @@ of trees while reducing overfitting. Randomness is introduced into the tree
 building process in two ways: (a) selecting a bootstrap sample of the data, 
 and (b) selecting features in each node branch \cite{muller17,raschka17}. In 
 building the random forest, we first decide how many trees to build (e.g., 10 
-or 100), and the algorithm makes different ransom choices so that each tree is 
+or 100), and the algorithm makes different random choices so that each tree is 
 distinct. The bootstrapping method repeatedly draws random samples of size n 
 from the dataset (with replacement). The decision trees are build on these 
 random samples that are the same size as the original data, with some points 
@@ -433,7 +433,9 @@ missing and some data points repeated. The algorithm also selects a random
 subset of p features, repeated separately each node in the tree, so that 
 each decision at the node branch is made using a different subset of features.
 These two processes help ensure that all of the decision trees in the random
-forest are different. The important parameters for the random forests 
+forest are different. 
+
+The important parameters for the random forests 
 algorithm are the number of sampled data points and the maximum number of 
 features; the algorithm could look at all of the features in the dataset
 or a limited number. A high value for \emph{maximum-features} will produce 
@@ -445,6 +447,23 @@ well without very much parameter tuning or scaling of data. A limitation of
 this approach is that Random forests do not perform well with very high-
 dimensional, data that is sparse data, such as text data.
 
+
+
+Feature importance is a model summary for random forests 
+that rates how important each feature is for classification decisions made 
+in the algorithm. The Gini index provides a measure of node purity which is 
+used to evaluate the quality of a particular split; a small value indicates 
+that a node predominantly contains observations from a single class. 
+Feature importance was measured by the mean decrease in Gini coefficient 
+(Table 8), which indicates how each variable contributes to the homogeneity 
+of the nodes and leaves in the resulting random forest. For classification 
+trees, the splits are chosen so as to minimize entropy or Gini impurity in 
+the resulting subsets. For random forests, variables that result in nodes 
+with higher purity have a higher decrease in the Gini coefficient. Feature 
+importance is computed by aggregating the feature importance over trees in 
+the random forest, and gives non-zero importance to more features than a 
+single tree. A feature may have a low importance value because another feature 
+encodes the same information. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Project Goals} 
@@ -514,8 +533,7 @@ for predicting new observations, and provides an interpretable solution.
     26. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
     27. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
     28. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
-    29. First term evaluation grade (0=Lowest, 20=Highest) & G1 \\ 
-    30. First term evaluation grade (0=Lowest, 20=Highest) & G1 \\ 
+
     \midrule
     \textit{Target Variable} &  \\
     \midrule
@@ -555,17 +573,50 @@ final exam grades (Pass$>$10, Fail$<=$10) for comparison.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Model Construction}
+\subsection{Model Construction}
 
-In constructing and evaluating models it is important to select a model that 
-performs well not only with the data used to train the model, but also with 
-new observations. The sample was divided using a 70 to 30 percent split to 
-create the training set ($n_1$=731) and testing set ($n_2$=313). Regression
-analysis proceeded by first fitting the model to training data and then 
-evaluating the model on the testing set. All regression models were constructed
-in R, including multivariate linear regression, ridge regression (L2 penalty), 
-lasso regression (L1 Penalty), regression trees, random forests regression, and gradient boosted regression \cite{james09}. 
+All models were constructed in R using Rstudio following examples provided 
+in \emph{An Introduction to Statistical Learning with Applications in R} 
+\cite{jamesetal13}. The sample was divided using a 70 to 30 percent split to 
+create the training set ($n_1$=731) and testing set ($n_2$=313). The models
+were first fit to training data and then evaluating on the testing set. 
+Preliminary examination of the dataset revealed three variables (failures in 
+previous courses, first term grade G1, second term grade G2) that were highly 
+correlated with the target outcome, These variables were excluded from 
+subsequent analysis to address the issue of multicolinearity. The regression 
+models were constructed using 27 independent variables listed in Table 1. 
+After constructing an initial regression model on the training set with the
+full set of independent variables, the model was rerun excluding non-
+significant predictors to obtain the final model. This model was evaluated
+on the testing set. Additional predictors that were statistically significant 
+in the testing were entered into a revised regression with the testing set. 
 
+
+\subsubsection{Ridge regression (L2 penalty)} 
+
+
+
+
+\subsubsection{Ridge regression (L2 penalty)} 
+lasso regression (L1 Penalty), 
+
+
+\subsubsection{Ridge regression (L2 penalty)} 
+Decision Tree regression trees, 
+
+
+\subsubsection{Ridge regression (L2 penalty)} 
+random forests regression, and 
+
+The random forest model was fit using 1000 trees, with all of the features 
+considered at each node to determine the randomness of each tree. After a 
+large number of trees is generated, each tree represents a vote for the
+most popular class. It can be difficult to interpret the result of the 
+averaged trees. 
+
+
+\subsubsection{Ridge regression (L2 penalty)} 
+gradient boosted regression
 
 
 
@@ -585,12 +636,6 @@ lasso regression (L1 Penalty), regression trees, random forests regression, and 
     \midrule
     Male      & 277 & 61.1\% & & 176 & 38.9\%  \\
     Female    & 384 & 65.0\% & & 207 & 35.0\%  \\
-    \midrule
-    \textbf{Past Course Failures} &  &  &  &  & \\
-    None            & 622 & 72.2\% & &  239 & 27.8\% \\
-    One             & 33  & 27.5\% & &   87 & 72.5\% \\
-    Two             & 5   & 15.2\% & &   28 & 84.8\% \\
-    Three           & 1   &  3.0\% & &   29 & 96.7.0\% \\
     \midrule
     \textbf{Higher Education Plans} &  &  &  &  & \\
     Planned         & 640 & 67.0\% & & 315 & 33.0\%  \\
@@ -683,29 +728,33 @@ to students who in a relationship.
   \label{tab:freq}
   \begin{tabular}{lllllll}
     \toprule
-                        & Training Set  &           &         & Testing Set &         &          \\
+                        & Training Set      &        &         & Testing Set &         &          \\
     \midrule
-    Variables           & Coefficient   & Est.S.E.  & t-value & Coefficient & Est.S.E.& t-Value  \\
+    Variables           & Coeff, Est.        & S.E.  & t-value & Coeff, Est. & S.E. & t-Value  \\
     \midrule
-    Intercept           &       10.315***    & 0.873 & 11.811 &          7.31***    & 1.473 &  4.96 \\
-    Failures            & \textbf{-1.546}*** & 0.206 & -7.49  & \textbf{-1.574}***  & 0.307 & -5.14 \\
-    Higher Ed           & \textbf{ 1.070}**  & 0.476 &   2.25 & \textbf{ 3.210}***  & 0.752 &  4.27 \\
-    Study Time          & \textbf{ 0.300}**  & 0.151 &   1.98 & \textbf{ 0.780}***  & 0.250 &  3.12 \\
-    Course              & \textbf{-1.918}*** & 0.256 & -7.49  & \textbf{-1.041}**   & 0.427 & -2.44 \\
-    School Support      & \textbf{-1.204}*** & 0.392 & -3.07  & \textbf{-1.347}**   & 0.617 & -2.19 \\
-    Mother's Education  & \textbf{ 0.382}*** & 0.119 &   3.22 & \textbf{ 0.381}*    & 0.203 &  1.88 \\
-    Romantic Relationship& \textbf{-0.633}** & 0.255 &  -2.49 & \textbf{-0.807}*    & 0.441 & -1.83 \\
-    Internet Access     & \textbf{ 0.800}**  & 0.311 &   2.57 &          0.224      & 0.521 &  0.43 \\
-    Family Relations    & \textbf{ 0.249*}   & 0.136 &  1 .83 &         -0.047      & 0.206 & -0.23 \\
-    Going Out           & \textbf{-0.412}*** & 0.109 &  -3.77 &         -0.031      & 0.170 & -0.18 \\
-    Father's Job        & \textbf{ 0.269}*   & 0.139 &   1.92 &         -0.008      & 0.234 & -0.03 \\
-    Health              & \textbf{-0.219}**  & 0.086 &  -2.56 &          0.002      & 0.145 &  0.02 \\
+    Intercept           &       13.289***    & 2.166 &  6.14  &          6.967**    & 1.473 &  4.96 \\
+    Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.285}***  & 0.427 & -2.44 \\
+    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.665}***  & 0.617 & -2.19 \\
+    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 3.695}***  & 0.752 &  4.27 \\
+    Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.039      & 0.170 & -0.18 \\
+    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.216}    & 0.203 &  1.88 \\
+    Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.057      & 0.145 &  0.02 \\
+    Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.870}***  & 0.250 &  3.12 \\
+    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.203      & 0.206 & -0.23 \\
+    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  & \textbf{-0.001}     & 0.307 & -5.14 \\
+    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.046}**   & 0.441 & -1.83 \\
+    Internet Access     & \textbf{ 0.819}*   & 0.321 &  2.55  &          0.131      & 0.521 &  0.43 \\
+    Family Size         & \textbf{-0.500}**  & 0.278 & -1.80  &         -0.616      & 0.206 & -0.23 \\
+    Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.218      & 0.234 & -0.03 \\
+    Area (Rural/Urban)  & not included       &       &        & \textbf{ 1.307}***  & 0.307 & -5.14 \\
+    Father's Education  & not included       &       &        & \textbf{ 0.600}**   & 0.307 & -5.14 \\
+    Daily Alcohol Use   & not included       &       &        & \textbf{-0.504}**   & 0.307 & -5.14 \\
     \midrule
-    \textit{n}          & 730                &       &        &         314         &       &       \\
-    \textit{F-Value}    & \textbf{3.29}***   &       &        & \textbf{3.50}***    &       &       \\
-    \textit{df}         & (12, 717)          &       &        &         (12, 301)   &       &       \\
-    \textit{$R^2$}      &      0.267         &       &        &         0.265       &       &       \\ 
-    \textit{Adj. $R^2$} &      0.255         &       &        &         0.236       &       &       \\
+    \textit{n}          &       730          &       &        &         314         &       &       \\
+    \textit{F-Value}    & \textbf{15.41}***  &       &        & \textbf{6.48}***    &       &       \\
+    \textit{df}         &   (13, 716)        &       &        &      (16, 297)      &       &       \\
+    \textit{$R^2$}      &      0.260         &       &        &         0.259       &       &       \\ 
+    \textit{Adj. $R^2$} &      0.219         &       &        &         0.219       &       &       \\
     \bottomrule
     Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
   \end{tabular}
@@ -720,7 +769,9 @@ Before conducting regression analyses, the correlations matrix among the
 variables was examined. The three course grade variables (G1, G2, G3) were 
 highly inter-correlated (all \textit{p}s$<$0.001). The first and second course 
 grade variables were excluded from subsequent analyses to control for
-multicolinearity. Student performance was regressed on the 28 independent 
+multicolinearity. 
+
+Student performance was regressed on the 28 independent 
 variables with the training set; this regression was statistically significant, 
 \textit{F}(28, 701) = 9.57, \textit{p} $<$ 0.001, ($R^2$ = 0.277, adjusted 
 $R^2$ = 0.248). The regression model was rerun excluding non-significant 
@@ -770,10 +821,29 @@ constant. In addition, a unit change in mother's level of education was
 associated with a 0.38 increase in predicted student performance, controlling 
 for the effect of other independent variables. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Ridge Regression (L2 Penalty)}
 
 
 
-
+The glmnet package was used to fit the ridge regression and lasso models. 
+The glmnet() function does not use model formula language (e.g., `y ~ x`), 
+so the 'x' matrix of predictors and target vector 'y' were passed to the 
+model. The model.matrix() function produced a matrix corresponding to the 
+18 predictors and automatically transformed any qualitative variables into
+dummy variables. The `alpha` parameter in the glmnet() function determines 
+what kind of model is fit: alpha=0 is used to fit ridge regression. 
+By default, the glmnet() function performs ridge regression for an 
+automatically selected range of lambda values (e.g., 100). The glmnet 
+function also standardizes the variables so they are all on the same scale.
+Figure 5 shows the coefficients of predictxors in the ridge regression model 
+with the log values of lambda plotted on the x-axis. As the values of lambda 
+become very large, the coefficient values are shrunk towards zero, but 
+never equal exactly to zero. Cross-validation was used to select the best 
+value of lambda, which was a value around 0. The features with the highest 
+coefficient values were Substance Treatment, followed by Heroin Use, 
+Amphetamine Use, Any Pain Reliever Use, and Cocaine Use. 
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
@@ -783,7 +853,20 @@ for the effect of other independent variables.
 \end{figure}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{The Lasso (L1 Penalty)}
+
+The Lasso model was fit using the glmnet() function with alpha=1. The model
+automatically calculates correlation estimates for a wide range of lambda
+values. Figure 4 show the coefficients plotted as a function of the log
+value of lambda. As the values of lambda becomes very large, many of the 
+coefficients are shrunk to be exactly equal to zero. The associated error 
+of the lasso is very similar to ridge regression, but the lasso has an 
+advantage over ridge regression in that the resulting coefficient estimates 
+are sparse, and only a subset of the predictors are selected in the model. 
+Cross-validation was used to select the best value of lambda, which 
+revealed that a log value of lambda equal to -2.5 in the optimal range.
 
 
 \begin{figure}[!ht]
@@ -793,7 +876,24 @@ for the effect of other independent variables.
   \label{f:Figure3}
 \end{figure}
 
-
+Figure 7 plots the fraction of deviance explained (i.e., variance accounted 
+for) of the coefficients of predictors in the lasso model. As seen in 
+Figure 7, a model that includes five predictors (TREATMENT, HEROINUSE, 
+COCAINE, AMPHETAMINES, PRLANY) accounts for approximately 20 percent of the 
+variability in opioid pain reliever misuse and abuse. Adding additional 
+predictors to the model does not increase the fraction of deviance explained, 
+and could likely result in a model that would overfit the data. In a model 
+with five predictors, substance treatment and heroin use have the highest 
+coefficient values. This reveals a positive relationship between pain reliever 
+misuse, abuse, and drug treatment; respondents who reported misusing and 
+abusing prescription opioid pain relievers also were likely to be or have
+received drug treatment. As hypothesized, the positive relationship between 
+opioid pain relievers misuse and abuse of and heroin use indicates that
+individuals who reported using heroin were also likely to misuse and abuse 
+opioid pain medication. There is additional evidence of modest relationships 
+between illicit drug use, cocaine and amphetamines, and the misuse and abuse 
+of opioid pain relievers. Figure 7 shows that the fraction of deviance
+explained did not improve by adding additional features.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -816,20 +916,17 @@ as a function of alpha, averaging the results for each level of alpha, and
 picking a value of alpha that minimizes the average error. (4) Return the 
 subtree that corresponds to the chosen value of alpha. 
 
+
 The tree library was loaded in R, and a random seed was set for consistency. 
 For this analysis, SUICATT, PRLANY were removed from the opioid dataset. The 
 training set of 40000 rows was constructed based on a 70/30 split. The tree
 was fit to the training data, and the regression returned a tree with 6
 terminal nodes, with a residual mean variance of 3.22. The summary of the 
 regression tree showed that four features were used in the construction of 
-the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. 
-
-Cross-validation 
+the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. Cross-validation 
 was used to determine optimal tree complexity with produces a small reduction
-in the residual mean variance of 3.18. Figure X shows the pruned decision tree 
-for PRLMISAB with the root node of TRTMENT. 
-
-The left branch shows a low 
+in the residual mean variance of 3.18. Figure 8 shows the pruned decision tree 
+for PRLMISAB with the root node of TRTMENT. The left branch shows a low 
 score for treatment, and the feature at the next branch was Cocaine use. 
 The branche to the right indicates a high score on cocaine then lead to 
 the feature heroin use. This shows that respondents with higher scores for 
@@ -842,23 +939,27 @@ The regression tree model was evaluated on the test set; Figure 9 shows
 the prediction (yhat) plotted against data in the test set.
 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
-  \caption{Decision Tree Model of Student Performance on Training Set}
-  \label{f:Figure4}
-\end{figure}
+The tree library was loaded in R, and a random seed was set for consistency. 
+For this analysis, The tree was fit to the training data, and the regression 
+returned a tree with 6 terminal nodes, with a residual mean variance of 3.22. 
+The summary of the regression tree showed that four features were used in the 
+construction of the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
-  \caption{Feature importance for Random Forests Model on Test Set}
-  \label{f:Figure5}
-\end{figure}
+Cross-validation was used to determine optimal tree complexity with produces 
+a small reduction in the residual mean variance of 3.18. Figure X shows the 
+pruned decision tree for PRLMISAB with the root node of TRTMENT. 
 
-
-
-
-
-
+The left branch shows a low 
+score for treatment, and the feature at the next branch was Cocaine use. 
+The branche to the right indicates a high score on cocaine then lead to 
+the feature heroin use. This shows that respondents with higher scores for 
+concaine and heroin use were also more likely to have a high score on 
+opioid pain reliever misuse and abuse. Following the right branch of the 
+root node, for cases with a high scores for treatment, the next decision 
+feature was Tranquilizers, which indicates that for individuals in treatment, 
+tranquilizer use was associated with opioid pain reliever misuse and abuse. 
+The regression tree model was evaluated on the test set; Figure 9 shows 
+the prediction (yhat) plotted against data in the test set.
 
 \subsubsection{Decision Trees} 
 
@@ -882,17 +983,6 @@ of which 0.39 or 39\% reported pain reliever misuse or abuse. This means that
 the proportion of pain reliever misuse and abuse was more than five times as 
 large for individuals who reported using cocaine than those who had not. 
 
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-%  \caption{Decision Tree Model of Student Performance on Training Set}
-%  \label{f:Figure1}
-%\end{figure}
-
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
-%  \caption{Feature importance for Random Forests Model on Test Set}
-%  \label{f:Figure2}
-%\end{figure}
 
 The second split was based on heroin use; the left branch included n=12876 
 respondents who had not used heroin, of which 0.34 or 34\% reported pain
@@ -914,10 +1004,18 @@ n=1725 individuals age 35 and younger, of whom 0.63 or 63\% reported PRLMISAB.
 This findings shows that pain reliever misuse and abuse was much more likely
 among respondents age 35 or younger than among individuals older than 35 years. 
 
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \caption{Decision Tree Model of Student Performance on Training Set}
+  \label{f:Figure4}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Feature Importance for the Random Forests Model}
+\subsubsection{Random Forests Regression}
+
+
+
 
 
 Random forests build many different decision trees, that are decorrelated, and 
@@ -934,26 +1032,9 @@ percent increase in MSE on the left panel, and as a function of the increase
 in node purity on the right panel. 
 
 
-The random forest model was fit using 1000 trees, with all of the features 
-considered at each node to determine the randomness of each tree. After a 
-large number of trees is generated, each tree represents a vote for the
-most popular class. Although random forests perform well with data that has
-imbalanced classes, it can be difficult to interpret the result of the 
-averaged trees. Feature importance is a model summary for random forests 
-that rates how important each feature is for classification decisions made 
-in the algorithm. The Gini index provides a measure of node purity which is 
-used to evaluate the quality of a particular split; a small value indicates 
-that a node predominantly contains observations from a single class. 
-Feature importance was measured by the mean decrease in Gini coefficient 
-(Table 8), which indicates how each variable contributes to the homogeneity 
-of the nodes and leaves in the resulting random forest. For classification 
-trees, the splits are chosen so as to minimize entropy or Gini impurity in 
-the resulting subsets. For random forests, variables that result in nodes 
-with higher purity have a higher decrease in the Gini coefficient. Feature 
-importance is computed by aggregating the feature importance over trees in 
-the random forest, and gives non-zero importance to more features than a 
-single tree. A feature may have a low importance value because another feature 
-encodes the same information. Table 8 provides the feature importance for 
+
+
+Table 8 provides the feature importance for 
 the random forests model sorted by the mean decrease in the Gini coefficient. 
 The algorithm selected cocaine as the most informative feature for predicting 
 pain reliever misuse and abuse. In contrast to the single decision tree, 
@@ -961,6 +1042,14 @@ amphetamines, mental health, and health were selected among the top four most
 important features in the random forests model, followed by tranquilizers, 
 age category, and heroin use, which were ranked as more influential in the 
 single tree (Figure 4). 
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
+  \caption{Feature importance for Random Forests Model on Test Set}
+  \label{f:Figure5}
+\end{figure}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
