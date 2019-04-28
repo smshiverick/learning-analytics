@@ -596,23 +596,25 @@ in the testing were entered into a revised regression with the testing set.
 
 
 
-
-\subsubsection{Ridge regression (L2 penalty)} 
-lasso regression (L1 Penalty), 
-
-
-\subsubsection{Ridge regression (L2 penalty)} 
-Decision Tree regression trees, 
+\subsubsection{Lasso regression (L1 Penalty))} 
+ 
 
 
-\subsubsection{Ridge regression (L2 penalty)} 
-random forests regression, and 
+\subsubsection{Regression Trees} 
+
+
+
+\subsubsection{Random Forests Regression} 
 
 The random forest model was fit using 1000 trees, with all of the features 
 considered at each node to determine the randomness of each tree. After a 
-large number of trees is generated, each tree represents a vote for the
-most popular class. It can be difficult to interpret the result of the 
-averaged trees. 
+large number of trees is generated, it can be difficult to interpret the result 
+of the averaged trees. 
+
+\subsubsection{Gradient Boosted Regression} 
+
+
+
 
 
 \subsubsection{Ridge regression (L2 penalty)} 
@@ -656,43 +658,49 @@ gradient boosted regression
     Primary         &  98 & 47.5\% & & 106 & 52.5\% \\
     None            &   7 & 77.8\% & &   2 & 22.2\% \\
     \midrule    
-    
-    
-    
-    \textbf{Study Time} &  &  &  &  &     \\
+    \textbf{Study Time} &   &  &  &  &     \\
     More than 10 hrs. &  45 & 72.6\% & &  17 & 27.4\% \\
     5 to 10 hrs.      & 123 & 75.9\% & &  39 & 24.1\% \\
     2 to 5 hrs.       & 321 & 63.8\% & & 182 & 36.2\% \\    
     Less than 2 hrs.  & 172 & 54.3\% & & 145 & 45.7\% \\
     \midrule
-    
-
-    
-    \textbf{Romantic Relationship} &  &  &  &  & \\
+    \textbf{Age}    &     &         & &     & \\
+    19 and older    &  31 & 44.3\% & &  39 & 55.7\% \\
+    18 years        & 126 & 56.8\% & &  96 & 43.2\% \\
+    17 years        & 171 & 61.7\% & & 106 & 38.3\% \\
+    16 years        & 194 & 69.0\% & &  87 & 31.0\% \\
+    15 years        & 139 & 71.6\% & &  55 & 28.4\% \\
+    \textbf{Romantic Relation} & &  &  &  & \\
     No Relationship & 440 & 65.4\% & & 233 & 34.6\%  \\
     Relationship    & 221 & 59.6\% & & 150 & 40.4\%  \\    
-    \midrule
-    \textbf{Internet} &  &  &  &  & \\
-    No        & 118 & 54.4\% & &  99 & 45.6\%  \\
-    Yes        & 543 & 65.7\% & & 284 & 34.3\%  \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
+ 
+ 
+ 
+ 
+ 
 \section{Results}
 
 \subsection{Exploratory Data Analysis}
 
 Table 2 provides a summary of descriptive statistics for selected attributes. 
-Chi-squared tests of independence were conducted to examine the proportion of 
-passing and failing students for each attribute. Student performance did not 
-vary significantly by sex (\textit{p}$=$0.20). There was a significant association
-between student performance and previous course failures (\textit{p}$<$0.001). 
-The majority of students with no past failures received a passing course grade,
-whereas the majority of students with one or more failures in previous courses 
-received a failing grade. In addition, student performance was significantly 
+Chi-squared tests of independence were conducted to compare the proportion of 
+passing and failing students by attribute. Student performance did not 
+vary significantly by sex (\textit{p}$=$0.20). 
+
+There was a significant association between student performance and previous 
+course failures (\textit{p}$<$0.001), As shown in Figure 1, the majority of 
+students with no past failures received a passing course grade, whereas the 
+majority of students with one or more failures in previous courses received 
+a failing grade. 
+
+
+In addition, student performance was significantly 
 related to students' plans for higher education (\textit{p}$<$0.001). Two-thirds 
 of students who received a passing grade had plans to pursue higher education, 
 but more than three-quarters of students who received failing grades had no 
