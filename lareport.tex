@@ -275,8 +275,54 @@ final grade report in two courses, mathematics and Portugese language.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[ht]
+  \caption{Variables in the Student Performance Dataset \cite{cortez08}}
+  \label{tab:freq}
+  \begin{tabular}{ll}
+    \toprule
+    \textit{Target Variable} &  \\
+    \midrule
+    Final course grade (0=Lowest, 20=Highest) & G3 \\
+    \midrule
+    \textit{Predictor Variables} &    \\
+    \midrule
+    1. Sex (0=Male,1=Female) & SEX  \\  
+    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
+    3. Home address type (0=Rural, 1=Urban) & AREA  \\
+    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
+    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
+    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
+    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
+    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
+    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
+    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
+    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
+    13. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
+    14. Family educational support (0=No, 1=Tes) & FAMSUP  \\
+    15, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
+    16. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
+    17. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
+    18. Internet access at home (0=No, 1=Tes) & INTERNET  \\
+    19. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
+    20. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
+    21. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
+    22. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
+    23. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
+    24. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
+    25. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
+    26. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
+    27. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
+    
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Supervised Machine Learning} 
 
 Machine learning is a set of procedures and automated processes for extracting 
@@ -286,22 +332,22 @@ specific target variable or outcome of interest. If a given dataset has no
 target outcome, unsupervised learning methods can be used to discover underlying 
 structure in unlabeled data. Supervised learning is used to predict a certain 
 outcome from a given input, when examples of input/output pairs are available 
-\cite{muller17}. The project uses supervised learning to predict prescription 
-opioid misuse and abuse. A machine learning model is constructed from the 
+\cite{muller17}. The project uses supervised learning to predict student 
+performance based on final course grade. A machine learning model is constructed from the 
 training set of input-output pairs, to predict new test data not previously 
 seen by the model. The two major approaches to supervised learning problems are 
 regression and classification. When the target variable to be predicted is 
 continuous, or there is continuity between the outcome (e.g., home values, 
 income), a regression model is used to test the set of features that predict 
 the target variable. If the target is a class label, set of categorical or 
-binary outcomes (e.g., spam or ham, benign or malignant cells), classification 
-is used to predict which class or category label new instances are assigned to.
-Comparing the performance of different learning algorithms can be helpful for 
-selecting the best model for a given problem \cite{raschka17}. Several different 
+binary outcomes, classification is used to predict which class or category label 
+new instances are assigned to. Comparing the performance of different learning 
+algorithms can help determine which model is best for a given problem and 
+the data available \cite{raschka17}. Several different 
 learning algorithms are considered below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{General Linear Model and Regularization} 
+\subsection{General Linear Model} 
 
 Linear models make a prediction using a linear function of the input features
 \cite{muller17}. The standard linear model, given in equation 1, describes the
@@ -322,13 +368,19 @@ squares fit can result in overfitting and poor prediction on test observations.
 For high-dimensional datasets, where p is much greater than n, the least
 squares coefficient estimate breaks down. The simple linear model can be
 improved by using alternative fitting approaches that produce better 
-prediction accuracy and model interpretability \cite{statlearn13}. Three
+prediction accuracy and model interpretability \cite{statlearn13}. 
+
+
+
+Three
 important methods for improving the linear model fit are (a) subset selection,
 (b) dimension reduction, and (c) regularization or shrinkage. This paper 
 focuses on regularization which includes all p predictor features in the
 linear model, but constrains or regularizes the coefficient estimates, 
 effectively by shrinking them towards zero. Regularization reduces variablity 
-which improves test set accuracy with a slight increase in bias. In many cases, 
+which improves test set accuracy with a slight increase in bias. 
+
+In many cases, 
 multiple features in a regression analysis are not associated with the target
 response; shrinking the coefficient estimates of irrelevant features to zero 
 reduces overfitting and provides a more interpretable model. 
@@ -342,11 +394,9 @@ shrinkage penalty (L2) that has the effect of shrinking the coefficient
 estimates towards zero. When the tuning parameter (lambda) is set to zero, 
 the shrinkage penalty has no effect and ridge regression produces the least
 squares estimates. As the tuning parameter lambda increases, values of the 
-ridge regression coefficients approach zero \cite{statlearn13}. Selecting a 
-good value of the tuning parameter lambda is important, as ridge
-regression will produce a different set of coefficients for each new value of 
-lambda. It is important to note that the shrinkage penalty is applied to every
-features, but not to the intercept (beta[0]). The advantage of ridge 
+ridge regression coefficients approach zero \cite{statlearn13}. 
+
+The advantage of ridge 
 regressions over least squares is based on the bias-variance tradeoff. As 
 the tuning parameter lambda increases, flexibility of the ridge regression 
 decreases, leading to decreased variance but increased bias. Ridge regression 
@@ -369,13 +419,10 @@ effect of forcing some of the coefficient estimates to be equal exactly to zero
 when the tuning parameter lambda is sufficiently large \cite{statlearn13}. Thus, 
 the lasso performs variable selection, and produces sparse models based on a 
 subset of the features, which are generally easier to interpret than ridge 
-regression. In this sense, the lasso is similar to best subset selection, as it
-tries to find the set of coefficient estimates that lead to the smallest RSS. 
-Selecting a good value of the tuning parameter lambda is important, and cross-
-validation is used to choose an optimal value. In terms of the bias-variance
-tradeoff, the lasso is qualitatively similar to ridge regression. As lambda
-increases, the variances decreases and bias increases somewhat; however, the
-variance of ridge regression is slightly lower than the variance of the loasso.
+regression. 
+
+
+
 The lasso implicitly assumes that a number of the feature coefficients or
 weight truly equal to zero. In general, the lasso can be expected to perform
 better than ridge regression in situations where a small number of features
@@ -418,13 +465,13 @@ binary and continuous features.
 \subsubsection{Ensemble of Random Trees: Random Forest}
 
 A random forest is a collection of decision trees that are slightly different 
-from the others, which each overfits the data in different ways. The idea 
-behind random forests is that overfitting can be reduced by building many 
-trees and averaging their results. This approach retains the predictive power 
-of trees while reducing overfitting. Randomness is introduced into the tree 
-building process in two ways: (a) selecting a bootstrap sample of the data, 
-and (b) selecting features in each node branch \cite{muller17,raschka17}. In 
-building the random forest, we first decide how many trees to build (e.g., 10 
+from the others, where each tree overfits the data in a different way. This 
+approach reduces overfitting by building many trees and averaging 
+their results. Randomness is introduced into the tree building process by
+drawing a bootstrap sample of the data and selecting features at each node 
+branch \cite{muller17,raschka17}. 
+
+In building the random forest, we first decide how many trees to build (e.g., 10 
 or 100), and the algorithm makes different random choices so that each tree is 
 distinct. The bootstrapping method repeatedly draws random samples of size n 
 from the dataset (with replacement). The decision trees are build on these 
@@ -435,15 +482,7 @@ each decision at the node branch is made using a different subset of features.
 These two processes help ensure that all of the decision trees in the random
 forest are different. 
 
-The important parameters for the random forests 
-algorithm are the number of sampled data points and the maximum number of 
-features; the algorithm could look at all of the features in the dataset
-or a limited number. A high value for \emph{maximum-features} will produce 
-trees in the random forest that are very similar and will fit the data 
-easily based on the most distinctive features, whereas a low value will 
-produce trees that are very different from each other, and reduces over-
-fitting. Random forests is of the most widely used ML algorithms that works 
-well without very much parameter tuning or scaling of data. A limitation of 
+ A limitation of 
 this approach is that Random forests do not perform well with very high-
 dimensional, data that is sparse data, such as text data.
 
@@ -494,53 +533,7 @@ Identify associations between prescription opioid misuse and abuse and
 illicit drug use, (iii) Identify the model that gives the best accuracy
 for predicting new observations, and provides an interpretable solution. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table*}[ht]
-  \caption{Variables in the Student Performance Dataset \cite{cortez08}}
-  \label{tab:freq}
-  \begin{tabular}{ll}
-    \toprule
-    \textit{Predictor Variables} &    \\
-    \midrule
-    1. Sex (0=Male,1=Female) & SEX  \\  
-    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
-    3. Home address type (0=Rural, 1=Urban) & AREA  \\
-    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
-    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
-    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
-    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
-    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
-    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
-    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
-    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
-    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
-    13. Failures in previous courses (0=none, 1 $<=$n$<=$3) & FAILURES  \\
-    14. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
-    15. Family educational support (0=No, 1=Tes) & FAMSUP  \\
-    16, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
-    17. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
-    18. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
-    19. Internet access at home (0=No, 1=Tes) & INTERNET  \\
-    20. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
-    21. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
-    22. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
-    23. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
-    24. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
-    25. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
-    26. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
-    27. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
-    28. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
-
-    \midrule
-    \textit{Target Variable} &  \\
-    \midrule
-    31. Final course grade (0=Lowest, 20=Highest) & G3 \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
 
 
 
@@ -591,31 +584,67 @@ significant predictors to obtain the final model. This model was evaluated
 on the testing set. Additional predictors that were statistically significant 
 in the testing were entered into a revised regression with the testing set. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Ridge regression (L2 penalty)} 
 
+Selecting a 
+good value of the tuning parameter lambda is important, as ridge
+regression will produce a different set of coefficients for each new value of 
+lambda. It is important to note that the shrinkage penalty is applied to every
+features, but not to the intercept (beta[0]). 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Lasso regression (L1 Penalty))} 
  
-
+The lasso is similar to best subset selection as it tries to find the set of 
+coefficient estimates that lead to the smallest RSS. Cross-validation is used to 
+select an optimal value of the tuning parameter lambda. In terms of the bias-variance
+tradeoff, the lasso is qualitatively similar to ridge regression. As lambda
+increases, the variances decreases and bias increases somewhat; however, the
+variance of ridge regression is slightly lower than the variance of the lasso.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Regression Trees} 
 
 
 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Random Forests Regression} 
+
+The important parameters for the random forests 
+algorithm are the number of sampled data points and the maximum number of 
+features; the algorithm could look at all of the features in the dataset
+or a limited number. A high value for \emph{maximum-features} will produce 
+trees in the random forest that are very similar and will fit the data 
+easily based on the most distinctive features, whereas a low value will 
+produce trees that are very different from each other, and reduces over-
+fitting. Random forests is of the most widely used ML algorithms that works 
+well without very much parameter tuning or scaling of data.
+
+
 
 The random forest model was fit using 1000 trees, with all of the features 
 considered at each node to determine the randomness of each tree. After a 
 large number of trees is generated, it can be difficult to interpret the result 
 of the averaged trees. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Gradient Boosted Regression} 
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Ridge regression (L2 penalty)} 
 gradient boosted regression
@@ -623,21 +652,55 @@ gradient boosted regression
 
 
 
+
+
+ 
+ 
+ 
+ 
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{table}
+  \caption{Correlation Matrix of Grade Variables (Target Variable = Grade 3)}
+  \label{tab:freq}
+  \begin{tabular}{llll}
+    \toprule
+    Variable    & Grade 1 & Grade 2 & Grade 3 (Final) \\
+    \midrule
+    Grade 1     &  1,00     & 0.86***   &  0.81***  \\
+    Grade 2     &  0.86***  & 1.00      &  0.91***  \\  
+    Grade 3     &  0.81***  & 0.91***   &  1.00     \\    
+    \bottomrule
+    Note. *** \textit{p}$<$0.01 & & &
+  \end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Proportion of Students with Plans for Higher Education as a 
+  Function of Passing or Failing Final Course Grades}
+  \label{f:Figure1}
+\end{figure} 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+ 
 \begin{table}
   \caption{Summary Table of Student Performance for Final Course Grade 
   (Pass$>=$10, Fail$<$10) by Predictor Variables }
   \label{tab:freq}
   \begin{tabular}{llllll}
     \toprule
-              & Pass & & & Fail & \\
-    Attribute & N & \% &  & N & \% \\
+                    &  Pass & & & Fail & \\
+    Attribute       & N & \% &  & N & \% \\
     \midrule
-    \textbf{Total} & 661 & 63.3\% & & 383 & 36.7\% \\
+    \textbf{Total}  & 661 & 63.3\% & & 383 & 36.7\% \\
     \midrule
-    Male      & 277 & 61.1\% & & 176 & 38.9\%  \\
-    Female    & 384 & 65.0\% & & 207 & 35.0\%  \\
+    Male            & 277 & 61.1\% & & 176 & 38.9\%  \\
+    Female          & 384 & 65.0\% & & 207 & 35.0\%  \\
     \midrule
     \textbf{Course} &  &  &  &  & \\
     Portugese       & 452 & 69.6\% & & 197 & 30.4\%  \\
@@ -679,30 +742,17 @@ gradient boosted regression
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
- 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table}
-  \caption{Correlation Matrix of Grade Variables (Target Variable = G3)}
-  \label{tab:freq}
-  \begin{tabular}{llll}
-    \toprule
-    Variable    & Grade 1 & Grade 2 & Grade 3  \\
-    \midrule
-    Grade 1     &  40   &       &  \\
-    Grade 2     & 221   & 59    &   \\  
-    Grade 3     & 221   & 59    &   \\    
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
- 
- 
- 
 \section{Results}
 
 \subsection{Exploratory Data Analysis}
+
+
+Before conducting regression analyses, the correlations matrix among the 
+variables was examined. The three course grade variables (G1, G2, G3) were 
+highly inter-correlated (all \textit{p}s$<$0.001). The first and second course 
+grade variables were excluded from subsequent analyses to control for
+multicolinearity. 
+
 
 Table 2 provides a summary of descriptive statistics for selected attributes. 
 Chi-squared tests of independence were conducted to compare the proportion of 
@@ -741,14 +791,7 @@ relationship received a passing grade, but a slightly larger proportion of
 students who were not in a relationship received a passing grade compared 
 to students who in a relationship. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-  \caption{Proportion of Students with Plans for Higher Education as a 
-  Function of Passing or Failing Final Course Grades}
-  \label{f:Figure1}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -795,11 +838,7 @@ to students who in a relationship.
 
 \subsection{Linear Regression Model}
 
-Before conducting regression analyses, the correlations matrix among the 
-variables was examined. The three course grade variables (G1, G2, G3) were 
-highly inter-correlated (all \textit{p}s$<$0.001). The first and second course 
-grade variables were excluded from subsequent analyses to control for
-multicolinearity. 
+
 
 Student performance was regressed on the 28 independent 
 variables with the training set; this regression was statistically significant, 
