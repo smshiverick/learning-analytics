@@ -727,16 +727,10 @@ gradient boosted regression
     2 to 5 hrs.       & 321 & 63.8\% & & 182 & 36.2\% \\    
     Less than 2 hrs.  & 172 & 54.3\% & & 145 & 45.7\% \\
     \midrule
-    \textbf{Age}    &     &         & &     & \\
-    19 and older    &  31 & 44.3\% & &  39 & 55.7\% \\
-    18 years        & 126 & 56.8\% & &  96 & 43.2\% \\
-    17 years        & 171 & 61.7\% & & 106 & 38.3\% \\
-    16 years        & 194 & 69.0\% & &  87 & 31.0\% \\
-    15 years        & 139 & 71.6\% & &  55 & 28.4\% \\
-    \midrule
-    \textbf{Romantic Relation} & &  &  &  & \\
-    No Relationship & 440 & 65.4\% & & 233 & 34.6\%  \\
-    Relationship    & 221 & 59.6\% & & 150 & 40.4\%  \\    
+    \textbf{Romantic Relationship} & &  &  &  & \\
+    Yes             & 221 & 59.6\% & & 150 & 40.4\%  \\    
+    None            & 440 & 65.4\% & & 233 & 34.6\%  \\
+    
     \bottomrule
   \end{tabular}
 \end{table}
@@ -788,18 +782,16 @@ than for students who studied less than 5 hours per week. There was a
 significant relationship between Age and student performance 
 (\textit{p}$<$0.001); the majority of students 18 years and younger received
 a passing grade, whereas only a minority of students 19 years and older
-successfully passed. 
-
-
+successfully passed. The relationship between student performance and romantic 
+relationship was marginally significant (\textit{p}$=$0.06). The proportion of 
+students who received a passing grade was slightly higher for students not in 
+a relationship than in a relationship; in other words, a slightly larger
+percent of students in a relationship received a failing grade compared 
+to students not in a relationship. 
 
 The relationship
 between internet access and student performance was marginally significant 
-(\textit{p}$<$0.06). The majority of students in a relationship or not in a
-relationship received a passing grade, but a slightly larger proportion of 
-students who were not in a relationship received a passing grade compared 
-to students who in a relationship. 
-
-
+(\textit{p}$<$0.06).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -813,29 +805,27 @@ to students who in a relationship.
     \midrule
     Variables           & Coeff, Est.        & S.E.  & t-value & Coeff, Est. & S.E. & t-Value  \\
     \midrule
-    Intercept           &       13.289***    & 2.166 &  6.14  &          6.967**    & 1.473 &  4.96 \\
-    Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.285}***  & 0.427 & -2.44 \\
-    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.665}***  & 0.617 & -2.19 \\
-    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 3.695}***  & 0.752 &  4.27 \\
-    Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.039      & 0.170 & -0.18 \\
-    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.216}    & 0.203 &  1.88 \\
-    Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.057      & 0.145 &  0.02 \\
-    Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.870}***  & 0.250 &  3.12 \\
-    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.203      & 0.206 & -0.23 \\
-    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  & \textbf{-0.001}     & 0.307 & -5.14 \\
-    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.046}**   & 0.441 & -1.83 \\
-    Internet Access     & \textbf{ 0.819}*   & 0.321 &  2.55  &          0.131      & 0.521 &  0.43 \\
-    Family Size         & \textbf{-0.500}**  & 0.278 & -1.80  &         -0.616      & 0.206 & -0.23 \\
-    Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.218      & 0.234 & -0.03 \\
-    Area (Rural/Urban)  &           -        &  -    &  -     & \textbf{ 1.307}***  & 0.307 & -5.14 \\
-    Father's Education  &           -        &  -    &  -     & \textbf{ 0.600}**   & 0.307 & -5.14 \\
-    Daily Alcohol Use   &           -        &  -    &  -     & \textbf{-0.504}**   & 0.307 & -5.14 \\
+    Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
+    Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
+    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}***  & 0.647 & -2.29 \\
+    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\
+    Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.097      & 0.178 & -0.55 \\
+    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.473}     & 0.213 &  2.25 \\
+    Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.008      & 0.152 & -0.05 \\
+    Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.893}***  & 0.260 &  3.43 \\
+    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.096      & 0.215 & -0.45 \\
+    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  &         -0.034      & 0.191 & -0.18 \\
+    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.127}**   & 0.461 & -2.45 \\
+    Internet Access     & \textbf{ 0.819}**  & 0.321 &  2.55  &          0.420      & 0.542 &  0.77 \\
+    Family Size         & \textbf{-0.500}*   & 0.278 & -1.80  &         -0.594      & 0.458 & -1.30 \\
+    Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.050      & 0.245 & -0.20 \\
+
     \midrule
     \textit{n}          &       730          &       &        &         314         &       &       \\
-    \textit{F-Value}    & \textbf{15.41}***  &       &        & \textbf{6.48}***    &       &       \\
-    \textit{df}         &   (13, 716)        &       &        &      (16, 297)      &       &       \\
-    \textit{$R^2$}      &      0.260         &       &        &         0.259       &       &       \\ 
-    \textit{Adj. $R^2$} &      0.219         &       &        &         0.219       &       &       \\
+    \textit{F-Value}    & \textbf{15.41}***  &       &        & \textbf{5.96}***    &       &       \\
+    \textit{df}         &   (13, 716)        &       &        &      (13, 300)      &       &       \\
+    \textit{$R^2$}      &      0.219         &       &        &         0.205       &       &       \\ 
+    \textit{Adj. $R^2$} &      0.204         &       &        &         0.171       &       &       \\
     \bottomrule
     Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
   \end{tabular}
