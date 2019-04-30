@@ -275,53 +275,7 @@ final grade report in two courses, mathematics and Portugese language.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{table*}[ht]
-  \caption{Variables in the Student Performance Dataset \cite{cortez08}}
-  \label{tab:freq}
-  \begin{tabular}{ll}
-    \toprule
-    \textit{Target Variable} &  \\
-    \midrule
-    Final course grade (0=Lowest, 20=Highest) & G3 \\
-    \midrule
-    \textit{Predictor Variables} &    \\
-    \midrule
-    1. Sex (0=Male,1=Female) & SEX  \\  
-    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
-    3. Home address type (0=Rural, 1=Urban) & AREA  \\
-    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
-    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
-    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
-    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
-    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
-    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
-    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
-    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
-    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
-    13. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
-    14. Family educational support (0=No, 1=Tes) & FAMSUP  \\
-    15, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
-    16. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
-    17. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
-    18. Internet access at home (0=No, 1=Tes) & INTERNET  \\
-    19. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
-    20. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
-    21. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
-    22. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
-    23. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
-    24. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
-    25. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
-    26. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
-    27. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
-    
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Supervised Machine Learning} 
 
@@ -656,23 +610,69 @@ gradient boosted regression
 
  
  
- 
- 
- 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}[ht]
+  \caption{Variables in the Student Performance Dataset \cite{cortez08}}
+  \label{tab:freq}
+  \begin{tabular}{ll}
+    \toprule
+    \textit{Target Variable} &  \\
+    \midrule
+    Final course grade (0=Lowest, 20=Highest) & G3 \\
+    \midrule
+    \textit{Predictor Variables} &    \\
+    \midrule
+    1. Sex (0=Male,1=Female) & SEX  \\  
+    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
+    3. Home address type (0=Rural, 1=Urban) & AREA  \\
+    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
+    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
+    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
+    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
+    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
+    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
+    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
+    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
+    13. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
+    14. Family educational support (0=No, 1=Tes) & FAMSUP  \\
+    15, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
+    16. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
+    17. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
+    18. Internet access at home (0=No, 1=Tes) & INTERNET  \\
+    19. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
+    20. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
+    21. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
+    22. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
+    23. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
+    24. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
+    25. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
+    26. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
+    27. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
+    
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \begin{table}
-  \caption{Correlation Matrix of Grade Variables (Target Variable = Grade 3)}
+  \caption{Correlation Matrix of Previous Course Failures and Course Grade 
+  Variables}
   \label{tab:freq}
-  \begin{tabular}{llll}
+  \begin{tabular}{lllll}
     \toprule
-    Variable    & Grade 1 & Grade 2 & Grade 3 (Final) \\
+    Variable    & Failures  & Grade 1 & Grade 2 & Grade 3  \\
     \midrule
-    Grade 1     &  1,00     & 0.86***   &  0.81***  \\
-    Grade 2     &  0.86***  & 1.00      &  0.91***  \\  
-    Grade 3     &  0.81***  & 0.91***   &  1.00     \\    
+    Failures    &  1,00     &  0.37***  & 0.38***   &  0.38***  \\
+    Grade 1     &  0.37***  &  1,00     & 0.86***   &  0.81***  \\
+    Grade 2     &  0.38***  &  0.86***  & 1.00      &  0.91***  \\  
+    Grade 3     &  0.38***  &  0.81***  & 0.91***   &  1.00     \\    
     \bottomrule
-    Note. *** \textit{p}$<$0.01 & & &
+    Note. *** \textit{p}$<$0.001 & & &
   \end{tabular}
 \end{table}
 
@@ -733,6 +733,7 @@ gradient boosted regression
     17 years        & 171 & 61.7\% & & 106 & 38.3\% \\
     16 years        & 194 & 69.0\% & &  87 & 31.0\% \\
     15 years        & 139 & 71.6\% & &  55 & 28.4\% \\
+    \midrule
     \textbf{Romantic Relation} & &  &  &  & \\
     No Relationship & 440 & 65.4\% & & 233 & 34.6\%  \\
     Relationship    & 221 & 59.6\% & & 150 & 40.4\%  \\    
@@ -746,45 +747,52 @@ gradient boosted regression
 
 \subsection{Exploratory Data Analysis}
 
+As shown in Table 2, the three course grade variables (G1, G2, G3) were highly 
+inter-correlated and significantly correlated with previous course failures 
+(all \textit{p}s$<$0.001).  A chi-squared test of independence showed that 
+the proportion of passing and failing final grades (G3) varied according to 
+previous course failures. (\textit{p}$=$0.001)(see Figure 1). The majority of 
+students with no past failures successfully passed their courses, whereas 
+only a minority of students with one or more past course failures successfully
+passed their courses. first and second course grade variables and past course
+failures were not included in the regression analyses described below to 
+control for the issue of multicolinearity.
 
-Before conducting regression analyses, the correlations matrix among the 
-variables was examined. The three course grade variables (G1, G2, G3) were 
-highly inter-correlated (all \textit{p}s$<$0.001). The first and second course 
-grade variables were excluded from subsequent analyses to control for
-multicolinearity. 
+Table 3 provides summary statistics for selected attributes. Chi-squared tests 
+of independence were used to compare the proportion of passing and failing 
+students by attribute. Performance did not vary by sex (\textit{p}$=$0.20); 
+approximately equal proportions of males and females received passing grades. 
+However, student performance did vary significantly by course topic 
+(\textit{p}$<$0.001); more than two-thirds of students in the Portugese course 
+received a passing grade, but only slightly more than half of students in the 
+Math course successfully passed. Extra educational school support was also 
+significantly related to student performance (\textit{p}$<$0.001). Just over 
+half of students who received extra educational support school received a 
+passing grade compared to nearly two-thirds of students who did not receive 
+extra support. In addition, there was a significant relationship between 
+performance and students' plans for higher education (\textit{p}$<$0.001). 
+Two-thirds of students who received a passing grade had plans to pursue higher 
+education, whereas less than one-quarter of students with no plans for 
+higher education passed their courses. In other words, of those students with 
+plans for higher education, one-third received a failing grade; by contrast,
+the majority of students who failed had no plans to pursue higher education. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+The proportion of passing and failing grades varied by level of mother's 
+education (\textit{p}$<$0.05), but as shown in Table 2, the relationship is 
+non-linear. Study time was significantly associated with student performance 
+(\textit{p}$<$0.001). The proportion of passing and failing grades was 
+significantly different for students who studied 5 hours or more per week 
+than for students who studied less than 5 hours per week. There was a 
+significant relationship between Age and student performance 
+(\textit{p}$<$0.001); the majority of students 18 years and younger received
+a passing grade, whereas only a minority of students 19 years and older
+successfully passed. 
 
 
-Table 2 provides a summary of descriptive statistics for selected attributes. 
-Chi-squared tests of independence were conducted to compare the proportion of 
-passing and failing students by attribute. Student performance did not 
-vary significantly by sex (\textit{p}$=$0.20). 
 
-There was a significant association between student performance and previous 
-course failures (\textit{p}$<$0.001), As shown in Figure 1, the majority of 
-students with no past failures received a passing course grade, whereas the 
-majority of students with one or more failures in previous courses received 
-a failing grade. 
-
-
-In addition, student performance was significantly 
-related to students' plans for higher education (\textit{p}$<$0.001). Two-thirds 
-of students who received a passing grade had plans to pursue higher education, 
-but more than three-quarters of students who received failing grades had no 
-plans for higher education. Study time was significantly associated with 
-students performance (\textit{p}$<$0.001). The proportion of passing and failing
-grades for students who studied 5 to 10 hours or more per week was 
-significantly different than students who studied less than 5 hours per week. 
-
-Student performance also varied by course; more than two-thirds of students in 
-the Portugese course received a passing grade, but only slightly more than half 
-of the students in the Math course received a passing final grade. There was 
-a significant relationship between extra educational school support and 
-student performance (\textit{p}$<$0.001). Just over half of students who 
-received extra educational support school received a passing grade compared
-to nearly two-thirds of students who received no extra educational support,
-Mother's education was also related to student performance (\textit{p}$<$0.05). 
-As shown in Table 2, the proportion of passing and failing grades varies by 
-level of mother's education, but the pattern is non-linear. The relationship
+The relationship
 between internet access and student performance was marginally significant 
 (\textit{p}$<$0.06). The majority of students in a relationship or not in a
 relationship received a passing grade, but a slightly larger proportion of 
@@ -837,6 +845,7 @@ to students who in a relationship.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Linear Regression Model}
+
 
 
 
