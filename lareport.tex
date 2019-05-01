@@ -803,7 +803,7 @@ between internet access and student performance was marginally significant
     \toprule
                         & Training Set      &        &         & Testing Set &         &          \\
     \midrule
-    Variables           & Coeff, Est.        & S.E.  & t-value & Coeff, Est. & S.E. & t-Value  \\
+    Variables           & Coefficient        & S.E.  & t-value & Coefficient & S.E. & t-Value  \\
     \midrule
     Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
     Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
@@ -1142,39 +1142,38 @@ features of the gradient boosting regression as a horizontal barplot.
   \label{tab:freq}
   \begin{tabular}{llll}
     \toprule
-            & Random & Forests & Gradient Boosted \\    
+            & Random  Forests & & Gradient Boosted \\    
     \midrule   
     
-    Predictor Variables & Inc. MSE & Node Purity & Rel. Imp. \\    
+    Predictor Variables & \% Inc. MSE & & Rel. Imp. \\    
     \midrule
-    Failures            & 25.89 & 896.51 &  7.69 \\    
-    Absences            &  9.08 & 568.34 & 13.66 \\
-    Mother's Job        &  7.83 & 449.28 &  4.94 \\   
-    Going Out           &  4.02 & 426.00 &  5.68 \\
-    Age                 &  9.00 & 407.77 &  4.65 \\
-    Mother's Education  & 11.35 & 383.32 &  3.79 \\
-    Free Time           &  7.49 & 382.20 &  5.29 \\
-    Father's Job        &  7.32 & 367.77 &  5.21 \\       
-    Study Time          &  5.99 & 346.16 &  4.23 \\       
-    Courses             &  7.25 & 344.43 &  5.55 \\ 
-    Health              &  1.56 & 341.38 &  4.85 \\ 
-    Weekly Alcohol      &  6.61 & 335.49 &  3.64 \\
-    Father's Education  &  6.08 & 334.26 &  3.32 \\    
-    Family Relations    &  4.39 & 314.83 &  3.43 \\    
-    Daily Alcohol       &  6.32 & 258.02 &  2.30 \\
-    Higher Education    & 13.65 & 251.74 &  1.63 \\   
-    Travel Time         &  1.60 & 196.75 &  1.80 \\       
-    Student Guardian    &  3.79 & 193.83 &  1.85 \\
-    Sex                 &  4.87 & 169.87 &  2.05 \\
-    Paid extra courses  &  5.34 & 165.76 &  1.69 \\
-    Rom. Relationship   &  3.29 & 160.21 &  2.10 \\
-    Area                &  2.83 & 153.56 &  1.44 \\
-    Family Support      &  3.53 & 151.48 &  1.89 \\
-    Extra Activities    &  2.73 & 149.95 &  1.81 \\
-    Family Size         &  7.00 & 148.53 &  1.59 \\
-    School Support      & 10.88 & 146.88 &  2.22 \\    
-    Internet Access     &  4.17 & 128.53 &  1.20 \\
-    Parents             &  1.40 &  83.33 &  0.52 \\
+    Courses             &  1.429 &   &  7.156 \\ 
+    Mother's Education  &  1.109 &   &  5.246 \\
+    Absences            &  0.812 &   & 14.611 \\
+    Age                 &  0.649 &   &  7.103 \\
+    Study Time          &  0.514 &   &  4.573 \\     
+    Go Out Friends      &  0.508 &   &  5.816 \\
+    Weekly Alcohol      &  0.396 &   &  4.360 \\
+    Higher Education    &  0.370 &   &  1.150 \\   
+    Paid Extra Courses  &  0.361 &   &  1.609 \\
+    Daily Alcohol       &  0.284 &   &  2.582 \\
+    Sex                 &  0.264 &   &  2.209 \\
+    Mother's Job        &  0.252 &   &  2.289 \\   
+    Health              &  0.230 &   &  5.007 \\ 
+    Father's Education  &  0.220 &   &  3.494 \\   
+    Extra Activities    &  0.201 &   &  2.985 \\
+    Romantic Relation   &  0.182 &   &  2.747 \\
+    Father's Job        &  0.180 &   &  4.016 \\   
+    Free Time           &  0.171 &   &  5.164 \\
+    School Support      &  0.158 &   &  1.201 \\    
+    Guardian            &  0.143 &   &  2.135 \\
+    Area                &  0.131 &   &  1.375 \\
+    Internet Access     &  0.112 &   &  1.716 \\    
+    Family Support      &  0.082 &   &  1.837 \\
+    Family Size         &  0.077 &   &  1.898 \\
+    Family Relations    &  0.041 &   &  3.011 \\
+    Parents             &  0.012 &   &  0.725 \\
+    Travel Time         & -0.006 &   &  2.987 \\  
     \bottomrule
   \end{tabular}
 \end{table}
