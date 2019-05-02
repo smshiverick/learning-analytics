@@ -709,13 +709,13 @@ gradient boosted regression
  
  
 \begin{table}
-  \caption{Summary Table of Student Performance for Final Course Grade 
-  (Pass$>=$10, Fail$<$10) by Predictor Variables }
+  \caption{Summary Table of Student Performance by Final Course Grade 
+  (Pass$>=$10, Fail$<$10) for Selected Variables}
   \label{tab:freq}
   \begin{tabular}{llllll}
     \toprule
-                    &  Pass & & & Fail & \\
-    Attribute       & N & \% &  & N & \% \\
+                    &  \textbf{Pass} & & & \textbf{Fail} & \\
+    Attribute & \textit{N} & \% &  & N & \% \\
     \midrule
     \textbf{Total}  & 661 & 63.3\% & & 383 & 36.7\% \\
     \midrule
@@ -750,7 +750,10 @@ gradient boosted regression
     \textbf{Romantic Relationship} & &  &  &  & \\
     Yes             & 221 & 59.6\% & & 150 & 40.4\%  \\    
     None            & 440 & 65.4\% & & 233 & 34.6\%  \\
-    
+    \midrule
+    \textbf{Internet Access} & &  &  &  & \\
+    Yes             & 543 & 65.7\% & & 284 & 34.3\%  \\    
+    None            & 118 & 54.4\% & &  99 & 45.6\%  \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -761,56 +764,52 @@ gradient boosted regression
 
 \subsection{Exploratory Data Analysis}
 
-Preliminary examination of the data revealed that significant correlations 
-between previous course failures and the course evaluation variables (Table 2).  
-A chi-squared test of independence showed the proportion of passing and 
-failing final grades (G3) was significantly related to previous course failures 
-(\textit{p}$=$0.001)(see Figure 1). The majority of students with no past 
-failures successfully passed their courses, but only a minority of students 
-with one or more previous failures received a passing grade. Past course
-failures and the first and second course grade variables (Grade 1, Grade 2)
-were not included in the regression analyses to address multicolinearity.
+Preliminary examination of the data revealed significant correlations 
+between previous course failures and the course evaluation variables,
+Grade 1, Grade 2, and Grade 3 (Table 2). A chi-squared test of independence 
+showed the proportion of passing and failing final grades (G3) was 
+significantly related to previous course failures (\textit{p}$=$0.001)
+(Figure 1). The majority of students with no past failures successfully 
+passed their courses, but only a minority of students with one or more 
+previous failures received a passing grade. Past course failures and 
+the first two course grades (i.e., Grade 1, Grade 2) were not included 
+in the regression models to address the issue of multicolinearity.
 
 Table 3 provides summary statistics for selected attributes. Chi-squared tests 
 of independence were used to compare the proportion of passing and failing 
-students by attribute. Performance did not vary by sex (\textit{p}$=$0.20); 
-approximately equal proportions of males and females received passing grades. 
-However, student performance did vary significantly by course topic 
-(\textit{p}$<$0.001); more than two-thirds of students in the Portugese course 
-received a passing grade, but only slightly more than half of students in the 
-Math course successfully passed. Extra educational school support was also 
-significantly related to student performance (\textit{p}$<$0.001). Just over 
-half of students who received extra educational support school received a 
-passing grade compared to nearly two-thirds of students who did not receive 
-extra support. In addition, there was a significant relationship between 
-performance and students' plans for higher education (\textit{p}$<$0.001). 
-Two-thirds of students who received a passing grade had plans to pursue higher 
-education, whereas less than one-quarter of students with no plans for 
-higher education passed their courses. In other words, of those students with 
-plans for higher education, one-third received a failing grade; by contrast,
-the majority of students who failed had no plans to pursue higher education. 
+students by attribute. Performance did not vary by sex (chi-squared 
+\textit{p}$=$0.20); however, student performance did vary significantly by 
+course topic (chi-squared \textit{p}$<$0.001); more than two-thirds of students 
+in the Portugese course received a passing grade, but only slightly more than 
+half of students in the Math course successfully passed. Extra educational 
+school support was also significantly related to student performance 
+(chi-squared \textit{p}$<$0.001). Just over half of students who received 
+extra educational support school received a passing grade compared to nearly 
+two-thirds of students who did not receive extra support. In addition, there 
+was a significant relationship between performance and students' plans for 
+higher education (chi-squared \textit{p}$<$0.001). Two-thirds of students 
+who received a passing grade had plans to pursue higher education, whereas 
+less than one-quarter of students with no plans for higher education passed 
+their courses. In other words, of students with plans for higher education, 
+one-third received a failing grade; by contrast, the majority of students who 
+failed had no plans to pursue higher education. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 The proportion of passing and failing grades varied by level of mother's 
-education (\textit{p}$<$0.05), but as shown in Table 2, the relationship is 
+education (chi-squared \textit{p}$<$0.05); however, the relationship was 
 non-linear. Study time was significantly associated with student performance 
-(\textit{p}$<$0.001). The proportion of passing and failing grades was 
-significantly different for students who studied 5 hours or more per week 
-than for students who studied less than 5 hours per week. There was a 
-significant relationship between Age and student performance 
-(\textit{p}$<$0.001); the majority of students 18 years and younger received
-a passing grade, whereas only a minority of students 19 years and older
-successfully passed. The relationship between student performance and romantic 
-relationship was marginally significant (\textit{p}$=$0.06). The proportion of 
-students who received a passing grade was slightly higher for students not in 
-a relationship than in a relationship; in other words, a slightly larger
-percent of students in a relationship received a failing grade compared 
-to students not in a relationship. 
-
-The relationship
-between internet access and student performance was marginally significant 
-(\textit{p}$<$0.06).
+(chi-squared \textit{p}$<$0.001). The proportion of passing and failing 
+grades significantly different for students who studied 5 hours or more 
+per week compared to students who studied less than 5 hours per week. 
+The association between student performance and romantic relationships
+was marginally significant (chi-squared \textit{p}$<$0.06). The proportion 
+of passing and failing grades was significantly different for students in 
+a relationship than students who were not in a relationship. The relationship 
+between internet access and student performance was also marginally significant 
+(chi-squared \textit{p}$<$0.06). The proportion of passing and failing grades 
+was significantly different for students with access to the internet at home
+compared to students without home internet access.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -826,10 +825,10 @@ between internet access and student performance was marginally significant
     \midrule
     Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
     Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
-    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}***  & 0.647 & -2.29 \\
+    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}**   & 0.647 & -2.29 \\
     Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\
     Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.097      & 0.178 & -0.55 \\
-    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.473}     & 0.213 &  2.25 \\
+    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.473}**   & 0.213 &  2.25 \\
     Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.008      & 0.152 & -0.05 \\
     Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.893}***  & 0.260 &  3.43 \\
     Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.096      & 0.215 & -0.45 \\
@@ -838,13 +837,13 @@ between internet access and student performance was marginally significant
     Internet Access     & \textbf{ 0.819}**  & 0.321 &  2.55  &          0.420      & 0.542 &  0.77 \\
     Family Size         & \textbf{-0.500}*   & 0.278 & -1.80  &         -0.594      & 0.458 & -1.30 \\
     Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.050      & 0.245 & -0.20 \\
-
     \midrule
     \textit{n}          &       730          &       &        &         314         &       &       \\
     \textit{F-Value}    & \textbf{15.41}***  &       &        & \textbf{5.96}***    &       &       \\
     \textit{df}         &   (13, 716)        &       &        &      (13, 300)      &       &       \\
     \textit{$R^2$}      &      0.219         &       &        &         0.205       &       &       \\ 
     \textit{Adj. $R^2$} &      0.204         &       &        &         0.171       &       &       \\
+    \textit{Resid. S.E} &      3.396         &       &        &         3.643       &       &       \\
     \bottomrule
     Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
   \end{tabular}
@@ -855,21 +854,18 @@ between internet access and student performance was marginally significant
 
 \subsection{Linear Regression Model}
 
-
-
-
-Student performance was regressed on the 28 independent 
-variables with the training set; this regression was statistically significant, 
-\textit{F}(28, 701) = 9.57, \textit{p} $<$ 0.001, ($R^2$ = 0.277, adjusted 
-$R^2$ = 0.248). The regression model was rerun excluding non-significant 
-predictors and this model was also statistically significant,
-\textit{F}(12, 717) = 21.79, \textit{p} $<$ 0.001, ($R^2$ = 0.267, adjusted 
-$R^2$ = 0.255). An anova revealed no significant difference between the two 
-models (\textit{F}$<$ 1.0, \textit{p} $=$ 0.91) and the simpler model was 
-retained as more parsimonious. The final model was evaluated on the testing 
-set and yielded a statistically significant relationship between student 
-performance and the independent variables, \textit{F}(12, 301) = 9.05, 
-\textit{p} $<$ 0.001, ($R^2$ = 0.265, adjusted $R^2$ = 0.236). 
+Student performance was regressed on the 27 independent variables (Table 1) 
+with the training set; this regression was statistically significant, 
+\textit{F}(27, 702) = 7.62, \textit{p} $<$ 0.001, ($R^2$ = 0.227, adjusted 
+$R^2$ = 0.197). The regression model was rerun excluding non-significant 
+predictors and this model was also significant, \textit{F}(12, 717) = 21.79, 
+\textit{p} $<$ 0.001, ($R^2$ = 0.267, adjusted $R^2$ = 0.255). An anova test
+revealed no significant difference between the two models (\textit{F}$<$ 1.0, 
+\textit{p} $=$ 0.91) and the simpler model was retained as more parsimonious. 
+The final model was evaluated on the testing set and yielded a statistically 
+significant relationship between student performance and the independent 
+variables, \textit{F}(13, 300) = 5.96, \textit{p} $<$ 0.001, ($R^2$ = 0.205, 
+adjusted $R^2$ = 0.171). 
 
 Table 3 provides the coefficient estimates, standard errors, and t-values of 
 predictor variables on the final model for the training and testing sets.
