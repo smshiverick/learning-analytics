@@ -142,7 +142,7 @@ similarity weights \cite{bakerYucef09}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Intro 2. Student / Student Behavior Modeling}.
+\subsubsection{Student / Student Behavior Modeling}.
 Modeling student characteristics takes a descriptive approach to reveal factors 
 for learning such as domain knowledge, 
 motivation, metacognition, attitudes, affect, metacognitive states, learning 
@@ -162,11 +162,11 @@ data, may rely on human judgment, can reveal deeper concepts about learning,
 such as inferring reasoning strategies from interaction with a cognitive tutor 
 \cite{Fournier11}. Predictive approaches are used also for modeling student 
 behavior and assessing functionality in intelligent tutoring systems (ITS)
-\cote{penaayala14}. 
+\cite{penaayala14}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Predicting Performance} 
+\subsubsection{Predicting Performance} 
 
 The Course Signals program developed at Purdue University 
 is one of the most well known platforms for predicting students at-risk of 
@@ -202,13 +202,17 @@ models, decision trees, machine learning algorithms, and neural networks
 quizzes successfully passed is the most influential predictor of final grades, 
 in addition to engagement, participation in course activities, number of posts, 
 frequency of events, and time spent in the course LMS 
-\cite{Papamitsiou14, romerozaldivar12}. Affect and motivation are also 
+\cite{Papamitsiou14, romerozaldivar12}. 
+
+Affect and motivation are also 
 influential for predicting performance; notably, concentration and 
 frustration are significantly correlated with final grades, but boredom and 
 confusion were negatively related to performance (Pardos et al., 2013). 
 Using data-driven machine learning algorithms on student profiles and data 
 about activity within the LMS can facilitate early detection of at-risk 
-students \cite{Dekkar09}. Furthermore, students’ sense of belonging in a 
+students \cite{Dekkar09}. 
+
+Furthermore, students’ sense of belonging in a 
 course is essential for engagement and improved satisfaction which can 
 reduces student dropout.measures of student satisfaction can vary according 
 to their perceived usefulness or efficiency of training courses. The most 
@@ -217,7 +221,7 @@ work conflict and course overload (Kizilcec, 2013).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Intro 3. Predictive Modeling}
+\subsection{Predictive Modeling}
 
 Predictive methodologies can lead to a better understanding of student 
 engagement, characteristics that contribute to successful performance, and 
@@ -248,17 +252,7 @@ reliever misuse and abuse as a binary outcome.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
-Ω
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\subsection{Supervised Learning} 
+\subsubsection{Supervised Learning}
 
 The two main branches of machine learning supervised learning and unsupervised 
 learning. 
@@ -288,7 +282,7 @@ the data available \cite{raschka17}. Several different
 learning algorithms are considered below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{General Linear Model} 
+\subsubsection{General Linear Model} 
 
 Linear models make a prediction using a linear function of the input features
 \cite{muller17}. The standard linear model, given in equation 1, describes the
@@ -311,7 +305,7 @@ squares coefficient estimate breaks down. The simple linear model can be
 improved by using alternative fitting approaches that produce better 
 prediction accuracy and model interpretability \cite{statlearn13}. 
 
-\subsubsection{Regularization} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Three
 important methods for improving the linear model fit are (a) subset selection,
@@ -328,8 +322,8 @@ multiple features in a regression analysis are not associated with the target
 response; shrinking the coefficient estimates of irrelevant features to zero 
 reduces overfitting and provides a more interpretable model. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Ridge Regression and the L2 Penalty} 
+
+\subsubsection{Regularization and Ridge Regression: L2 Penalty} 
 
 Similar to least squares, ridge regression seeks coefficient estimates that
 fit the data well by reducing error, but ridge regression introduces a 
@@ -353,7 +347,7 @@ which can create a problem for model interpretation with a dataset that
 has a very large number of predictor variables. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{The Lasso and the L1 Penalty} 
+\subsubsection{Regularization and the Lasso: L1 Penalty} 
 
 The lasso and ridge regression have similar formulations, but the lasso has a 
 major advantage over ridge regression as it produces simpler, more interpretable
@@ -363,7 +357,6 @@ when the tuning parameter lambda is sufficiently large \cite{statlearn13}. Thus,
 the lasso performs variable selection, and produces sparse models based on a 
 subset of the features, which are generally easier to interpret than ridge 
 regression. 
-
 
 
 The lasso implicitly assumes that a number of the feature coefficients or
@@ -379,7 +372,12 @@ can be used to determine which approach is better for a given problem.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Regression Trees}
+\subsection{Decision Tree Models}
+
+olve stratifying or segmenting the
+predictor space into a number of simple regions, and making a prediction for 
+a new observation using the mean of the training observations in the region 
+to which it belongs. 
 
 Decision tree models are widely used for classification and regression. Tree 
 models ``learn'' a hierarchy of if-else questions that are represented in the
@@ -633,23 +631,24 @@ values.
 
 \subsubsection{Regression Trees} 
 
- The tree was fit to the training data, and the regression 
-returned a tree with 6 terminal nodes, with a residual mean variance of 3.22. 
-The summary of the regression tree showed that four features were used in the 
-construction of the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. 
-
 The tree library was loaded in R, and a random seed was set for consistency. 
-For this analysis, SUICATT, PRLANY were removed from the opioid dataset. The 
-training set of 40000 rows was constructed based on a 70/30 split. 
 
-The tree library was loaded in R, and a random seed was set for consistency. 
-For this analysis,
+A good strategy for building a regression tree is to
+grow a very large tree and then prune it back to obtain a subtree that
+provides the lowest test error rate. Steps in building a decision tree are:
+(1) Use a recursive binary splitting to grow a large tree on training data, 
+stopping only when each terminal node has fewer than some minimum number of 
+observations. (2) Apply a cost complexity (i.e., weakest link) pruning  to 
+the large tee to obtain a sequence of best subtrees, as a function of alpha. 
+(3) Use k-fold cross-validation to choose alpha, dividing the training 
+observations into k-folds, and for each k=1...K, (a) repeate steps 1 and 2,
+(b) evaluate the mean square predictioin error on data in the left-out k-fold,
+as a function of alpha, averaging the results for each level of alpha, and 
+picking a value of alpha that minimizes the average error. (4) Return the 
+subtree that corresponds to the chosen value of alpha. 
 
 Cross-validation was used to determine optimal tree complexity with produces 
 a small reduction in the residual mean variance of 3.18. 
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -659,14 +658,14 @@ a small reduction in the residual mean variance of 3.18.
 The important parameters for the random forests 
 algorithm are the number of sampled data points and the maximum number of 
 features; the algorithm could look at all of the features in the dataset
-or a limited number. A high value for \emph{maximum-features} will produce 
+or a limited number. 
+
+A high value for \emph{maximum-features} will produce 
 trees in the random forest that are very similar and will fit the data 
 easily based on the most distinctive features, whereas a low value will 
 produce trees that are very different from each other, and reduces over-
 fitting. Random forests is of the most widely used ML algorithms that works 
 well without very much parameter tuning or scaling of data.
-
-
 
 The random forest model was fit using 1000 trees, with all of the features 
 considered at each node to determine the randomness of each tree. After a 
@@ -685,8 +684,7 @@ gbm() function was called on PRLMISAB using the Gaussian distribution, with
 10000 shallow trees, a shrinkage parameters=0.01, and interaction depth of 
 4 splits. 
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
   \caption{Correlation Matrix of Previous Course Failures and Course Grade 
@@ -1025,28 +1023,11 @@ also were likely to be or have received drug treatment.
 
 \subsection{Decision Tree Regression}
 
-olve stratifying or segmenting the
-predictor space into a number of simple regions, and making a prediction for 
-a new observation using the mean of the training observations in the region 
-to which it belongs. A good strategy for building a regression tree is to
-grow a very large tree and then prune it back to obtain a subtree that
-provides the lowest test error rate. Steps in building a decision tree are:
-(1) Use a recursive binary splitting to grow a large tree on training data, 
-stopping only when each terminal node has fewer than some minimum number of 
-observations. (2) Apply a cost complexity (i.e., weakest link) pruning  to 
-the large tee to obtain a sequence of best subtrees, as a function of alpha. 
-(3) Use k-fold cross-validation to choose alpha, dividing the training 
-observations into k-folds, and for each k=1...K, (a) repeate steps 1 and 2,
-(b) evaluate the mean square predictioin error on data in the left-out k-fold,
-as a function of alpha, averaging the results for each level of alpha, and 
-picking a value of alpha that minimizes the average error. (4) Return the 
-subtree that corresponds to the chosen value of alpha. 
+The tree was fit to the training data, and the regression returned a tree with 
+6 terminal nodes, with a residual mean variance of 3.22. 
 
-
-
-
-The treewas fit to the training data, and the regression returned a tree 
-with 6terminal nodes, with a residual mean variance of 3.22. 
+The summary of the regression tree showed that four features were used in the 
+construction of the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. 
 
 The summary of the 
 regression tree showed that four features were used in the construction of 
