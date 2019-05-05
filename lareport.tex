@@ -489,63 +489,48 @@ encodes the same information.
     25. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
     26. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
     27. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
-    
     \bottomrule
   \end{tabular}
 \end{table*}
 
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Project Goals} 
 
-
-Educational institutions collect large volumes of data about students yet 
-much student information is protected to ensure privacy. 
-
-Data on student performance used in the present study was obtained from the
-UC-Irvine machine learning repository (UCI-MLR) from two secondary schools 
-in Portugal \cite{cortez09}. The dataset includes information collected using
-students surveys and school grade records. The predictor variables of interest
-were demographic information about family characteristics (e.g., ).
-
-The target variable was student achievement (pass/fail) assessed by the 
-final grade report in two courses, mathematics and Portugese language. 
-
-
+This study applies supervised learning models to identify the set of 
+demographic characteristics that predict student performance and success. 
 
 The project examines the relationships between demographic characteristics
 and student performance 
 
-It was hypothesized that individuals who 
-report using illicit drugs may also be prone to misusing prescription opioids. 
-Machine learning has been for clinical diagnosis of smoking and drug use from 
-functional MRI neuroimaging \cite{zhang05, pariyadath14}; 
+Data on student performance used in the present study was obtained from the
+UC-Irvine machine learning repository (UCI-MLR) from two secondary schools 
+in Portugal \cite{cortez09}. The dataset includes information collected using 
+students surveys and school grade records. The predictor variables of interest
+were demographic information about family characteristics (e.g., ).
 
-to current
-knowledge, no research has used machine learning to learn features of 
-individuals susceptible to misuse or abuse prescription opioids. This study 
-applies supervised machine learning models to identify the set of demographic 
-characteristics and mental health attributes that predict prescription opioid 
-misuse and abuse. The data for the study was obtained from a large national 
-survey on drug use and health (NSHUH-2015) \cite{samhsa16}. Survey research 
-provides data on a wide range of issues that people may be reluctant to 
-disclose, including mental health disorders, personal medical issues, 
-prescription medications, and illicit drug use. Responses to surveys may be 
-biased to some degree, and it can be difficult to obtain reliable information 
-about illicit or illegal behaviors, but the anonymity of survey response are 
-designed to preserve confidentiality and can help to assure more accurate 
-disclosures. The data were fitted using several models, including general 
-linear models, decision trees, and random forests. This method can help to 
-address prescription opioid dependency and addiction in the following ways: 
-(i) Identify demographic factors related to prescription opioid abuse, (ii) 
-Identify associations between prescription opioid misuse and abuse and 
-illicit drug use, (iii) Identify the model that gives the best accuracy
-for predicting new observations, and provides an interpretable solution. 
+Educational institutions collect large amounts of students data yet much of
+this information is protected due to privacy. Responses to anonymous surveys 
+are designed to preserve confidentiality and can help to assure`privacy. 
 
- 
- 
+The target variable was student achievement (pass/fail) assessed by the 
+final grade report in two courses, mathematics and Portugese language. 
+
+It was hypothesized that individuals who report... 
+
+Machine learning has been used for classifying...
+\cite{zhang05, pariyadath14}; 
+
+but to current knowledge, no research has modeled... 
+approaches to learn features of  individuals susceptible to. 
+
+The data were fitted using several models, including general linear 
+regression models with regularization and decision trees model such as
+random forests and gradient boosting. This method can help to explore
+factors contributing to student performance by: (i) Identify demographic 
+factors related to students success and failure, (ii) Identify associations 
+between students performance and the independent variables, (iii) Identify 
+which model provides the most accurate and interpretable solution. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
