@@ -191,84 +191,67 @@ identifying struggling students and encouraging them to take corrective actions.
 
 Previous studies have used classification methods such as logistic regression, 
 naive Bayes models, decision trees, and neural networks to predict student 
-performance as a binary outcome \cite{Lykourentzou09}. Empirical findings 
+performance as a binary outcome \cite{Lykourentzou09}. 
+
+Empirical findings 
 indicate that, in addition to course assessments such as the number of quizzes 
 successfully passed, engagement and participation in course activities is the 
 most influential predictor of final grades \cite{Papamitsiou14, romerozaldivar12}. 
+
 Furthermore, a student's sense of belonging in a course is essential for 
 engagement and improved satisfaction, which in turn, can reduce student dropout.
+
+methodologies can lead to a better understanding of student 
+engagement, characteristics that contribute to successful performance, 
+potential failure and non-retention. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Predictive Modeling}
 
-Predictive methodologies can lead to a better understanding of student 
-engagement, characteristics that contribute to successful performance, and 
-potential failure and non-retention. 
-
-Predictive modeling, statistical learning, or machine learning describe a 
-set of procedures and automated processes for extracting knowledge from 
-data \cite{james13, kuhn13, muller17, raschka17}. The two main branches 
-of predictive modeling are supervised learning and unsupervised learning. 
-Supervised learning problems involve prediction about a specific target 
-or outcome variable. If a dataset has no target outcome, unsupervised 
-learning methods can help to reveal underlying structure in the data 
-(e.g. clustering). Supervised learning is used to predict an outcome based 
-on input provided to a model, when examples of input/output pairs are 
-available in the data \cite{muller17}. A statistical learning model is 
-constructed using a set of observations to train the model and then make
-predictions with new observations.
-
-Two main approaches for supervised learning 
-problems are regression and classification. When the target variable
-is continuous or there is continuity in the outcome (e.g. home prices), a 
-regression model tests how a set of features predicts the target variable. 
-If the target is a class label, binary variable, or set of categories 
-(e.g., spam or ham emails, benign or malignant cells), a classification model 
-will predict which class or category label new instances are assigned to. 
-This study used a supervised learning approach to classify prescription pain
-reliever misuse and abuse as a binary outcome. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Supervised Learning}
-
-The two main branches of statistical learning or machine learning are 
-supervised learning and unsupervised learning. Supervised learning problems 
-involve prediction about a specific target variable or outcome of interest. 
-If a dataset has no target outcome, unsupervised learning methods 
-(i.e., clustering) can be used to discover structure in unlabeled data. 
-The current project uses supervised learning models to predict student 
-performance based on final course grade. The model is trained` on a set of 
-input-output pairs and then used to predict testing data that has been set
-aside. The two major approaches to supervised learning are regression and 
-classification. When the target variable to be predicted is continuous, or 
-there is continuity between the outcome (e.g., home values, income), a 
-regression model is used to test the set of features that predict the target 
-variable. If the target is a class label, or set of categorical or binary 
-outcomes, classification is used to predict which class or category label 
-new instances will be assigned to. Comparing the performance of different 
-learning algorithms can help determine which model is best for a given 
-problem and the data available \cite{raschka17}. Several different 
-learning algorithms are considered below.
+Predictive modeling, statistical learning, and machine learning describe a 
+set of procedures and automated processes for extracting knowledge from data
+\cite{james13, kuhn13, muller17, raschka17}. Two main branches of predictive 
+modeling are supervised learning and unsupervised learning. Supervised learning 
+problems involve prediction about a specific target or outcome variable 
+(i.e., course grade, failure, retention) when examples of input/output pairs 
+are available in the data. If a dataset has no target outcome, unsupervised 
+learning methods (e.g. clustering) can reveal structure in unlabeled data. 
+Two main approaches for supervised learning are regression and classification. 
+When the target variable to be predicted is measured on a continuous scale 
+(e.g. GPA), a regression model tests how a set of attributes or features 
+predicts the target outcome. For an outcome that is represented as a class label 
+on a binary or categorical scale (i.e., pass, fail, dropout) a classification 
+model will predict which class or category that new instances will be assigned to. 
+The current project uses supervised learning to predict student performance 
+based on final course grade using several regression models. Each model is 
+trained on a set of input-output pairs and is then used to make predictions 
+about new observations that have set aside, previously unseen by the model. 
+Comparing different learning algorithms can help determine which model is best 
+for a given problem and the data available \cite{raschka17}. Several different 
+learning algorithms are described below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{General Linear Model} 
 
-Linear models make a prediction using a linear function of the input features
-\cite{muller17}. The standard linear model, given in equation 1, describes the
-relationship between predicted target variable (Y) from a set of features 
-(X[1] ... X[p]), with some measure of error. The predicted value of the target 
-outcome can be thought of as the weighted sum of the input features with the 
-weights or coefficients (i.e., beta values) indicating the influence of a given 
-feature on the outcome. If the number of observations ('n') is much larger than 
-the number of features ('p'), ordinary least squares estimates will have low 
-variance, and perform well on test observations. If n is not much larger than p,
-high variability in the least squares fit can result in overfitting and poor 
+A general assumption of linear regression models is that the outcome of interest
+can be represented as a linear function of the input features. The standard 
+linear model (below) describes the relationship between predicted target 
+variable (Y) from a set of features (X[1] ... X[p]), and including some measure 
+of error (e). The predicted value of the target outcome can be thought of as 
+the weighted sum of the input features with the weights or coefficients 
+(i.e., beta values) indicating the influence of a given feature on the outcome. 
+Ordinary least squares (OLS) regression miminizes the distance (i.e., error) 
+between the predicted values of Y and the observed values in the dataset. 
+If the number of observations (\textit{n}) is much larger than the number of 
+features (\textit{p}), OLS coefficient estimates will have low variance and 
+perform well on test observations; however, if the number of observations 
+\textit{n} is not much larger than the number of features \textit{p}, high 
+variability in the least squares fit can result in overfitting and poor 
 prediction on test observations. For high-dimensional datasets, where p is much 
 greater than n, the least squares coefficient estimate breaks down. The simple 
 linear model can be improved by using alternative fitting approaches that produce 
-better prediction accuracy and model interpretability \cite{statlearn13}. 
+better prediction accuracy and model interpretability \cite{jamesetal13}. 
 
 \begin{equation}
   \ Y = \beta[0] + \beta[1]*X[1] + \beta[2]*X[2] +... + \beta[p]*X[p] + \epsilon
@@ -276,15 +259,22 @@ better prediction accuracy and model interpretability \cite{statlearn13}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In many cases, multiple features in a linear regression are not associated 
-with the target response. Three methods for improving the fit of linear models 
-are (a) subset selection, (b) dimension reduction, and (c) regularization or 
-shrinkage. This paper focuses on regularization models that include all 
-\textit{p} predictor features, but constrain or \textit{regularize} the 
-coefficient estimates by shrinking them towards zero. Regularization reduces 
-variablity, which in turn improves test set accuracy, with a slight increase in 
-bias. Shrinking the coefficient estimates of irrelevant features toward zero 
-reduces overfitting and provides a more interpretable model. 
+\subsubsection{Feature Selection} 
+
+In many regression analyses, it is often the case that multiple independent 
+variables or features will not be correlated with the target outcome. Three 
+methods for improving the fit of linear models are: (a) subset selection, 
+(b) dimension reduction, and (c) regularization or shrinkage. Determining 
+which set of features is best for representing the predicted outcome is 
+essential. A straight forward approach to feature selection is to conduct a 
+regression including all the independent variables and then remove 
+non-significant variables from the model. Another approach, based on 
+regularization, includes all \textit{p} predictor features, but constrains 
+or \textit{regularizes} the coefficient estimates of the independent variables
+by shrinking them towards zero. Regularization thus reduces variablity, 
+which in turn improves test set accuracy, with a slight increase in bias. 
+Shrinking the coefficient estimates of irrelevant features toward zero reduces 
+overfitting and provides a more interpretable model. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -502,7 +492,7 @@ final exam grades (Pass$>$10, Fail$<=$10) for comparison.
 
 \subsection{Model Construction}
 
-All models were constructed in R using Rstudio following examples provided 
+All models were constructed in R, using Rstudio, following examples provided 
 in \emph{An Introduction to Statistical Learning with Applications in R} 
 \cite{jamesetal13}. After preliminary exploration of the data, the sample was 
 divided into the training set ($n_1$=731) and testing set ($n_2$=313) using 
