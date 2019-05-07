@@ -23,10 +23,10 @@ secondary schools in Portugal \cite{cortez08}. Performance was assessed by
 final grade (range; 0-20) in two courses, mathematics and Portugese. The models
 were fit to a subset of training data and evaluated on a hold out testing set. 
 
-The linear regression model selected plans for higher education, mother's 
-education level, and weekly study time as positively associated with student 
+The linear regression model revealed that plans for higher education, mother's 
+education level, and weekly study time were positively associated with student 
 performance, whereas course subject, school support, and romantic relations
-as negatively related to performance. Non-linear trend in the data indicated
+were negatively related to performance. Non-linear trend in the data indicated
 that tree-based models may better . 
 
 All models identified as the most informative feature for predicting 
@@ -342,8 +342,10 @@ single target. Prediction for a new data point proceeds by checking which region
 of the partition a new point falls into, and predicting the majority in that 
 feature space. Tree based models require little adjustment and are easy to 
 interpret. A drawback is that they can lead to very complex models that highly 
-overfit data used to train the model. A common strategy to prevent overfitting 
-is pre-pruning which limits the maximum depth of the tree, or number of leaves. 
+overfit data used to train the model. A good strategy for building a regression 
+tree is to grow a very large tree and then prune it back to obtain a subtree 
+that provides the lowest test error rate. A good way to prevent overfitting 
+is to use pre-pruning to limit the maximum depth of the tree. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Random Forest Regression}
@@ -375,14 +377,9 @@ stubbier trees, and goes after bias. \cite{jamesetal13, kuhn13}. Gradient
 boosted regression trees use strong pre-pruning, with shallow trees of a 
 depth of one to five; thus, each tree provides an estimate of part of the 
 data. Combining many shallow trees iteratively improves model performance. 
-In addition to the number of trees and pre-pruning, an important parameter for 
-gradient boosting is the \emph{learning rate} which determines how strongly 
-each tree tries to correct for mistakes of previous trees. A high learning rate 
-produces stronger corrections, allowing for more complex models. Adding more 
-trees to the ensemble also increases model complexity. Gradient boosting and 
-random forests perform well on similar tasks and data. A common practice is 
-to first construct random forests and then use gradient boosting to improve 
-model accuracy \cite{muller17}. 
+Gradient boosting and random forests perform well on similar tasks and data. 
+A common practice is to first construct random forests and then use gradient 
+boosting to improve model accuracy \cite{muller17}. 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -500,15 +497,11 @@ in \emph{An Introduction to Statistical Learning with Applications in R}
 \cite{jamesetal13}. After preliminary exploration of the data, the sample was 
 divided into the training set ($n_1$=731) and testing set ($n_2$=313) using 
 a 70 to 30 percent split. The models were first fit to training data and then
-evaluating on the testing set. 
-
-The regression 
-models were constructed using 27 independent variables listed in Table 1. 
-After constructing an initial regression model on the training set with the
-full set of independent variables, the model was rerun excluding non-
-significant predictors to obtain the final model. This model was evaluated
-on the testing set. Additional predictors that were statistically significant 
-in the testing were entered into a revised regression with the testing set. 
+evaluating on the testing set. The regression models of student performance
+were constructed using 27 independent variables listed in Table 1. The
+regression model was run on the training set with the full set of predictor 
+variables and then the model was rerun with non-significant predictors 
+excluded from the final model. This model was evaluated on the testing set. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -527,7 +520,6 @@ lambda. By default, the glmnet() function performs ridge regression for an
 automatically selected range of lambda values (e.g., 100). The glmnet 
 function also standardizes the variables so they are all on the same scale.
 The shrinkage penalty is applied to every features, but not the intercept. 
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -549,20 +541,19 @@ values.
 \subsubsection{Regression Trees} 
 
 The tree library was loaded in R, and a random seed was set for consistency. 
+The following steps were taken in building a decision tree: (1) 
 
-A good strategy for building a regression tree is to
-grow a very large tree and then prune it back to obtain a subtree that
-provides the lowest test error rate. Steps in building a decision tree are:
-(1) Use a recursive binary splitting to grow a large tree on training data, 
-stopping only when each terminal node has fewer than some minimum number of 
-observations. (2) Apply a cost complexity (i.e., weakest link) pruning  to 
-the large tee to obtain a sequence of best subtrees, as a function of alpha. 
-(3) Use k-fold cross-validation to choose alpha, dividing the training 
-observations into k-folds, and for each k=1...K, (a) repeate steps 1 and 2,
-(b) evaluate the mean square predictioin error on data in the left-out k-fold,
-as a function of alpha, averaging the results for each level of alpha, and 
-picking a value of alpha that minimizes the average error. (4) Return the 
-subtree that corresponds to the chosen value of alpha. 
+ (1) Use a recursive binary 
+splitting to grow a large tree on training data, stopping only when each 
+terminal node has fewer than some minimum number of observations. (2) Apply 
+a cost complexity (i.e., weakest link) pruning  to the large tee to obtain 
+a sequence of best subtrees, as a function of alpha. (3) Use k-fold 
+cross-validation to choose alpha, dividing the training observations into 
+k-folds, and for each k=1...K, (a) Repeat steps 1 and 2, (b) evaluate the 
+mean square prediction error on data in the left-out k-fold, as a function 
+of alpha, averaging the results for each level of alpha, and picking a value 
+of alpha that minimizes the average error. (4) Return the subtree that 
+corresponds to the chosen value of alpha. 
 
 Cross-validation was used to determine optimal tree complexity with produces 
 a small reduction in the residual mean variance of 3.18. 
@@ -572,36 +563,29 @@ a small reduction in the residual mean variance of 3.18.
 
 \subsubsection{Random Forests Regression} 
 
-The random forest model was fit using 1000 trees, with all of the features 
-considered at each node to determine the randomness of each tree. 
-
 In general, random forests work well without very much parameter tuning or 
-scaling of data. The important parameters for the random forests algorithm are the number of 
-sampled data points and the maximum number of features; the algorithm can 
-look at all of the features in the dataset or a limited number. A high value 
-for \emph{maximum-features} will produce trees in the random forest that are 
-very similar and will fit the data easily based on the most distinctive 
-features, whereas a low value will produce trees that are very different 
-from each other, and reduces overfitting.
-
-
-A large number of trees is generated and the results are averaged. 
-
+scaling of data. The important parameters for the random forests algorithm are 
+the number of sampled data points and the maximum number of features; the 
+algorithm can look at all of the features in the dataset or a limited number. 
+A high value for \emph{maximum-features} will produce trees in the random 
+forest that are very similar and will fit the data easily based on the most 
+distinctive features, whereas a low value will produce trees that are very 
+different from each other, and reduces overfitting. The random forest model 
+was fit using 1000 trees, with all of the features considered at each node 
+to determine the randomness of each tree. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Gradient Boosted Regression} 
-
-The gbm package ("Gradient Boosted Machines", Friedman) was loaded, and the 
-gbm() function was called on PRLMISAB using the Gaussian distribution, with
-10000 shallow trees, a shrinkage parameters=0.01, and interaction depth of 
-4 splits. 
+\subsubsection{Gradient Boosted Model} 
 
 In addition to pre-pruning and the number of trees, an important parameter 
 for gradient boosting is the \emph{learning rate} which determines how 
 strongly each tree tries to correct for mistakes of previous trees. A high 
 learning rate produces stronger corrections, allowing for more complex models. 
-Adding more trees to the ensemble also increases model complexity. 
+The gbm package ("Gradient Boosted Machines", Friedman) was loaded, and the 
+gbm() function was called on student performance (final grade) using the 
+Gaussian distribution, with 10000 shallow trees, a shrinkage parameters=0.01, 
+and interaction depth of 4 splits. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -626,8 +610,8 @@ Adding more trees to the ensemble also increases model complexity.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-  \caption{Proportion of Students with Plans for Higher Education as a 
-  Function of Passing or Failing Final Course Grades}
+  \caption{Proportion of Passing or Failing Final Grades as a 
+  Function of Previous Course Failures}
   \label{f:Figure1}
 \end{figure} 
  
