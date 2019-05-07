@@ -276,17 +276,15 @@ better prediction accuracy and model interpretability \cite{statlearn13}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Three important methods for improving the linear model fit are (a) subset 
-selection, (b) dimension reduction, and (c) regularization or shrinkage. 
-This paper considers methods for regularization that include all p predictor 
-features in the linear model, but constrains or regularizes the coefficient 
-estimates, effectively by shrinking them towards zero. Regularization reduces 
-variablity, which in turn improves test set accuracy with a slight increase in 
-bias. In many cases, multiple features in a regression analysis are not 
-associated with the target response; shrinking the coefficient estimates of 
-irrelevant features toward zero can reduce overfitting and provide a more 
-interpretable model. 
-
+In many cases, multiple features in a linear regression are not associated 
+with the target response. Three methods for improving the fit of linear models 
+are (a) subset selection, (b) dimension reduction, and (c) regularization or 
+shrinkage. This paper focuses on regularization models that include all 
+\textit{p} predictor features, but constrain or \textit{regularize} the 
+coefficient estimates by shrinking them towards zero. Regularization reduces 
+variablity, which in turn improves test set accuracy, with a slight increase in 
+bias. Shrinking the coefficient estimates of irrelevant features toward zero 
+reduces overfitting and provides a more interpretable model. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -335,60 +333,60 @@ better for a given problem.
 \subsection{Decision Tree Models}
 
 Decision tree models are widely used for classification and regression. Tree 
-models ``learn'' a hierarchy of if-else questions that are represented in the
-form of a decision tree. Building decision trees proceeds from a root node as 
-the starting point and continues through a series of decisions or choices.
-Each node in the tree either represents either a question or a terminal node 
+models are built on a hierarchy of if-else questions that proceeds from a root 
+node as the starting point and continues through a series of decisions. 
+Each node in the tree represents either a question or a terminal node 
 (i.e.,leaf) that contains the outcome. In constructing the tree, the algorithm 
-searches through all possible decisions or tests, and find a solution that is 
-most informative about the target outcome. Decision tree regression is used 
-for continuous target outcomes. The recursive branching process of tree based 
-models yields a binary tree of decisions, with each node representing a test 
-that considers a single feature. This process of recursive partitioning is 
-repeated until each leaf in the decision tree contains only a single target. 
-Prediction for a new data point proceeds by checking which region of the 
-partition the point falls in, and predicting the majority in that feature space. 
-The main advantage of tree based models is that they require little adjustment 
-and are easy to interpret. A drawback is that they can lead to very complex
-models that are highly overfit to the training data. A common strategy to 
-prevent overfitting is \emph{pre-pruning}, which stops tree construction early 
-by limiting the maximum depth of the tree, or the maximum number of leaves. 
-One can also set the minimum number of points in a node required for splitting.
-Another approach is to build the tree and then remove or collapse nodes with 
-little information (i.e., \emph{post-pruning}). Decision trees work well with 
-features measured on very different scales, or with data that has a mix of 
-binary and continuous features. 
+searches through all possible decisions or tests, and finds a solution that 
+is most informative about the target outcome. The recursive branching process 
+of tree based models yields a binary tree of decisions, with each node 
+representing a test that considers a single feature. This process of recursive 
+partitioning is repeated until each leaf in the decision tree contains only a 
+single target. Prediction for a new data point proceeds by checking which region
+of the partition a new point falls into, and predicting the majority in that 
+feature space. Tree based models require little adjustment and are easy to 
+interpret. A drawback is that they can lead to very complex models that highly 
+overfit data used to train the model. A common strategy to prevent overfitting 
+is pre-pruning which limits the maximum depth of the tree, or number of leaves. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Random Forest Regression}
 
 A random forest is a collection of decision trees that are slightly different 
-from the others, where each tree overfits the data in a different way. This 
-approach reduces overfitting by building many trees and averaging 
-their results. Randomness is introduced into the tree building process by
-drawing a bootstrap sample of the data and selecting features at each node 
-branch \cite{muller17,raschka17}. 
-
-In building the random forest, we first decide how many trees to build (e.g., 10 
-or 100), and the algorithm makes different random choices so that each tree is 
-distinct. The bootstrapping method repeatedly draws random samples of size n 
-from the dataset (with replacement). The decision trees are build on these 
+where each tree overfits the data in a different way. This approach reduces 
+overfitting by building many trees and averaging their results. Randomness is 
+introduced into the tree building process by drawing a bootstrap sample of the 
+data and selecting features at each node branch \cite{muller17,raschka17}. 
+In building the random forest, one must first decide how many trees to build  
+and the algorithm makes different random choices so that each tree is distinct. 
+The bootstrapping method repeatedly draws random samples of size \textit{n} 
+from the dataset with replacement. The decision trees are built on these 
 random samples that are the same size as the original data, with some points 
-missing and some data points repeated. 
+missing and some data points repeated. In addition, the algorithm selects a 
+random subset of p features, that are repeated separately at each node, so 
+that each decision at the node branch is based on a different subset of 
+features. These two processes help ensure that all of the decision trees in 
+the random forest are different. 
 
-The algorithm also selects a random 
-subset of p features, repeated separately each node in the tree, so that 
-each decision at the node branch is made using a different subset of features.
-These two processes help ensure that all of the decision trees in the random
-forest are different. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- A limitation of 
-this approach is that Random forests do not perform well with very high-
-dimensional, data that is sparse data, such as text data.
+\subsubsection{Gradient Boosting}
 
-
-
-
+Gradient boosting is an ensemble approach that builds many smaller trees,  
+where each new tree attempts to correct for deficiencies of the current 
+ensemble. In contrast to randome forests, gradient boosting grows smaller, 
+stubbier trees, and goes after bias. \cite{jamesetal13, kuhn13}. Gradient 
+boosted regression trees use strong pre-pruning, with shallow trees of a 
+depth of one to five; thus, each tree provides an estimate of part of the 
+data. Combining many shallow trees iteratively improves model performance. 
+In addition to the number of trees and pre-pruning, an important parameter for 
+gradient boosting is the \emph{learning rate} which determines how strongly 
+each tree tries to correct for mistakes of previous trees. A high learning rate 
+produces stronger corrections, allowing for more complex models. Adding more 
+trees to the ensemble also increases model complexity. Gradient boosting and 
+random forests perform well on similar tasks and data. A common practice is 
+to first construct random forests and then use gradient boosting to improve 
+model accuracy \cite{muller17}. 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -582,28 +580,35 @@ a small reduction in the residual mean variance of 3.18.
 \subsubsection{Random Forests Regression} 
 
 The random forest model was fit using 1000 trees, with all of the features 
-considered at each node to determine the randomness of each tree. A large 
-number of trees is generated and the results are averaged. The important 
-parameters for the random forests algorithm are the number of sampled data 
-points and the maximum number of features; the algorithm could look at all 
-of the features in the dataset or a limited number. A high value for 
-\emph{maximum-features} will produce trees in the random forest that are 
+considered at each node to determine the randomness of each tree. 
+
+In general, random forests work well without very much parameter tuning or 
+scaling of data. The important parameters for the random forests algorithm are the number of 
+sampled data points and the maximum number of features; the algorithm can 
+look at all of the features in the dataset or a limited number. A high value 
+for \emph{maximum-features} will produce trees in the random forest that are 
 very similar and will fit the data easily based on the most distinctive 
 features, whereas a low value will produce trees that are very different 
-from each other, and reduces overfitting. Random forests work well without 
-very much parameter tuning or scaling of data.
+from each other, and reduces overfitting.
+
+
+A large number of trees is generated and the results are averaged. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Gradient Boosted Regression} 
 
-Similar to random forests, gradient boosting builds many smaller trees, but 
-each new tree tries to correct for deficiencies of the current ensemble of 
-trees. Gradient boosting grows smaller, stubbier trees, and goes after bias. 
 The gbm package ("Gradient Boosted Machines", Friedman) was loaded, and the 
 gbm() function was called on PRLMISAB using the Gaussian distribution, with
 10000 shallow trees, a shrinkage parameters=0.01, and interaction depth of 
 4 splits. 
+
+In addition to pre-pruning and the number of trees, an important parameter 
+for gradient boosting is the \emph{learning rate} which determines how 
+strongly each tree tries to correct for mistakes of previous trees. A high 
+learning rate produces stronger corrections, allowing for more complex models. 
+Adding more trees to the ensemble also increases model complexity. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
