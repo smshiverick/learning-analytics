@@ -23,7 +23,13 @@ secondary schools in Portugal \cite{cortez08}. Performance was assessed by
 final grade (range; 0-20) in two courses, mathematics and Portugese. The models
 were fit to a subset of training data and evaluated on a hold out testing set. 
 
-All three models identified as the most informative feature for predicting 
+The linear regression model selected plans for higher education, mother's 
+education level, and weekly study time as positively associated with student 
+performance, whereas course subject, school support, and romantic relations
+as negatively related to performance. Non-linear trend in the data indicated
+that tree-based models may better . 
+
+All models identified as the most informative feature for predicting 
 student performance. 
 
 The models differed in the importance they assigned to
@@ -426,21 +432,18 @@ model accuracy \cite{muller17}.
 
 \subsection{Project Goals} 
 
-This study applies supervised learning models to identify the set of 
-demographic characteristics that predict student performance and success. 
-
 The project examines the relationships between demographic characteristics
-and student performance 
+and student performance. This study compares several supervised learning models 
+of student performance to identify the set of features that predicts student 
+success and identifies students at risk for failure. The student performance 
+dataset obtained from the UC-Irvine machine learning repository (UCI-MLR) 
+was based on a sample from two secondary schools in Portugal \cite{cortez09}. 
+The dataset includes information collected from a student surveys and school 
+grade records. The target variables was final coure grade and the predictor 
+variables of interest were demographic information, family characteristics,
+and student behaviors (e.g., weekly study hours).
 
-Data on student performance used in the present study was obtained from the
-UC-Irvine machine learning repository (UCI-MLR) from two secondary schools 
-in Portugal \cite{cortez09}. The dataset includes information collected using 
-students surveys and school grade records. The predictor variables of interest
-were demographic information about family characteristics (e.g., ).
 
-Educational institutions collect large amounts of students data yet much of
-this information is protected due to privacy. Responses to anonymous surveys 
-are designed to preserve confidentiality and can help to assure`privacy. 
 
 The target variable was student achievement (pass/fail) assessed by the 
 final grade report in two courses, mathematics and Portugese language. 
@@ -1191,6 +1194,11 @@ of various features for predicting opioid misuse and abuse.
 
 
 \subsection{Limitations}
+
+Educational institutions collect large amounts of students data yet much of
+this information is protected due to privacy. Responses to anonymous surveys 
+are designed to preserve confidentiality and can help to assure`privacy. 
+
 
 measures of student satisfaction can vary according 
 to their perceived usefulness or efficiency of training courses.
