@@ -388,21 +388,7 @@ dimensional, data that is sparse data, such as text data.
 
 
 
-Feature importance is a model summary for random forests 
-that rates how important each feature is for classification decisions made 
-in the algorithm. The Gini index provides a measure of node purity which is 
-used to evaluate the quality of a particular split; a small value indicates 
-that a node predominantly contains observations from a single class. 
-Feature importance was measured by the mean decrease in Gini coefficient 
-(Table 8), which indicates how each variable contributes to the homogeneity 
-of the nodes and leaves in the resulting random forest. For classification 
-trees, the splits are chosen so as to minimize entropy or Gini impurity in 
-the resulting subsets. For random forests, variables that result in nodes 
-with higher purity have a higher decrease in the Gini coefficient. Feature 
-importance is computed by aggregating the feature importance over trees in 
-the random forest, and gives non-zero importance to more features than a 
-single tree. A feature may have a low importance value because another feature 
-encodes the same information. 
+
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -595,22 +581,17 @@ a small reduction in the residual mean variance of 3.18.
 
 \subsubsection{Random Forests Regression} 
 
-The important parameters for the random forests 
-algorithm are the number of sampled data points and the maximum number of 
-features; the algorithm could look at all of the features in the dataset
-or a limited number. 
-
-A high value for \emph{maximum-features} will produce 
-trees in the random forest that are very similar and will fit the data 
-easily based on the most distinctive features, whereas a low value will 
-produce trees that are very different from each other, and reduces over-
-fitting. Random forests is of the most widely used ML algorithms that works 
-well without very much parameter tuning or scaling of data.
-
 The random forest model was fit using 1000 trees, with all of the features 
-considered at each node to determine the randomness of each tree. After a 
-large number of trees is generated, it can be difficult to interpret the result 
-of the averaged trees. 
+considered at each node to determine the randomness of each tree. A large 
+number of trees is generated and the results are averaged. The important 
+parameters for the random forests algorithm are the number of sampled data 
+points and the maximum number of features; the algorithm could look at all 
+of the features in the dataset or a limited number. A high value for 
+\emph{maximum-features} will produce trees in the random forest that are 
+very similar and will fit the data easily based on the most distinctive 
+features, whereas a low value will produce trees that are very different 
+from each other, and reduces overfitting. Random forests work well without 
+very much parameter tuning or scaling of data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1069,6 +1050,25 @@ percent of the variance in opioid pain reliever misuse and abuse. Figure 10
 shows the feature importance for the random forest regression model by the
 percent increase in MSE on the left panel, and as a function of the increase
 in node purity on the right panel. 
+
+
+Feature importance is a model summary for random forests 
+that rates how important each feature is for classification decisions made 
+in the algorithm. The Gini index provides a measure of node purity which is 
+used to evaluate the quality of a particular split; a small value indicates 
+that a node predominantly contains observations from a single class. 
+Feature importance was measured by the mean decrease in Gini coefficient 
+(Table 8), which indicates how each variable contributes to the homogeneity 
+of the nodes and leaves in the resulting random forest. For classification 
+trees, the splits are chosen so as to minimize entropy or Gini impurity in 
+the resulting subsets. For random forests, variables that result in nodes 
+with higher purity have a higher decrease in the Gini coefficient. Feature 
+importance is computed by aggregating the feature importance over trees in 
+the random forest, and gives non-zero importance to more features than a 
+single tree. A feature may have a low importance value because another feature 
+encodes the same information. 
+
+
 
 Table 8 provides the feature importance for 
 the random forests model sorted by the mean decrease in the Gini coefficient. 
