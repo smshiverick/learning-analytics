@@ -3,7 +3,7 @@
 \input{format/final}
 
 \begin{document}
-  \title{Supervised Learning Models of Student Performance for Learning Analytics}
+  \title{Modeling Student Performance for Data-Driven Learning Analytics}
   \author{Sean M. Shiverick}
   \affiliation{\institution{smshiverick@gmail.com}
   }
@@ -64,63 +64,43 @@ modeling student performance and success.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Educational Data Mining (EDM) and Learning Analytics (LA)}
-
-LA is a form of education data mining (EDM) that uses research methods and 
-predictive analysis to implement platforms for improving student performance and 
-instructional design \cite{Baker09, Lester19}. LA and EDM share similar goals 
-at the intersection of learning science and data-driven analytics, but these 
-approaches differ in origins, emphasis, techniques, and knowledge discovery 
-\cite{siemens12}. For example, EDM takes a reductionist approach to analyzing 
-individual components in the learning process that focuses on automated discovery
-and adaptive learning (e.g., intelligent tutoring). By contrast, LA takes a 
-holistic viewpoint to understand the complexity of learning, by leveraging human 
-judgment to inform and empower instructors and learners \cite{Papamitsiou14}. 
-The development of LA as a separate field of inquiry from EDM has shown a gradual 
-shift from a technological focus toward an educational focus or learner-focused 
-analytics (Ferguson, 2012). Despite the differences in origin and goals of LA 
-and EDM, they can be seen as complementary approaches using similar methodologies. 
+Educational Data Mining (EDM) and Learning Analytics (LA) are emerging, 
+multidisciplinary approaches at the intersection of learning science and 
+data-driven analytics \cite{siemens12, Baker09}. LA and EDM share the goal of 
+using research methods and predictive analysis to improve student performance 
+and instructional design \cite{Ferguson12, Lester19}. EDM research has focused 
+more on extracting value from big data in education \cite{penaAyala14, romero10}, 
+whereas LA takes a more holistic, education-focused approach to learning to
+inform and empower instructors and learners \cite{lang17, papamitsiou14}. 
+Despite differences in their respective origins and emphasis, LA and EDM are 
+complementary approaches that use similar methodologies. Together, LA and EDM 
+represent an ecosystem of methodologies and techniques for gathering, processing, 
+and acting on data to promote learning. These procedures facilitate the 
+preparation, measurement, and collection of data about learning activities for 
+subsequent analysis, interpretation, and reporting. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Education institutions have examined factors such as persistence and social 
 integration as influential for learning and used analytic methods to track 
-student drop-out rates \cite{ferguson12}. The development of the web opened 
+student drop-out rates \cite{ferguson12}. 
+
+The development of the web opened 
 up new avenues for collecting information from online sources along with methods 
-for processing and sharing content. As extensive educational datasets became 
+for processing and sharing content. 
+
+As extensive educational datasets became 
 available for analysis, EDM researchers use a variety of data mining techniques 
 (e.g., classification, clustering, association rule mining) to discover 
 potentially useful patterns in data for understanding students and the settings 
-in which they learn \cite{bakerYucef09}. To a large extent, EDM emerged from 
-a computational approach to analyzing logs of student-computer interactions with
-data mined from LMS, ITS (intelligent tutoring system), and technology enhanced 
-learning (TEL) systems to evaluate learning processes, enhance web-based learning 
-and help learners \cite{penaAyala14, romero10}. Thus, EDM research has focused 
-more on the technical challenge of extracting value about learning from big data 
-in education. Practitioners distinguish LA as a separate field of research by a 
-more holistic, education-focused approach to learning, which seeks to ground 
-analytics in learning theory, to benefit learners and teachers, and optimize 
-learning in online environments \cite{lang17, papamitsiou14}. 
+in which they learn \cite{bakerYucef09}. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Together, LA and EDM represent an ecosystem of methodologies and techniques 
-for gathering, processing, and acting on data to promote learning. These 
-procedures facilitate the preparation, measurement, and collection of data 
-about learning activities for subsequent analysis, interpretation, and r
-eporting. Much LA/EDM research data is collected within a virtual learning 
-environment (VLE), learning management system (LMS), or massive open online 
-course (MOOC), which can automatically track student participation by login 
-frequency, number of resources accessed, time to solve tasks, response times 
-to answer questions, number of discussion posts or chat messages between 
-participants, questions submitted to instructors. In addition to quantitative 
-measures, meaningful analytics systems will include qualitative measures about 
-the content or type of contribution (on-topic, evaluative, question). 
-Researchers have also studied how affective states (e.g., boredom, 
-frustration, confusion, happiness) influence engagement and learning outcomes 
-\cite{pardos14}. Merging LMS data with institutional data about student 
-performance (i.e., past grades) can provide valuable insights about the 
-conditions for successful learning and decision making (Hora, 2019). 
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -167,31 +147,7 @@ behavior and assessing functionality in intelligent tutoring systems (ITS)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Predicting Performance} 
 
-The Course Signals program developed at Purdue University 
-is one of the most well known platforms for predicting students at-risk of 
-falling behind using statistical analysis of LMS data \cite{arnoldPistilli12}. 
-In addition to grades, demographic information, academic history, and student 
-interaction on the Blackboard LMS were used to track student performance. A 
-predictive algorithm was used to calculate likelihood of student success based 
-on performance, effort, history, and student characteristics. The course signals 
-provided students with real-time feedback about their status via the LMS as 
-traffic signal indicators (i.e., red=high risk, yellow=moderate risk, green=low 
-risk). Instructors enacted interventions for high risk students providing them 
-with actionable information about their performance in emails, texts, referrals
-to academic advising, or academic resources center, and face to face meetings.
-Courses that implemented the Signals program and provided feedback for students
-showed an increase in satisfactory grades, decrease in withdrawals, and 
-improved retention. Course signals helped to integrate students into the 
-university academically in several ways: first, by facilitating contact 
-between faculty and students, second, by providing high risk students with 
-resources for student success, and third, by using analytics with real time 
-data about student performance. in terms of academic success and retention, 
-underprepared students in difficult courses using the signals program fared 
-better than more well-prepared students in courses that were not using the 
-signals program. Furthermore, LA provided faculty with a useful tool for 
-identifying struggling students and encouraging them to take corrective actions.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1166,6 +1122,7 @@ boosting model tree ensemble (shown in Table 3).
 Overall, the models 
 agreed in selecting the top five most influential predictors of pain
 reliever abuse, but there was some variation in the ordering of importance. 
+
 The linear models showed that substance treatment had the highest
 coefficients (followed by heroin use), whereas the tree ensemble methods
 indicated that tranquilizer use was the most important feature. Given the 
@@ -1175,7 +1132,6 @@ of various features for predicting opioid misuse and abuse.
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \subsection{Limitations}
 
@@ -1205,18 +1161,11 @@ toward online learning.
 learning platforms has applications for student success, course design, and 
 institutional programs \cite{Lester19}. 
 
-According to the Centers for Disease Control, the rate
-of heroin use in the general population of adults is 2.6 percent, whereas
-the rate of heroin use in the NSDUH-2015 sample was 1.6 percent \cite{cdc16}. 
 Obtaining reliable information about medication consumption can be difficult 
 based on self-reports. Survey data can be biased by under-reporting or by 
 minimizing reports of illicit substance use. People may also be reluctant to 
 disclose mental health issues or health problems (e.g., STDs, HIV, suicide 
-attempts). Another consideration is that, owing to the nature of the methods 
-used in the study, it was not possible to determine the direction of the 
-relationship between prescription opioid use and heroin use. Individuals who 
-misuse or abuse prescription opioid medications may turn to synthetic opioids 
-or heroin as cheaper, more readily available than prescription medications. 
+attempts). Another consideration is that,
 
 
 Alternatively, individuals who used heroin may be inclined to abuse 
@@ -1231,6 +1180,23 @@ drugs or tranquilizers.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Collaboration}
+
+Much LA/EDM research data is collected within a virtual learning 
+environment (VLE), learning management system (LMS), or massive open online 
+course (MOOC), which can automatically track student participation by login 
+frequency, number of resources accessed, time to solve tasks, response times 
+to answer questions, number of discussion posts or chat messages between 
+participants, questions submitted to instructors. In addition to quantitative 
+measures, meaningful analytics systems will include qualitative measures about 
+the content or type of contribution (on-topic, evaluative, question). 
+Researchers have also studied how affective states (e.g., boredom, 
+frustration, confusion, happiness) influence engagement and learning outcomes 
+\cite{pardos14}. Merging LMS data with institutional data about student 
+performance (i.e., past grades) can provide valuable insights about the 
+conditions for successful learning and decision making (Hora, 2019). 
+
+
+
 
 Learning is a complex phenomenon that is not always directly observable and 
 often inferred from student behavior in online learning platforms. Theories of 
@@ -1257,6 +1223,32 @@ about activity within the LMS can facilitate early detection of at-risk
 students \cite{Dekkar09}.  The most 
 common reasons for  student disengagement in MOOCs were personal commitments, 
 work conflict and course overload (Kizilcec, 2013). 
+
+\subsubsection{Predicting Performance} 
+
+The Course Signals program developed at Purdue University 
+is one of the most well known platforms for predicting students at-risk of 
+falling behind using statistical analysis of LMS data \cite{arnoldPistilli12}. 
+In addition to grades, demographic information, academic history, and student 
+interaction on the Blackboard LMS were used to track student performance. A 
+predictive algorithm was used to calculate likelihood of student success based 
+on performance, effort, history, and student characteristics. The course signals 
+provided students with real-time feedback about their status via the LMS as 
+traffic signal indicators (i.e., red=high risk, yellow=moderate risk, green=low 
+risk). Instructors enacted interventions for high risk students providing them 
+with actionable information about their performance in emails, texts, referrals
+to academic advising, or academic resources center, and face to face meetings.
+Courses that implemented the Signals program and provided feedback for students
+showed an increase in satisfactory grades, decrease in withdrawals, and 
+improved retention. Course signals helped to integrate students into the 
+university academically in several ways: first, by facilitating contact 
+between faculty and students, second, by providing high risk students with 
+resources for student success, and third, by using analytics with real time 
+data about student performance. in terms of academic success and retention, 
+underprepared students in difficult courses using the signals program fared 
+better than more well-prepared students in courses that were not using the 
+signals program. Furthermore, LA provided faculty with a useful tool for 
+identifying struggling students and encouraging them to take corrective actions.  
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
