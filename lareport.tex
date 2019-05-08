@@ -74,91 +74,65 @@ whereas LA takes a more holistic, education-focused approach to learning to
 inform and empower instructors and learners \cite{lang17, papamitsiou14}. 
 Despite differences in their respective origins and emphasis, LA and EDM are 
 complementary approaches that use similar methodologies. Together, LA and EDM 
-represent an ecosystem of methodologies and techniques for gathering, processing, 
+represent an ecosystem of approaches and  techniques for gathering, processing, 
 and acting on data to promote learning. These procedures facilitate the 
-preparation, measurement, and collection of data about learning activities for 
-subsequent analysis, interpretation, and reporting. 
+preparation, measurement, and collection of data about learning activities 
+for subsequent analysis, interpretation, and reporting. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Education institutions have examined factors such as persistence and social 
-integration as influential for learning and used analytic methods to track 
-student drop-out rates \cite{ferguson12}. 
-
-The development of the web opened 
-up new avenues for collecting information from online sources along with methods 
-for processing and sharing content. 
-
-As extensive educational datasets became 
-available for analysis, EDM researchers use a variety of data mining techniques 
-(e.g., classification, clustering, association rule mining) to discover 
-potentially useful patterns in data for understanding students and the settings 
-in which they learn \cite{bakerYucef09}. 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
+Historically, education institutions have tracked student performance, dropout, 
+and retention with analytic tools to identify factors influential for learning 
+such as persistence and social integration \cite{ferguson12}. As extensive 
+education datasets became available for analysis, LA/EDM researchers have used 
+a diverse range of descriptive, correlational, and predictive methodologies to 
+discover potentially useful patterns in data for understanding students and 
+the settings in which they learn. Student characteristics are often modeled 
+in terms of frequency or amount of domain knowledge, motivation, metacognitive
+abilities (i.e., thinking about thinking), learning strategies, attitudes, and 
+affect \cite{Papamitsiou14}. The main analytic approaches used in EDM/LA 
+research include predictive modeling (i.e., discovery with models), similarity 
+grouping, relationship mining, content analysis, and social network analysis 
+(SNA) \cite{bakerYucef09}. Predictive modeling involves set of procedures and 
+automated processes for extracting knowledge from data \cite{james13, kuhn13}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LA/EDM consists of a diverse set of methodologies and approaches for 
-addressing challenges in higher education such as underprepared students, 
-decreased retention, and foster student success. The most common approaches in 
-LA research are modeling students and student behavior, predicting performance, 
-dropout, and retention, increasing (self-)reflection and (self-)awareness, 
-analyzing connections among learners, improving feedback and assessment, and 
-recommending educational resources \cite{lang17, lester19, papamitsiou14}. 
-Descriptive, correlational, and predictive methodologies are used to study 
-learning processes and context, including predictive modeling, relationship 
-mining, similarity grouping, content analysis, and social network analysis. 
-Classification is the most commonly used data analytic method, followed by 
-clustering, regression (logistic, multiple), and predictive modeling (discovery
-with models). Several performance metrics are used to evaluate different 
-methods: precision, accuracy, sensitivity, coherence, fitness measures, 
-similarity weights \cite{bakerYucef09}. 
+\subsection{Predictive Modeling}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Student / Student Behavior Modeling}.
-
-Modeling student characteristics takes a descriptive approach to reveal factors 
-for learning such as domain knowledge, 
-motivation, metacognition, attitudes, affect, metacognitive states, learning 
-strategies, and behavior \cite{Papamitsiou14}. Student characteristics can be 
-combined with data from the LMS system about support, teacher feedback, 
-curriculum, and course sequencing. Modeling student characteristics is most 
-often based on frequency, but can involve correlation analysis, similarity 
-grouping or clustering (k-means), content analysis (i.e., text mining, NLP). 
-Quantitative data about activities and behavior (e.g., response time, or 
-time reflecting on hints) are helpful for modeling engagement or disengagement 
-in learning activities, and provide information that allows software to respond 
-to individual differences. Discovery and modeling of behaviors during learner 
-interactions in a MOOC.  Clustering can be used to grouping similar individuals 
-together based on learner profiles and to aid in the development of more 
-personalized learning environment (PLE)\cite{Vellido10}. Analysis of qualitative 
-data, may rely on human judgment, can reveal deeper concepts about learning, 
-such as inferring reasoning strategies from interaction with a cognitive tutor 
-\cite{Fournier11}. Predictive approaches are used also for modeling student 
-behavior and assessing functionality in intelligent tutoring systems (ITS)
-\cite{penaayala14}. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Previous studies have used classification methods such as logistic regression, 
-naive Bayes models, decision trees, and neural networks to predict student 
+The two main branches of predictive modeling are supervised learning and 
+unsupervised learning. Supervised learning problems involve prediction about 
+a specific target or outcome variable (i.e., course grade) when examples 
+of input/output pairs are available in the data. If a dataset has no target 
+outcome, unsupervised learning methods (e.g. k-means clustering) can reveal 
+structure in unlabeled data. Clustering can be used to grouping similar 
+individuals together based on learner profiles and to aid in the development 
+of personalized learning environment (PLE)\cite{Vellido10}. The two main 
+approaches for supervised learning problems are classification and regression. 
+For an outcome represented as a binary or categorical class label (i.e., 
+pass/fail) a classification model will predict which class or category that 
+a new instance is assigned to. When the target variable to be predicted is 
+measured on a continuous scale (e.g. GPA), a regression model tests how a set 
+of attributes or features predicts the target outcome. Classification is the 
+most commonly used data analytic methods for modeling students and their 
+behavior, and can include models such as logistic regression, support vector 
+machines, naive Bayes, decision trees, and neural networks to predict student 
 performance as a binary outcome \cite{Lykourentzou09}. 
 
-Empirical findings 
-indicate that, in addition to course assessments such as the number of quizzes 
-successfully passed, engagement and participation in course activities is the 
-most influential predictor of final grades \cite{Papamitsiou14, romerozaldivar12}. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The current project uses supervised learning to predict student performance 
+based on final course grade using several regression models. Each model is 
+trained on a set of input-output pairs and is then used to make predictions 
+about new observations that have set aside, previously unseen by the model. 
+Comparing different learning algorithms can help determine which model is best 
+for a given problem and the data available \cite{raschka17}. Several different 
+learning algorithms are described below.
+
+Past empirical findings indicate that, in addition to course assessments such 
+as the number of quizzes successfully passed, engagement and participation in 
+course activities is the most influential predictor of final grades 
+\cite{Papamitsiou14, romerozaldivar12}. 
 
 Furthermore, a student's sense of belonging in a course is essential for 
 engagement and improved satisfaction, which in turn, can reduce student dropout.
@@ -167,31 +141,6 @@ methodologies can lead to a better understanding of student
 engagement, characteristics that contribute to successful performance, 
 potential failure and non-retention. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Predictive Modeling}
-
-Predictive modeling, statistical learning, and machine learning describe a 
-set of procedures and automated processes for extracting knowledge from data
-\cite{james13, kuhn13, muller17, raschka17}. Two main branches of predictive 
-modeling are supervised learning and unsupervised learning. Supervised learning 
-problems involve prediction about a specific target or outcome variable 
-(i.e., course grade, failure, retention) when examples of input/output pairs 
-are available in the data. If a dataset has no target outcome, unsupervised 
-learning methods (e.g. clustering) can reveal structure in unlabeled data. 
-Two main approaches for supervised learning are regression and classification. 
-When the target variable to be predicted is measured on a continuous scale 
-(e.g. GPA), a regression model tests how a set of attributes or features 
-predicts the target outcome. For an outcome that is represented as a class label 
-on a binary or categorical scale (i.e., pass, fail, dropout) a classification 
-model will predict which class or category that new instances will be assigned to. 
-The current project uses supervised learning to predict student performance 
-based on final course grade using several regression models. Each model is 
-trained on a set of input-output pairs and is then used to make predictions 
-about new observations that have set aside, previously unseen by the model. 
-Comparing different learning algorithms can help determine which model is best 
-for a given problem and the data available \cite{raschka17}. Several different 
-learning algorithms are described below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{General Linear Model} 
@@ -262,6 +211,7 @@ zero, which can create a problem for model interpretation with a dataset that
 has a very large number of predictor variables. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{The Lasso: L1 Penalty} 
 
 The lasso and ridge regression have similar formulations, but the lasso has 
@@ -282,6 +232,7 @@ coefficients. Cross-validation can be used to determine which approach is
 better for a given problem. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Decision Tree Models}
 
 Decision tree models are widely used for classification and regression. Tree 
@@ -1168,14 +1119,17 @@ disclose mental health issues or health problems (e.g., STDs, HIV, suicide
 attempts). Another consideration is that,
 
 
-Alternatively, individuals who used heroin may be inclined to abuse 
-prescription opioids based on availability. Past research has shown that drug 
-dosage and medication type play a significant role in opioid misuse: Treatment 
-with high daily dose opioids (e.g., more than 120 mg/ day) and short-acting 
-schedule II opioids increases the risk of misuse, abuse, and drug overdose 
-\cite{sullivan10}. The results of the present analysis showed that demographic 
-characteristics played a relatively minor role compared to the use of illicit 
-drugs or tranquilizers. 
+Alternatively, individuals who...
+
+The results of the present analysis showed that demographic 
+characteristics played a relatively...  
+
+Other areas of interest for LA/EDM research include 
+increasing (self-)reflection and (self-)awareness, analyzing connections among 
+learners, improving feedback and assessment, and recommending educational 
+resources \cite{lang17, lester19, papamitsiou14}.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1196,6 +1150,11 @@ performance (i.e., past grades) can provide valuable insights about the
 conditions for successful learning and decision making (Hora, 2019). 
 
 
+Quantitative data about activities and behavior (e.g., response time, or 
+time reflecting on hints) are helpful for modeling engagement or disengagement 
+in learning activities, and provide information that allows software to respond 
+to individual differences. Discovery and modeling of behaviors during learner 
+interactions in a MOOC. 
 
 
 Learning is a complex phenomenon that is not always directly observable and 
@@ -1249,6 +1208,15 @@ underprepared students in difficult courses using the signals program fared
 better than more well-prepared students in courses that were not using the 
 signals program. Furthermore, LA provided faculty with a useful tool for 
 identifying struggling students and encouraging them to take corrective actions.  
+
+
+Analysis of qualitative data, may rely on human judgment, can reveal deeper 
+concepts about learning, such as inferring reasoning strategies from interaction 
+with a cognitive tutor 
+\cite{Fournier11}. Predictive approaches are used also for modeling student 
+behavior and assessing functionality in intelligent tutoring systems (ITS)
+\cite{penaayala14}. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
