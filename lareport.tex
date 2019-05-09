@@ -47,7 +47,7 @@ Model interpretation is an important aspect of predictive analytics.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
-Education institutions have generated Very large amounts of data about student 
+Education institutions have generated very large amounts of data about student 
 performance in recent decades due to dramatic increases in computing speed 
 and processing power \cite{daniel15, daniel16}. The development and use of 
 analytic approaches for predictive modeling allows researchers and educators  
@@ -55,29 +55,27 @@ to discover patterns in data and provide insights about learning for effective
 decision making. Educational data mining (EDM) and learning analytics (LA) are 
 multidisciplinary fields at the intersection of learning science, social science, 
 statistics, and computer science that leverage big data to understand learning 
-and the environments in which it occurs \cite{siemens13}. Predictive modeling 
-provides useful methods for analyzing the factors that contribute to student 
-success and identifying individuals at risk for failure or dropping out. 
-This study reviewed EDM and LA findings and compared several supervised 
-learning models with sample data to determine which approach is best for 
-modeling student performance and success. 
+and the environments in which it occurs \cite{siemens13, siemensbaker12}. 
+Predictive modeling provides useful methods for analyzing the factors that 
+contribute to student success and identifying individuals at risk for failure
+or dropping out. This study reviewed EDM and LA findings and compared several 
+supervised learning models with sample data to determine which approach is 
+best for modeling student performance and success. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Educational Data Mining (EDM) and Learning Analytics (LA) are emerging, 
-multidisciplinary approaches at the intersection of learning science and 
-data-driven analytics \cite{siemens12, Baker09}. LA and EDM share the goal of 
-using research methods and predictive analysis to improve student performance 
-and instructional design \cite{Ferguson12, Lester19}. EDM research has focused 
-more on extracting value from big data in education \cite{penaAyala14, romero10}, 
-whereas LA takes a more holistic, education-focused approach to learning to
-inform and empower instructors and learners \cite{lang17, papamitsiou14}. 
-Despite differences in their respective origins and emphasis, LA and EDM are 
-complementary approaches that use similar methodologies. Together, LA and EDM 
-represent an ecosystem of approaches and  techniques for gathering, processing, 
-and acting on data to promote learning. These procedures facilitate the 
-preparation, measurement, and collection of data about learning activities 
-for subsequent analysis, interpretation, and reporting. 
+The fields of LA and EDM both share the goal of using research methods and
+predictive analysis to improve student performance and instructional design 
+\cite{baker09, ferguson12, lester19}. EDM research has focused more on the 
+technical challenges of extracting value from big data in education 
+\cite{penaAyala14, romero10}, whereas LA takes a more holistic, education-
+focused approach to learning to inform and empower instructors and learners 
+\cite{lang17, papamitsiou14}. Despite differences in their respective origins 
+and emphasis, LA and EDM are complementary approaches that use similar m
+ethodologies. Together, LA and EDM represent an ecosystem of techniques for 
+gathering, processing, and acting on data to promote learning. These procedures 
+facilitate the preparation, measurement, and collection of data about learning 
+activities for subsequent analysis, interpretation, and reporting. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -129,18 +127,13 @@ about new observations that have set aside, previously unseen by the model.
 Comparing different learning algorithms can help determine which model is best 
 for a given problem and the data available \cite{raschka17}. Several different 
 learning algorithms are described below. Past empirical findings indicate 
-that, in addition to course assessments such as the number of quizzes 
-successfully passed, engagement and participation in course activities is 
-the most influential predictor of final grades 
-\cite{Papamitsiou14, romerozaldivar12}. Furthermore, a student's sense of 
-belonging is essential for engagement and improved satisfaction, which in turn,
-can reduce student dropout.
-
-This study compares several predictive model to understand which model is
-best for identifying the set of features that best predicts student performance. 
-
-student engagement, characteristics that contribute to successful performance, 
-potential failure and non-retention. 
+that, in addition to course assessments such as the number of quizzes passed, 
+engagement and participation in course activities are the most influential 
+predictors of final grades \cite{Papamitsiou14, romerozaldivar12}. Furthermore, 
+a student's sense of belonging is essential for engagement and improved 
+course satisfaction, which in turn can reduce student dropout rate. This study 
+compares several predictive models of student performance to identify 
+the set of features that best predicts student performance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{General Linear Model} 
@@ -207,7 +200,7 @@ performs well with high-dimensional datasets (p>>n) by trading off a small
 increase in bias for a large decrease in variance. A disadvantage of ridge
 regression is that, because it includes all predictors in the model, the penalty 
 shrinks the coefficients toward zero, but does not set any of them exactly to 
-zero, which can create a problem for model interpretation with a dataset that
+zero, which can create a problem for model interpretation with a dataset that 
 has a very large number of predictor variables. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -216,9 +209,9 @@ has a very large number of predictor variables.
 
 The lasso and ridge regression have similar formulations, but the lasso has 
 a major advantage over ridge regression as it produces simpler, more 
-interpretable models based on a subset of features. The lasso uses an L1 
+interpretable models based on a subset of features. The lasso uses the L1 
 penalty which has the effect of forcing some of the coefficient estimates to be
-equal to exactly zero when the tuning parameter lambda is sufficiently large 
+equal exactly to zero when the tuning parameter lambda is sufficiently large 
 \cite{statlearn13}. Thus, the lasso performs variable selection, and produces 
 sparse models based on a subset of the features, which are generally easier to 
 interpret than ridge regression. The lasso implicitly assumes that a number of 
