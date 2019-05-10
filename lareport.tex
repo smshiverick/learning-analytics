@@ -100,46 +100,47 @@ student performance as a form of data-driven learning analytics
 \subsection{Predictive Modeling}
 
 Predictive modeling involves a set of procedures and automated processes for 
-extracting knowledge from data \cite{jamesetal13, kuhn13}. The two main branches 
-of predictive modeling are supervised learning and unsupervised learning. 
-Supervised learning problems involve prediction about a specific outcome or 
-target variable (i.e., course grade) when examples of input/output pairs 
-are available in the data. If a dataset has no target outcome, unsupervised
-learning methods (e.g. clustering) can reveal structure in unlabeled data. 
-Clustering can be used to group individuals together based on similar learning 
-profiles. The two main approaches for supervised 
-learning problems are classification and regression. For an outcome represented 
-as a binary or categorical class label (i.e., pass/fail) a classification model 
-will predict which class or category that a new instance is assigned to. When 
-the target variable to be predicted is measured on a continuous scale (e.g. 
-GPA), a regression model tests how a set of attributes or features predicts 
-the target outcome. Classification is the most commonly used data analytic 
-methods for modeling students and their behavior, and can include models 
-such as logistic regression, support vector machines, naive Bayes, decision 
-trees, and neural networks to predict student performance as a binary outcome 
-\cite{Lykourentzou09}. 
+extracting knowledge from data \cite{jamesetal13, kuhn13}. The two main 
+branches of predictive modeling are supervised learning and unsupervised 
+learning. Supervised learning problems involve prediction about a specific 
+outcome or target variable (i.e., course grade) when examples of input/output 
+pairs are available in the data. If a dataset has no target outcome, 
+unsupervised learning methods (e.g. clustering) can reveal structure in 
+unlabeled data. Clustering can be used to group individuals together based 
+on similar learning profiles. In this study, student performance is analyzed
+as a supervised learning problem based on final course grades. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The current project uses supervised learning to predict student performance 
-based on final course grade using several regression models. Each model is 
-trained on a set of input-output pairs and is then used to make predictions 
-about new observations that have set aside, previously unseen by the model. 
-Comparing different learning algorithms can help determine which model is best 
-for a given problem and the data available \cite{raschka17}. Several different 
-learning algorithms are described below. Past empirical findings indicate 
-that, in addition to course assessments such as the number of quizzes passed, 
+Two main approaches for supervised learning problems are classification and 
+regression. For a binary or categorical outcome represented as a class label 
+(i.e., `pass`/`fail`), a classification model will predict which class or 
+category that new instances are assigned to. When the target variable to be 
+predicted is measured on a continuous scale (e.g. GPA), a regression model 
+tests how a set of attributes or features predicts the target outcome. 
+Classification is the most commonly used data analytic methods for modeling 
+students and their behavior, and can include methods such as logistic 
+regression, support vector machines, naive Bayes, decision trees, and 
+neural networks \cite{Lykourentzou09}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The present study compares several regression models of student performance to 
+identify the set of features that best predicts student performance. Each 
+model is trained on a set of input-output pairs and is then used to make 
+predictions about new observations that were set aside. Comparing different 
+models can help determine which model is best for a given problem with the 
+data available \cite{raschka17}. Past empirical findings indicate that, in 
+addition to course assessments (i.e., number of quizzes passed), student 
 engagement and participation in course activities are the most influential 
-predictors of final grades \cite{Papamitsiou14, romerozaldivar12}. Furthermore, 
-a student's sense of belonging is essential for engagement and improved 
-course satisfaction, which in turn can reduce student dropout rate. This study 
-compares several predictive models of student performance to identify 
-the set of features that best predicts student performance. 
+predictors of final grades \cite{Papamitsiou14, romerozaldivar12}. A student's 
+sense of belonging is essential for engagement and improved course 
+satisfaction, which in turn can reduce student dropout rate. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{General Linear Model} 
 
-A general assumption of linear regression models is that the outcome of interest
+A general assumption of linear regression models is that the target outcome
 can be represented as a linear function of the input features. The standard 
 linear model (below) describes the relationship between predicted target 
 variable (Y) from a set of features (X[1] ... X[p]), and including some measure 
