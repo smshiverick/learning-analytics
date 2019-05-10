@@ -121,7 +121,7 @@ tests how a set of attributes or features predicts the target outcome.
 Classification is the most commonly used data analytic methods for modeling 
 students and their behavior, and can include methods such as logistic 
 regression, support vector machines, naive Bayes, decision trees, and 
-neural networks \cite{Lykourentzou09}. 
+neural networks \cite{Lykourentzou09, pariyadath14, zhang05}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -333,37 +333,22 @@ boosting to improve model accuracy \cite{muller17}.
 
 \subsection{Project Goals} 
 
-The project examines the relationships between demographic characteristics
-and student performance. This study compares several supervised learning models 
-of student performance to identify the set of features that predicts student 
-success and identifies students at risk for failure. The student performance 
-dataset obtained from the UC-Irvine machine learning repository (UCI-MLR) 
-was based on a sample from two secondary schools in Portugal \cite{cortez09}. 
-The dataset includes information collected from a student surveys and school 
-grade records. The target variables was final coure grade and the predictor 
-variables of interest were demographic information, family characteristics,
-and student behaviors (e.g., weekly study hours).
-
-
-
-The target variable was student achievement (pass/fail) assessed by the 
-final grade report in two courses, mathematics and Portugese language. 
-
-It was hypothesized that individuals who report... 
-
-Machine learning has been used for classifying...
-\cite{zhang05, pariyadath14}; 
-
-but to current knowledge, no research has modeled... 
-approaches to learn features of  individuals susceptible to. 
-
-The data were fitted using several models, including general linear 
-regression models with regularization and decision trees model such as
-random forests and gradient boosting. This method can help to explore
-factors contributing to student performance by: (i) Identify demographic 
-factors related to students success and failure, (ii) Identify associations 
-between students performance and the independent variables, (iii) Identify 
-which model provides the most accurate and interpretable solution. 
+The project examines the relationships between student characteristics,  
+behavior, and performance. Data on student performance was obtained from the 
+UC-Irvine machine learning repository (UCI-MLR) based on a sample from two 
+secondary schools in Portugal \cite{cortez09}. The dataset included 
+information collected from a student survey and school grade records. The 
+data were fit using several supervised machine learning models (e.g., linear 
+regression, regression with regularization, and regression tree models) 
+to identify the set of features that best predict student success and 
+characteristic associated with course failure. The target variable was final 
+course grade in two courses (Mathematics, Portugese). The predictors of
+interest were demographic variables, family characteristics, and student 
+behaviors (e.g., weekly study hours). This method can help to explore '
+important factors that contribute to student performance by: (i) Identify 
+demographic factors related to students success and failure, (ii) Identify
+associations between students performance and the independent variables, (iii)
+Identify which model provides the most accurate and interpretable solution. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
