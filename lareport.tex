@@ -398,7 +398,7 @@ model was then evaluated on the testing set.
 \subsubsection{Ridge regression (L2 penalty)} 
 
 The glmnet package was used to fit the ridge regression and lasso models. 
-The glmnet() function does not use model formula language (i.e., $y~x$), 
+The glmnet() function does not use model formula language (i.e., y ~ x), 
 so the X matrix of predictors and target vector Y were passed to the model. 
 The `model.matrix()` function produced a matrix corresponding to the 27 
 predictors and automatically transformed any qualitative variables into
@@ -415,39 +415,34 @@ The shrinkage penalty is applied to every feature, but not the intercept.
 
 \subsubsection{The Lasso (L1 Penalty))} 
  
-The lasso is similar to best subset selection as it tries to find the set of 
-coefficient estimates that lead to the smallest RSS. Cross-validation is used to 
-select an optimal value of the tuning parameter lambda. In terms of the bias-variance
-tradeoff, the lasso is qualitatively similar to ridge regression. As lambda
-increases, the variances decreases and bias increases somewhat; however, the
-variance of ridge regression is slightly lower than the variance of the lasso.
- 
-The Lasso model was fit using the glmnet() function with alpha=1. The model
-automatically calculates correlation estimates for a wide range of lambda
-values.
+The Lasso model was fit using the glmnet() function with alpha=1. The model 
+automatically calculates correlation estimates for a wide range of lambda 
+values. Cross-validation was used to select an optimal value of the tuning 
+parameter lambda. The lasso is similar to best subset selection as it tries 
+to find the set of coefficient estimates that lead to the smallest error (RSS). 
+In terms of the bias-variance tradeoff, the lasso is qualitatively similar to 
+ridge regression. As lambda increases, the variances decreases and bias 
+increases somewhat; however, the variance of ridge regression is slightly 
+lower than the variance of the lasso. 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Regression Trees} 
 
 The tree library was loaded in R, and a random seed was set for consistency. 
-The following steps were taken in building a decision tree: (1) 
-
- (1) Use a recursive binary 
-splitting to grow a large tree on training data, stopping only when each 
-terminal node has fewer than some minimum number of observations. (2) Apply 
-a cost complexity (i.e., weakest link) pruning  to the large tee to obtain 
-a sequence of best subtrees, as a function of alpha. (3) Use k-fold 
-cross-validation to choose alpha, dividing the training observations into 
-k-folds, and for each k=1...K, (a) Repeat steps 1 and 2, (b) evaluate the 
-mean square prediction error on data in the left-out k-fold, as a function 
-of alpha, averaging the results for each level of alpha, and picking a value 
-of alpha that minimizes the average error. (4) Return the subtree that 
-corresponds to the chosen value of alpha. 
-
+The following steps were taken in building a decision tree: (1) A recursive 
+binary splitting was used to grow a large tree on training data (which 
+stops only when each terminal node has fewer than some minimum number of
+observations. (2) A cost complexity (i.e., weakest link) pruning is applied
+to the large tee to obtain a sequence of best subtrees, as a function of alpha. 
+(3) K-fold cross-validation is used to choose alpha, dividing the training 
+observations into k-folds, and for each k=1...K, (a) Steps 1 and 2 are 
+repeated and (b) the mean square prediction error is evaluated on data in the 
+left-out k-fold, as a function of alpha, averaging the results for each level 
+of alpha, and picking a value of alpha that minimizes the average error. 
+(4) The subtree that corresponds to the chosen value of alpha is returned.
 Cross-validation was used to determine optimal tree complexity with produces 
-a small reduction in the residual mean variance of 3.18. 
-
+a small reduction in the residual mean variance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -459,10 +454,10 @@ the number of sampled data points and the maximum number of features; the
 algorithm can look at all of the features in the dataset or a limited number. 
 A high value for \emph{maximum-features} will produce trees in the random 
 forest that are very similar and will fit the data easily based on the most 
-distinctive features, whereas a low value will produce trees that are very 
-different from each other, and reduces overfitting. The random forest model 
-was fit using 1000 trees, with all of the features considered at each node 
-to determine the randomness of each tree. 
+distinctive features, whereas a low value will produce trees that are very
+different from each other, and reduces overfitting. The random forest model was 
+fit using 1000 trees, with all of the features considered at each node to 
+determine the randomness of each tree. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
