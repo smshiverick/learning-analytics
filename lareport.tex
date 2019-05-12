@@ -259,8 +259,8 @@ A random forest is a collection of decision trees that are slightly different
 where each tree overfits the data in a different way. This approach reduces 
 overfitting by building many trees and averaging their results. Randomness is 
 introduced into the tree building process by drawing a bootstrap sample of the 
-data and selecting features at each node branch \cite{muller17,raschka17}. 
-In building the random forest, one must first decide how many trees to build  
+data and selecting features at each node branch \cite{muller17, raschka17}. 
+In building the random forest, you must first decide how many trees to build  
 and the algorithm makes different random choices so that each tree is distinct. 
 The bootstrapping method repeatedly draws random samples of size \textit{n} 
 from the dataset with replacement. The decision trees are built on these 
@@ -355,23 +355,24 @@ provides the most accurate and interpretable solution.
 
 \subsection{Data}
 
-The student performance dataset was downloaded from the UCI-MLR and saved as a 
-data frame object in a python interactive notebook. The data was collected from 
-two secondary schools in the Alentejo region of Portugal during the 2005-2006 
-school year and contained information from a questionnaire and school reports 
-of student grades \cite{cortez08}. The sample consisted of 1044 students
-(56.6\% female, \textit{M} age=16.71 years, \textit{SD}=1.19, 
-\textit{Median}=17 years, \textit{range}=15-22). Age was measured as a 
-categorical variable (\textit{n}=10 individuals between 20 to 22 years were 
-included in the 19+ years group). The dataset consisted of thirty independent 
-variables , including demographic information, social/ emotional 
-attributes, school related variables, and student behaviors (see Table 1). 
-The target variable, Student performance was evaluated on a 20 point scale
---as in other European countries (e.g., France)--at three points during the 
-school year (i.e., Grade1, Grade2, Grade3) for two courses (Mathematics n=395;
-Portugese, n=649). The target variable of interest was the final course grade. 
-A binary dummy variable of student performance was calculated based on the 
-measure of final exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
+The student performance dataset was downloaded from the UC-Irvine machine 
+learning repository (UCI-MLR) and saved as a data frame object in a python 
+interactive notebook. The data was collected from two secondary schools in 
+the Alentejo region of Portugal during the 2005-2006 school year and 
+contained information from a questionnaire and school reports of student 
+grades \cite{cortez08}. The sample consisted of 1044 students (56.6\% female, 
+\textit{M} age=16.71 years, \textit{SD}=1.19, \textit{Median}=17 years, 
+\textit{range}=15-22). Age was measured as a categorical variable 
+(\textit{n}=10 individuals between 20 to 22 years were included in the 19+ 
+years group). The dataset consisted of thirty independent variables, 
+including demographic information, social/ emotional attributes, school-
+related variables, and student behaviors (see Table 1). The target variable, 
+Student performance was evaluated on a 20 point scale--as in other European 
+countries (e.g., France)--at three points during the school year (i.e., 
+Grade1, Grade2, Grade3) for two courses (Mathematics n=395; Portugese, n=649). 
+The target variable of interest was the final course grade. A binary dummy 
+variable of student performance was calculated based on the measure of final 
+exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -381,7 +382,7 @@ measure of final exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
 
 All models were constructed in R (using Rstudio) following examples from
 James, Witten, Hastie, and Tibshirani (2013), \emph{An Introduction to 
-Statistical Learning with Applications in R} \cite{jamesetal13}. After 
+Statistical Learning with Applications in R}\cite{jamesetal13}. After 
 preliminary exploration of the data, the sample was divided into the training 
 set ($n_1$=731) and testing set ($n_2$=313) using a 70 to 30 percent split. 
 Each model was first fit to training data and evaluated on the testing set. 
@@ -417,7 +418,7 @@ The Lasso model was fit using the glmnet() function with alpha=1. The model
 automatically calculates correlation estimates for a wide range of lambda 
 values. Cross-validation was used to select an optimal value of the tuning 
 parameter lambda. The lasso is similar to best subset selection as it tries 
-to find the set of coefficient estimates that lead to the smallest error (RSS). 
+to find the set of coefficient estimates that leads to the smallest error (RSS). 
 In terms of the bias-variance tradeoff, the lasso is qualitatively similar to 
 ridge regression. As lambda increases, the variances decreases and bias 
 increases somewhat; however, the variance of ridge regression is slightly 
