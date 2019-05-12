@@ -143,7 +143,7 @@ satisfaction, which in turn can reduce student dropout rate.
 A general assumption of linear regression models is that the target outcome
 can be represented as a linear function of the input features. The standard 
 linear model (below) describes the relationship between predicted target 
-variable (Y) from a set of features (X[1] ... X[p]), including some measure 
+variable (Y) from a set of features ($X_1$ ... $X_p$), including some measure 
 of error (e). The predicted value of the target outcome can be thought of as 
 the weighted sum of the input features with the weights or coefficients 
 (i.e., beta values) indicating the influence of a given feature on the outcome. 
@@ -153,12 +153,11 @@ If the number of observations (\textit{n}) is much larger than the number of
 features (\textit{p}), OLS coefficient estimates will have low variance and 
 perform well on test observations; however, if the number of observations 
 \textit{n} is not much larger than the number of features \textit{p}, high 
-variability in the least squares fit can result in overfitting and poor 
-prediction on the test observations. For high-dimensional datasets, where 
-p is much greater than n, the least squares coefficient estimate breaks down. 
-The simple linear model can be improved by using alternative fitting 
-approaches that produce better prediction accuracy and model interpretability 
-\cite{jamesetal13}. 
+variability in the OLS fit can result in overfitting and poor prediction on 
+the test observations. For high-dimensional datasets (\textit{$p>>n$}), 
+the least squares coefficient estimate breaks down. The simple linear model 
+can be improved by using alternative fitting approaches that produce better 
+prediction accuracy and model interpretability \cite{jamesetal13}. 
 
 \begin{equation}
   \ Y = \beta_0 + \beta_1X_1 + \beta_2X_2 +... + \beta_pX_p + \epsilon
@@ -171,15 +170,15 @@ approaches that produce better prediction accuracy and model interpretability
 In many regression analyses, it is often the case that multiple independent 
 variables or features will not be correlated with the target outcome. Three 
 methods for improving the fit of linear models are: (a) subset selection, 
-(b) dimension reduction, and (c) regularization or shrinkage. Determining 
+(b) dimension reduction, and (c) regularization (i.e.., shrinkage. Determining 
 which set of features is best for representing the predicted outcome is 
 essential. A straight forward approach to feature selection is to conduct a 
 regression including all the independent variables and then to rerun the 
-regression after removing the non-significant variables from the model.
-Another approach, based on regularization, includes all \textit{p} predictor 
+regression excluding the non-significant variables from the model.
+Another approach termed regularization includes all \textit{p} predictor 
 variables, but constrains (i.e., `regularizes`) the coefficient estimates of 
-the independent variables by shrinking them towards zero. Regularization thus 
-reduces variablity, which in turn improves test set accuracy, with a slight 
+the independent variables by shrinking them towards zero. Regularization 
+reduces variablity, which in turn improves test set accuracy with a slight 
 increase in bias. Shrinking the coefficient estimates of irrelevant features 
 toward zero reduces overfitting and provides a more interpretable model. 
 
@@ -187,24 +186,26 @@ toward zero reduces overfitting and provides a more interpretable model.
 
 \subsubsection{Regularization and Ridge Regression: L2 Penalty} 
 
-Similar to least squares, ridge regression seeks coefficient estimates that 
-fit the data well by reducing error; however, ridge regression introduces a 
-shrinkage penalty (L2) that has the effect of shrinking the coefficient 
-estimates towards zero. When the tuning parameter (lambda) is set to zero, 
-the shrinkage penalty has no effect and ridge regression produces the least
-squares estimates. As the tuning parameter lambda increases, values of the 
-ridge regression coefficients approach zero \cite{statlearn13}. The advantage 
-of ridge regressions over least squares is based on the bias-variance tradeoff. 
-As the tuning parameter lambda increases, the flexibility of the ridge 
-regression decreases, leading to decreased variance but increased bias. 
-Ridge regression is often applied after standardizing the predictor variables 
-so that they are all on the same scale (e.g., \textit{M}=0, \textit{SD}=1). 
-Ridge regression performs well with high-dimensional datasets (p>>n) by trading 
-off a small increase in bias for a large decrease in variance. A disadvantage
-of ridge regression is that, because it includes all predictors in the model, 
-the penalty shrinks the coefficients toward zero, but does not set any of them 
-exactly to zero, which can create a problem for model interpretation with a 
-dataset that has a very large number of predictor variables. 
+As with OLS, ridge regression seeks coefficient estimates that fit the data 
+well by reducing error, but ridge regression introduces a shrinkage penalty
+(L2) that has the effect of shrinking the coefficient estimates towards zero. 
+When the tuning parameter (lambda) is set to zero, the shrinkage penalty has 
+no effect and ridge regression produces the least squares estimates. As the 
+value of lambda increases, the estatimed regression coefficients approach zero 
+\cite{statlearn13}. The advantage of ridge regressions over least squares is 
+based on the bias-variance tradeoff. As the tuning parameter lambda increases, 
+the flexibility of the ridge regression decreases, leading to decreased variance 
+but increased bias. Lower variance is associated with reduced overfitting, 
+whereas higher bias can lead the model to miss relevant relations between
+features and target outputs (underfitting). Ridge regression is often applied 
+after standardizing the predictor variables so that they are all on the same 
+scale (e.g., \textit{M}=0, \textit{SD}=1). Ridge regression performs well with
+high-dimensional datasets (p>>n) by trading off a small increase in bias for a 
+large decrease in variance. A disadvantage of ridge regression is that, because 
+it includes all predictors in the model, the penalty shrinks the coefficients 
+toward zero, but does not set any of them exactly to zero. This can create a 
+problem for model interpretation with a dataset that has a very large number
+of features. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -356,51 +357,51 @@ Identify which model provides the most accurate and interpretable solution.
 
 \subsection{Data}
 
-The sample consisted of 1044 students (56.6\% female, \textit{M} age=16.71 
-years, \textit{SD}=1.19, \textit{Median}=17 years). Age was measured as 
-a categorical variable (\textit{minimum}=15, \textit{maximum}=22); 
-\textit{n}=10 individuals between 20 and 22 were added to the category of 
-19+ years. The student performance dataset was downloaded from the UCI-MLR 
-and saved as a data frame object in a python interactive notebook. The data 
-was collected from two secondary schools in the Alentejo region of Portugal 
-during the 2005-2006 school year and contained information from a 
-questionnaire and school reports of student grades \cite{cortez09}. 
-The dataset included thirty independent variables consisting of demographic 
-information (e.g. family size, parental education and employment status), 
-social/ emotional attributes (e.g. extracurricular activities, romantic
-relationship, alcohol consumption), school related variables (e.g., weekly 
-time studying, past class failures, absences) related to student
-(see Table 1). Student performance was evaluated on a 20 point scale--as in 
-other European countries (e.g., France)--at three points during the school 
-year (i.e., G1, G2, G3) for two courses, mathematics (n=395) and Portugese 
-(n=649). The target outcome was the final course grade. A binary dummy
-variable of student performance was calculated based on the measure of 
-final exam grades (Pass$>$10, Fail$<=$10) for comparison.
+The student performance dataset was downloaded from the UCI-MLR and saved as a 
+data frame object in a python interactive notebook. The data was collected from 
+two secondary schools in the Alentejo region of Portugal during the 2005-2006 
+school year and contained information from a questionnaire and school reports 
+of student grades \cite{cortez08}. The sample consisted of 1044 students
+(56.6\% female, \textit{M} age=16.71 years, \textit{SD}=1.19, 
+\textit{Median}=17 years, \textit{range}=15-22). Age was measured as a 
+categorical variable (\textit{n}=10 individuals between 20 to 22 years were 
+included in the 19+ years group). The dataset consisted of thirty independent 
+variables , including demographic information, social/ emotional 
+attributes, school related variables, and student behaviors (see Table 1). 
+The target variable, Student performance was evaluated on a 20 point scale
+--as in other European countries (e.g., France)--at three points during the 
+school year (i.e., Grade1, Grade2, Grade3) for two courses (Mathematics n=395;
+Portugese, n=649). The target variable of interest was the final course grade. 
+A binary dummy variable of student performance was calculated based on the 
+measure of final exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Model Construction}
 
-All models were constructed in R, using Rstudio, following examples provided 
-in \emph{An Introduction to Statistical Learning with Applications in R} 
-\cite{jamesetal13}. After preliminary exploration of the data, the sample was 
-divided into the training set ($n_1$=731) and testing set ($n_2$=313) using 
-a 70 to 30 percent split. The models were first fit to training data and then
-evaluating on the testing set. The regression models of student performance
-were constructed using 27 independent variables listed in Table 1. The
-regression model was run on the training set with the full set of predictor 
-variables and then the model was rerun with non-significant predictors 
-excluded from the final model. This model was evaluated on the testing set. 
+\subsubsection{Linear Regression (OLS)} 
+
+All models were constructed in R (using Rstudio) following examples from
+James, Witten, Hastie, and Tibshirani (2013), \emph{An Introduction to 
+Statistical Learning with Applications in R} \cite{jamesetal13}. After 
+preliminary exploration of the data, the sample was divided into the training 
+set ($n_1$=731) and testing set ($n_2$=313) using a 70 to 30 percent split. 
+Each model was first fit to training data and evaluated on the testing set. 
+Student performance was regressed on 27 independent variables shown in Table 1 
+using the general linear model (OLS). The regression model was run on the 
+training set with the full set of predictor variables; the model was then 
+rerun excluding all non-significant predictors variables from model. The final 
+model was then evaluated on the testing set. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Regularization and Ridge regression (L2 penalty)} 
+\subsubsection{Ridge regression (L2 penalty)} 
 
 The glmnet package was used to fit the ridge regression and lasso models. 
-The glmnet() function does not use model formula language (e.g., `y ~ x`), 
-so the 'x' matrix of predictors and target vector 'y' were passed to the 
-model. The model.matrix() function produced a matrix corresponding to the 
-27 predictors and automatically transformed any qualitative variables into
+The glmnet() function does not use model formula language (i.e., $y~x$), 
+so the X matrix of predictors and target vector Y were passed to the model. 
+The `model.matrix()` function produced a matrix corresponding to the 27 
+predictors and automatically transformed any qualitative variables into
 dummy variables. The `alpha` parameter in the glmnet() function determines 
 what kind of model is fit: alpha=0 is used to fit ridge regression. It is
 important to select an appropriate value of the parameter lambda, as the
@@ -408,11 +409,11 @@ algorithm generates a different set of coefficients for each value of
 lambda. By default, the glmnet() function performs ridge regression for an 
 automatically selected range of lambda values (e.g., 100). The glmnet 
 function also standardizes the variables so they are all on the same scale.
-The shrinkage penalty is applied to every features, but not the intercept. 
+The shrinkage penalty is applied to every feature, but not the intercept. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Regularization and the Lasso (L1 Penalty))} 
+\subsubsection{The Lasso (L1 Penalty))} 
  
 The lasso is similar to best subset selection as it tries to find the set of 
 coefficient estimates that lead to the smallest RSS. Cross-validation is used to 
