@@ -566,7 +566,7 @@ and interaction depth of 4 splits.
     \midrule
     Variables           & Coefficient        & S.E.  & t-value & Coefficient & S.E. & t-Value  \\
     \midrule
-    Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
+ Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
     Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
     School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}**   & 0.647 & -2.29 \\
     Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\
@@ -593,7 +593,7 @@ and interaction depth of 4 splits.
 \end{table*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
- 
+
 \section{Results}
 
 \subsection{Exploratory Data Analysis}
@@ -649,26 +649,25 @@ compared to students without home internet access.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Linear Models}
+\subsection{Linear Regression and Regularization}
 
-\subsubsection{Multivariate Linear Regression}
+\subsubsection{General Linear Model}
+
 Student performance was first regressed on the 27 independent variables 
-(Table 1) with the training set; this regression was statistically significant, 
-\textit{F}(27, 702) = 7.62, \textit{p} $<$ 0.001 ($R^2$=0.227, adjusted 
-$R^2$=0.197). The regression model was rerun excluding the non-significant 
-predictors and this regression revealed a significant relationship between
-students performance and the independent variables, \textit{F}(12, 717) = 21.79, 
-\textit{p} $<$ 0.001 ($R^2$=0.219, adjusted $R^2$=0.204). An anova test revealed 
-no significant difference between the two models (\textit{F}$<$ 1.0, 
-\textit{p} $=$ 0.91) and the simpler model was retained. In the testing set,
-20.5\% of the variation in the predicted value of student performance was due to 
-changes in the independent variables, taking into account the number of 
-independent variables in the model. For the final model on the training set, 
-the predicted value of student performance is explained by the combined effect 
-of the coefficients for the predictor variables presented in the left side of 
-Table 3, as a weighted average.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(Table 1) with the training set; this regression was statistically 
+significant, and accounted for 19.7\% of the variance in the predicted
+value of student performance, taking into account the number of 
+independent variables, \textit{F}(27, 702) = 7.62, \textit{p} $<$ 0.001 
+($R^2$=0.227, adjusted $R^2$=0.197). The regression model was rerun, 
+excluding the non-significant predictors, and this regression also 
+yielded a significant relationship between student performance and the 
+independent variables, accounting for 20.4\% of the variability in 
+predicted performance, \textit{F}(12, 717) = 21.79, \textit{p} $<$ 0.001 
+($R^2$=0.219, adjusted $R^2$=0.204). An ANOVA test showed no significant 
+difference between the two models (\textit{F}$<$ 1.0, \textit{p} $=$ 0.91) 
+and the simpler model with thirteen predictor variables was retained as 
+the final model. The estimated coefficients, standard error, and t-value 
+on the testing set are presented in the left side of Table 3.
 
 %\begin{equation*}
 % \begin{aligned}
@@ -680,59 +679,35 @@ Table 3, as a weighted average.
 % \end{aligned}
 %\end{equation*}
 
-On the training set, there was a 2.23 decrease in predicted performance 
-for students in the math course compared to students in the Portugese course, 
-controlling for the effect of other independent variables. Students receiving 
-school support had a 1.35 lower predicted final course grade than students 
-who did not receive school support, holding all other variables constant. 
-Students with plans for higher education had a 1.70 higher predicted final 
-grade than students with no plans for higher education (*controlling for 
-all other variables. A one-unit change in going out with friends yielded 
-a 0.44 decrease in the predicted performance*. A unit change in mother's 
-level of education was associated with a 0.49 increase in predicted performance.
-A one-unit change in student health resulted in a 0.26 decrease in predicted 
-student performance. Importantly, a one-unit change in weekly study time 
-resulted in a 0.45 increase in predicted student performance. A one-unit 
-change in quality of family relationships resulted in a 0.34 increase in 
-student performance. A one-unit increase in students age was associated with
-a 0.25 decrease in predicted performance. There was a -0.81 decrease in 
-predicted performance for students in a romantic relationship compared to 
-students who were not in a relationship, all else being equal. Students with 
-access to the internet at home had a 0.82 higher predicted final grade than 
-students with not internet access at home. Students whose family size was
-greater than 3 had a 0.50 lower predicted performance than students with 
-a family size of 3 or less. Finally, a unit change in father's job yielded 
-a 0.29 increase in predicted performance. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-The final linear regression model was evaluated on the testing set which
-yielded a significant relationship between student performance and the 
-independent variables, \textit{F}(13, 300) = 5.96, \textit{p} $<$ 0.001
-($R^2$=0.205, adjusted $R^2$=0.171). On the test set, the final model explained 
-20.5\% of the variation in the predicted value of student performance owing 
-to changes in the independent variables, or 17.1\% taking into account the 
-number of independent variables in the model (adjusted $R^2$). As shown in 
-Table 3, 13 of the 27 predictor variables on the training set were 
-statistically significant; however, on the testing set only 6 of these 13 
-predictors were significant, which suggests that the model was overfit to 
-the data in the training set. 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The final model was evaluated on the testing set and the regression yielded 
+a significant relationship between student performance and the independent 
+variables, accounting for 17.1\% of the variability of the predicted value 
+of student performance, taking into account the number of independent 
+variables, \textit{F}(13, 300) = 5.96, \textit{p} $<$ 0.001 ($R^2$=0.205, 
+adjusted $R^2$=0.171). As shown in Table 3, only 6 of the 13 independent
+variables in the testing set were significant, which suggests that the 
+model was overfit to data in the training set, The predicted values of
+student performance would be explained by the combined effect, or 
+weighted average, of the coefficient estimates and the observed values 
+for each significant independent variable in the model (Equation 2).
 
 \begin{equation*}
  \begin{aligned}
-  Y = 6.96 - 1.16(Course) - 1.44(SchoolSupport) + 1.70(HighEd) + \\
-  0.49(MotherEd) + 0.45(StudyTime) - 0.60(RomanticRelation)
+  Y = 6.955 - 1.162(Course) - 1.481(SchoolSupport) + 4.101(HighEd) + \\
+  0.473(MotherEd) + 0.893(StudyTime) - 1.127(RomanticRelation)
  \end{aligned}
 \end{equation*}
 
-On the training set, there was a 1.16 decrease in predicted performance 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+On the testing set, there was a 1.16 decrease in predicted performance 
 for students in the math course compared to students in the Portugese course, 
-controlling for all other variables. Students receiving school support had 
-a 1.48 lower predicted final course grade than students who did not receive 
-school support, holding all other variables constant. Students with plans for
-higher education had a 4.10 higher predicted final grade than students with 
+controlling for all other independent variables. Students receiving school 
+support had a 1.48 lower predicted final course grade than students who did not 
+receive school support, holding all other variables constant. Students with plans 
+for higher education had a 4.10 higher predicted final grade than students with 
 no plans for higher education, controlling for other variables. A unit change 
 in mother's level of education was associated with a 0.47 increase in predicted 
 student performance, controlling for all other variables. A one-unit change in 
@@ -742,8 +717,6 @@ predicted performance for students in a romantic relationship compared to
 students who were not in a relationship, all else being equal. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Regularization}
 
 \subsubsection{Ridge Regression (L2 Penalty)}
 
@@ -812,7 +785,7 @@ also were likely to be or have received drug treatment.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-\begin{table*}[ht]
+\begin{table}
   \caption{Coefficient Estimates for the Lasso Regression of Student Performance 
   (Lambda=0.0712)}
   \label{tab:freq}
@@ -850,7 +823,7 @@ also were likely to be or have received drug treatment.
     Sex                 &   0.000   \\
     \bottomrule
   \end{tabular}
-\end{table*}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
