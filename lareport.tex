@@ -555,6 +555,44 @@ and interaction depth of 4 splits.
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{table*}[ht]
+  \caption{Coefficient Estimates for Regression Models of Student Performance on 
+  Training Set and Testing Set}
+  \label{tab:freq}
+  \begin{tabular}{lllllll}
+    \toprule
+                        & Training Set      &        &         & Testing Set &         &          \\
+    \midrule
+    Variables           & Coefficient        & S.E.  & t-value & Coefficient & S.E. & t-Value  \\
+    \midrule
+    Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
+    Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
+    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}**   & 0.647 & -2.29 \\
+    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\
+    Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.097      & 0.178 & -0.55 \\
+    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.473}**   & 0.213 &  2.25 \\
+    Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.008      & 0.152 & -0.05 \\
+    Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.893}***  & 0.260 &  3.43 \\
+    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.096      & 0.215 & -0.45 \\
+    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  &         -0.034      & 0.191 & -0.18 \\
+    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.127}**   & 0.461 & -2.45 \\
+    Internet Access     & \textbf{ 0.819}**  & 0.321 &  2.55  &          0.420      & 0.542 &  0.77 \\
+    Family Size         & \textbf{-0.500}*   & 0.278 & -1.80  &         -0.594      & 0.458 & -1.30 \\
+    Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.050      & 0.245 & -0.20 \\
+    \midrule
+    \textit{n}          &       730          &       &        &         314         &       &       \\
+    \textit{F-Value}    & \textbf{15.41}***  &       &        & \textbf{5.96}***    &       &       \\
+    \textit{df}         &   (13, 716)        &       &        &      (13, 300)      &       &       \\
+    \textit{$R^2$}      &      0.219         &       &        &         0.205       &       &       \\ 
+    \textit{Adj. $R^2$} &      0.204         &       &        &         0.171       &       &       \\
+    \textit{Resid. S.E} &      3.396         &       &        &         3.643       &       &       \\
+    \bottomrule
+    Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
+  \end{tabular}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
 \section{Results}
 
@@ -611,47 +649,9 @@ compared to students without home internet access.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{table*}[ht]
-  \caption{Coefficient Estimates for Regression Models of Student Performance on 
-  Training Set and Testing Set}
-  \label{tab:freq}
-  \begin{tabular}{lllllll}
-    \toprule
-                        & Training Set      &        &         & Testing Set &         &          \\
-    \midrule
-    Variables           & Coefficient        & S.E.  & t-value & Coefficient & S.E. & t-Value  \\
-    \midrule
-    Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
-    Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
-    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}**   & 0.647 & -2.29 \\
-    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\
-    Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.097      & 0.178 & -0.55 \\
-    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.473}**   & 0.213 &  2.25 \\
-    Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.008      & 0.152 & -0.05 \\
-    Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.893}***  & 0.260 &  3.43 \\
-    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.096      & 0.215 & -0.45 \\
-    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  &         -0.034      & 0.191 & -0.18 \\
-    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.127}**   & 0.461 & -2.45 \\
-    Internet Access     & \textbf{ 0.819}**  & 0.321 &  2.55  &          0.420      & 0.542 &  0.77 \\
-    Family Size         & \textbf{-0.500}*   & 0.278 & -1.80  &         -0.594      & 0.458 & -1.30 \\
-    Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.050      & 0.245 & -0.20 \\
-    \midrule
-    \textit{n}          &       730          &       &        &         314         &       &       \\
-    \textit{F-Value}    & \textbf{15.41}***  &       &        & \textbf{5.96}***    &       &       \\
-    \textit{df}         &   (13, 716)        &       &        &      (13, 300)      &       &       \\
-    \textit{$R^2$}      &      0.219         &       &        &         0.205       &       &       \\ 
-    \textit{Adj. $R^2$} &      0.204         &       &        &         0.171       &       &       \\
-    \textit{Resid. S.E} &      3.396         &       &        &         3.643       &       &       \\
-    \bottomrule
-    Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
-  \end{tabular}
-\end{table*}
+\subsection{Linear Models}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Linear Regression Model}
-
+\subsubsection{Multivariate Linear Regression}
 Student performance was first regressed on the 27 independent variables 
 (Table 1) with the training set; this regression was statistically significant, 
 \textit{F}(27, 702) = 7.62, \textit{p} $<$ 0.001 ($R^2$=0.227, adjusted 
@@ -743,7 +743,9 @@ students who were not in a relationship, all else being equal.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Ridge Regression (L2 Penalty)}
+\subsection{Regularization}
+
+\subsubsection{Ridge Regression (L2 Penalty)}
 
 Figure 5 shows the coefficients of predictors in the ridge regression model 
 with the log values of lambda plotted on the x-axis. As the values of lambda 
@@ -764,7 +766,24 @@ X, followed by Y, and Z.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{The Lasso (L1 Penalty)}
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \caption{Lasso Regression Coefficients for Student Performance on Test Set 
+  with L1 Shrinkage as a function of Lambda}
+  \label{f:Figure3}
+\end{figure}
+
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \caption{Lasso Regression Model: Coefficient Value and Variance in Predicted 
+  Student Performance Accounted For as a Function of Predictor Variables }
+  \label{f:Figure4}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Lasso (L1 Penalty)}
 
 Figure 4 show the coefficients for the lasso regression plotted as a function 
 of the log value of lambda. As the values of lambda becomes very large, many of 
@@ -774,14 +793,6 @@ advantage over ridge regression in that the resulting coefficient estimates
 are sparse, and only a subset of the predictors are selected in the model. 
 Cross-validation was used to select the best value of lambda, which 
 revealed that a log value of lambda of -2.5 to be in the optimal range.
-
-
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
-  \caption{Lasso Regression Coefficients for Student Performance on Test Set 
-  with L1 Shrinkage as a function of Lambda}
-  \label{f:Figure3}
-\end{figure}
 
 Figure 7 plots the fraction of deviance explained (i.e., variance accounted 
 for) of the coefficients of predictors in the lasso model. As seen in 
@@ -799,18 +810,58 @@ reliever misuse, abuse, and drug treatment;
 respondents who reported misusing and abusing prescription opioid pain relievers
 also were likely to be or have received drug treatment. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{table*}[ht]
+  \caption{Coefficient Estimates for the Lasso Regression of Student Performance 
+  (Lambda=0.0712)}
+  \label{tab:freq}
+  \begin{tabular}{ll}
+    \toprule
+    Variables           & Coefficient  \\
+    \midrule
+    Intercept           &  12.899   \\
+    Course              &  -2.058   \\
+    School Support      &  -1.121   \\
+    Higher Ed           &   1.534   \\
+    Going Out           &  -0.316   \\
+    Mother's Education  &   0.403   \\
+    Health              &  -0.199   \\
+    Study Time          &   0.353   \\
+    Family Relations    &   0.247   \\
+    Age                 &  -0.196   \\
+    Romantic Relation   &  -0.461   \\
+    Internet Access     &   0.614   \\
+    Family Size         &  -0.353   \\
+    Father's Job        &   0.205   \\
+    Area (Urban/Rural)  &   0.192   \\
+    Family Support      &  -0.152   \\ 
+    Weekly Alcohol Cons.&  -0.113   \\
+    Mother's Job        &   0.066   \\
+    Travel Time to School & -0.053  \\
+    Parents Rel. Status &   0.045   \\    
+    Daily Alcohol Cons. &  -0.029   \\ 
+    Extra Paid Classes  &   0.000   \\      
+    Extra Activities    &   0.000   \\    
+    Free Time           &   0.000   \\    
+    Absences            &   0.000   \\
+    Father's Education  &   0.000   \\         
+    Student Guardian    &   0.000   \\    
+    Sex                 &   0.000   \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
-  \caption{Lasso Regression Model: Coefficient Value and Variance in Predicted 
-  Student Performance Accounted For as a Function of Predictor Variables }
-  \label{f:Figure4}
-\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Decision Tree Regression}
+\subsection{Decision Tree Models}
+
+\subsubsection{Regression Trees}
 
 The tree was fit to the training data, and the regression returned a tree with 
 6 terminal nodes, with a residual mean variance of 3.22. 
