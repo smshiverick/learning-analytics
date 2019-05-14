@@ -732,52 +732,6 @@ compared to students who were not in a relationship, all else being equal.
   \label{f:Figure3}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Ridge Regression (L2 Penalty)}
-
-Figure 5 shows the coefficients of predictors in the ridge regression model 
-with the log values of lambda plotted on the x-axis. As the values of lambda 
-become very large, the coefficient values are shrunk towards zero, but 
-never equal exactly to zero. Cross-validation was used to select the best 
-value of lambda, which was a value around 0. The features with the highest 
-coefficient values were 
-
-X, followed by Y, and Z. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{The Lasso (L1 Penalty)}
-
-Figure 4 show the coefficients for the lasso regression plotted as a function 
-of the log value of lambda. As the values of lambda becomes very large, many of 
-the  coefficients are shrunk to be equal exactly to zero. The associated error 
-of the lasso is very similar to ridge regression, but the lasso has an 
-advantage over ridge regression in that the resulting coefficient estimates 
-are sparse, and only a subset of the predictors are selected in the model. 
-Cross-validation was used to select the best value of lambda, which 
-revealed that a log value of lambda of -2.5 to be in the optimal range.
-
-Figure 7 plots the fraction of deviance explained (i.e., variance accounted 
-for) of the coefficients of predictors in the lasso model. As seen in 
-
-Figure 7, a model that includes five predictors (TREATMENT, HEROINUSE, 
-COCAINE, AMPHETAMINES, PRLANY) accounts for approximately 20 percent of the 
-variability in opioid pain reliever misuse and abuse. Adding additional 
-predictors to the model does not increase the fraction of deviance explained, 
-and could likely result in a model that would overfit the data. 
-
-In a model with five predictors, substance treatment and heroin use have the 
-highest coefficient values. This reveals a positive relationship between pain 
-reliever misuse, abuse, and drug treatment; 
-
-respondents who reported misusing and abusing prescription opioid pain relievers
-also were likely to be or have received drug treatment. 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{table}
@@ -788,7 +742,7 @@ also were likely to be or have received drug treatment.
     \toprule    
                         &   Ridge (L2)  & Lasso (L1) \\
     \midrule
-    CV-Lamdda           &    0.746      &  0.071    \\
+    CV-Lambda           &    0.746      &  0.071    \\
     MSE                 &   12.788      & 13.895    \\
     \midrule
     \textit{Variables}  & \textit{Coefficient} &  \textit{Coefficient} \\
@@ -827,7 +781,45 @@ also were likely to be or have received drug treatment.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
+\subsubsection{Ridge Regression (L2 Penalty)}
 
+Figure 5 shows the coefficients of predictors in the ridge regression model 
+with the log values of lambda plotted on the x-axis. As the values of lambda 
+become very large, the coefficient values are shrunk towards zero, but 
+never equal exactly to zero. Cross-validation was used to select the best 
+value of lambda, which was a value around 0. The features with the highest 
+coefficient values were 
+
+X, followed by Y, and Z. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Lasso (L1 Penalty)}
+
+Table 5 shows the coefficients for the lasso regression plotted as a function 
+of the log value of lambda. As the values of lambda becomes very large, many of 
+the  coefficients are shrunk to be equal exactly to zero. The associated error 
+of the lasso is very similar to ridge regression, but the lasso has an 
+advantage over ridge regression in that the resulting coefficient estimates 
+are sparse, and only a subset of the predictors are selected in the model. 
+Cross-validation was used to select the best value of lambda, which 
+revealed that a log value of lambda of -2.5 to be in the optimal range.
+
+Figure 7 plots the fraction of deviance explained (i.e., variance accounted 
+for) of the coefficients of predictors in the lasso model. As seen in 
+
+Figure 7, a model that includes five predictors (TREATMENT, HEROINUSE, 
+COCAINE, AMPHETAMINES, PRLANY) accounts for approximately 20 percent of the 
+variability in opioid pain reliever misuse and abuse. Adding additional 
+predictors to the model does not increase the fraction of deviance explained, 
+and could likely result in a model that would overfit the data. 
+
+In a model with five predictors, substance treatment and heroin use have the 
+highest coefficient values. This reveals a positive relationship between pain 
+reliever misuse, abuse, and drug treatment; 
+
+respondents who reported misusing and abusing prescription opioid pain relievers
+also were likely to be or have received drug treatment. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -860,7 +852,7 @@ The regression tree model was evaluated on the test set; Figure 9 shows
 the prediction (yhat) plotted against data in the test set.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Figure X shows the 
 pruned decision tree for PRLMISAB with the root node of TRTMENT. 
@@ -898,6 +890,13 @@ Following the right branch are n=15008 observations positive for cocaine use,
 of which 0.39 or 39\% reported pain reliever misuse or abuse. This means that 
 the proportion of pain reliever misuse and abuse was more than five times as 
 large for individuals who reported using cocaine than those who had not. 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 The second split was based on heroin use; the left branch included n=12876 
