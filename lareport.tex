@@ -712,9 +712,25 @@ no plans for higher education, controlling for other variables. A unit change
 in mother's level of education was associated with a 0.47 increase in predicted 
 student performance, controlling for all other variables. A one-unit change in 
 weekly study time resulted in a 0.89 increase in predicted student performance, 
-holding constant the effect of other variables. There was a -1.13 decrease in 
-predicted performance for students in a romantic relationship compared to 
-students who were not in a relationship, all else being equal. 
+holding constant the effect of other variables. Finally, there was a -1.13 
+decrease in predicted performance for students in a romantic relationship 
+compared to students who were not in a relationship, all else being equal. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \caption{Ridge Regression Coefficients for Student Performance on Training Set
+  with L2 Shrinkage as a function of Lambda}
+  \label{f:Figure2}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \caption{Lasso Regression Coefficients for Student Performance on Test Set 
+  with L1 Shrinkage as a function of Lambda}
+  \label{f:Figure3}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -729,30 +745,9 @@ coefficient values were
 
 X, followed by Y, and Z. 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
-  \caption{Ridge Regression Coefficients for Student Performance on Training Set
-  with L2 Shrinkage as a function of Lambda}
-  \label{f:Figure2}
-\end{figure}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
-  \caption{Lasso Regression Coefficients for Student Performance on Test Set 
-  with L1 Shrinkage as a function of Lambda}
-  \label{f:Figure3}
-\end{figure}
 
-
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
-  \caption{Lasso Regression Model: Coefficient Value and Variance in Predicted 
-  Student Performance Accounted For as a Function of Predictor Variables }
-  \label{f:Figure4}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -789,38 +784,43 @@ also were likely to be or have received drug treatment.
   \caption{Coefficient Estimates for the Lasso Regression of Student Performance 
   (Lambda=0.0712)}
   \label{tab:freq}
-  \begin{tabular}{ll}
-    \toprule
-    Variables           & Coefficient  \\
+  \begin{tabular}{lll}
+    \toprule    
+                        &   Ridge (L2)  & Lasso (L1) \\
     \midrule
-    Intercept           &  12.899   \\
-    Course              &  -2.058   \\
-    School Support      &  -1.121   \\
-    Higher Ed           &   1.534   \\
-    Going Out           &  -0.316   \\
-    Mother's Education  &   0.403   \\
-    Health              &  -0.199   \\
-    Study Time          &   0.353   \\
-    Family Relations    &   0.247   \\
-    Age                 &  -0.196   \\
-    Romantic Relation   &  -0.461   \\
-    Internet Access     &   0.614   \\
-    Family Size         &  -0.353   \\
-    Father's Job        &   0.205   \\
-    Area (Urban/Rural)  &   0.192   \\
-    Family Support      &  -0.152   \\ 
-    Weekly Alcohol Cons.&  -0.113   \\
-    Mother's Job        &   0.066   \\
-    Travel Time to School & -0.053  \\
-    Parents Rel. Status &   0.045   \\    
-    Daily Alcohol Cons. &  -0.029   \\ 
-    Extra Paid Classes  &   0.000   \\      
-    Extra Activities    &   0.000   \\    
-    Free Time           &   0.000   \\    
-    Absences            &   0.000   \\
-    Father's Education  &   0.000   \\         
-    Student Guardian    &   0.000   \\    
-    Sex                 &   0.000   \\
+    CV-Lamdda           &    0.746      &  0.071    \\
+    MSE                 &   12.788      & 13.895    \\
+    \midrule
+    \textit{Variables}  & \textit{Coefficient} &  \textit{Coefficient} \\
+    \midrule
+    Intercept           &   13.539      &   12.899   \\
+    Course              &   -1.838      &   -2.058   \\
+    School Support      &   -1.171      &   -1.121   \\
+    Higher Ed           &    1.409      &    1.534   \\
+    Going Out           &   -0.285      &   -0.316   \\
+    Mother's Education  &    0.333      &    0.403   \\
+    Health              &   -0.206      &   -0.199   \\
+    Study Time          &    0.349      &    0.353   \\
+    Family Relations    &    0.279      &    0.247   \\
+    Age                 &   -0.226      &   -0.196   \\
+    Romantic Relation   &   -0.496      &   -0.461   \\
+    Internet Access     &    0.609      &    0.614   \\
+    Family Size         &   -0.454      &   -0.353   \\
+    Father's Job        &    0.213      &    0.205   \\
+    Area (Urban/Rural)  &    0.244      &    0.192   \\
+    Family Support      &   -0.267      &   -0.152   \\ 
+    Weekly Alcohol Cons.&   -0.129      &   -0.113   \\
+    Mother's Job        &    0.125      &    0.066   \\
+    Travel Time to School & -0.110      &   -0.053   \\
+    Parents Rel. Status &    0.267      &    0.045   \\    
+    Daily Alcohol Cons. &   -0.072      &   -0.029   \\ 
+    Paid Extra Classes  &   -0.038      &    0.   \\      
+    Extra Activities    &    0.013      &    0.   \\    
+    Free Time           &   -0.060      &    0.   \\    
+    Absences            &    0.003      &    0.   \\
+    Father's Education  &    0.042      &    0.   \\         
+    Student Guardian    &   -0.057      &    0.   \\    
+    Sex                 &    0.120      &    0.   \\
     \bottomrule
   \end{tabular}
 \end{table}
