@@ -602,28 +602,28 @@ Preliminary examination of the data revealed significant correlations
 between previous course failures and the course evaluation variables,
 Grade 1, Grade 2, and Grade 3 (Table 2). A chi-squared test of independence 
 showed the proportion of passing and failing final grades (G3) was 
-significantly related to previous course failures (\textit{p}$=$0.001)
-(Figure 1). The majority of students with no past failures successfully 
-passed their courses, but only a minority of students with one or more 
-previous failures received a passing grade. Past course failures and 
-the first two course grades (i.e., Grade 1, Grade 2) were not included 
+significantly related to previous course failures ($\chi 2$ ,
+\textit{p}$=$0.001)(Figure 1). The majority of students with no past failures 
+successfully passed their courses, but only a minority of students with one
+or more previous failures received a passing grade. Past course failures 
+and the first two course grades (i.e., Grade 1, Grade 2) were not included 
 in the regression models to address the issue of multicolinearity.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 Table 3 provides summary statistics for selected attributes. Chi-squared tests 
 of independence were used to compare the proportion of passing and failing 
-students by attribute. Performance did not vary by sex (chi-squared 
+students by attribute. Performance did not vary by sex ( $\chi 2$ , 
 \textit{p}$=$0.20); however, student performance did vary significantly by 
-course topic (chi-squared \textit{p}$<$0.001); more than two-thirds of students 
+course topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of students 
 in the Portugese course received a passing grade, but only slightly more than 
 half of students in the Math course successfully passed. Extra educational 
 school support was also significantly related to student performance 
-(chi-squared \textit{p}$<$0.001). Just over half of students who received 
+($\chi 2$ , \textit{p}$<$0.001). Just over half of students who received 
 extra educational support school received a passing grade compared to nearly 
 two-thirds of students who did not receive extra support. In addition, there 
 was a significant relationship between performance and students' plans for 
-higher education (chi-squared \textit{p}$<$0.001). Two-thirds of students 
+higher education ($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students 
 who received a passing grade had plans to pursue higher education, whereas 
 less than one-quarter of students with no plans for higher education passed 
 their courses. In other words, of students with plans for higher education, 
@@ -633,17 +633,17 @@ failed had no plans to pursue higher education.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 The proportion of passing and failing grades varied by level of mother's 
-education (chi-squared \textit{p}$<$0.05); however, the relationship was 
+education ($\chi 2$ , \textit{p}$<$0.05); however, the relationship was 
 non-linear. Study time was significantly associated with student performance 
-(chi-squared \textit{p}$<$0.001). The proportion of passing and failing 
+($\chi 2$ , \textit{p}$<$0.001). The proportion of passing and failing 
 grades significantly different for students who studied 5 hours or more 
 per week compared to students who studied less than 5 hours per week. 
 The association between student performance and romantic relationships
-was marginally significant (chi-squared \textit{p}$<$0.06). The proportion 
+was marginally significant ($\chi 2$ , \textit{p}$<$0.06). The proportion 
 of passing and failing grades was significantly different for students in 
 a relationship than students who were not in a relationship. The relationship 
 between internet access and student performance was also marginally significant 
-(chi-squared \textit{p}$<$0.06). The proportion of passing and failing grades 
+($\chi 2$ , \textit{p}$<$0.06). The proportion of passing and failing grades 
 was significantly different for students with access to the internet at home
 compared to students without home internet access.
 
@@ -735,14 +735,14 @@ compared to students who were not in a relationship, all else being equal.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{table}
-  \caption{Coefficient Estimates for the Lasso Regression of Student Performance 
-  (Lambda=0.0712)}
+  \caption{Coefficient Estimates for Ridge Regression (L2) and the Lasso Model
+  (L1) of Student Performance}
   \label{tab:freq}
   \begin{tabular}{lll}
     \toprule    
                         &   Ridge (L2)  & Lasso (L1) \\
     \midrule
-    CV-Lambda           &    0.746      &  0.071    \\
+    Best lambda (CV)    &    0.746      &  0.071    \\
     MSE                 &   12.788      & 13.895    \\
     \midrule
     \textit{Variables}  & \textit{Coefficient} &  \textit{Coefficient} \\
@@ -783,11 +783,16 @@ compared to students who were not in a relationship, all else being equal.
 
 \subsubsection{Ridge Regression (L2 Penalty)}
 
-Figure 5 shows the coefficients of predictors in the ridge regression model 
-with the log values of lambda plotted on the x-axis. As the values of lambda 
-become very large, the coefficient values are shrunk towards zero, but 
-never equal exactly to zero. Cross-validation was used to select the best 
-value of lambda, which was a value around 0. The features with the highest 
+Figure 2 plots the estimated coefficients for the predictor variables in the 
+ridge regression model (L2) as a function of the log values of lambda (x-axis)
+and number of features. As the values of lambda become very large, the model
+shrinks the coefficient values of non-relevant predictor variables towards zero, 
+but the values are never equal exactly to zero. Cross-validation was used to 
+select the best value of lambda, which was a value around 0. 
+
+
+
+The features with the highest 
 coefficient values were 
 
 X, followed by Y, and Z. 
@@ -808,8 +813,9 @@ revealed that a log value of lambda of -2.5 to be in the optimal range.
 Figure 7 plots the fraction of deviance explained (i.e., variance accounted 
 for) of the coefficients of predictors in the lasso model. As seen in 
 
-Figure 7, a model that includes five predictors (TREATMENT, HEROINUSE, 
-COCAINE, AMPHETAMINES, PRLANY) accounts for approximately 20 percent of the 
+Figure 7, a model that includes 
+
+accounts for approximately 20 percent of the 
 variability in opioid pain reliever misuse and abuse. Adding additional 
 predictors to the model does not increase the fraction of deviance explained, 
 and could likely result in a model that would overfit the data. 
@@ -832,7 +838,7 @@ The tree was fit to the training data, and the regression returned a tree with
 6 terminal nodes, with a residual mean variance of 3.22. 
 
 The summary of the regression tree showed that four features were used in the 
-construction of the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. 
+construction of the tree: , and . 
 
 The summary of the 
 regression tree showed that four features were used in the construction of 
@@ -891,13 +897,7 @@ of which 0.39 or 39\% reported pain reliever misuse or abuse. This means that
 the proportion of pain reliever misuse and abuse was more than five times as 
 large for individuals who reported using cocaine than those who had not. 
 
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 The second split was based on heroin use; the left branch included n=12876 
 respondents who had not used heroin, of which 0.34 or 34\% reported pain
