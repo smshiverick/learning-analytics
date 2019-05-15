@@ -720,15 +720,15 @@ compared to students who were not in a relationship, all else being equal.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
-  \caption{Ridge Regression Coefficients for Student Performance on Training Set
-  with L2 Shrinkage as a function of Lambda}
+  \caption{Coefficient Estimates for the Ridge Regression model 
+  (L2 Penalty) as a function of the log Values of Lambda}
   \label{f:Figure2}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
-  \caption{Lasso Regression Coefficients for Student Performance on Test Set 
-  with L1 Shrinkage as a function of Lambda}
+  \caption{Coefficient Estimates for the Lasso Regression model 
+  (L1 Penalty) as a function of the log Values of Lambda}
   \label{f:Figure3}
 \end{figure}
 
@@ -736,45 +736,45 @@ compared to students who were not in a relationship, all else being equal.
 
 \begin{table}
   \caption{Coefficient Estimates for Ridge Regression (L2) and the Lasso Model
-  (L1) of Student Performance}
+  (L1) of Student Performance using Best Value of Lambda from Cross-Validation}
   \label{tab:freq}
   \begin{tabular}{lll}
     \toprule    
                         &   Ridge (L2)  & Lasso (L1) \\
     \midrule
-    Best lambda (CV)    &    0.746      &  0.071    \\
-    MSE                 &   12.788      & 13.895    \\
+    Best lambda (CV)    &    0.819      &  0.071    \\
+    MSE                 &   13.779      & 13.895    \\
     \midrule
     \textit{Variables}  & \textit{Coefficient} &  \textit{Coefficient} \\
     \midrule
-    Intercept           &   13.539      &   12.899   \\
-    Course              &   -1.838      &   -2.058   \\
-    School Support      &   -1.171      &   -1.121   \\
-    Higher Ed           &    1.409      &    1.534   \\
-    Going Out           &   -0.285      &   -0.316   \\
-    Mother's Education  &    0.333      &    0.403   \\
-    Health              &   -0.206      &   -0.199   \\
-    Study Time          &    0.349      &    0.353   \\
-    Family Relations    &    0.279      &    0.247   \\
-    Age                 &   -0.226      &   -0.196   \\
-    Romantic Relation   &   -0.496      &   -0.461   \\
-    Internet Access     &    0.609      &    0.614   \\
-    Family Size         &   -0.454      &   -0.353   \\
-    Father's Job        &    0.213      &    0.205   \\
-    Area (Urban/Rural)  &    0.244      &    0.192   \\
-    Family Support      &   -0.267      &   -0.152   \\ 
-    Weekly Alcohol Cons.&   -0.129      &   -0.113   \\
-    Mother's Job        &    0.125      &    0.066   \\
-    Travel Time to School & -0.110      &   -0.053   \\
-    Parents Rel. Status &    0.267      &    0.045   \\    
+    Intercept           &   13.498      &   12.899   \\
+    Course              &   -1.801      &   -2.058   \\
+    School Support      &   -1.148      &   -1.121   \\
+    Higher Ed           &    1.390      &    1.534   \\
+    Going Out           &   -0.280      &   -0.316   \\
+    Mother's Education  &    0.326      &    0.403   \\
+    Health              &   -0.203      &   -0.199   \\
+    Study Time          &    0.345      &    0.353   \\
+    Family Relations    &    0.274      &    0.247   \\
+    Age                 &   -0.223      &   -0.196   \\
+    Romantic Relation   &   -0.487      &   -0.461   \\
+    Internet Access     &    0.602      &    0.614   \\
+    Family Size         &   -0.447      &   -0.353   \\
+    Father's Job        &    0.209      &    0.205   \\
+    Area (Urban/Rural)  &    0.242      &    0.192   \\
+    Family Support      &   -0.258      &   -0.152   \\ 
+    Weekly Alcohol Cons.&   -0.130      &   -0.113   \\
+    Mother's Job        &    0.127      &    0.066   \\
+    Travel Time to School & -0.109      &   -0.053   \\
+    Parents Rel. Status &    0.258      &    0.045   \\    
     Daily Alcohol Cons. &   -0.072      &   -0.029   \\ 
-    Paid Extra Classes  &   -0.038      &    0.   \\      
-    Extra Activities    &    0.013      &    0.   \\    
-    Free Time           &   -0.060      &    0.   \\    
-    Absences            &    0.003      &    0.   \\
-    Father's Education  &    0.042      &    0.   \\         
-    Student Guardian    &   -0.057      &    0.   \\    
-    Sex                 &    0.120      &    0.   \\
+    Paid Extra Classes  &   -0.050      &    0.   \\      
+    Extra Activities    &    0.015      &    0.   \\    
+    Free Time           &   -0.062      &    0.   \\    
+    Absences            &    0.002      &    0.   \\
+    Father's Education  &    0.046      &    0.   \\         
+    Student Guardian    &   -0.052      &    0.   \\    
+    Sex                 &    0.118      &    0.   \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -783,50 +783,37 @@ compared to students who were not in a relationship, all else being equal.
 
 \subsubsection{Ridge Regression (L2 Penalty)}
 
-Figure 2 plots the estimated coefficients for the predictor variables in the 
-ridge regression model (L2) as a function of the log values of lambda (x-axis)
-and number of features. As the values of lambda become very large, the model
-shrinks the coefficient values of non-relevant predictor variables towards zero, 
-but the values are never equal exactly to zero. Cross-validation was used to 
-select the best value of lambda, which was a value around 0. 
-
-
-
-The features with the highest 
-coefficient values were 
-
-X, followed by Y, and Z. 
+Figure 2 plots the coefficient estimated from the ridge regression model (L2) 
+as a function of the log values of lambda (x-axis). As the values of lambda 
+become very large, the model shrinks the coefficient values of non-relevant 
+predictor variables towards zero, but the values are never exactly equal to 
+zero. As shown in Figure 2, the predictors with the highest coefficient values 
+were course subject (27), students' plans for higher education (17), extra 
+school support (13), and internet access at home (18). Cross-validation was 
+used to select the best value of lambda, which returned a value of $\lambda$ = 0.819. (natural log of lambda =
+-0.200). Table 5 provides the coefficient estimates for the ridge regression 
+(L2) model for the best value of lambda obtained from cross-validation with
+all 27 predictor variables. The model had a mean squared error (MSE) of 13.78. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{The Lasso (L1 Penalty)}
 
-Table 5 shows the coefficients for the lasso regression plotted as a function 
-of the log value of lambda. As the values of lambda becomes very large, many of 
-the  coefficients are shrunk to be equal exactly to zero. The associated error 
-of the lasso is very similar to ridge regression, but the lasso has an 
+Figure 3 plots the estimated coefficients from the lasso (L1) regression as 
+a function of the log value of lambda; the number of associated features is 
+listed across the top of the plot. The plot shows that as the values of lambda 
+increase, the L2 penalty shrinks many of the coefficient values to be equal 
+exactly to zero. Similar to the ridge regression, the predictors with the 
+highest estimated coefficients were course subject (27), plans for higher
+education (17), extra school support (13), and internet access at home (18). 
+Cross-validation was used to select the best value of lambda, which returned a 
+value of $\lambda$ = 0.071 (natural(log$\lambda$)= -2.65). The model had a 
+mean squared error (MSE) of 13.895 with 20 independent variables. The associated 
+error of the lasso is very similar to ridge regression, but the lasso has an 
 advantage over ridge regression in that the resulting coefficient estimates 
 are sparse, and only a subset of the predictors are selected in the model. 
-Cross-validation was used to select the best value of lambda, which 
-revealed that a log value of lambda of -2.5 to be in the optimal range.
-
-Figure 7 plots the fraction of deviance explained (i.e., variance accounted 
-for) of the coefficients of predictors in the lasso model. As seen in 
-
-Figure 7, a model that includes 
-
-accounts for approximately 20 percent of the 
-variability in opioid pain reliever misuse and abuse. Adding additional 
-predictors to the model does not increase the fraction of deviance explained, 
-and could likely result in a model that would overfit the data. 
-
-In a model with five predictors, substance treatment and heroin use have the 
-highest coefficient values. This reveals a positive relationship between pain 
-reliever misuse, abuse, and drug treatment; 
-
-respondents who reported misusing and abusing prescription opioid pain relievers
-also were likely to be or have received drug treatment. 
-
+The lasso model with 20 predictor variables accounted for approximately 20 
+percent of the variability in student performance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
