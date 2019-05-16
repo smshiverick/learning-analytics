@@ -749,32 +749,33 @@ compared to students who were not in a relationship, all else being equal.
     \midrule
     Intercept           &   13.498      &   12.899   \\
     Course              &   -1.801      &   -2.058   \\
-    School Support      &   -1.148      &   -1.121   \\
     Higher Ed           &    1.390      &    1.534   \\
-    Going Out           &   -0.280      &   -0.316   \\
-    Mother's Education  &    0.326      &    0.403   \\
-    Health              &   -0.203      &   -0.199   \\
-    Study Time          &    0.345      &    0.353   \\
-    Family Relations    &    0.274      &    0.247   \\
-    Age                 &   -0.223      &   -0.196   \\
-    Romantic Relation   &   -0.487      &   -0.461   \\
+    School Support      &   -1.148      &   -1.121   \\
     Internet Access     &    0.602      &    0.614   \\
-    Family Size         &   -0.447      &   -0.353   \\
-    Father's Job        &    0.209      &    0.205   \\
-    Area (Urban/Rural)  &    0.242      &    0.192   \\
+    Romantic Relation   &   -0.487      &   -0.461   \\    
+    Family Size         &   -0.447      &   -0.353   \\   
+    Study Time          &    0.345      &    0.353   \\   
+    Mother's Education  &    0.326      &    0.403   \\    
+    Going Out           &   -0.280      &   -0.316   \\
+    Family Relations    &    0.274      &    0.247   \\
     Family Support      &   -0.258      &   -0.152   \\ 
+    Area (Urban/Rural)  &    0.242      &    0.192   \\
+    Age                 &   -0.223      &   -0.196   \\ 
+    Father's Job        &    0.209      &    0.205   \\
+    Health              &   -0.203      &   -0.199   \\
     Weekly Alcohol Cons.&   -0.130      &   -0.113   \\
     Mother's Job        &    0.127      &    0.066   \\
     Travel Time to School & -0.109      &   -0.053   \\
-    Parents Rel. Status &    0.258      &    0.045   \\    
+    Parents Rel. Status &    0.258      &    0.045   \\   
     Daily Alcohol Cons. &   -0.072      &   -0.029   \\ 
+    Sex                 &    0.118      &    0.   \\
     Paid Extra Classes  &   -0.050      &    0.   \\      
     Extra Activities    &    0.015      &    0.   \\    
     Free Time           &   -0.062      &    0.   \\    
     Absences            &    0.002      &    0.   \\
     Father's Education  &    0.046      &    0.   \\         
     Student Guardian    &   -0.052      &    0.   \\    
-    Sex                 &    0.118      &    0.   \\
+
     \bottomrule
   \end{tabular}
 \end{table}
@@ -788,13 +789,13 @@ as a function of the log values of lambda (x-axis). As the values of lambda
 become very large, the model shrinks the coefficient values of non-relevant 
 predictor variables towards zero, but the values are never exactly equal to 
 zero. Cross-validation was used to obtain the best value of lambda, which 
-was, $\lambda$ = 0.819 (log$\lambda$  = -0.200). As shown in Figure 2, the 
+was, $\lambda$ = 0.819 (ln$\lambda$  = -0.200). As shown in Figure 2, the 
 predictors with the highest coefficient values were course subject (27), 
 students' plans for higher education (17), extra school support (13), and 
 internet access at home (18). The ridge regression (L2) was rerun using the
-best value of lambda from cross-validation with all 27 predictor variables. 
-The coefficient estimates are presented in Table 5 and the model had a mean 
-squared error (MSE) of 13.78. 
+best value of lambda from cross-validation with all 27 predictor variables 
+with coefficient estimates shown in Table 5. The ridge regression model had 
+a mean squared error (MSE) of 13.78. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -805,35 +806,63 @@ a function of the log value of lambda, with the number of associated features
 listed across the top of the plot. The plot shows that as the values of lambda 
 increase, the L2 penalty shrinks many of the coefficient values to be equal 
 exactly to zero. Cross-validation was used to obtain the best value of lambda, 
-($\lambda$ = 0.071; ln$\lambda$)= -2.65). The lasso model was rerun using
-the optimal value of lambda selected by cross validation with 20 predictor 
+$\lambda$ = 0.071 (ln$\lambda$)= -2.65). The lasso model was rerun using the 
+optimal value of lambda selected by cross validation with 20 predictor 
 variables; the model had a mean squared error (MSE) of 13.895 and accounted 
 for approximately 20 percent of the variability in student performance. 
 Similar to the ridge regression, the predictors with the highest coefficients 
 were course subject (27), plans for higher education (17), extra school support 
 (13), and internet access at home (18). The error from the lasso model is very 
 similar to the ridge regression, but the lasso has an advantage over ridge 
-regression in that the resulting coefficient estimates are sparse, and only 
-a subset of the predictors are selected in the model. 
+regression in that the resulting coefficient estimates are sparse and the 
+model selected a subset of the predictor variables. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \subsection{Decision Tree Models}
 
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \caption{Regression Tree Model of Student Performance on Training Set}
+  \label{f:Figure4}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Regression Trees}
 
-The tree was fit to the training data, and the regression returned a tree with 
-6 terminal nodes, with a residual mean variance of 3.22. 
+The regression tree model of student performance was fit to the training data 
+using the rpart() function in R, with all 27 independent variables. Cross-
+validation was used to determine the optimal tree complexity. Using a maximum 
+depth of 3, the algorithm returned a regression tree with 7 terminal nodes. 
+Figure 4 shows the pruned decision tree with course subject as the root node.
+Course subject was a dummy variable and the branch to the left represents 
+students in the mathematics course (39\%) and the branch to the right 
+represents students in the Portugese course (61\%). The four features used
+to construct the regression tree were mother's education level, weekly study 
+time. absences, and age.
 
-The summary of the regression tree showed that four features were used in the 
-construction of the tree: , and . 
+The regression tree was evaluated on the test set which returned a 
+
+
+Following the left branch for the mathematics course, the next 
+node split on absences; for students with no absences, the next node split
+on age, with 4\% of students less than 18 years of age and 9\% of students
+18 years or older. Of the 26\% of students in mathetmatics, 16\% had between
+1 and 7 absences, whereas 11\% had more than 7 absences. 
+
+
+On the training set, 
 
 The summary of the 
 regression tree showed that four features were used in the construction of 
-the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. Cross-validation 
+the tree: TRTMENT, COCAINE, HEROINUSE, and TRQLZERS. 
+
+Cross-validation 
 was used to determine optimal tree complexity with produces a small reduction
-in the residual mean variance of 3.18. Figure 8 shows the pruned decision tree 
-for PRLMISAB with the root node of TRTMENT. The left branch shows a low 
+in the residual mean variance of 3.18.  
+
+The left branch shows a low 
 score for treatment, and the feature at the next branch was Cocaine use. 
 The branche to the right indicates a high score on cocaine then lead to 
 the feature heroin use. This shows that respondents with higher scores for 
@@ -844,6 +873,12 @@ feature was Tranquilizers, which indicates that for individuals in treatment,
 tranquilizer use was associated with opioid pain reliever misuse and abuse. 
 The regression tree model was evaluated on the test set; Figure 9 shows 
 the prediction (yhat) plotted against data in the test set.
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
+  \caption{Regression Tree Model of Student Performance on Testing Set}
+  \label{f:Figure5}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -907,11 +942,9 @@ n=1725 individuals age 35 and younger, of whom 0.63 or 63\% reported PRLMISAB.
 This findings shows that pain reliever misuse and abuse was much more likely
 among respondents age 35 or younger than among individuals older than 35 years. 
 
-\begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
-  \caption{Decision Tree Model of Student Performance on Training Set}
-  \label{f:Figure5}
-\end{figure}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
