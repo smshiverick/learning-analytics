@@ -1,1034 +1,1220 @@
-BIN STORAGE - Binary Classification TEXT
+\documentclass[sigconf]{acmart}
 
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
-%  \caption{Lasso Regression Model: Coefficient Value and Variance in Predicted 
-%  Student Performance Accounted For as a Function of Predictor Variables }
-%  \label{f:Figure4}
-%\end{figure}
+\input{format/final}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Decision Trees} 
-
-The algorithm selected cocaine as the root node which includes the n=127738 
-observations in the training set. With a classification tree, we predict 
-that each observation will belong to the class of training observations in 
-the region to which it belongs, and want to determine not only the class
-prediction belonging to a terminal node region, but also the class 
-proportions among the training observations in that region \cite{james13}. 
-One way to interpret a decision tree is by following the number of samples 
-represented at the split for each node. Another way to interpret the decision 
-tree in Figure 4 is by the examining the proportion of observations of 
-class A captured by that leaf over the entire number of observations captured 
-by the leaf during model training. 
-
-Starting from the root node, the branch 
-to the left represents n=112730 observations with no or low cocaine use; 
-of those, 0.07 or 7\% reported misusing or abusing opioid pain relievers. 
-Following the right branch are n=15008 observations positive for cocaine use, 
-of which 0.39 or 39\% reported pain reliever misuse or abuse. This means that 
-the proportion of pain reliever misuse and abuse was more than five times as 
-large for individuals who reported using cocaine than those who had not. 
+\begin{document}
+  \title{Modeling Student Performance for Data-Driven Learning Analytics}
+  \author{Sean M. Shiverick}
+  \affiliation{\institution{smshiverick@gmail.com}
+  }
+\renewcommand{\shortauthors}{S.M. Shiverick}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The second split was based on heroin use; the left branch included n=12876 
-respondents who had not used heroin, of which 0.34 or 34\% reported pain
-reliever misuse or abuse. Following the right branch to the terminal node 
-(i.e., `leaf'), n=2132 individuals reported heroin use, of which 0.70 or 
-70\% had misused or abused pain relievers. Thus, the proportion of PRLMISAB 
-was twice as large for respondents who had used heroin than those who had 
-not used heroin (as seen in Figure 3). The third split in the decision tree
-was based on tranquilizers. The left branch represented n=9757 individuals 
-who reported no or low tranquilizer use; of these, the proportion of 
-PRLMISAB was 0.28 or 28\%. The branch to the right represented n=3119 
-observations with moderate to high tranquilizer use, of which 0.52 or 52\% 
-reported PRLMISAB. The rate of pain reliever misuse and abuse for individuals 
-with moderate to high tranquilizer use was almost twice as large as for 
-those reporting no to low tranquilizer use. The fourth split was based on age 
-category; the branch to the left represented n=1394 individuals age 36 or older, 
-of which 0.38 or 38\% reported PRLMISAB. The branch to the right represented 
-n=1725 individuals age 35 and younger, of whom 0.63 or 63\% reported PRLMISAB. 
-This findings shows that pain reliever misuse and abuse was much more likely
-among respondents age 35 or younger than among individuals older than 35 years. 
+\begin{abstract}
+
+Predictive modeling approaches help researchers and educators identify patterns 
+in education data and identify factors that influence student performance. This 
+paper compares several models of student performance (linear regression, ridge
+regression, the lasso, regression trees, random forests regression, gradient 
+boosting) for features selection, feature importance and model interpretability. 
+The student performance dataset consisted of N=1044 observations from two 
+secondary schools in Portugal \cite{cortez08}. Performance was assessed by 
+final grade (range; 0-20) in two courses, mathematics and Portugese. The models
+were fit to a subset of training data and evaluated on a hold out testing set. 
+
+The linear regression model revealed that plans for higher education, mother's 
+education level, and weekly study time were positively associated with student 
+performance, whereas course subject, school support, and romantic relations
+were negatively related to performance. Non-linear trend in the data indicated
+that tree-based models may better . 
+
+All models identified as the most informative feature for predicting 
+student performance. 
+
+The models differed in the importance they assigned to
+
+Advantages and limitations of the different models are  discussed. 
+Model interpretation is an important aspect of predictive analytics.
 
 
+\footnote{Address correspondence to \textit{smshiverick@gmail.com}.}
 
+\end{abstract}
+\keywords{Predictive Modeling, Supervised Learning, Classification Models}
+\maketitle
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+Education institutions have generated very large amounts of data about student 
+performance in recent decades due to dramatic increases in computing speed 
+and processing power \cite{daniel15, daniel16}. The development and use of 
+analytic approaches for predictive modeling allows researchers and educators  
+to discover patterns in data and provide insights about learning for effective 
+decision making. Educational data mining (EDM) and learning analytics (LA) are 
+multidisciplinary fields at the intersection of learning science, social science, 
+statistics, and computer science that leverage big data to understand learning 
+and the environments in which it occurs \cite{siemens13, siemensbaker12}. 
+Predictive modeling provides useful methods for analyzing the factors that 
+contribute to student success and identifying individuals at risk for failure
+or dropping out. This study reviewed EDM and LA findings and compared several 
+supervised learning models with sample data to determine which approach is 
+best for modeling student performance and success. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-On the training set, there was a 2.23 decrease in predicted performance 
-for students in the math course compared to students in the Portugese course, 
-controlling for the effect of other independent variables. Students receiving 
-school support had a 1.35 lower predicted final course grade than students 
-who did not receive school support, holding all other variables constant. 
-Students with plans for higher education had a 1.70 higher predicted final 
-grade than students with no plans for higher education (*controlling for 
-all other variables. A one-unit change in going out with friends yielded 
-a 0.44 decrease in the predicted performance*. A unit change in mother's 
-level of education was associated with a 0.49 increase in predicted performance.
-A one-unit change in student health resulted in a 0.26 decrease in predicted 
-student performance. Importantly, a one-unit change in weekly study time 
-resulted in a 0.45 increase in predicted student performance. A one-unit 
-change in quality of family relationships resulted in a 0.34 increase in 
-student performance. A one-unit increase in students age was associated with
-a 0.25 decrease in predicted performance. There was a -0.81 decrease in 
-predicted performance for students in a romantic relationship compared to 
-students who were not in a relationship, all else being equal. Students with 
-access to the internet at home had a 0.82 higher predicted final grade than 
-students with not internet access at home. Students whose family size was
-greater than 3 had a 0.50 lower predicted performance than students with 
-a family size of 3 or less. Finally, a unit change in father's job yielded 
-a 0.29 increase in predicted performance. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-
-The left side of Table 3 shows that, in the regression with the training set, 
-previous course failures, course topic, school support, romantic relationship, 
-going out with friends, and overall health were negatively correlated with 
-student performance, whereas plans for higher education, study time, mother's
-education level, internet access, quality of family relations, and father's 
-job were positively related to student achievement. The right side of Table 3
-shows the final regression model with the testing set. A one-unit change in 
-past course failures yielded a -1.57 decrease in the predicted value of 
-student performance, holding the effect of other predictor variables constant. 
-For students in the math course, there was a -1.04 decrease in predicted 
-performance compared to students in the Portugese course, controlling for all 
-other factors. Students receiving school support had a -1.35 lower predicted 
-final course grade than students who did not receive school support, holding
-other factors constant. There was a -0.81 decrease in predicted performance 
-for students in a romantic relationship compared to students who were not in 
-a relationship . In terms of positive relationships, having plans to pursue 
-higher education yielded a 3.21 increase in predicted student performance 
-than having no plans for higher education, controlling for the effect of other
-independent variables. A one-unit change in weekly study time resulted in a 
-0.78 increase in predicted student performance, holding other variables 
-constant. In addition, a unit change in mother's level of education was 
-associated with a 0.38 increase in predicted student performance, controlling 
-for the effect of other independent variables. 
-
-On the training 13 of the 27 predictor variables were statistically 
-significant; however, only 6 of the 13 predictors in the testing set were 
-significant, which suggests the model was overfit in the training data. 
-
-
-A one unit increase in past failures was associated with a   the odds of 
-successfully passing the 
-course decreased by 4.79 times (379\% increase), holding the effects of other 
-variables constant. In terms of course, the odds of successfully passing the 
-course in mathematics decreased 3.07 times compared to course in Portugese. 
-in other words, the odds of students passing the math course was 207\% lower 
-than students in the Portugese course. For students with plans to pursue 
-higher education, the odds of successfully passing increased by 3.26 times 
-(226\%) compared to students with no plans for higher education. A one unit 
-increase in father's education level was associated with a 1.29 or 29\% 
-increase in a passing final grade. In addition, the odds of passing increased
-by 1.56 for internet access; the odds of passing for students with internet 
-access at home was 56\% higher than for students without internet access.  
-Several factors had a negative impact on student success. For example, the 
-odds of passing decreased 2.21 for students who received school support
-compared to students who did not receive school support. A one-unit increase
-in weekly alcohol consumption decreased the odds of successfully passing by 1.20 
-(20\%). The odds of successfully passing increased by 1.39 (39\%) given a unit 
-change in custodian guardian ('other', 'father', 'mother'). Finally, a one-unit 
-increase in going out with friends decreased the odds of passing by 1.18 (18\%). 
-
-
-
-
-
-
-
-
-
-\subsection{Intro 4. Classification Models}
-
-There are several classifier algorithms for building predictive models of
-education data. The following models were compared in order to determine
-which model is best for predicting student performance and identifying
-factors that influence student achievement. 
-
-\subsection{Logistic regression} models the conditional distribution of 
-probabilities for a binary response as a combination of a set of predictor 
-variables. The decision boundary for the logistic regression classifier is a 
-linear function of the input that separates two or more classes using a line, 
-plane, or hyperplane. The model uses a maximum likelihood method to predict the 
-coefficient estimates that correspond as closely as possible to the default 
-state (i.e., `pass`) . The probability values for the outcome range between 
-0 and 1, and the model predicts a number close to one for individuals with a 
-final passing score and a number close to zero for individuals who do not. 
+The fields of LA and EDM both share the goal of using research methods and
+predictive analysis to improve student performance and instructional design 
+\cite{baker09, ferguson12, lester19}. EDM research has focused more on the 
+technical challenges of extracting value from big data in education 
+\cite{penaAyala14, romero10}, whereas LA takes a more holistic, education-
+focused approach to learning to inform and empower instructors and learners 
+\cite{lang17, papamitsiou14}. Despite differences in their respective origins 
+and emphasis, LA and EDM are complementary approaches that use similar 
+methodologies. Together, LA and EDM represent an ecosystem of techniques for 
+gathering, processing, and acting on data to promote learning. These procedures 
+facilitate the preparation, measurement, and collection of data about learning 
+activities for subsequent analysis, interpretation, and reporting. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Linear discriminant analysis} (LDA) models the distribution of predictors 
-separately in each of the response classes and uses Bayes' theorem to `flip' 
-these into estimates for, $Pr(Y=k | X=x)$ \cite{james13}. The discriminant 
-functions are linear functions of the predictors. For distributions assumed to 
-be normal, LDA is similar to logistic regression, but more stable. 
-
-LDA is also preferred for outcomes with more than two response classes. 
-
-The important assumptions for LDA are, first, a common covariance 
-matrix for all classes, and second, the class boundaries are linear functions 
-of the predictors. 
-
-\subsection{Quadratic Discriminant Analysis} (QDA) is an approach 
-that assumes each class has its own covariance matrix and the decision 
-boundaries are quadratically curvilinear in the predictor space \cite{kuhn13}. 
-LDA is less flexible as a classifier than QDA, but can perform better with 
-relatively few training observations or when the majority of predictors in the 
-data represent discrete categories. QDA is recommended over LDA with a very 
-large training set or when the decision boundary between two classes is 
-non-linear. 
+Historically, education institutions have tracked student performance, 
+dropout, and retention and used analytic tools to identify factors important 
+for learning such as persistence and social integration \cite{ferguson12}. 
+As extensive education datasets became available for analysis, LA/EDM 
+researchers have applied a diverse range of descriptive, correlational, and 
+predictive methodologies to discover potentially useful patterns in data for 
+understanding students and the contexts in which they learn. Student 
+characteristics are often modeled in terms of domain knowledge, motivation, 
+metacognitive abilities (i.e., thinking about thinking), learning strategies, 
+attitudes, and affect \cite{papamitsiou14}. The main analytic approaches used 
+in EDM/LA research include discovery with models (i.e., predictive modeling), 
+similarity grouping, relationship mining, content analysis, and social network 
+analysis (SNA) \cite{baker09}. This paper focues on predicting modeling of
+student performance as a form of data-driven learning analytics
+\cite{verbert12}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The performance of linear classifiers suffers when there is a non-linear 
-relationship between the predictors and target outcome. With training
-observations that can be separated by hyperplane, the maximal marginal 
-classifier provides the maximum distance (i.e., margin) from each observation
-to the hyperplane \cite{james13}. The test observations are classified based 
-on which side of the hyperplane they fall; however, in many cases no separating 
-hyperplane exists. 
+\subsection{Predictive Modeling}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Support vector machines (SVM)} 
-
-The \emph{support vector classifier} 
-(SVC) extends the 
-maximal margin classifier by using a soft margin that allows a small number 
-of observations to be misclassified on the wrong side of the hyperplane 
-\cite{kuhn13, cortes95}. The observations that fall directly on the margin or 
-on the wrong side of the hyperplane are called `support vectors'. The parameter 
-`C' indicates the number of observations that can violate the margin; if $C>0$, 
-no more than C observations can be on the wrong side of the hyperplane. 
-SVC addresses the problem of non-linear boundaries between classes by 
-enlarging the feature space with higher order (e.g., quadratic, cubic, 
-polynomial) functions of the predictors. 
-
-
-(SVM) are an extension of SVC that use a 
-kernel trick to reduce computational load. The radial basis function (RBF) 
-kernel (i.e., Gaussian kernel) is one of the most commonly used approaches. 
-In training the model, only a subset of data points is used to construct the 
-decision boundary, namely the support vectors that lie on the border that 
-separates the two classes. In predicting classes for new observations, the 
-algorithm calculates the distance to each of the support vectors measured 
-by the Guassian kernel \cite{muller17}. 
-
-Figure 1 shows an example of the 
-non-linear decision boundary obtained with SVM using the RBF kernel; the 
-decision boundary is a smooth curve and the support vectors are the large 
-points in bold outline. Even with the default settings, the RBF kernel 
-provides a decision boundary that is decidedly non-linear. 
-
-
-
+Predictive modeling involves a set of procedures and automated processes for 
+extracting knowledge from data \cite{jamesetal13, kuhn13}. The two main 
+branches of predictive modeling are supervised learning and unsupervised 
+learning. Supervised learning problems involve prediction about a specific 
+outcome or target variable (i.e., course grade) when examples of input/output 
+pairs are available in the data. If a dataset has no target outcome, 
+unsupervised learning methods (e.g. clustering) can reveal structure in 
+unlabeled data. Clustering can be used to group individuals together based 
+on similar learning profiles. In this study, student performance is analyzed
+as a supervised learning problem based on final course grades. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Two main approaches for supervised learning problems are classification and 
+regression. For a binary or categorical outcome represented as a class label 
+(i.e., `pass`/`fail`), a classification model will predict which class or 
+category that new instances are assigned to. When the target variable to be 
+predicted is measured on a continuous scale (e.g. GPA), a regression model 
+tests how a set of attributes or features predicts the target outcome. 
+Classification is the most commonly used data analytic methods for modeling 
+students and their behavior, and can include methods such as logistic 
+regression, support vector machines, naive Bayes, decision trees, and 
+neural networks \cite{Lykourentzou09, pariyadath14, zhang05}. 
 
-The \subsubsection{Naive Bayes Classifier} is considered as a non-linear model.
-The Bayes theorem (equation 2) is represented by a set of probabilities 
-that answer the question, ``Based on a given set of predictors, 
-what is the probability than an outcome belongs to a particular class?''
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The present study compares several regression models of student performance 
+to identify the set of features that best predict student performance. Each 
+model is trained on a set of input-output pairs and then used to make 
+predictions about new observations that were previously set aside. Comparing 
+different predictive models can help determine which model is best for a given 
+problem with the data available \cite{raschka17}. Past empirical findings 
+indicate that, in addition to course assessments (i.e., number of quizzes 
+passed), student engagement and participation in course activities are the most 
+influential predictors of final grades \cite{Papamitsiou14, romerozaldivar12}. 
+A student's sense of belonging is essential for engagement and improved course 
+satisfaction, which in turn can reduce student dropout rate. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{General Linear Model} 
+
+A general assumption of linear regression models is that the target outcome
+can be represented as a linear function of the input features. The standard 
+linear model (below) describes the relationship between predicted target 
+variable (Y) from a set of features ($X_1$ ... $X_p$), including some measure 
+of error (e). The predicted value of the target outcome can be thought of as 
+the weighted sum of the input features with the weights or coefficients 
+(i.e., beta values) indicating the influence of a given feature on the outcome. 
+Ordinary least squares (OLS) regression miminizes the distance (i.e., error) 
+between the predicted values of Y and the observed values in the dataset. 
+If the number of observations (\textit{n}) is much larger than the number of 
+features (\textit{p}), OLS coefficient estimates will have low variance and 
+perform well on test observations; however, if the number of observations 
+\textit{n} is not much larger than the number of features \textit{p}, high 
+variability in the OLS fit can result in overfitting and poor prediction on 
+the test observations. For high-dimensional datasets (\textit{$p>>n$}), 
+the least squares coefficient estimate breaks down. The simple linear model 
+can be improved by using alternative fitting approaches that produce better 
+prediction accuracy and model interpretability \cite{jamesetal13}. 
 
 \begin{equation}
-  \ P(Y=cl|X) = \frac{P(Y)*P(X|Y=cl)}{P(X)}\
+  \ Y = \beta_0 + \beta_1X_1 + \beta_2X_2 +... + \beta_pX_p + \epsilon
 \end{equation}
 
-The prior probability, P(Y), is the expected probability of a given class 
-based on what is known (e.g. rate of disease in the population). P(X) 
-is the probability of the predictor variables. The conditional probability,
-$P(X=cl|Y)$, is the probability of observing the predictor variables for data 
-associated with a given class. The naive Bayes model assumes that all of the 
-predictor variables are independent, which is not always realistic. The 
-conditional probabilities are calculated based on the probability densities 
-for each individual predictor \cite{kuhn13}. For categorical predictors, the 
-observed frequencies in the training set data can be used to determine the 
-probability distributions. The prior probability allows us to tilt the final 
-probability toward a particular class. Class probabilities are created and 
-the predicted class is the one that is associated with the largest class
-probability. Despite the somewhat unrealistic assumption of independence among
-predictors, the naive Bayes model is computationally quick, even with large 
-training sets, and performs competitively compared to other models. The naive 
-Bayes model encounters issues when dealing with frequencies or probabilities 
-equal to zero, especially for small sample sizes. In addition, as the number 
-of predictors increases relative to the size of the sample, the posterior 
-probabilities will become more extreme.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Feature Selection} 
+
+In many regression analyses, it is often the case that multiple independent 
+variables or features will not be correlated with the target outcome. Three 
+methods for improving the fit of linear models are: (a) subset selection, 
+(b) dimension reduction, and (c) regularization (i.e.., shrinkage. Determining 
+which set of features is best for representing the predicted outcome is 
+essential. A straight forward approach to feature selection is to conduct a 
+regression including all the independent variables and then to rerun the 
+regression excluding the non-significant variables from the model.
+Another approach termed regularization includes all \textit{p} predictor 
+variables, but constrains (i.e., `regularizes`) the coefficient estimates of 
+the independent variables by shrinking them towards zero. Regularization 
+reduces variablity, which in turn improves test set accuracy with a slight 
+increase in bias. Shrinking the coefficient estimates of irrelevant features 
+toward zero reduces overfitting and provides a more interpretable model. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Neural Network} models are based on theories of connectivity in the brain \cite{kuhn13}. The multilayer perceptron (MLP) which is a feed-forward network 
-in which the outcome is modeled by an intermediary set of unobserved variables called hidden units, which are linear combinations of the original predictors. 
-Each hidden unit is a combination of some or all of the predictors which are 
-then transformed by a nonlinear function (e.g. sigmoidal). A neural network 
-usually has multiple hidden units used 
-to model the outcome. 
+\subsection{Regularization} 
 
-The MLP classifier computes weights between the inputs 
-and hidden units, and weights between the layers of hidden units and the 
-output. After computing each hidden unit, the output is modeled by a nonlinear 
-combination of the hidden units. 
+\subsubsection{Ridge Regression: L2 Penalty} 
 
-The nonlinear function allows the neural 
-network to fit more complicated functions than a linear model; however, 
-neural networks are sensitive to the scaling of the features and can require
-extensive data preprocessing. There are several ways to modify the complexity 
-of a neural network: by selecting the number of hidden layers, the number of 
-units within each layer, and the regularization parameter (L2) which shrinks 
-the weights towards zero. The feature weights provide an estimate of feature 
-importance. Although neural networks can capture information in large amounts 
-of data with very complex models, they tend to overfit data used to train the 
-model and can be difficult to interpret. Neural networks may work best with 
-homogenous datasets where the predictor variables all have similar meanings 
-\cite{muhuri13}. For datasets with many different kinds of features, 
-tree-based methods offer a better approach.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Decision trees} are based on a hierarchy of \emph{`if-else'}
-questions starting from a root node and proceeding through a series of binary 
-decisions or choices. Each node in the tree represents either 
-a question or a terminal node (i.e., leaf) that contains the outcome. Applied to 
-a binary classification task, the decision tree algorithm learns the sequence
-of if-else questions that arrives at the outcome most quickly. For continuous 
-features, questions are expressed in the form: ``Is feature x larger than 
-value y?'' In constructing the tree, the algorithm searches through all 
-possible tests and finds a solution that is most informative about the target 
-outcome \cite{muller17}. The recursive branching process yields a binary tree 
-of decisions, with each node representing a test for a single feature. This 
-process of partitioning is repeated until each leaf in the decision tree 
-contains only a single target. 
-
-
-Prediction for a new data point proceeds by 
-checking which region of the partition the point falls in, and predicting the 
-majority in that feature space. The main advantage of tree models is that they 
-require little adjustment and are easy to interpret. 
-
-A drawback is that they 
-can lead to complex models which are highly overfit to the training data. 
-`Prepruning' can help reduce overfitting by limiting the maximum depth of the 
-tree, or the maximum number of leaves. Another approach is to set the minimum 
-number of points in a node required for splitting. Decision trees work well 
-with features measured on different scales, or with data that has a mix of 
-binary and continuous features. 
+As with OLS, ridge regression seeks coefficient estimates that fit the data 
+well by reducing error, but ridge regression introduces a shrinkage penalty
+(L2) that has the effect of shrinking the coefficient estimates towards zero. 
+When the tuning parameter (lambda) is set to zero, the shrinkage penalty has 
+no effect and ridge regression produces the least squares estimates. As the 
+value of lambda increases, the estatimed regression coefficients approach zero 
+\cite{statlearn13}. The advantage of ridge regressions over least squares is 
+based on the bias-variance tradeoff. As the tuning parameter lambda increases, 
+the flexibility of the ridge regression decreases, leading to decreased variance 
+but increased bias. Lower variance is associated with reduced overfitting, 
+whereas higher bias can lead the model to miss relevant relations between
+features and target outputs (underfitting). Ridge regression is often applied 
+after standardizing the predictor variables so that they are all on the same 
+scale (e.g., \textit{M}=0, \textit{SD}=1). Ridge regression performs well with
+high-dimensional datasets (p>>n) by trading off a small increase in bias for a 
+large decrease in variance. A disadvantage of ridge regression is that, because 
+it includes all predictors in the model, the penalty shrinks the coefficients 
+toward zero, but does not set any of them exactly to zero. This can create a 
+problem for model interpretation with a dataset that has a very large number
+of features. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Random Forests} is an ensemble approach that combines many simple trees 
-that each overfit the data in different ways. By building many trees and 
-averaging their results, random forests help to reduce overfitting. In 
-constructing the forests, the user selects the number of trees to build 
-(e.g., 1000). Randomness is introduced using a bootstrapping method that 
-repeatedly draws random samples of size \textit{n} from the data set, with 
-replacement. The decision trees are built on these random samples 
-of the same size, with some points missing and some data points repeated 
-\cite{muller17,raschka17}. The algorithm makes a random selection of 
-\textit{p}-features, and uses a different set of features at each node branch. 
-These processes ensure that all of the decision trees in the random forest are 
-different. Random forests is one of the most widely used supervised learning 
-algorithms and works well without very much parameter tuning or scaling of data. 
-A limitation is that random forests do not perform well with high-dimensional 
-data, or data that is sparse (e.g., text).
+\subsubsection{The Lasso: L1 Penalty} 
+
+The lasso and ridge regression have similar formulations, but the lasso has 
+a major advantage over ridge regression as it produces simpler, more 
+interpretable models based on a subset of features. The lasso uses the L1 
+penalty which has the effect of forcing some of the coefficient estimates to be
+equal exactly to zero when the tuning parameter lambda is sufficiently large 
+\cite{statlearn13}. Thus, the lasso performs variable selection, and produces 
+sparse models based on a subset of the features, which are generally easier to 
+interpret than ridge regression. The lasso implicitly assumes that a number of 
+the feature coefficients or weight truly equal to zero. In general, the lasso 
+performs better than ridge regression in situations where a small number of 
+features account for most of the variability in the target outcome, and the 
+remaining features have coefficients that are very small or equal to zero. 
+By contrast, ridge regression performs better when the target is a function 
+of a large number of predictors that contribute approximately equally to the
+coefficients. Cross-validation can be used to determine the optimal value
+of the parameter lambda and also which approach is better. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Gradient Boosting} combines multiple decision trees in a serial fashion, 
-with each tree trying to correct for mistakes of the previous one. Gradient 
-boosted regression trees use strong prepruning, with shallow trees of a depth 
-of one to five. Each tree only provides a good estimate of part of the data; 
-combining many shallow trees (i.e., ``weak learners'') iteratively improves 
-performance. Gradient boosting and random forests perform well on similar tasks 
-and data. A common approach is to first perform random forests and then include 
-gradient boosting to improve model accuracy. 
+\subsection{Decision Tree Models}
 
+Decision tree models are widely used for classification and regression. Tree 
+models are built on a hierarchy of \textit{if-else} questions that proceeds 
+from a root node as the starting point and continues through a series of 
+decisions. Each node in the tree represents either a question or a terminal 
+node (i.e.,leaf) that contains the outcome. In constructing the tree, the 
+algorithm searches through all possible decisions or tests, and finds a 
+solution that is most informative about the target outcome. The recursive 
+branching process of tree based models yields a binary tree of decisions, 
+with each node representing a test that considers a single feature. This 
+process of recursive partitioning is repeated until each leaf in the decision 
+tree contains only a single target. Prediction for a new data point proceeds 
+by checking which region of the partition a new point falls into, and 
+predicting the majority in that feature space. Tree based models require 
+little adjustment and are easy to interpret. A drawback is that they can lead 
+to very complex models that highly overfit data used to train the model. A 
+good strategy for building a regression tree is to grow a very large tree 
+and then prune it back to obtain a subtree that provides the lowest test error 
+rate. A good way to prevent overfitting is to use pre-pruning to limit 
+the maximum depth of the tree. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Random Forest Regression}
+
+A random forest is a collection of decision trees that are slightly different 
+where each tree overfits the data in a different way. This approach reduces 
+overfitting by building many trees and averaging their results. Randomness is 
+introduced into the tree building process by drawing a bootstrap sample of the 
+data and selecting features at each node branch \cite{muller17, raschka17}. 
+In building the random forest, you must first decide how many trees to build  
+and the algorithm makes different random choices so that each tree is distinct. 
+The bootstrapping method repeatedly draws random samples of size \textit{n} 
+from the dataset with replacement. The decision trees are built on these 
+random samples that are the same size as the original data, with some points 
+missing and some data points repeated. In addition, the algorithm selects a 
+random subset of p features, that are repeated separately at each node, so 
+that each decision at the node branch is based on a different subset of 
+features. These two processes help ensure that all of the decision trees in 
+the random forest are different. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Evaluating Model Performance}
+\subsubsection{Gradient Boosting}
 
-To identify which model is best for a given problem, with the data available, 
-it is necessary to evaluate the performance of different learning algorithms. 
-Binary classification is assessed in terms of the successful assignment of 
-observations to one of two classes: positive or negative. No classification 
-model can make perfect predictions, as errors are always to be found. Medical 
-testing is often used as an example to illustrate classification decisions 
-and errors. For example, in the actual state of the world, a patient either 
-has an illness or not, and the person is either diagnosed as having the 
-illness or not. In the present case, the positive class represents self-
-reported pain reliever misuse and abuse (PRL Misuse), and predictions based on 
-the classifier models will be either correct or incorrect in relation to the 
-observed outcomes. For example, a person who has never misused or abused pain 
-relievers may be misclassified as having done so (i.e., 'false positive'), or 
-conversely, a person who actually has misused and abused pain relievers may 
-be mislabeled as never having done so (i.e., 'false negative').
+Gradient boosting is an ensemble approach that builds many smaller trees,  
+where each new tree attempts to correct for deficiencies of the current 
+ensemble. In contrast to randome forests, gradient boosting grows smaller, 
+stubbier trees, and goes after bias. \cite{jamesetal13, kuhn13}. Gradient 
+boosted regression trees use strong pre-pruning, with shallow trees of a 
+depth of one to five; thus, each tree provides an estimate of part of the 
+data. Combining many shallow trees iteratively improves model performance. 
+Gradient boosting and random forests perform well on similar tasks and data. 
+A common practice is to first construct random forests and then use gradient 
+boosting to improve model accuracy \cite{muller17}. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Correct decisions and classification errors are represented in a 
-\emph{confusion matrix} that indicates the correspondence between predicted 
-and actual outcomes (Table 1). The confusion matrix is a two-by-two array in 
-which the columns correspond to the actual observed classes and the rows 
-correspond to the predicted classes. The main diagonal indicates the number 
-of correctly classified samples (i.e., true negative, true positive), while 
-the other entries represent the number of samples in one class that were 
-mistakenly classified as another class. Several performance metrics can be 
-obtained from the confusion matrix, including accuracy, sensitivity (i.e., 
-recall), specificity, precision, and the $f_1$-score, presented in Table 2 
-\cite{kuhn13, wiki18}. Model performance is most commonly evaluated using 
-\emph{Accuracy} which is assessed by the number of correct predictions 
-divided by the total observations. Sensitivity or \emph{Recall} provides the 
-``True Positive Rate'' (TPR), measured as the number of positive samples that 
-are correctly identified by the prediction (number of sick patients correctly
-diagnosed). Recall is used when the goal is to avoid false negatives. The 
-True Negative Rate (TNR) is described as Specificity, which indicates the 
-proportion of negative cases correctly identified (healthy people not 
-misdiagnosed). \emph{Precision} provides the ``Positive Predictive Value'' 
-(PPV), which measures how many of the samples predicted as positive are 
-actually positive. Precision is used as a metric when the goal is to limit
-the number of false positives. The \emph{$f_1$-score} represents a harmonic 
-mean between recall and precision (\(\frac{2}{ \frac{1}{R} + \frac{1}{P} }\)). 
-The $f_1$-score can be a better measure of performance than accuracy in 
-datasets with imbalanced classes, where one class is much more frequent 
-than the other class, as it takes into account both recall and precision 
-\cite{muller17, yun09}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table}
-  \caption{Performance Metrics for Classifier Models.}
-  \label{tab:freq}
-  \begin{tabular}{lc}
-    \toprule
-    Accuracy & \(\frac{TP+TN}{TP+FP+TN+FN}\) \\
-    & \\
-    Sensitivity, Recall (TPR) &  \(\frac{TP}{TP+FN}\) \\
-    & \\
-    Specificity (TNR) &  \(\frac{TN}{TN+FP}\) \\
-    & \\
-    Precision (PPV) & \(\frac{TP}{TP+FP}\)  \\
-    & \\
-    f_1 score & 2*\(\frac{Precision*Recall}{Precision+Recall}\) \\
-    & \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table}
-  \caption{Confusion Matrix for Binary Classification.}
-  \label{tab:freq}
-  \begin{tabular}{cccc}
-    \toprule
-     & &  \textbf{Actual Outcome} & \\
-    \midrule
-    \textbf{Predicted} & \textbf{Outcome} & Pass & Fail \\
-    \midrule
-    & No & \textit{True Negative} & False Negative \\
-    & & (TN) & (FN) \\
-    \midrule
-    & PRL Misuse & False Positive & \textit{True Positive} \\
-    & & (FP) & (TP)  \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-
-\subsection{Classifier Model Performance}
-
-Performance of the classification models was evaluated in the confusion 
-matrices reported in Table 5, which includes the metrics of accuracy, 
-sensitivity (recall), precision, and $f_1$-score. The model accuracy 
-scores ranged form 86.5\% to 90.7\%. Because of the unbalanced classes in 
-the sample data|the proportion of respondents who had not misused or abused 
-pain relievers (89\%) was much greater than the proportion who had|the 
-$f_1$-score was used as the preferred performance metric rather than 
-accuracy. The $f_1$-scores ranged from 0.87 to 0.95. Logistic regression 
-and the random forest model were tied for the highest $f_1$-score (0.95) 
-followed by the decision tree model (0.949). The random forests model 
-identified more true positives (1069) and fewer false negatives (3397) 
-than the single decision tree or logistic regression. QDA identified 
-the highest number of true positives, but detected far fewer true negatives
-than logistic regression or LDA. In general, default parameter setting 
-were used for most models; the main parameter settings for the 
-classification models are presented in Table 6. The results for the 
-three top performing models are described below.  
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Imbalanced Classes}
-
-Previous studies have analyzed the misuse and abuse of prescription opioids
-(MUPO) using logistic regression and identified factors that influence MUPO 
-such as gender and mental illness \cite{rice12, unick13, jones15, mccabe12}. 
-The present study extends previous work by comparing the performance of ten 
-classifier models of pain reliever misuse and abuse and evaluating each model 
-using four performance metrics (accuracy, sensitivity, precision, $f_1$-score). 
-The sample data set has imbalanced classes in the target variable as the 
-number of instances of the negative class greatly outnumber instances of 
-the positive class. A difficulty of using traditional classification 
-algorithms with imbalanced data is that they tend to classify observations
-as belonging to the majority class when the class of interest (positive) is 
-represented by the minority of observations \cite{brown12, yun09}. This can 
-produce a result that underestimates the occurrence of positive cases which 
-are misclassified as false negatives. Efforts to address the issue of 
-imbalanced data have included sampling methods such as `boosting'. 
-As described above, the $f_1$-score is considered a better measure of 
-performance than accuracy with data that have imbalanced classes as it 
-takes into account both recall and precision. The study also identified 
-features important for predicting MUPO. Tradeoffs between model complexity,
-performance, and interpretability are discussed. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
 \begin{table*}[ht]
-  \caption{Confusion Matrices and Performance Metrics for Classification 
-  Models of Pain Reliever Misuse and Abuse}
+  \caption{Variables in the Student Performance Dataset \cite{cortez08}}
   \label{tab:freq}
-  \begin{tabular}{llllllll}
+  \begin{tabular}{ll}
     \toprule
-    Model& & Confusion Matrix & & Accuracy & Sensitivity & Precision & F1-Score \\
+    \textit{Target Variable} &  \\
     \midrule
-    K-Nearest Neighbors & & Fail & Pass &  &  &  & \\
-     & Fail & 37567 & 453 & 89.8\% & 0.900 & 0.870 & 0.870 \\
-     & Pass & 3905 & 654 &  &  &  & \\
-    
+    Final course grade (0=Lowest, 20=Highest) & G3 \\
     \midrule
-    Logistic Regression & & Fail & Pass &  &  &  & \\
-     & Fail & 56 &  20 & 74.1\% & 0.48 & 0.727 & 0.598 \\
-     & Pass & 58 & 177 &  &  &  & \\
+    \textit{Predictor Variables} &    \\
     \midrule
-    Linear Discriminant Analysis (LDA) & & Fail & Pass &  &  &  & \\
-     & Fail & 55 &  24 & 72.8\% & 0.474 & 0.696 & 0.564 \\
-     & Pass & 61 & 173 &  &  &  & \\
-    \midrule
-    Quadratic Discriminant Analysis (QDA) & & Fail & Pass &  &  &  & \\
-     & Fail & 66 &  21 & 77.3\% & 0.569 & 0.759 & 0.650 \\
-     & Pass & 50 & 176 &  &  &  & \\
-    
-    \midrule
-    Support Vector Machines (SVM) & & Fail & Pass &  &  &  & \\
-     & Fail & 37660 & 360 & 90.3\% & 0.900 & 0.880 & 0.880 \\
-     & Pass & 3776 & 783 &  &  &  & \\
-    \midrule
-    Naive Bayes & & Fail & Pass &  &  &  & \\
-     & Fail & 67 &  24 & 76.7\% & 0.578 & 0.736 & 0.648 \\
-     & Pass & 49 & 173 &  &  &  & \\
-    \midrule
-    Neural Network (MLP) & & Fail & Pass &  &  &  & \\
-     & Fail & 378 & 534 & 90.6\% & 0.90 & 0.89 & 0.880 \\
-     & Pass & 342 & 116 &  &  &  & \\
-    
-    \midrule
-    Decision Trees & & Fail & Pass &  &  &  & \\
-     & Fail &  58 &  25 & 73.5\% & 0.50 & 0.699 & 0.583 \\
-     & Pass &  58 & 172 &  &  &  & \\
-    \midrule
-    Random Forests & & Fail & Pass &  &  &  & \\
-     & Fail &  57 &  22 & 74.1\% & 0.491 & 0.722 & 0.585 \\
-     & Pass &  59 & 175 &  &  &  & \\
-    \midrule
-    Gradient Boosted Trees & & Fail & Pass &  &  &  & \\
-     & Fail & 37955 &  65 & 89.9\% & 0.90 & 0.89 & 0.895 \\
-     & Pass & 4261 & 298 &  &  &  & \\
+    1. Sex (0=Male,1=Female) & SEX  \\  
+    2. Age (15, 16, 17, 18, 19+ years) & AGE  \\
+    3. Home address type (0=Rural, 1=Urban) & AREA  \\
+    4. Family size (0=Three or less, 1=More than three) & FAMSIZE  \\
+    5. Parents' cohabitation status (0=Separate, 1=Together) & PARENTS  \\ 
+    6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
+    7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
+    8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
+    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
+    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
+    12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
+    13. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
+    14. Family educational support (0=No, 1=Tes) & FAMSUP  \\
+    15, Paid extra subject classes (0=No, 1=Tes) & PAID  \\
+    16. Extra-curricular activities (0=No, 1=Tes) & ACTIVITIES  \\
+    17. Wants to take higher education (0=No, 1=Yes) & HIGHER  \\
+    18. Internet access at home (0=No, 1=Tes) & INTERNET  \\
+    19. In a romantic relationship (0=No, 1=Tes) & ROMANTIC  \\
+    20. Quality of family relationships (1=Very Bad, 5=Excellent) & FAMREL  \\
+    21. Free time after school (1=Very Low, 5=Very High) & FREETIME  \\
+    22. Going out with friends (1=Very Low, 5=Very High) & GOOUT  \\
+    23. Workday alcohol consumption (1=Very Low, 5=Very High) & DALC  \\
+    24. Weekend alcohol consumption (1=Very Low, 5=Very High) & WALC  \\
+    25. Current health status (1=Very Bad, 5=Very Good) & HEALTH  \\ 
+    26. Number of school absences (Count range: 0 to 93) & ABSENCES  \\
+    27. Course subject (0=Portugese, 1=Mathematics) & COURSE  \\
     \bottomrule
   \end{tabular}
 \end{table*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Logistic Regression}
+\subsection{Project Goals} 
 
-An initial logistic regression on student performance was run including all 
-the predictor variables; the model was rerun leaving out non-significant 
-features. The parameter estimates, error, z-values, and odds ratios for the 
-second model are presented in Table 7. The coefficient estimates are 
-interpreted as the multiplicative increase (or decrease) in the odds of the 
-dependent variable event happening given a one unit change in the value of 
-the predictor variable (for interval scale), or if the event represented 
-by a dichotomous predictor variable occurs (e.g., parents together), holding
-constant the effects of other independent variables. The parameters relate to 
-the log of the odds ratio rather than to the dependent variable directly. 
-The odds are calculated as the probability of the event occurring divided 
-by the probability of the event not occurring ( \(\frac{P}{P-1}\) ). The 
-odds ratio is obtained by taking the antilog of the estimated coefficient, 
-which is the exponentiated parameter estimate ($e^x$). In general, taking the 
-antilog of the coefficient estimate, subtracting 1 from it, and multiplying 
-the result by 100, provides the percent change in the odds for a unit 
-increase in the independent variable  \cite{gujarati09}.  
-
-
-
-
-
-
-
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
-%  \caption{Proportion of Pain Reliever Misuse and Abuse
-%  as a function of Heroin Use.}
-%  \label{f:Figure3}
-%\end{figure}
-
-
-Main Parameters
-K-Nearest Neighbors  Number of Neighbors = 4 
-Support Vector Machines (RBF)  C = 10, gamma = 0.1
-Naive Bayes  Cost = 0.01 
-Neural Network  Hidden Layers = 1
-Decision Trees  Maximum Depth = 4
-Random Forests  Number of Trees = 1000 
-Boosted Trees  Learning Rate = 0.01 
-
-
-\subsection{Classification Models}
-
-\subsubsection{Linear Models}
-
-Logistic regression uses a maximum likelihood method to predict the coefficient
-estimates that correspond as closely as possible to the default state. 
-In other words, the model will predict a number close to one for individuals 
-who have misused or abused pain relievers and a number close to  zero for 
-individuals who have not. The distribution of conditional probabilities in 
-the logit model has an S-shaped curve. By taking the natural log of the left 
-side of the regression equation, we obtain the logit function which is linear 
-in the parameters, where X = ($X_1$...$X_p$) predictor variables (equation 1). 
-The coefficient estimates are selected to maximize the likelihood function, 
-and are interpreted as an indication of the log-odds change in the outcome 
-variable that is associated with a one-unit increase in the predictor variable, 
-holding the effects of other predictor variables constant. The intercept, 
-$\beta_0$, is the log of the odds ratio when X is 0 \cite{gujarati09}.
-
-\begin{equation}
-  \ ln\frac{P_i}{1-P_i} = \beta_0 + \beta_1X_1 + \beta_1X_2 +... \beta_pX_p \
-\end{equation}
-
+The project examines the relationships between student characteristics,  
+behavior, and performance. Data on student performance was obtained from two 
+secondary schools in Portugal \cite{cortez08}. The dataset included information
+collected from a student survey and school grade records. The data were fit
+using several supervised machine learning models (described above) to identify 
+the set of features that best predicted student success and characteristics 
+associated with course failure. The target variable was final course grade in 
+two courses, mathematics and Portugese. The predictors variables of interest 
+were demographic variables, family characteristics, and student behaviors 
+(e.g., weekly study hours). This method can help to explore important factors 
+that contribute to student performance by: (i) Identify demographic factors 
+related to students success and failure, (ii) Identify associations between 
+students performance and the independent variables, (iii) Identify which model
+provides the most accurate and interpretable solution. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Linear discriminant analysis} (LDA) is an alternative approach to 
-estimating probabilities that models the distribution of predictors 
-separately in each of the response classes and then uses Bayes' theorem 
-to `flip' these into estimates for, $Pr(Y=k | X=x)$ \cite{james13}. The term 
-linear in LDA refers to the the discriminant functions being linear functions 
-of the predictors. For distributions assumed to be normal (i.e., multivariate 
-Gaussian), LDA provides a model that is similar in form to logistic regression, 
-but more stable. LDA is also preferred for outcomes with more than two response 
-classes. The important assumptions for LDA are, first, a common covariance 
-matrix for all classes, and second, the class boundaries are linear functions 
-of the predictors. \emph{Quadratic Discriminant Analysis} (QDA) is an approach 
-that assumes each class has its own covariance matrix and the decision 
-boundaries are quadratically curvilinear in the predictor space \cite{kuhn13}. 
-LDA is less flexible as a classifier than QDA, but can perform better with 
-relatively few training observations or when the majority of predictors in the 
-data represent discrete categories. QDA is recommended over LDA with a very 
-large training set or when the decision boundary between two classes is 
-non-linear. 
+\section{Method}
+
+\subsection{Data}
+
+The student performance dataset was downloaded from the UC-Irvine machine 
+learning repository (UCI-MLR) and saved as a data frame object in a python 
+interactive notebook. The data was collected from two secondary schools in 
+the Alentejo region of Portugal during the 2005-2006 school year and 
+contained information from a questionnaire and school reports of student 
+grades \cite{cortez08}. The sample consisted of 1044 students (56.6\% female, 
+\textit{M} age=16.71 years, \textit{SD}=1.19, \textit{Median}=17 years, 
+\textit{range}=15-22). Age was measured as a categorical variable 
+(\textit{n}=10 individuals between 20 to 22 years were included in the 19+ 
+years group). The dataset consisted of thirty independent variables, 
+including demographic information, social/ emotional attributes, school-
+related variables, and student behaviors (see Table 1). The target variable, 
+Student performance was evaluated on a 20 point scale--as in other European 
+countries (e.g., France)--at three points during the school year (i.e., 
+Grade1, Grade2, Grade3) for two courses (Mathematics n=395; Portugese, n=649). 
+The target variable of interest was the final course grade. A binary dummy 
+variable of student performance was calculated based on the measure of final 
+exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Support vector machines} (SVM) are an extension of SVC that use a 
-kernel trick to reduce computational load. The radial basis function (RBF) 
-kernel (i.e., Gaussian kernel) is one of the most commonly used approaches. 
-In training the model, only a subset of data points is used to construct the 
-decision boundary, namely the support vectors that lie on the border that 
-separates the two classes. In predicting classes for new observations, the 
-algorithm calculates the distance to each of the support vectors measured 
-by the Guassian kernel \cite{muller17}. Figure 1 shows an example of the 
-non-linear decision boundary obtained with SVM using the RBF kernel; the 
-decision boundary is a smooth curve and the support vectors are the large 
-points in bold outline. 
+\subsection{Model Construction}
 
-Even with the default settings, the RBF kernel provides a decision boundary 
-that is decidedly non-linear. The parameters 
-for SVM are `C', which regulates the importance of each data point, and 
-`gamma' which controls the width of the Guassian kernel. A small value of 
-C indicates a restricted model in which the influence of each data point is 
-limited and the algorithm adjusts to the majority of data points. With larger 
-values of C, more importance is given to each data point and the model tries 
-to correctly classify as many training observations as possible, which results 
-in more curvature in the decision boundary. Large values of gamma mean that 
-only close values are relevant for classification, resulting in a smooth 
-decision boundary. Small values of gamma mean that far points are similar. 
-If the values of both C and gamma are large, each point can have a large 
-influence in a small region, which produces a choppy decision boundary. 
-If the values of C and gamma are both small, the decision boundary becomes 
-close to linear.
+\subsubsection{Linear Regression (OLS)} 
+
+All models were constructed in R (using Rstudio) following examples from
+James, Witten, Hastie, and Tibshirani (2013), \emph{An Introduction to 
+Statistical Learning with Applications in R}\cite{jamesetal13}. After 
+preliminary exploration of the data, the sample was divided into the training 
+set ($n_1$=731) and testing set ($n_2$=313) using a 70 to 30 percent split. 
+Each model was first fit to training data and evaluated on the testing set. 
+Student performance was regressed on 27 independent variables shown in Table 1 
+using the general linear model (OLS). The regression model was run on the 
+training set with the full set of predictor variables; the model was then 
+rerun excluding all non-significant predictors variables from model. The final 
+model was then evaluated on the testing set. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Naive Bayes Classifier} is considered as a non-linear model.
-The Bayes theorem (equation 2) is represented by a set of probabilities 
-that answer the question, ``Based on a given set of predictors, 
-what is the probability than an outcome belongs to a particular class?''
+\subsubsection{Ridge regression (L2 penalty)} 
 
-The prior probability, P(Y), is the expected probability of a given class 
-based on what is known (e.g. rate of disease in the population). P(X) 
-is the probability of the predictor variables. The conditional probability,
-$P(X=cl|Y)$, is the probability of observing the predictor variables for data 
-associated with a given class. The naive Bayes model assumes that all of the 
-predictor variables are independent, which is not always realistic. The 
-conditional probabilities are calculated based on the probability densities 
-for each individual predictor \cite{kuhn13}. For categorical predictors, the 
-observed frequencies in the training set data can be used to determine the 
-probability distributions. The prior probability allows us to tilt the final 
-probability toward a particular class. Class probabilities are created and 
-the predicted class is the one that is associated with the largest class
-probability. Despite the somewhat unrealistic assumption of independence among
-predictors, the naive Bayes model is computationally quick, even with large 
-training sets, and performs competitively compared to other models. The naive 
-Bayes model encounters issues when dealing with frequencies or probabilities 
-equal to zero, especially for small sample sizes. In addition, as the number 
-of predictors increases relative to the size of the sample, the posterior 
-probabilities will become more extreme.
+The glmnet package was used to fit the ridge regression and lasso models. 
+The glmnet() function does not use model formula language (i.e., y ~ x), 
+so the X matrix of predictors and target vector Y were passed to the model. 
+The `model.matrix()` function produced a matrix corresponding to the 27 
+predictors and automatically transformed any qualitative variables into
+dummy variables. The `alpha` parameter in the glmnet() function determines 
+what kind of model is fit: alpha=0 is used to fit ridge regression. It is
+important to select an appropriate value of the parameter lambda, as the
+algorithm generates a different set of coefficients for each value of 
+lambda. By default, the glmnet() function performs ridge regression for an 
+automatically selected range of lambda values (e.g., 100). The glmnet 
+function also standardizes the variables so they are all on the same scale.
+The shrinkage penalty is applied to every feature, but not the intercept. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Neural Networks} are powerful models for classification and regression 
-that are based on theories of connectivity in the brain \cite{kuhn13}. 
-The present study considers a simple method called a multilayer perceptron 
-(MLP) which is a feed-forward neural network \cite{muller17, raschka17}. 
-The outcome is modeled by an intermediary set of unobserved variables called 
-hidden units, which are linear combinations of the original predictors
-(see Appendix). Each hidden unit is a combination of some or all of the 
-predictors which are then transformed by a nonlinear function (e.g. 
-sigmoidal). A neural network usually has multiple hidden units used 
-to model the outcome. The MLP classifier computes weights between the inputs 
-and hidden units, and weights between the layers of hidden units and the 
-output. After computing each hidden unit, the output is modeled by a nonlinear 
-combination of the hidden units. The nonlinear function allows the neural 
-network to fit more complicated functions than a linear model; however, 
-neural networks are sensitive to the scaling of the features and can require
-extensive data preprocessing. There are several ways to modify the complexity 
-of a neural network: by selecting the number of hidden layers, the number of 
-units within each layer, and the regularization parameter (L2) which shrinks 
-the weights towards zero. The feature weights provide an estimate of feature 
-importance. Although neural networks can capture information in large amounts 
-of data with very complex models, they tend to overfit data used to train the 
-model and can be difficult to interpret. Neural networks may work best with 
-homogenous datasets where the predictor variables all have similar meanings 
-\cite{muhuri13}. For datasets with many different kinds of features, 
-tree-based methods offer a better approach.
+\subsubsection{The Lasso (L1 Penalty))} 
+ 
+The Lasso model was fit using the glmnet() function with alpha=1. The model 
+automatically calculates correlation estimates for a wide range of lambda 
+values. Cross-validation was used to select an optimal value of the tuning 
+parameter lambda. The lasso is similar to best subset selection as it tries 
+to find the set of coefficient estimates that leads to the smallest error (RSS). 
+In terms of the bias-variance tradeoff, the lasso is qualitatively similar to 
+ridge regression. As lambda increases, the variances decreases and bias 
+increases somewhat; however, the variance of ridge regression is slightly 
+lower than the variance of the lasso. 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Regression Trees} 
+
+The tree library was loaded in R, and a random seed was set for consistency. 
+The following steps were taken in building a decision tree: (1) A recursive 
+binary splitting was used to grow a large tree on training data (which 
+stops only when each terminal node has fewer than some minimum number of
+observations. (2) A cost complexity (i.e., weakest link) pruning is applied
+to the large tee to obtain a sequence of best subtrees, as a function of alpha. 
+(3) K-fold cross-validation is used to choose alpha, dividing the training 
+observations into k-folds, and for each k=1...K, (a) Steps 1 and 2 are 
+repeated and (b) the mean square prediction error is evaluated on data in the 
+left-out k-fold, as a function of alpha, averaging the results for each level 
+of alpha, and picking a value of alpha that minimizes the average error. 
+(4) The subtree that corresponds to the chosen value of alpha is returned.
+Cross-validation was used to determine optimal tree complexity with produces 
+a small reduction in the residual mean variance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Tree-based Models} Decision trees are based on a hierarchy of 
-\emph{`if-else'} questions starting from a root node and proceeding through a 
-series of binary decisions or choices. Each node in the tree represents either 
-a question or a terminal node (i.e., leaf) that contains the outcome. Applied to 
-a binary classification task, the decision tree algorithm learns the sequence
-of if-else questions that arrives at the outcome most quickly. For continuous 
-features, questions are expressed in the form: ``Is feature x larger than 
-value y?'' In constructing the tree, the algorithm searches through all 
-possible tests and finds a solution that is most informative about the target 
-outcome \cite{muller17}. The recursive branching process yields a binary tree 
-of decisions, with each node representing a test for a single feature. This 
-process of partitioning is repeated until each leaf in the decision tree 
-contains only a single target. Prediction for a new data point proceeds by 
-checking which region of the partition the point falls in, and predicting the 
-majority in that feature space. The main advantage of tree models is that they 
-require little adjustment and are easy to interpret. A drawback is that they 
-can lead to complex models which are highly overfit to the training data. 
-`Prepruning' can help reduce overfitting by limiting the maximum depth of the 
-tree, or the maximum number of leaves. Another approach is to set the minimum 
-number of points in a node required for splitting. Decision trees work well 
-with features measured on different scales, or with data that has a mix of 
-binary and continuous features. 
+\subsubsection{Random Forests Regression} 
+
+In general, random forests work well without very much parameter tuning or 
+scaling of data. The important parameters for the random forests algorithm are 
+the number of sampled data points and the maximum number of features; the 
+algorithm can look at all of the features in the dataset or a limited number. 
+A high value for \emph{maximum-features} will produce trees in the random 
+forest that are very similar and will fit the data easily based on the most 
+distinctive features, whereas a low value will produce trees that are very
+different from each other, and reduces overfitting. The random forest model was 
+fit using 1000 trees, with all of the features considered at each node to 
+determine the randomness of each tree. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Random Forests} is an ensemble approach that combines many simple trees 
-that each overfit the data in different ways. By building many trees and 
-averaging their results, random forests help to reduce overfitting. In 
-constructing the forests, the user selects the number of trees to build 
-(e.g., 1000). Randomness is introduced using a bootstrapping method that 
-repeatedly draws random samples of size \textit{n} from the data set, with 
-replacement. The decision trees are built on these random samples 
-of the same size, with some points missing and some data points repeated 
-\cite{muller17,raschka17}. The algorithm makes a random selection of 
-\textit{p}-features, and uses a different set of features at each node branch. 
-These processes ensure that all of the decision trees in the random forest are 
-different. Random forests is one of the most widely used supervised learning 
-algorithms and works well without very much parameter tuning or scaling of data. 
-A limitation is that random forests do not perform well with high-dimensional 
-data, or data that is sparse (e.g., text).
+\subsubsection{Gradient Boosted Model} 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\emph{Gradient Boosting} is another ensemble method that combines multiple 
-decision trees in a serial fashion, where each tree tries to correct for 
-mistakes of the previous one \cite{muller17}. Gradient boosted regression 
-trees use strong prepruning, with shallow trees of a depth of one to five. 
-Each tree only provides a good estimate of part of the data; combining many 
-shallow trees (i.e., ``weak learners'') iteratively improves performance. 
 In addition to pre-pruning and the number of trees, an important parameter 
 for gradient boosting is the \emph{learning rate} which determines how 
 strongly each tree tries to correct for mistakes of previous trees. A high 
 learning rate produces stronger corrections, allowing for more complex models. 
-Adding more trees to the ensemble also increases model complexity. Gradient 
-boosting and random forests perform well on similar tasks and data. A common 
-approach is to first perform random forests and then include gradient boosting 
-to improve model accuracy. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Result}
-
-The distribution of conditional probabilities 
-in the logit model has an S-shaped curve. By taking the natural log of the left 
-side of the regression equation, we obtain the logit function which is linear 
-in the parameters, where X = ($X_1$...$X_p$) predictor variables (equation 1). 
-
-The coefficient estimates are selected to maximize the likelihood function, 
-and are interpreted as an indication of the log-odds change in the outcome 
-variable that is associated with a one-unit increase in the predictor variable, 
-holding the effects of other predictor variables constant. The intercept, 
-$\beta_0$, is the log of the odds ratio when X is 0 \cite{gujarati09}.
-
-\begin{equation}
-  \ ln\frac{P_i}{1-P_i} = \beta_0 + \beta_1X_1 + \beta_1X_2 +... \beta_pX_p \
-\end{equation}
-
+The gbm package ("Gradient Boosted Machines", Friedman) was loaded, and the 
+gbm() function was called on student performance (final grade) using the 
+Gaussian distribution, with 10000 shallow trees, a shrinkage parameters=0.01, 
+and interaction depth of 4 splits. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
-  \caption{Parameter Estimates for Logistic Regression Model and Log-odds 
-  Ratios (Training Set).}
+  \caption{Correlation Matrix of Previous Course Failures and Course Grade 
+  Variables}
   \label{tab:freq}
   \begin{tabular}{lllll}
     \toprule
-    Predictor&  Estimate& Std. Err.& Z-Value & Odds Ratio \\    
+    Variable    & Failures  & Grade 1 & Grade 2 & Grade 3  \\
     \midrule
-    (Intercept)         &   0.91 &  0.52 &   1.77     &   \\
-    Failures            &  -1.567 &  0.224 &  -6.98 ***  &  4.79  \\
-    Course              &  -1.121 &  0.187 &  -6.00 ***  &  3.07  \\
-    Higher Ed Plans     &   1.182 &  0.351 &   3.37 ***  &  3.26  \\
-    Father's Education  &   0.256 &  0.085 &   2.99 **   &  1.29  \\ 
-    School Support      &  -0.792 &  0.269 &  -2.94 **   &  2.21  \\    
-    Weekly Alcohol      &  -0.184 &  0.076 &  -2.41 *    &  1.20  \\
-    Guardian            &  -0.328 &  0.156 &  -2.11 *    &  1.39  \\
-    Internet            &   0.445 &  0.218 &   2.04 *    &  1.56  \\
-    Going Out           &  -0.169 &  0.086 &  -1.97 *    &  1.18  \\
-    \bottomrule 
-    Note: p-value& *$<$ 0.05  & **$<$ 0.01 & ***$<$ 0.001 &   
+    Failures    &  1,00     &  0.37***  & 0.38***   &  0.38***  \\
+    Grade 1     &  0.37***  &  1,00     & 0.86***   &  0.81***  \\
+    Grade 2     &  0.38***  &  0.86***  & 1.00      &  0.91***  \\  
+    Grade 3     &  0.38***  &  0.81***  & 0.91***   &  1.00     \\    
+    \bottomrule
+    Note. *** \textit{p}$<$0.001 & & &
   \end{tabular}
 \end{table}
 
-
-
-
-
-
-%\begin{figure}[!ht]
-% \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
-% \caption{Plot of Residual and Fitted Values of Pain Reliever Misuse
-%  and Abuse for the Logistic Regression Model}
-%  \label{f:Figure4}
-%\end{figure}
-
-
-%\begin{figure}[!ht]
-%  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
-%  \caption{Proportion of Individuals Reporting Pain Reliever Misuse and Abuse
-%  and Heroin Use Ever as a function of Sex}
-%  \label{f:Figure5}
-%\end{figure}
-
-Although the neural networks (MLP) model and support vector classifier (SLC) 
-had the highest accuracy (90.6\% and 90.4\%, respectively), they both had very 
-low $f_1$-scores compared to other models (0.88). In terms of the $f_1$-score, 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-According to the classical conditioning theory of addiction, situational cues 
-or events can elicit a motivational state underlying the relapse to drug use. 
-Following treatment, many addicted individuals return to the same environments 
-associated with their drug use. Addictive behavior can be reinstated by exposure 
-to drug-related cues or stressors in the environment \cite{shaham03}, putting
-individuals in recovery at risk for relapse and possible overdose \cite{johnson11}. 
-Furthermore, the structure of social contact networks can influence epidemic 
-spreading or diffusion \cite{pastor01, watts98}, as person-to-person contact 
-and indirect associations may facilitate the spread of drug use and addictive 
-behavior. In the case of prescription opioids, anyone is potentially at 
-risk of misusing opioids and becoming addicted. Rather than labeling people 
-as addicted or not addicted, it may be useful to consider people as more or 
-less susceptible to misusing or abusing opioid pain medication, leading to
-a greater or lesser susceptability to becoming dependent or addicted to opioids.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The methods used in this project could be extended to better approximate big 
-data for predicting opioid use in the following ways: (1) Include a larger 
-selection of features from the attributes in the NSDUH-2015 dataset; (2) 
-Include survey data from previous years (e.g., 2005-2015) for a larger sample;  
-and (3) Obtain a broader sample from the population of patients who are 
-taking prescribed opioid medications. The most immediate step would be to 
-include additional features for use with the classifier models. Additional 
-data from the NSDUH was downloaded from previous years (2012 to 2014); 
-preliminary examination of the data revealed inconsistencies in questions 
-and prescription opioid medications that would need to be resolved in order 
-to combine data from multiple years. Data cleaning can be a time consuming 
-process, but important for obtaining usable data. Unfortunately, owing to 
-constraints of time for completing the project, it was not possible to
-integrate data from previous years into the project dataset. In working with
-big data, there are there are several steps involved in the consolidation of 
-data from multiple sources into a single dataset (in addition to data 
-cleaning), which include extraction, integration, and aggregation of features  
-\cite{rahm00}. A future study could integrate data from different years, 
-using a broader set of features, with more inclusive sample representative
-of the larger population, and integrate data from multiple sources. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-The z-score provides an indication of the relative influence of each predictor 
-on the dependent variable. The model was rerun leaving out the non-significant 
-variable, Mental Health Treatment, but excluding this variable did not 
-significantly change the parameter estimates. 
-
-
-The LDA model performed similarly to logistic regression in terms of 
-$f_1$-score and accuracy, with more true positives and fewer false 
-positives, but more false negatives. An important assumption for logistic
-regression and LDA is that the class boundaries are linear functions 
-of the predictors. When the decision boundary between two classes is 
-non-linear, QDA is recommended over LDA, as QDA assumes the decision 
-boundary is curvilinear in the predictor space \cite{kuhn13}. The plots 
-of the residual and fitted values for the logistic regression in Figure 5
-suggest that the relationship may not be linear and therefore a non-linear
-may be a better approach for the sample data. It is interesting to note 
-that the QDA model had the highest number of true positives, but a lower 
-$f_1$-score than the naive Bayes classifier, even though the naive Bayes 
-model returned only 30 true positives. Furthermore, the QDA model had a 
-lower $f_1$-score and accuracy than decision tree and random forests, 
-the tree based models may provide the best fit for the data. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Neural Network}
-
-The multilayer perceptron (MLP) did not perform as well as other models, 
-which indicates that it is not a good model for data with imbalanced classes 
-\cite{yun09}. The neural network with a single hidden layer is presented in 
-Figure 5 for comparison and discussion. The MLP model takes the features as 
-the input to the model, a single hidden-layer comprises the weighted 
-combination of the input variables, and the output layer represents a 
-response probability. During model training, the weights of the predictor 
-variables are first randomly initialized and then iteratively adjusted to 
-minimize an error function (e.g., gradient descent) \cite{brown12}. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
-  \caption{Neural Net Classifier: Multilayer Perceptron with Single Hidden Layer.}
-  \label{f:Figure5}
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Proportion of Passing or Failing Final Grades as a 
+  Function of Previous Course Failures}
+  \label{f:Figure1}
+\end{figure} 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+ 
+\begin{table}
+  \caption{Summary Table of Student Performance by Final Course Grade 
+  (Pass$>=$10, Fail$<$10) for Selected Variables}
+  \label{tab:freq}
+  \begin{tabular}{llllll}
+    \toprule
+                    &  \textbf{Pass} & & & \textbf{Fail} & \\
+    Attribute & \textit{N} & \% &  & N & \% \\
+    \midrule
+    \textbf{Total}  & 661 & 63.3\% & & 383 & 36.7\% \\
+    \midrule
+    Male            & 277 & 61.1\% & & 176 & 38.9\%  \\
+    Female          & 384 & 65.0\% & & 207 & 35.0\%  \\
+    \midrule
+    \textbf{Course} &  &  &  &  & \\
+    Portugese       & 452 & 69.6\% & & 197 & 30.4\%  \\
+    Math            & 209 & 52.9\% & & 186 & 47.1\%  \\  
+    \midrule
+    \textbf{School Support} &  &  &  &  & \\
+    Received        &  63 & 52.9\% & &  56 & 47.1\%  \\
+    None            & 598 & 64.6\% & & 327 & 33.4\%  \\ 
+    \midrule    
+    \textbf{Higher Education Plans} &  &  &  &  & \\
+    Planned         & 640 & 67.0\% & & 315 & 33.0\%  \\
+    No Plans        &  21 & 23.6\% & &  68 & 76.4\%  \\
+    \midrule
+    \textbf{Mother's Education} &  &  &  &  & \\
+    Higher Ed       & 235 & 76.8\% & &  71 & 23.2\% \\
+    Secondary       & 143 & 49.5\% & &  95 & 32.9\% \\
+    Grades 5 to 9   & 180 & 75.6\% & & 109 & 45.8\% \\
+    Primary         &  98 & 47.5\% & & 106 & 52.5\% \\
+    None            &   7 & 77.8\% & &   2 & 22.2\% \\
+    \midrule    
+    \textbf{Study Time} &   &  &  &  &     \\
+    More than 10 hrs. &  45 & 72.6\% & &  17 & 27.4\% \\
+    5 to 10 hrs.      & 123 & 75.9\% & &  39 & 24.1\% \\
+    2 to 5 hrs.       & 321 & 63.8\% & & 182 & 36.2\% \\    
+    Less than 2 hrs.  & 172 & 54.3\% & & 145 & 45.7\% \\
+    \midrule
+    \textbf{Romantic Relationship} & &  &  &  & \\
+    Yes             & 221 & 59.6\% & & 150 & 40.4\%  \\    
+    None            & 440 & 65.4\% & & 233 & 34.6\%  \\
+    \midrule
+    \textbf{Internet Access} & &  &  &  & \\
+    Yes             & 543 & 65.7\% & & 284 & 34.3\%  \\    
+    None            & 118 & 54.4\% & &  99 & 45.6\%  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{table*}[ht]
+  \caption{Coefficient Estimates for Regression Models of Student Performance on 
+  Training Set and Testing Set}
+  \label{tab:freq}
+  \begin{tabular}{lllllll}
+    \toprule
+                        & Training Set      &        &         & Testing Set &         &          \\
+    \midrule
+    Variables           & Coefficient        & S.E.  & t-value & Coefficient & S.E. & t-Value  \\
+    \midrule
+ Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
+    Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
+    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}**   & 0.647 & -2.29 \\
+    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\
+    Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.097      & 0.178 & -0.55 \\
+    Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.473}**   & 0.213 &  2.25 \\
+    Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.008      & 0.152 & -0.05 \\
+    Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.893}***  & 0.260 &  3.43 \\
+    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.096      & 0.215 & -0.45 \\
+    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  &         -0.034      & 0.191 & -0.18 \\
+    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.127}**   & 0.461 & -2.45 \\
+    Internet Access     & \textbf{ 0.819}**  & 0.321 &  2.55  &          0.420      & 0.542 &  0.77 \\
+    Family Size         & \textbf{-0.500}*   & 0.278 & -1.80  &         -0.594      & 0.458 & -1.30 \\
+    Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.050      & 0.245 & -0.20 \\
+    \midrule
+    \textit{n}          &       730          &       &        &         314         &       &       \\
+    \textit{F-Value}    & \textbf{15.41}***  &       &        & \textbf{5.96}***    &       &       \\
+    \textit{df}         &   (13, 716)        &       &        &      (13, 300)      &       &       \\
+    \textit{$R^2$}      &      0.219         &       &        &         0.205       &       &       \\ 
+    \textit{Adj. $R^2$} &      0.204         &       &        &         0.171       &       &       \\
+    \textit{Resid. S.E} &      3.396         &       &        &         3.643       &       &       \\
+    \bottomrule
+    Note. Significance levels & *$<$0.10      & **$<$0.05  & ***$<$0.01 & & &
+  \end{tabular}
+\end{table*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{Results}
+
+\subsection{Exploratory Data Analysis}
+
+Preliminary examination of the data revealed significant correlations 
+between previous course failures and the course evaluation variables,
+Grade 1, Grade 2, and Grade 3 (Table 2). A chi-squared test of independence 
+showed the proportion of passing and failing final grades (G3) was 
+significantly related to previous course failures ($\chi 2$ ,
+\textit{p}$=$0.001)(Figure 1). The majority of students with no past failures 
+successfully passed their courses, but only a minority of students with one
+or more previous failures received a passing grade. Past course failures 
+and the first two course grades (i.e., Grade 1, Grade 2) were not included 
+in the regression models to address the issue of multicolinearity.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+Table 3 provides summary statistics for selected attributes. Chi-squared tests 
+of independence were used to compare the proportion of passing and failing 
+students by attribute. Performance did not vary by sex ( $\chi 2$ , 
+\textit{p}$=$0.20); however, student performance did vary significantly by 
+course topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of students 
+in the Portugese course received a passing grade, but only slightly more than 
+half of students in the Math course successfully passed. Extra educational 
+school support was also significantly related to student performance 
+($\chi 2$ , \textit{p}$<$0.001). Just over half of students who received 
+extra educational support school received a passing grade compared to nearly 
+two-thirds of students who did not receive extra support. In addition, there 
+was a significant relationship between performance and students' plans for 
+higher education ($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students 
+who received a passing grade had plans to pursue higher education, whereas 
+less than one-quarter of students with no plans for higher education passed 
+their courses. In other words, of students with plans for higher education, 
+one-third received a failing grade; by contrast, the majority of students who 
+failed had no plans to pursue higher education. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+The proportion of passing and failing grades varied by level of mother's 
+education ($\chi 2$ , \textit{p}$<$0.05); however, the relationship was 
+non-linear. Study time was significantly associated with student performance 
+($\chi 2$ , \textit{p}$<$0.001). The proportion of passing and failing 
+grades significantly different for students who studied 5 hours or more 
+per week compared to students who studied less than 5 hours per week. 
+The association between student performance and romantic relationships
+was marginally significant ($\chi 2$ , \textit{p}$<$0.06). The proportion 
+of passing and failing grades was significantly different for students in 
+a relationship than students who were not in a relationship. The relationship 
+between internet access and student performance was also marginally significant 
+($\chi 2$ , \textit{p}$<$0.06). The proportion of passing and failing grades 
+was significantly different for students with access to the internet at home
+compared to students without home internet access.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Linear Regression and Regularization}
+
+\subsubsection{General Linear Model}
+
+Student performance was first regressed on the 27 independent variables 
+(Table 1) with the training set; this regression was statistically 
+significant, and accounted for 19.7\% of the variance in the predicted
+value of student performance, taking into account the number of 
+independent variables, \textit{F}(27, 702) = 7.62, \textit{p} $<$ 0.001 
+($R^2$=0.227, adjusted $R^2$=0.197). The regression model was rerun, 
+excluding the non-significant predictors, and this regression also 
+yielded a significant relationship between student performance and the 
+independent variables, accounting for 20.4\% of the variability in 
+predicted performance, \textit{F}(12, 717) = 21.79, \textit{p} $<$ 0.001 
+($R^2$=0.219, adjusted $R^2$=0.204). An ANOVA test showed no significant 
+difference between the two models (\textit{F}$<$ 1.0, \textit{p} $=$ 0.91) 
+and the simpler model with thirteen predictor variables was retained as 
+the final model. The estimated coefficients, standard error, and t-value 
+on the testing set are presented in the left side of Table 3.
+
+%\begin{equation*}
+% \begin{aligned}
+%   Y = 13.29 - 2.23(Course) - 1.44(SchoolSupp) + 1.70(HighEd) - \\
+%   (0.44GoOut) + 0.49(MotherEd) -0.26(Health) + \\
+%   0.45(StudyTime) + 0.34(FamilyRelations) - 0.25(Age) - \\
+%   0.60(RomanticRel) + 0.82(Internet) - \\
+%   0.50(FamilySize) + 0.278(FatherJob) 
+% \end{aligned}
+%\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The final model was evaluated on the testing set and the regression yielded 
+a significant relationship between student performance and the independent 
+variables, accounting for 17.1\% of the variability of the predicted value 
+of student performance, taking into account the number of independent 
+variables, \textit{F}(13, 300) = 5.96, \textit{p} $<$ 0.001 ($R^2$=0.205, 
+adjusted $R^2$=0.171). As shown in Table 3, only 6 of the 13 independent
+variables in the testing set were significant, which suggests that the 
+model was overfit to data in the training set, The predicted values of
+student performance would be explained by the combined effect, or 
+weighted average, of the coefficient estimates and the observed values 
+for each significant independent variable in the model (Equation 2).
+
+\begin{equation*}
+ \begin{aligned}
+  Y = 6.955 - 1.162(Course) - 1.481(SchoolSupport) + 4.101(HighEd) + \\
+  0.473(MotherEd) + 0.893(StudyTime) - 1.127(RomanticRelation)
+ \end{aligned}
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+On the testing set, there was a 1.16 decrease in predicted performance 
+for students in the math course compared to students in the Portugese course, 
+controlling for all other independent variables. Students receiving school 
+support had a 1.48 lower predicted final course grade than students who did not 
+receive school support, holding all other variables constant. Students with plans 
+for higher education had a 4.10 higher predicted final grade than students with 
+no plans for higher education, controlling for other variables. A unit change 
+in mother's level of education was associated with a 0.47 increase in predicted 
+student performance, controlling for all other variables. A one-unit change in 
+weekly study time resulted in a 0.89 increase in predicted student performance, 
+holding constant the effect of other variables. Finally, there was a -1.13 
+decrease in predicted performance for students in a romantic relationship 
+compared to students who were not in a relationship, all else being equal. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \caption{Coefficient Estimates for the Ridge Regression model 
+  (L2 Penalty) as a function of the log Values of Lambda}
+  \label{f:Figure2}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \caption{Coefficient Estimates for the Lasso Regression model 
+  (L1 Penalty) as a function of the log Values of Lambda}
+  \label{f:Figure3}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{table}
+  \caption{Coefficient Estimates for Ridge Regression (L2) and the Lasso Model
+  (L1) of Student Performance using Best Value of Lambda from Cross-Validation}
+  \label{tab:freq}
+  \begin{tabular}{lll}
+    \toprule    
+                        &   Ridge (L2)  & Lasso (L1) \\
+    \midrule
+    Best lambda (CV)    &    0.819      &  0.071    \\
+    MSE                 &   13.779      & 13.895    \\
+    \midrule
+    \textit{Variables}  & \textit{Coefficient} &  \textit{Coefficient} \\
+    \midrule
+    Intercept           &   13.498      &   12.899   \\
+    Course              &   -1.801      &   -2.058   \\
+    Higher Ed           &    1.390      &    1.534   \\
+    School Support      &   -1.148      &   -1.121   \\
+    Internet Access     &    0.602      &    0.614   \\
+    Romantic Relation   &   -0.487      &   -0.461   \\    
+    Family Size         &   -0.447      &   -0.353   \\   
+    Study Time          &    0.345      &    0.353   \\   
+    Mother's Education  &    0.326      &    0.403   \\    
+    Going Out           &   -0.280      &   -0.316   \\
+    Family Relations    &    0.274      &    0.247   \\
+    Family Support      &   -0.258      &   -0.152   \\ 
+    Area (Urban/Rural)  &    0.242      &    0.192   \\
+    Age                 &   -0.223      &   -0.196   \\ 
+    Father's Job        &    0.209      &    0.205   \\
+    Health              &   -0.203      &   -0.199   \\
+    Weekly Alcohol Cons.&   -0.130      &   -0.113   \\
+    Mother's Job        &    0.127      &    0.066   \\
+    Travel Time to School & -0.109      &   -0.053   \\
+    Parents Rel. Status &    0.258      &    0.045   \\   
+    Daily Alcohol Cons. &   -0.072      &   -0.029   \\ 
+    Sex                 &    0.118      &    0.   \\
+    Paid Extra Classes  &   -0.050      &    0.   \\      
+    Extra Activities    &    0.015      &    0.   \\    
+    Free Time           &   -0.062      &    0.   \\    
+    Absences            &    0.002      &    0.   \\
+    Father's Education  &    0.046      &    0.   \\         
+    Student Guardian    &   -0.052      &    0.   \\    
+
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\subsubsection{Ridge Regression (L2 Penalty)}
+
+Figure 2 plots the coefficient estimated from the ridge regression model (L2) 
+as a function of the log values of lambda (x-axis). As the values of lambda 
+become very large, the model shrinks the coefficient values of non-relevant 
+predictor variables towards zero, but the values are never exactly equal to 
+zero. Cross-validation was used to obtain the best value of lambda, which 
+was, $\lambda$ = 0.819 (ln$\lambda$  = -0.200). As shown in Figure 2, the 
+predictors with the highest coefficient values were course subject (27), 
+students' plans for higher education (17), extra school support (13), and 
+internet access at home (18). The ridge regression (L2) was rerun using the
+best value of lambda from cross-validation with all 27 predictor variables 
+with coefficient estimates shown in Table 5. The ridge regression model had 
+a mean squared error (MSE) of 13.78. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Lasso (L1 Penalty)}
+
+Figure 3 plots the estimated coefficients from the lasso (L1) regression as 
+a function of the log value of lambda, with the number of associated features 
+listed across the top of the plot. The plot shows that as the values of lambda 
+increase, the L2 penalty shrinks many of the coefficient values to be equal 
+exactly to zero. Cross-validation was used to obtain the best value of lambda, 
+$\lambda$ = 0.071 (ln$\lambda$)= -2.65). The lasso model was rerun using the 
+optimal value of lambda selected by cross validation with 20 predictor 
+variables; the model had a mean squared error (MSE) of 13.895 and accounted 
+for approximately 20 percent of the variability in student performance. 
+Similar to the ridge regression, the predictors with the highest coefficients 
+were course subject (27), plans for higher education (17), extra school support 
+(13), and internet access at home (18). The error from the lasso model is very 
+similar to the ridge regression, but the lasso has an advantage over ridge 
+regression in that the resulting coefficient estimates are sparse and the 
+model selected a subset of the predictor variables. 
+
+
+
+\subsection{Decision Tree Models}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \caption{Regression Tree Model of Student Performance on Training Set}
+  \label{f:Figure4}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Logistic 
-regression provides the coefficient estimates and odds ratios, but is 
-restricted to cases where the outcome is modeled as a linear function of 
-the independent variables. Decision tree can model non-linear patterns in 
-the data, are easy to interpret and explain to others. The results of a 
-single decision tree can greatly overfit the data used to train the model, 
-and very different trees can be obtained from different samples of the 
-training data. Unpruned trees can also result in very complex models; 
+\subsubsection{Regression Trees}
 
-Random forests decrease overfitting by building multiple trees trained on
-bootstrap samples of the training set using random feature selection in the
-process of tree generation \cite{brown12}. Although random forests models are
-more accurate than a single tree and can compensate for overfitting, a 
-limitation is that it can be difficult to interpret an ensemble of trees apart 
-from the measure of feature importance provided in the output. 
+The regression tree model of student performance was fit to the training data 
+using the rpart() function in R, with all 27 independent variables. Cross-
+validation was used to determine the optimal tree complexity. The decision tree
+model was prepruned to a maximum depth of 3, which means the algorithm split on 
+three consecutive features (see Figure 4). The resulting regression tree had
+7 terminal nodes, with course subject as the root node. Course subject was a 
+dummy variable and the branch to the left represents students in the mathematics
+course (39\%) and the branch to the right represents students in the Portugese 
+course (61\%). In addition to course subject, The mother's education level, 
+weekly study time. student absences, and age were used to construct the tree. 
+The predicted mean value of student performance was 11 at the root node, and 
+the predicted values ranged from 5 for students with one or more absences 
+who were 18 years or older (4\%), to 13 for students whose mother's had 
+attained some level of higher education (18\%). 
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
+  \caption{Regression Tree Model of Student Performance on Testing Set}
+  \label{f:Figure5}
+\end{figure}
+
+The regression tree model was evaluated on the test set with a maximum depth
+of 3, which yielded a tree with 6 terminal nodes (shown in Figure 5). 
+The MSE for the regression tree on the testing set was 17.608. As seen in 
+Figure 5, the root node was students' plans for higher education. In 
+addition to higher education, mother's education level, area (urban / rural),
+course subject, and student absences were used to construct the tree.
+Following the right branch from the root node, the 91\% of students in 
+the training set with plans for higher education had a predicted value 
+of student performance of 12, whereas on the left branch for students with 
+no plans for higher education (9\%) predicted mean performance was only 7.  
+
+For students with plans for higher education, the next split was on mother's
+education level. The branch to the right represented 74\% of the testing set
+whose mothers had an education level of 5th grade or higher, where the 
+predicted performance was 12. Following this branch to the right, the mean
+predicted student performance for 55\% of students in urban areas was 13, 
+whereas the mean predicted performance for the 19\% of students in rural 
+areas was 11. For the 17\$ of students whose mother's had secondary education 
+or less, the mean predicted performance was 10; this branch next split on 
+course topic, and the mean predicted performance for students in the 
+Portugese course (12\%) was 11, and the mean performance for students in 
+the mathematics course (5\%) was only 8.2. For students with no plans for 
+higher education (9\%), the tree split at the next node on absences, 
+where the mean predicted performance was 7. The mean predicted performance
+for students with no absences (5\%) was 9.1, whereas for students in the 
+testing set with one or more absences, mean performance was 4.6. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Survey data may be biased to some degree. People may under-report or minimize 
-their use of illicit or illegal substances, and may also be reluctant to 
-disclose mental health disorders or illnesses;b however, measures of 
-confidentiality and anonymity help to assure more accurate disclosure 
-of personal information. 
+\begin{table}
+  \caption{Feature Importance for Student Performance from the Random Forests 
+  (Node Purity) and Gradient Boosted Model}
+  \label{tab:freq}
+  \begin{tabular}{llll}
+    \toprule
+            &           & Model &  \\ 
+    \midrule  
+            & Random Forest & & Gradient Boost \\    
+    \midrule   
+    Predictor Variables & \% Inc. MSE & & Rel. Imp. \\    
+    \midrule
+    Courses             &  1.429 &   &  7.156 \\ 
+    Mother's Education  &  1.109 &   &  5.246 \\
+    Absences            &  0.812 &   & 14.611 \\
+    Age                 &  0.649 &   &  7.103 \\
+    Study Time          &  0.514 &   &  4.573 \\     
+    Go Out Friends      &  0.508 &   &  5.816 \\
+    Weekly Alcohol      &  0.396 &   &  4.360 \\
+    Higher Education    &  0.370 &   &  1.150 \\   
+    Paid Extra Courses  &  0.361 &   &  1.609 \\
+    Daily Alcohol       &  0.284 &   &  2.582 \\
+    Sex                 &  0.264 &   &  2.209 \\
+    Mother's Job        &  0.252 &   &  2.289 \\   
+    Health              &  0.230 &   &  5.007 \\ 
+    Father's Education  &  0.220 &   &  3.494 \\   
+    Extra Activities    &  0.201 &   &  2.985 \\
+    Romantic Relation   &  0.182 &   &  2.747 \\
+    Father's Job        &  0.180 &   &  4.016 \\   
+    Free Time           &  0.171 &   &  5.164 \\
+    School Support      &  0.158 &   &  1.201 \\    
+    Guardian            &  0.143 &   &  2.135 \\
+    Area                &  0.131 &   &  1.375 \\
+    Internet Access     &  0.112 &   &  1.716 \\    
+    Family Support      &  0.082 &   &  1.837 \\
+    Family Size         &  0.077 &   &  1.898 \\
+    Family Relations    &  0.041 &   &  3.011 \\
+    Parents             &  0.012 &   &  0.725 \\
+    Travel Time         & -0.006 &   &  2.987 \\  
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- Furthermore, given the truism that ``more data is better'', 
-data from previous years of the NSDUH survey could be included for analysis;
-however, due to changes in medication names and wording of survey questions, 
-data from NSDUH-2014 did not align with the format for surveys from 2015-2107. 
+\subsubsection{Random Forests Regression}
+
+Random forests build many different decision trees, and then averages the trees 
+to reduce variance. The advantage of randome forests is that it provides a more accurate model, but the tradeoff is that the large ensemble of trees can be more difficult to interpret. 
+
+random forest package was loaded into R, and the
+
+
+The  random forests regression model was fit to the training set using
+the randomforest() model in R, with 500 trees, and three variables considered 
+at each split (e.g., mtry=3).
+
+The mean of the squared residuals was 2.99, which shows better performance
+in terms of error than a single decision tree. The model accounted for 26
+percent of the variance in opioid pain reliever misuse and abuse. Figure 10
+shows the feature importance for the random forest regression model by the
+percent increase in MSE on the left panel, and as a function of the increase
+in node purity on the right panel. 
+
+
+Feature importance is a model summary for random forests 
+that rates how important each feature is for classification decisions made 
+in the algorithm. The Gini index provides a measure of node purity which is 
+used to evaluate the quality of a particular split; a small value indicates 
+that a node predominantly contains observations from a single class. 
+Feature importance was measured by the mean decrease in Gini coefficient 
+(Table 8), which indicates how each variable contributes to the homogeneity 
+of the nodes and leaves in the resulting random forest. For classification 
+trees, the splits are chosen so as to minimize entropy or Gini impurity in 
+the resulting subsets. For random forests, variables that result in nodes 
+with higher purity have a higher decrease in the Gini coefficient. Feature 
+importance is computed by aggregating the feature importance over trees in 
+the random forest, and gives non-zero importance to more features than a 
+single tree. A feature may have a low importance value because another feature 
+encodes the same information. 
+
+
+
+Table 8 provides the feature importance for 
+the random forests model sorted by the mean decrease in the Gini coefficient. 
+The algorithm selected cocaine as the most informative feature for predicting 
+pain reliever misuse and abuse. In contrast to the single decision tree, 
+amphetamines, mental health, and health were selected among the top four most 
+important features in the random forests model, followed by tranquilizers, 
+age category, and heroin use, which were ranked as more influential in the 
+single tree (Figure 4). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Prescription opioid misuse and abuse was associated with heroin use: of 
-the individuals who reported misusing prescription opioid medications, twice 
-as many reported having used heroin than those who said that they had not used 
-heroin. the importance of heroin use was a predictor of pain reliever misuse and
-abuse was limited, given the very small number of individuals who reported 
-using heroin.
+\subsubsection{Gradient Boosting Regression}
+
+The relative influence plot in Table 3 shows that the most 
+influential features in the gradient boosting model were: TRQLZRS, TRTMENT,
+HEROINUSE, COCAINE use, and AMPHETMN. Figure 11 shows the influential 
+features of the gradient boosting regression as a horizontal barplot. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{DISCUSSION}
+
+previous course failures, course topic, school support, romantic relationship, 
+going out with friends, and overall health were negatively correlated with 
+student performance, whereas plans for higher education, study time, mother's
+education level, internet access, quality of family relations, and father's 
+job were positively related to student achievement.
+
+
+The results showed that prescription opioid use, misuse, and abuse in this 
+sample was higher than use of illicit opioids such as heroin and fentanyl. 
+The use of Hydrocodone (Vicodan) was double that of Oxycodone (Oxycodone) 
+across almost all age groups. Illicit drug use was highest between the ages 
+of 18 to 25. Almost twice as many young adults reported a need for substance 
+use treatment, but had not received treatment, compared to the youngest age 
+group. Of individuals who reported misusing prescription opioid medications, 
+twice as many said they had used heroin than had not (see Figure 1), which is 
+consistent with the hypothesis that prescription opioid misuse is associated 
+with heroin use. The different learning models provided different estimates 
+of the features important for predicting pain reliever misuse and abuse. 
+
+
+The multiple regression showed multiple features together significantly 
+predicted pain reliever abuse, but there may be non-linear trends in the data.
+Compared to ridge regression, the lasso performed variable selection, 
+indicating that a model with five features (Treatment, Heroin, Cocaine, 
+Amphetamine, Any Pain Relievers) explained a significant portion of
+variabilty in pain reliever abuse, and adding more factors did not improve
+the performance greatly. 
+
+The regression tree model created a solution
+with four features (Treatment, Cocaine, Heroin, Tranquilizers), and 
+
+the
+random forest regression selected Tranquilizers as most informative of
+pain reliever misuse, which is consistent with the results of the gradient
+boosting model tree ensemble (shown in Table 3). 
+
+A limitation of decision tree models is overfitting to data in the training set. 
+
+
+Overall, the models 
+agreed in selecting the top five most influential predictors of pain
+reliever abuse, but there was some variation in the ordering of importance. 
+
+The linear models showed that substance treatment had the highest
+coefficients (followed by heroin use), whereas the tree ensemble methods
+indicated that tranquilizer use was the most important feature. Given the 
+relatively low rates of prescription opioid and heroin use in the sample, 
+additional evidence is needed to clarify questions regarding the importance
+of various features for predicting opioid misuse and abuse. 
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Limitations}
+
+Educational institutions collect large amounts of students data yet much of
+this information is protected due to privacy. Responses to anonymous surveys 
+are designed to preserve confidentiality and can help to assure`privacy. 
+
+
+measures of student satisfaction can vary according 
+to their perceived usefulness or efficiency of training courses.
+
+This paper reviews LA methodologies, applications, and considers challenges 
+and opportunities for implementing LA in education.
+
+A surprising finding is that 
+
+A limitation of the study is that only a small proportion of the sample 
+reported having used or misused prescription opioids. It is possible that the 
+level of opioid use in the sample was not representative of opioid use in the 
+general population. 
+
+The development of LA as a field of 
+inquiry have been primarily driven by big data in education and the shift 
+toward online learning. 
+
+ The ability to mine large scale data from online 
+learning platforms has applications for student success, course design, and 
+institutional programs \cite{Lester19}. 
+
+Obtaining reliable information about medication consumption can be difficult 
+based on self-reports. Survey data can be biased by under-reporting or by 
+minimizing reports of illicit substance use. People may also be reluctant to 
+disclose mental health issues or health problems (e.g., STDs, HIV, suicide 
+attempts). Another consideration is that,
+
+
+Alternatively, individuals who...
+
+The results of the present analysis showed that demographic 
+characteristics played a relatively...  
+
+Other areas of interest for LA/EDM research include 
+increasing (self-)reflection and (self-)awareness, analyzing connections among 
+learners, improving feedback and assessment, and recommending educational 
+resources \cite{lang17, lester19, papamitsiou14}.
 
 
 
-\subsection{Model Complexity and Interpretability}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Every  model has advantages and limitations. There is a 
-tradeoff between model complexity, performance, and interpretability.
-Simple models provide interpretable solutions but have lower accuracy, 
-whereas complex models yield improved performance but are more difficult 
-to interpret. The advantage of logistic regression is that it provides 
-coefficient estimates for individual features that can be interpreted in 
-terms of odds ratios. The predicted outcome (Y-hat) is represented by the
-weighted combination of all the independent variables. The logit function 
-is linear in the parameters, but the probabilities of the expected outcome 
-are non-linear. The drawbacks of logistic regression are that it does not 
-perform well for modeling non-linear relationships between the target
-outcome and predictor variables, or with high dimensional data (e.g., $p>n$). 
+\subsection{Collaboration}
 
-Decision trees are useful for modeling nonlinear data and can be 
-interpreted in terms of the frequency or proportion of observations selected 
-at each branch. A single tree visually represents the decision process in a 
-manner that is effective for communicating results; however, a disadvantage 
-is that decision can become very complex without pruning, especially as the 
-number of predictors increases. Limiting the decision tree to a depth of four 
-nodes improves the interpretability, but reduces the generalizability of the 
-model to new observations. Random forests reduce overfitting by averaging
-multiple different trees to identify class membership, which improves 
-generalizability to new data. A limitation of random forests is that feature 
-importance is determined by the mean decrease in Gini score, a measure of node
-purity that is difficult to interpret in terms of the outcome. Gradient 
-boosting typically improves accuracy using many simple models iteratively and 
-correcting for individual trees; however, in the present study, the boosting 
-model did not perform better than random forests. 
+Much LA/EDM research data is collected within a virtual learning 
+environment (VLE), learning management system (LMS), or massive open online 
+course (MOOC), which can automatically track student participation by login 
+frequency, number of resources accessed, time to solve tasks, response times 
+to answer questions, number of discussion posts or chat messages between 
+participants, questions submitted to instructors. In addition to quantitative 
+measures, meaningful analytics systems will include qualitative measures about 
+the content or type of contribution (on-topic, evaluative, question). 
+Researchers have also studied how affective states (e.g., boredom, 
+frustration, confusion, happiness) influence engagement and learning outcomes 
+\cite{pardos14}. Merging LMS data with institutional data about student 
+performance (i.e., past grades) can provide valuable insights about the 
+conditions for successful learning and decision making (Hora, 2019). 
 
-As the complexity of a model increases, interpretation becomes more difficult, 
-as seen with neural networks. The multilayer perceptron (MLP) is one of the 
-most widely used neural network models for classification. With a limited 
-number of predictor variables and single hidden layer, it is possible to 
-interpret the relations among weights and nodes in the hidden layer 
-(see Appendix). As the number of predictors and hidden layers increases, 
-complex neural network become opaque to interpretation and represent a 
-``black box'' model that is not comprehensible at a human level. In 
-applying sophisticated algorithms in predictive modeling, interpretability 
-is often sacrificed for greater model accuracy \cite{elgin18}. 
+
+Quantitative data about activities and behavior (e.g., response time, or 
+time reflecting on hints) are helpful for modeling engagement or disengagement 
+in learning activities, and provide information that allows software to respond 
+to individual differences. Discovery and modeling of behaviors during learner 
+interactions in a MOOC. 
+
+
+Learning is a complex phenomenon that is not always directly observable and 
+often inferred from student behavior in online learning platforms. Theories of 
+learning reveal the importance of collaboration; from the social constructivist 
+perspective, knowledge is constructed through interaction with more knowledgeable
+partners, parents, teachers, or peers (Vygotsky, 1978). Sociological research
+has investigated the characteristic structure of social networks, showing the 
+strength of weak social connections (Granovetter, 1973). 
+
+Social network analysis 
+(SNA) provides a valuable tool for exploring interactions among learners in 
+various contexts. Visualization tools help to reveal connections in large 
+datasets and analyze collaboration in online learning platforms (Dawson, 2009). 
+Content analysis and automated recommender systems have also been used to guide 
+learners toward more personalized learning environments (PLE) (Siemens, 2012, 2013). 
+
+Individual differences in metacognitive (e.g., self-reflection, self-awareness), 
+disposition, experience and motivation are influential for developing learning 
+relationships (Dawson, et al., 2014; Gašević, et al., 2015). 
+
+Affect and motivation are also 
+influential for predicting performance; notably, concentration and 
+frustration are significantly correlated with final grades, but boredom and 
+confusion were negatively related to performance (Pardos et al., 2013). 
+Using data-driven machine learning algorithms on student profiles and data 
+about activity within the LMS can facilitate early detection of at-risk 
+students \cite{Dekkar09}.  The most 
+common reasons for  student disengagement in MOOCs were personal commitments, 
+work conflict and course overload (Kizilcec, 2013). 
+
+\subsubsection{Predicting Performance} 
+
+The Course Signals program developed at Purdue University 
+is one of the most well known platforms for predicting students at-risk of 
+falling behind using statistical analysis of LMS data \cite{arnoldPistilli12}. 
+In addition to grades, demographic information, academic history, and student 
+interaction on the Blackboard LMS were used to track student performance. A 
+predictive algorithm was used to calculate likelihood of student success based 
+on performance, effort, history, and student characteristics. The course signals 
+provided students with real-time feedback about their status via the LMS as 
+traffic signal indicators (i.e., red=high risk, yellow=moderate risk, green=low 
+risk). Instructors enacted interventions for high risk students providing them 
+with actionable information about their performance in emails, texts, referrals
+to academic advising, or academic resources center, and face to face meetings.
+Courses that implemented the Signals program and provided feedback for students
+showed an increase in satisfactory grades, decrease in withdrawals, and 
+improved retention. Course signals helped to integrate students into the 
+university academically in several ways: first, by facilitating contact 
+between faculty and students, second, by providing high risk students with 
+resources for student success, and third, by using analytics with real time 
+data about student performance. in terms of academic success and retention, 
+underprepared students in difficult courses using the signals program fared 
+better than more well-prepared students in courses that were not using the 
+signals program. Furthermore, LA provided faculty with a useful tool for 
+identifying struggling students and encouraging them to take corrective actions.  
+
+
+Analysis of qualitative data, may rely on human judgment, can reveal deeper 
+concepts about learning, such as inferring reasoning strategies from interaction 
+with a cognitive tutor 
+\cite{Fournier11}. Predictive approaches are used also for modeling student 
+behavior and assessing functionality in intelligent tutoring systems (ITS)
+\cite{penaayala14}. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+A general conclusion is that... 
+The findings...
+
+A general conclusion is that people who reported misusing prescription opioids 
+were also likely to have received substance treatment. More than any other 
+demographic features, a history of prescription medication use, or illicit drug 
+use, both seemed to contribute highly to the abuse of pain reliever medications, 
+particularly for those who reported using tranquilizers, heroin, cocaine, or 
+amphetamines. The findings suggest that the opioid crisis may be driven by the 
+widespread availability of prescription medications. Even for people with no 
+previous history of mental health issues, exposure to highly addictive opioid 
+medications puts people at risk for drug dependency and addiction. As mentioned 
+in the introduction, even for those who have been in drug treatment programs, 
+a lack of continuity in treatment can leave many people in recovery at risk 
+for relapse or possible overdose as they are released back into environments 
+associated with their drug use. The sharp increase in overdose deaths in the 
+U.S. due to synthetic opioids (other than methadone) has coincided with the 
+increased availability of illicitly manufactured fentanyl \cite{nida17}. 
+Because the dosage levels and potency of illicit opioids are largely unknown, 
+there is greater risk of drug overdose death. Recent findings suggest the 
+opioid overdose epidemic is getting worse, and requires urgent action to prevent 
+opioid abuse, addiction, and death. The findings reported here seek to raise 
+awareness about the risk factors for prescription opioid addiction for patients 
+and health care providers in order to help reduce opioid overdose deaths. 
+
+Additional research 
+is needed to understand the relationships among the variables identified by 
+predictive models. The findings may inform decision making and policy efforts 
+to address the opioid crisis and reduce the risk of overdose death. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{unsrt} %%ACM-Reference-Format%%
+\bibliography{report} 
+
+
+\end{document} 
