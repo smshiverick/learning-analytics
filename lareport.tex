@@ -787,33 +787,34 @@ Figure 2 plots the coefficient estimated from the ridge regression model (L2)
 as a function of the log values of lambda (x-axis). As the values of lambda 
 become very large, the model shrinks the coefficient values of non-relevant 
 predictor variables towards zero, but the values are never exactly equal to 
-zero. As shown in Figure 2, the predictors with the highest coefficient values 
-were course subject (27), students' plans for higher education (17), extra 
-school support (13), and internet access at home (18). Cross-validation was 
-used to select the best value of lambda, which returned a value of $\lambda$ = 0.819. (natural log of lambda =
--0.200). Table 5 provides the coefficient estimates for the ridge regression 
-(L2) model for the best value of lambda obtained from cross-validation with
-all 27 predictor variables. The model had a mean squared error (MSE) of 13.78. 
+zero. Cross-validation was used to obtain the best value of lambda, which 
+was, $\lambda$ = 0.819 (log$\lambda$  = -0.200). As shown in Figure 2, the 
+predictors with the highest coefficient values were course subject (27), 
+students' plans for higher education (17), extra school support (13), and 
+internet access at home (18). The ridge regression (L2) was rerun using the
+best value of lambda from cross-validation with all 27 predictor variables. 
+The coefficient estimates are presented in Table 5 and the model had a mean 
+squared error (MSE) of 13.78. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{The Lasso (L1 Penalty)}
 
 Figure 3 plots the estimated coefficients from the lasso (L1) regression as 
-a function of the log value of lambda; the number of associated features is 
+a function of the log value of lambda, with the number of associated features 
 listed across the top of the plot. The plot shows that as the values of lambda 
 increase, the L2 penalty shrinks many of the coefficient values to be equal 
-exactly to zero. Similar to the ridge regression, the predictors with the 
-highest estimated coefficients were course subject (27), plans for higher
-education (17), extra school support (13), and internet access at home (18). 
-Cross-validation was used to select the best value of lambda, which returned a 
-value of $\lambda$ = 0.071 (natural(log$\lambda$)= -2.65). The model had a 
-mean squared error (MSE) of 13.895 with 20 independent variables. The associated 
-error of the lasso is very similar to ridge regression, but the lasso has an 
-advantage over ridge regression in that the resulting coefficient estimates 
-are sparse, and only a subset of the predictors are selected in the model. 
-The lasso model with 20 predictor variables accounted for approximately 20 
-percent of the variability in student performance. 
+exactly to zero. Cross-validation was used to obtain the best value of lambda, 
+($\lambda$ = 0.071; ln$\lambda$)= -2.65). The lasso model was rerun using
+the optimal value of lambda selected by cross validation with 20 predictor 
+variables; the model had a mean squared error (MSE) of 13.895 and accounted 
+for approximately 20 percent of the variability in student performance. 
+Similar to the ridge regression, the predictors with the highest coefficients 
+were course subject (27), plans for higher education (17), extra school support 
+(13), and internet access at home (18). The error from the lasso model is very 
+similar to the ridge regression, but the lasso has an advantage over ridge 
+regression in that the resulting coefficient estimates are sparse, and only 
+a subset of the predictors are selected in the model. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
