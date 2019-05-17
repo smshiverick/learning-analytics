@@ -234,6 +234,7 @@ of the parameter lambda and also which approach is better.
 
 \subsection{Decision Tree Models}
 
+\subsubsection{Regression Trees}
 Decision tree models are widely used for classification and regression. Tree 
 models are built on a hierarchy of \textit{if-else} questions that proceeds 
 from a root node as the starting point and continues through a series of 
@@ -431,41 +432,26 @@ lower than the variance of the lasso.
 \subsubsection{Regression Trees} 
 
 The regression tree model of student performance was fit to the training data 
-using the rpart() function in R, with all 27 independent variables. Cross-
-validation was used to determine the optimal tree complexity. The decision tree
-was constructed using recursive binary splitting to grow a large tree on the 
-training data. K-fold cross-validation was used to choose the best 
-
-alpha, dividing the training 
-observations into k-folds, and for each k=1...K, 
-
-model was prepruned to a maximum depth of 3, which means the algorithm split on 
-three consecutive features. The decision tree 
-
-(2) A cost complexity (i.e., weakest link) pruning is applied
-to the large tee to obtain a sequence of best subtrees, as a function of alpha. 
-(3) (a) Steps 1 and 2 were 
-repeated and (b) the mean square prediction error is evaluated on data in the 
-left-out k-fold, as a function of alpha, averaging the results for each level 
-of alpha, and picking a value of alpha that minimizes the average error. 
-(4) The subtree that corresponds to the chosen value of alpha is returned.
-Cross-validation was used to determine optimal tree complexity with produces 
-a small reduction in the residual mean variance. 
+using the rpart() function in R, with all 27 independent variables. The decision
+tree uses recursive binary splitting to constructed to grow a large tree on the 
+training data. Cross-validation was used to determine the optimal tree complexity.
+The model was prepruned to a maximum depth of 3, which means the algorithm split 
+on three consecutive features.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Random Forests Regression} 
 
-In general, random forests work well without very much parameter tuning or 
-scaling of data. The important parameters for the random forests algorithm are 
-the number of sampled data points and the maximum number of features; the 
-algorithm can look at all of the features in the dataset or a limited number. 
-A high value for \emph{maximum-features} will produce trees in the random 
-forest that are very similar and will fit the data easily based on the most 
-distinctive features, whereas a low value will produce trees that are very
-different from each other, and reduces overfitting. The random forest model was 
-fit using 1000 trees, with all of the features considered at each node to 
-determine the randomness of each tree. 
+The random forest model was fit using 1000 trees, with all of the features 
+considered at each node to determine the randomness of each tree. In general,
+random forests work well without very much parameter tuning or scaling of data. 
+The important parameters for the random forests algorithm are the number of 
+sampled data points and the maximum number of features; the algorithm can 
+look at all of the features in the dataset or a limited number. A high value 
+for \emph{maximum-features} will produce trees in the random forest that are 
+very similar and will fit the data easily based on the most distinctive features, 
+whereas a low value will produce trees that are very different from each other, 
+and reduces overfitting. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -477,7 +463,7 @@ strongly each tree tries to correct for mistakes of previous trees. A high
 learning rate produces stronger corrections, allowing for more complex models. 
 The gbm package ("Gradient Boosted Machines", Friedman) was loaded, and the 
 gbm() function was called on student performance (final grade) using the 
-Gaussian distribution, with 10000 shallow trees, a shrinkage parameters=0.01, 
+Gaussian distribution, with 1000 shallow trees, a shrinkage parameters=0.01, 
 and interaction depth of 4 splits. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -851,7 +837,7 @@ absences who were 18 years or older, to 13 for students in the Portugese course
 whose mother's had some higher education. The regression tree model was evaluated 
 on the test set (maximum depth=3) which yielded a tree with plans for higher 
 education (rather than course subject) as the root node and 6 terminal nodes 
-(see Figure 5). The MSE for the regression tree on the testing set was 17.608.
+(see Figure 5). The MSE for the regression tree on the testing set was 16.385.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
@@ -926,35 +912,79 @@ with one or more absences, had a mean predicted performance of 4.6.
   \end{tabular}
 \end{table}
 
+
+
+Medu       1.36837804
+absences   0.88397728
+area       0.59164500
+higher     0.57546547
+course     0.48122589
+Walc       0.47305612
+Mjob       0.46317807
+Fedu       0.39855912
+goout      0.38906761
+Dalc       0.37339644
+age        0.37043362
+schoolsup  0.34706198
+studytime  0.32106923
+Fjob       0.27799782
+freetime   0.27233051
+internet   0.20427966
+famrel     0.18146640
+activities 0.17868114
+traveltime 0.12238093
+health     0.09703826
+guardian   0.12070910
+famsize    0.11168703
+famsup     0.10264823
+romantic   0.09330750
+paid       0.07490199
+parents    0.05589916
+
+absences	16.0415119		
+course	    11.6691947		
+Medu	     7.7489496		
+age	         7.4875956		
+goout	     6.5598480		
+studytime	 4.5064105		
+health	health	3.8747112		
+Walc	Walc	3.5491530		
+famrel	famrel	3.4461613		
+freetime	freetime	3.3297416	
+
+
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Random Forests Regression}
 
-The  random forests regression model was fit to the training set using
-the randomforest() model in R, with 500 trees, and three variables considered 
-at each split (e.g., mtry=3).
+The  random forests regression model was fit to the training set with 1000 
+trees and all variables considered at each split (e.g., mtry=3). The mean squared 
+error (MSE) for the model was 6.278, which indicates better performance than with a 
+single decision tree. The random forests algorithm provides feature importance
+as a model summary; for regression this is measured in terms of percent increase
+in MSE. Table 
+
+in terms of error 
 
 
-Random forests build many different decision trees, and then averages the trees 
-to reduce variance. The advantage of randome forests is that it provides a more accurate model, but the tradeoff is that the large ensemble of trees can be more difficult to interpret. 
-
-random forest package was loaded into R, and the
-
-
-
-
-The mean of the squared residuals was 2.99, which shows better performance
-in terms of error than a single decision tree. The model accounted for 26
+The model accounted for 26
 percent of the variance in opioid pain reliever misuse and abuse. Figure 10
 shows the feature importance for the random forest regression model by the
 percent increase in MSE on the left panel, and as a function of the increase
-in node purity on the right panel. 
+in node purity on the right panel
 
 
-Feature importance is a model summary for random forests 
+for random forests 
 that rates how important each feature is for classification decisions made 
-in the algorithm. The Gini index provides a measure of node purity which is 
-used to evaluate the quality of a particular split; a small value indicates 
+in the algorithm. 
+
+The Gini index provides a measure of node purity which is used to evaluate the quality of a particular split; a small value indicates 
 that a node predominantly contains observations from a single class. 
 Feature importance was measured by the mean decrease in Gini coefficient 
 (Table 8), which indicates how each variable contributes to the homogeneity 
@@ -967,12 +997,12 @@ the random forest, and gives non-zero importance to more features than a
 single tree. A feature may have a low importance value because another feature 
 encodes the same information. 
 
-
-
 Table 8 provides the feature importance for 
 the random forests model sorted by the mean decrease in the Gini coefficient. 
 The algorithm selected cocaine as the most informative feature for predicting 
-pain reliever misuse and abuse. In contrast to the single decision tree, 
+pain reliever misuse and abuse.
+
+In contrast to the single decision tree, 
 amphetamines, mental health, and health were selected among the top four most 
 important features in the random forests model, followed by tranquilizers, 
 age category, and heroin use, which were ranked as more influential in the 
@@ -983,9 +1013,11 @@ single tree (Figure 4).
 \subsubsection{Gradient Boosting Regression}
 
 The relative influence plot in Table 3 shows that the most 
-influential features in the gradient boosting model were: TRQLZRS, TRTMENT,
-HEROINUSE, COCAINE use, and AMPHETMN. Figure 11 shows the influential 
-features of the gradient boosting regression as a horizontal barplot. 
+influential features in the gradient boosting model were: 
+
+Figure 11 shows the influential features of the gradient boosting regression as 
+
+a horizontal barplot. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
