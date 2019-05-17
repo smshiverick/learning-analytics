@@ -430,14 +430,21 @@ lower than the variance of the lasso.
 
 \subsubsection{Regression Trees} 
 
-The tree library was loaded in R, and a random seed was set for consistency. 
-The following steps were taken in building a decision tree: (1) A recursive 
-binary splitting was used to grow a large tree on training data (which 
-stops only when each terminal node has fewer than some minimum number of
-observations. (2) A cost complexity (i.e., weakest link) pruning is applied
+The regression tree model of student performance was fit to the training data 
+using the rpart() function in R, with all 27 independent variables. Cross-
+validation was used to determine the optimal tree complexity. The decision tree
+was constructed using recursive binary splitting to grow a large tree on the 
+training data. K-fold cross-validation was used to choose the best 
+
+alpha, dividing the training 
+observations into k-folds, and for each k=1...K, 
+
+model was prepruned to a maximum depth of 3, which means the algorithm split on 
+three consecutive features. The decision tree 
+
+(2) A cost complexity (i.e., weakest link) pruning is applied
 to the large tee to obtain a sequence of best subtrees, as a function of alpha. 
-(3) K-fold cross-validation is used to choose alpha, dividing the training 
-observations into k-folds, and for each k=1...K, (a) Steps 1 and 2 are 
+(3) (a) Steps 1 and 2 were 
 repeated and (b) the mean square prediction error is evaluated on data in the 
 left-out k-fold, as a function of alpha, averaging the results for each level 
 of alpha, and picking a value of alpha that minimizes the average error. 
@@ -823,7 +830,8 @@ model selected a subset of the predictor variables.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
-  \caption{Regression Tree Model of Student Performance on Training Set}
+  \caption{Regression Tree Model of Student Performance on the 
+  Training Set (\textit{n}=700)}
   \label{f:Figure4}
 \end{figure}
 
@@ -831,24 +839,22 @@ model selected a subset of the predictor variables.
 
 \subsubsection{Regression Trees}
 
-The regression tree model of student performance was fit to the training data 
-using the rpart() function in R, with all 27 independent variables. Cross-
-validation was used to determine the optimal tree complexity. The decision tree
-model was prepruned to a maximum depth of 3, which means the algorithm split on 
-three consecutive features (see Figure 4). The resulting regression tree had
-7 terminal nodes, with course subject as the root node. Course subject was a 
-dummy variable and the branch to the left represents students in the mathematics
-course (39\%) and the branch to the right represents students in the Portugese 
-course (61\%). In addition to course subject, The mother's education level, 
-weekly study time. student absences, and age were used to construct the tree. 
-The predicted mean value of student performance was 11 at the root node, and 
+The decision tree model was fit to the training set, with a maximum depth of 3;
+Figure 4 shows the resulting regression tree had 7 terminal nodes with course 
+subject as the root node. Course subject was a dummy variable and the branch to 
+the left represents students in the mathematics course (39\%); the branch to 
+the right represents students in the Portugese course (61\%). In addition to 
+course subject, the algorithm split at nodes for mother's education level, 
+weekly study time. student absences, and age in constructing the tree. 
+The predicted mean value of student performance at the root node, and 
 the predicted values ranged from 5 for students with one or more absences 
 who were 18 years or older (4\%), to 13 for students whose mother's had 
 attained some level of higher education (18\%). 
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
-  \caption{Regression Tree Model of Student Performance on Testing Set}
+  \caption{Regression Tree Model of Student Performance on the
+  Testing Set (\textit{n}=314)}
   \label{f:Figure5}
 \end{figure}
 
@@ -928,15 +934,18 @@ testing set with one or more absences, mean performance was 4.6.
 
 \subsubsection{Random Forests Regression}
 
+The  random forests regression model was fit to the training set using
+the randomforest() model in R, with 500 trees, and three variables considered 
+at each split (e.g., mtry=3).
+
+
 Random forests build many different decision trees, and then averages the trees 
 to reduce variance. The advantage of randome forests is that it provides a more accurate model, but the tradeoff is that the large ensemble of trees can be more difficult to interpret. 
 
 random forest package was loaded into R, and the
 
 
-The  random forests regression model was fit to the training set using
-the randomforest() model in R, with 500 trees, and three variables considered 
-at each split (e.g., mtry=3).
+
 
 The mean of the squared residuals was 2.99, which shows better performance
 in terms of error than a single decision tree. The model accounted for 26
