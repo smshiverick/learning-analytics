@@ -840,16 +840,18 @@ model selected a subset of the predictor variables.
 \subsubsection{Regression Trees}
 
 The decision tree model was fit to the training set, with a maximum depth of 3;
-Figure 4 shows the resulting regression tree had 7 terminal nodes with course 
-subject as the root node. Course subject was a dummy variable and the branch to 
-the left represents students in the mathematics course (39\%); the branch to 
+Figure 4 shows the resulting regression tree with course subject as the root 
+node and 7 terminal nodes. Course subject was a dummy variable; the branch to 
+the left represents students in the mathematics course (39\%) and the branch to 
 the right represents students in the Portugese course (61\%). In addition to 
-course subject, the algorithm split at nodes for mother's education level, 
-weekly study time. student absences, and age in constructing the tree. 
-The predicted mean value of student performance at the root node, and 
-the predicted values ranged from 5 for students with one or more absences 
-who were 18 years or older (4\%), to 13 for students whose mother's had 
-attained some level of higher education (18\%). 
+course subject, the algorithm split on mother's education level, weekly study 
+time. student absences, and age in constructing the tree. The values of student 
+performance ranged from 5, for students in the mathematics course with no 
+absences who were 18 years or older, to 13 for students in the Portugese course 
+whose mother's had some higher education. The regression tree model was evaluated 
+on the test set (maximum depth=3) which yielded a tree with plans for higher 
+education (rather than course subject) as the root node and 6 terminal nodes 
+(see Figure 5). The MSE for the regression tree on the testing set was 17.608.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
@@ -858,32 +860,26 @@ attained some level of higher education (18\%).
   \label{f:Figure5}
 \end{figure}
 
-The regression tree model was evaluated on the test set with a maximum depth
-of 3, which yielded a tree with 6 terminal nodes (shown in Figure 5). 
-The MSE for the regression tree on the testing set was 17.608. As seen in 
-Figure 5, the root node was students' plans for higher education. In 
-addition to higher education, mother's education level, area (urban / rural),
-course subject, and student absences were used to construct the tree.
-Following the right branch from the root node, the 91\% of students in 
-the training set with plans for higher education had a predicted value 
-of student performance of 12, whereas on the left branch for students with 
-no plans for higher education (9\%) predicted mean performance was only 7.  
-
-For students with plans for higher education, the next split was on mother's
-education level. The branch to the right represented 74\% of the testing set
-whose mothers had an education level of 5th grade or higher, where the 
-predicted performance was 12. Following this branch to the right, the mean
-predicted student performance for 55\% of students in urban areas was 13, 
-whereas the mean predicted performance for the 19\% of students in rural 
-areas was 11. For the 17\$ of students whose mother's had secondary education 
-or less, the mean predicted performance was 10; this branch next split on 
-course topic, and the mean predicted performance for students in the 
-Portugese course (12\%) was 11, and the mean performance for students in 
-the mathematics course (5\%) was only 8.2. For students with no plans for 
-higher education (9\%), the tree split at the next node on absences, 
-where the mean predicted performance was 7. The mean predicted performance
-for students with no absences (5\%) was 9.1, whereas for students in the 
-testing set with one or more absences, mean performance was 4.6. 
+As seen in Figure 5, from the root node, of plans for higher education, the 
+algorithm split at nodes for mother's education level, area (urban / rural),
+course subject, and student absences in constructing the tree. Following 
+the right branch from the root node, students with plans for higher education 
+(91\%) had a mean predicted performance of 12, whereas on the left branch, 
+students with no plans for higher education (9\%) had a mean predicted
+performance of only 7. For students with plans for higher education, the next 
+split on mother's education level: Following the branch to the right, students 
+whose mothers had 5th grade level of education or higher (74\%) had a mean 
+predicted performance of 12. Following this branch to the next node of area, 
+on the rigth branch students in urban areas (55\%) had a mean predicted
+performance of 13, whereas students in rural areas (19\%) had a mean 
+performance of 11. On the left branch, students whose mother's had attended 
+secondary school or lower (17\$), the mean predicted performance was 10. This 
+branch split next on course topic, and students in the Portugese course (12\%) 
+had a mean predicted performance of 11, whereas the mean performance for 
+students in the mathematics course (5\%) was 8.2. For students with no plans for 
+higher education (9\%), the next node split on absences, where the mean 
+predicted performance for students with no absences (5\%) was 9.1, and students 
+with one or more absences, had a mean predicted performance of 4.6. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
