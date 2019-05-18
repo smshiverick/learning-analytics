@@ -911,34 +911,57 @@ with one or more absences, had a mean predicted performance of 4.6.
     \bottomrule
   \end{tabular}
 \end{table}
-absences	16.0415119		
-course	    11.6691947		
-Medu	    7.7489496		
-age	        7.4875956		
-goout	    6.5598480		
-studytime	4.5064105		
-health	    3.8747112		
-Walc	    3.5491530		
-famrel	    3.4461613		
-freetime	3.3297416	
-Fjob        2.8385831		
-higher      2.4776300		
-schoolsup	2.4723749		
-activities	2.4282616		
-Dalc	    2.2782142		
-Mjob	    2.1227329		
-famsize	    2.1035732		
-Fedu	    2.0654451		
-guardian	2.0375387		
-sex	        1.8239274	
 
-romantic	1.7798381		
-internet	1.7595115		
-traveltime	1.5740984		
-paid	    1.2860095		
-famsup	   	1.2205536		
-area	    1.2177491		
-parents	    0.3006813	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table*}
+  \caption{Feature Importance for Student Performance from Random Forests 
+  Regression (Percent Increase in MSE) and Gradient Boosted Model}
+  \label{tab:freq}
+  \begin{tabular}{lllll}
+    \toprule
+            &           & Model &  & \\ 
+    \midrule  
+            & Random Forest & & &  Gradient Boosting \\    
+    \midrule   
+    Predictor           & P Inc. MSE & & Predictor &  Relative Importance \\    
+    \midrule
+    Mother's Education  &  1.368 &   &      Absences	        &  16.0415119	\\
+    Absences            &  0.884 &   &      Course	            &  11.6691947   \\
+    Area (Urban/Rural)  &  0.592 &   &      Mother's Education  &   7.7489496	\\
+    Higher Education    &  0.575 &   &      Age	                &   7.4875956   \\   
+    Course              &  0.481 &   &      Go Out Friends	    &   6.5598480   \\ 
+    Weekly Alcohol      &  0.473 &   &      Study Time          &   4.5064105   \\
+    Mother's Job        &  0.463 &   &      Health	            &   3.8747112   \\  
+    Father's Education  &  0.399 &   &      Weekly Alcohol 	    &   3.5491530	\\      
+    Go Out Friends      &  0.389 &   &      Family Relations 	&   3.4461613	\\
+    Daily Alcohol       &  0.373 &   &      Free Time	        &   3.3297416	\\
+    Age                 &  0.370 &   &      Father's Job        &   2.8385831   \\
+    School Support      &  0.347 &   &      Higher Education    &   2.4776300   \\  
+    Study Time          &  0.321 &   &      School Support  	&   2.4723749   \\
+    Sex                 &  0.318 &   &      Extra Activities	&   2.4282616   \\
+    Father's Job        &  0.278 &   &      Daily Alcohol 	    &   2.2782142   \\     
+    Free Time           &  0.272 &   &      Mother's Job        &  2.1227329	\\
+    Internet Access     &  0.204 &   &      Family Size         &   2.1035732   \\   
+    Family Relations    &  0.181 &   &      Father's Education 	&   2.0654451   \\
+    Extra Activities    &  0.179 &   &      Guardian	        &   2.0375387   \\
+    Travel Time         &  0.122 &   &      Sex	                &   1.8239274   \\ 
+    Guardian            &  0.121 &   &      Romantic Relation	&   1.7798381	\\
+    Family Size         &  0.112 &   &      Internet Access	    &   1.7595115	\\
+    Family Support      &  0.103 &   &      Travel Time	        &   1.5740984   \\
+    Health              &  0.097 &   &      Paid Extra Courses	&   1.2860095	\\ 
+    Romantic Relation   &  0.093 &   &      Family Support    	&   1.2205536   \\
+    Paid Extra Courses  &  0.075 &   &      Area (Urban/Rural)	&   1.2177491	\\
+    Parents' Relation   &  0.056 &   &      Parents' Relation   &   0.3006813   \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+	
+		
+	
+	
+	
+	
 
 
 
