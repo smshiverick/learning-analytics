@@ -916,50 +916,17 @@ with one or more absences, had a mean predicted performance of 4.6.
 
 \subsubsection{Random Forests Regression}
 
-The random forests regression model was fit to the training set with 1000 
-trees and all variables considered at each split (e.g., mtry=3). The mean 
-squared error (MSE) for the model was 6.278, which indicates better performance 
-than with a single decision tree. The random forests algorithm provides feature 
-importance as a model summary; for regression this is measured in terms of 
-percent increase in MSE. Table 
-
-in terms of error 
-
-
-The model accounted for 26
-percent of the variance in opioid pain reliever misuse and abuse. Figure 10
-shows the feature importance for the random forest regression model by the
-percent increase in MSE on the left panel, and as a function of the increase
-in node purity on the right panel
-
-
-for random forests 
-that rates how important each feature is for classification decisions made 
-in the algorithm. 
-
-The Gini index provides a measure of node purity which is used to evaluate the quality of a particular split; a small value indicates 
-that a node predominantly contains observations from a single class. 
-Feature importance was measured by the mean decrease in Gini coefficient 
-(Table 8), which indicates how each variable contributes to the homogeneity 
-of the nodes and leaves in the resulting random forest. For classification 
-trees, the splits are chosen so as to minimize entropy or Gini impurity in 
-the resulting subsets. For random forests, variables that result in nodes 
-with higher purity have a higher decrease in the Gini coefficient. Feature 
-importance is computed by aggregating the feature importance over trees in 
-the random forest, and gives non-zero importance to more features than a 
-single tree. A feature may have a low importance value because another feature 
-encodes the same information. 
-
-Table 8 provides the feature importance for 
-the random forests model sorted by the mean decrease in the Gini coefficient. 
-The algorithm selected cocaine as the most informative feature for predicting 
-pain reliever misuse and abuse.
-
-In contrast to the single decision tree, 
-amphetamines, mental health, and health were selected among the top four most 
-important features in the random forests model, followed by tranquilizers, 
-age category, and heroin use, which were ranked as more influential in the 
-single tree (Figure 4). 
+The mean squared error (MSE) for the random forests regression was 6.278, 
+which indicates better performance than for a single decision tree. The random 
+forests (RF) algorithm provides feature importance as a model summary; for 
+regression this is measured in terms of percent increase in MSE. The left side 
+of Table 6 provides the feature importance for the RF regression sorted by 
+percent increase in MSE. The algorithm selected mother's education as the most 
+informative feature for predicting student performance (final grade). In 
+contrast to the single decision tree, number of absences and area (urban/rural)
+were selected among the most important features in the model. Similar to the 
+single tree, plans for higher education and course subject were among the most
+influential predictor variables. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
