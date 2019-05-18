@@ -186,7 +186,7 @@ toward zero reduces overfitting and provides a more interpretable model.
 
 \subsection{Regularization} 
 
-\subsubsection{Ridge Regression: L2 Penalty} 
+\textbf{Ridge Regression: L2 Penalty} 
 
 As with OLS, ridge regression seeks coefficient estimates that fit the data 
 well by reducing error, but ridge regression introduces a shrinkage penalty
@@ -211,7 +211,7 @@ of features.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{The Lasso: L1 Penalty} 
+\textbf{The Lasso: L1 Penalty} 
 
 The lasso and ridge regression have similar formulations, but the lasso has 
 a major advantage over ridge regression as it produces simpler, more 
@@ -234,7 +234,7 @@ of the parameter lambda and also which approach is better.
 
 \subsection{Decision Tree Models}
 
-\subsubsection{Regression Trees}
+\textbf{Regression Trees}
 Decision tree models are widely used for classification and regression. Tree 
 models are built on a hierarchy of \textit{if-else} questions that proceeds 
 from a root node as the starting point and continues through a series of 
@@ -256,7 +256,7 @@ rate. A good way to prevent overfitting is to use pre-pruning to limit
 the maximum depth of the tree. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Random Forest Regression}
+\textbf{Random Forest Regression}
 
 A random forest is a collection of decision trees that are slightly different 
 where each tree overfits the data in a different way. This approach reduces 
@@ -276,7 +276,7 @@ the random forest are different.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Gradient Boosting}
+\textbf{Gradient Boosting}
 
 Gradient boosting is an ensemble approach that builds many smaller trees,  
 where each new tree attempts to correct for deficiencies of the current 
@@ -728,17 +728,17 @@ compared to students who were not in a relationship, all else being equal.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{table}
-  \caption{Coefficient Estimates for Ridge Regression (L2) and the Lasso Model
-  (L1) of Student Performance using Best Value of Lambda from Cross-Validation}
+  \caption{Coefficient Estimates for Ridge Regression and the Lasso Model of 
+  Student Performance using Best Value of Lambda from Cross-Validation}
   \label{tab:freq}
   \begin{tabular}{lll}
     \toprule    
-                        &   Ridge (L2)  & Lasso (L1) \\
+                        &   Ridge (L2 Penalty)  & Lasso (L1 Penalty) \\
     \midrule
     Best lambda (CV)    &    0.819      &  0.071    \\
     MSE                 &   13.779      & 13.895    \\
     \midrule
-    \textit{Variables}  & \textit{Coefficient} &  \textit{Coefficient} \\
+    \textit{Predictor Variables}  & \textit{Coefficients} &  \textit{Coefficients} \\
     \midrule
     Intercept           &   13.498      &   12.899   \\
     Course              &   -1.801      &   -2.058   \\
@@ -846,7 +846,7 @@ education (rather than course subject) as the root node and 6 terminal nodes
   \label{f:Figure5}
 \end{figure}
 
-As seen in Figure 5, from the root node, of plans for higher education, the 
+As seen in Figure 5, from the root node of plans for higher education, the 
 algorithm split at nodes for mother's education level, area (urban / rural),
 course subject, and student absences in constructing the tree. Following 
 the right branch from the root node, students with plans for higher education 
@@ -869,109 +869,54 @@ with one or more absences, had a mean predicted performance of 4.6.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{table}
-  \caption{Feature Importance for Student Performance from Random Forests 
-  Regression (Percent Increase in MSE) and Gradient Boosted Model}
-  \label{tab:freq}
-  \begin{tabular}{llll}
-    \toprule
-            &           & Model &  \\ 
-    \midrule  
-            & Random Forest & & Gradient Boost \\    
-    \midrule   
-    Predictor Variables & \% Inc. MSE & & Rel. Imp. \\    
-    \midrule
-    Mother's Education  &  1.368 &   &  7.749 \\
-    Absences            &  0.884 &   & 16.042 \\
-    Area                &  0.592 &   &  1.375 \\
-    Higher Education    &  0.575 &   &  1.150 \\   
-    Course              &  0.481 &   & 11.670 \\ 
-    Weekly Alcohol      &  0.473 &   &  4.360 \\
-    Mother's Job        &  0.463 &   &  4.016 \\  
-    Father's Education  &  0.399 &   &  3.494 \\      
-    Go Out Friends      &  0.389 &   &  5.816 \\
-    Daily Alcohol       &  0.373 &   &  2.582 \\
-    Age                 &  0.370 &   &  7.488 \\
-    School Support      &  0.347 &   &  1.201 \\  
-    Study Time          &  0.321 &   &  4.573 \\
-    Sex                 &  0.318 &   &  2.209 \\
-    Father's Job        &  0.278 &   &  4.016 \\     
-    Free Time           &  0.272 &   &  5.164 \\
-    Internet Access     &  0.204 &   &  1.716 \\   
-    Family Relations    &  0.181 &   &  3.011 \\
-    Extra Activities    &  0.179 &   &  2.985 \\
-    Travel Time         &  0.122 &   &  2.987 \\ 
-    Guardian            &  0.121 &   &  2.135 \\
-    Family Size         &  0.112 &   &  1.898 \\
-    Family Support      &  0.103 &   &  1.837 \\
-    Health              &  0.097 &   &  5.007 \\ 
-    Romantic Relation   &  0.093 &   &  2.747 \\
-    Paid Extra Courses  &  0.075 &   &  1.609 \\
-    Parents' Relation   &  0.056 &   &  0.725 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{table*}
-  \caption{Feature Importance for Student Performance from Random Forests 
-  Regression (Percent Increase in MSE) and Gradient Boosted Model}
+  \caption{Feature Importance for Random Forests Regression and 
+  Gradient Boosting Model}
   \label{tab:freq}
   \begin{tabular}{lllll}
     \toprule
             &           & Model &  & \\ 
     \midrule  
-            & Random Forest & & &  Gradient Boosting \\    
+            & Random Forests & & &  Gradient Boosting \\    
     \midrule   
-    Predictor           & P Inc. MSE & & Predictor &  Relative Importance \\    
+    Predictor           & \% Increase MSE & & Predictor &  Relative Importance \\    
     \midrule
-    Mother's Education  &  1.368 &   &      Absences	        &  16.0415119	\\
-    Absences            &  0.884 &   &      Course	            &  11.6691947   \\
-    Area (Urban/Rural)  &  0.592 &   &      Mother's Education  &   7.7489496	\\
-    Higher Education    &  0.575 &   &      Age	                &   7.4875956   \\   
-    Course              &  0.481 &   &      Go Out Friends	    &   6.5598480   \\ 
-    Weekly Alcohol      &  0.473 &   &      Study Time          &   4.5064105   \\
-    Mother's Job        &  0.463 &   &      Health	            &   3.8747112   \\  
-    Father's Education  &  0.399 &   &      Weekly Alcohol 	    &   3.5491530	\\      
-    Go Out Friends      &  0.389 &   &      Family Relations 	&   3.4461613	\\
-    Daily Alcohol       &  0.373 &   &      Free Time	        &   3.3297416	\\
-    Age                 &  0.370 &   &      Father's Job        &   2.8385831   \\
-    School Support      &  0.347 &   &      Higher Education    &   2.4776300   \\  
-    Study Time          &  0.321 &   &      School Support  	&   2.4723749   \\
-    Sex                 &  0.318 &   &      Extra Activities	&   2.4282616   \\
-    Father's Job        &  0.278 &   &      Daily Alcohol 	    &   2.2782142   \\     
-    Free Time           &  0.272 &   &      Mother's Job        &  2.1227329	\\
-    Internet Access     &  0.204 &   &      Family Size         &   2.1035732   \\   
-    Family Relations    &  0.181 &   &      Father's Education 	&   2.0654451   \\
-    Extra Activities    &  0.179 &   &      Guardian	        &   2.0375387   \\
-    Travel Time         &  0.122 &   &      Sex	                &   1.8239274   \\ 
-    Guardian            &  0.121 &   &      Romantic Relation	&   1.7798381	\\
-    Family Size         &  0.112 &   &      Internet Access	    &   1.7595115	\\
-    Family Support      &  0.103 &   &      Travel Time	        &   1.5740984   \\
-    Health              &  0.097 &   &      Paid Extra Courses	&   1.2860095	\\ 
-    Romantic Relation   &  0.093 &   &      Family Support    	&   1.2205536   \\
-    Paid Extra Courses  &  0.075 &   &      Area (Urban/Rural)	&   1.2177491	\\
-    Parents' Relation   &  0.056 &   &      Parents' Relation   &   0.3006813   \\
+    Mother's Education  &  1.368 &   &      Absences	        &  16.042	\\
+    Absences            &  0.884 &   &      Course	            &  11.669   \\
+    Area (Urban/Rural)  &  0.592 &   &      Mother's Education  &   7.749	\\
+    Higher Education    &  0.575 &   &      Age	                &   7.488   \\   
+    Course              &  0.481 &   &      Go Out Friends	    &   6.560   \\ 
+    Weekly Alcohol      &  0.473 &   &      Study Time          &   4.506   \\
+    Mother's Job        &  0.463 &   &      Health	            &   3.875   \\  
+    Father's Education  &  0.399 &   &      Weekly Alcohol 	    &   3.549	\\      
+    Go Out Friends      &  0.389 &   &      Family Relations 	&   3.446	\\
+    Daily Alcohol       &  0.373 &   &      Free Time	        &   3.330	\\
+    Age                 &  0.370 &   &      Father's Job        &   2.839   \\
+    School Support      &  0.347 &   &      Higher Education    &   2.478   \\  
+    Study Time          &  0.321 &   &      School Support  	&   2.472   \\
+    Sex                 &  0.318 &   &      Extra Activities	&   2.428   \\
+    Father's Job        &  0.278 &   &      Daily Alcohol 	    &   2.278   \\     
+    Free Time           &  0.272 &   &      Mother's Job        &   2.123	\\
+    Internet Access     &  0.204 &   &      Family Size         &   2.104   \\   
+    Family Relations    &  0.181 &   &      Father's Education 	&   2.065   \\
+    Extra Activities    &  0.179 &   &      Guardian	        &   2.038   \\
+    Travel Time         &  0.122 &   &      Sex	                &   1.824   \\ 
+    Guardian            &  0.121 &   &      Romantic Relation	&   1.780	\\
+    Family Size         &  0.112 &   &      Internet Access	    &   1.760	\\
+    Family Support      &  0.103 &   &      Travel Time	        &   1.574   \\
+    Health              &  0.097 &   &      Paid Extra Courses	&   1.286	\\ 
+    Romantic Relation   &  0.093 &   &      Family Support    	&   1.221   \\
+    Paid Extra Courses  &  0.075 &   &      Area (Urban/Rural)	&   1.218	\\
+    Parents' Relation   &  0.056 &   &      Parents' Relation   &   0.301   \\
     \bottomrule
   \end{tabular}
 \end{table*}
 	
-		
-	
-	
-	
-	
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Random Forests Regression}
 
-The  random forests regression model was fit to the training set with 1000 
+The random forests regression model was fit to the training set with 1000 
 trees and all variables considered at each split (e.g., mtry=3). The mean 
 squared error (MSE) for the model was 6.278, which indicates better performance 
 than with a single decision tree. The random forests algorithm provides feature 
