@@ -917,31 +917,45 @@ with one or more absences, had a mean predicted performance of 4.6.
 \subsubsection{Random Forests Regression}
 
 The mean squared error (MSE) for the random forests regression was 6.278, 
-which indicates better performance than for a single decision tree. The random 
-forests (RF) algorithm provides feature importance as a model summary; for 
-regression this is measured in terms of percent increase in MSE. The left side 
-of Table 6 provides the feature importance for the RF regression sorted by 
-percent increase in MSE. The algorithm selected mother's education as the most 
-informative feature for predicting student performance (final grade). In 
+which indicates better performance for RF than a single decision tree. The 
+random forests (RF) algorithm provides feature importance as a model summary; 
+for regression, this is measured in terms of percent increase in MSE. The left 
+side of Table 6 provides the feature importance for the RF regression sorted 
+by percent increase in MSE. The algorithm selected mother's education as the 
+most informative feature for predicting student performance (final grade). In 
 contrast to the single decision tree, number of absences and area (urban/rural)
-were selected among the most important features in the model. Similar to the 
-single tree, plans for higher education and course subject were among the most
-influential predictor variables. 
+were selected as the second and third most important features in the model. 
+Plans for higher education and course subject were also among the most 
+influential predictor variables in the random forest model, but these
+variables were not given as prominent a position as in the single tree. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Gradient Boosting Regression}
 
-The relative influence plot in Table 3 shows that the most 
-influential features in the gradient boosting model were: 
-
-Figure 11 shows the influential features of the gradient boosting regression as 
-
-a horizontal barplot. 
+The mean squared error (MSE) for the gradient boosted regression tress  was 
+19.687, which indicates this model did not perform better than random forests. 
+Feature importance for the gradient boosted regression trees is presented on 
+the right side of Table 6. Absences and course subject were selected as the
+two most important features for predicting student performance. The algorithm
+selected mother's education level, student age, going out with friends, and
+weekly study time as the next most informative variables, in 
+descending order of importance. Plans for higher education was not selected
+among the most important variables for predicting student performance, 
+In contrast to the single regression tree and random forest model.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{DISCUSSION}
+
+The results revealed that the supervised learning models identified different 
+sets of features as important for predicting student performance. In the 
+general linear model, thirteen variables in the training set were selected 
+as predictors of performance, and in the test set, only six of these 
+predictors were shown to be significant: Course subject, school support, 
+plans for higher education, mother's education level, weekly study time, and 
+romantic relationships. 
+
 
 previous course failures, course topic, school support, romantic relationship, 
 going out with friends, and overall health were negatively correlated with 
@@ -950,7 +964,7 @@ education level, internet access, quality of family relations, and father's
 job were positively related to student achievement.
 
 
-The results showed that prescription opioid use, misuse, and abuse in this 
+showed that prescription opioid use, misuse, and abuse in this 
 sample was higher than use of illicit opioids such as heroin and fentanyl. 
 The use of Hydrocodone (Vicodan) was double that of Oxycodone (Oxycodone) 
 across almost all age groups. Illicit drug use was highest between the ages 
