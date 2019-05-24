@@ -400,7 +400,7 @@ model was then evaluated on the testing set.
 \subsubsection{Ridge regression (L2 penalty)} 
 
 The glmnet package was used to fit the ridge regression and lasso models. 
-The glmnet() function does not use model formula language (i.e., y ~ x), 
+The glmnet() function does not use model formula language (i.e., y \~\ x), 
 so the X matrix of predictors and target vector Y were passed to the model. 
 The `model.matrix()` function produced a matrix corresponding to the 27 
 predictors and automatically transformed any qualitative variables into
@@ -415,7 +415,7 @@ The shrinkage penalty is applied to every feature, but not the intercept.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{The Lasso (L1 Penalty))} 
+\subsubsection{The Lasso (L1 Penalty)} 
  
 The Lasso model was fit using the glmnet() function with alpha=1. The model 
 automatically calculates correlation estimates for a wide range of lambda 
@@ -939,22 +939,26 @@ Feature importance for the gradient boosted regression trees is presented on
 the right side of Table 6. Absences and course subject were selected as the
 two most important features for predicting student performance. The algorithm
 selected mother's education level, student age, going out with friends, and
-weekly study time as the next most informative variables, in 
-descending order of importance. Plans for higher education was not selected
-among the most important variables for predicting student performance, 
-In contrast to the single regression tree and random forest model.
+weekly study time as the next most informative variables, in descending order 
+of importance. Plans for higher education was not selected among the most 
+important variables for predicting student performance, In contrast to the 
+single regression tree and random forest model. The predicted value of 
+student performance is determined by the linear combination or weighted
+average of all the predictor values in the model.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{DISCUSSION}
 
 The results revealed that the supervised learning models identified different 
-sets of features as important for predicting student performance. In the 
-general linear model, thirteen variables in the training set were selected 
-as predictors of performance, and in the test set, only six of these 
-predictors were shown to be significant: Course subject, school support, 
-plans for higher education, mother's education level, weekly study time, and 
-romantic relationships. 
+sets of features as important for predicting student performance. The general 
+linear model selected thirteen predictors variables in the training set, only 
+six of which significantly predicted performance in the test set. Plans for 
+higher education, mother's education level, weekly study time were positively
+correlated with performance, whereas course subject, school support, and 
+romantic relationships were negatively associated with performance. 
+
+
 
 
 previous course failures, course topic, school support, romantic relationship, 
