@@ -950,43 +950,29 @@ average of all the predictor values in the model.
 
 \section{DISCUSSION}
 
-The results revealed that the supervised learning models identified different 
-sets of features as important for predicting student performance. The general 
-linear model selected thirteen predictors variables in the training set, of
-which, only six significantly predicted student performance in the test set. 
-Plans for higher education, mother's education level, and weekly study time 
-were positively correlated with performance, whereas course subject, school 
-support, and romantic relationships were negatively associated with performance. 
-Ridge regression reduces error by shrinking the coefficient estimates towards 
-zero, but includes the full set of 27 predictor variables, with a tradeoff of
-slightly higher bias and risk of underfitting the relationships between the 
-features and target outcome. The lasso model lasso performed variable 
-selection by forcing 7 of the non-relevant coefficient estimates to zero. 
-This produced a simpler model based on subset of 20 features; however, the
-final general linear model with 13 independent variables was more interpretable
-than the lasso model with 20 variables. 
-
-
-
-
-over ridge regression as it 
-
-, and produces 
-sparse models based on a subset of the features, which are generally easier to 
-interpret than ridge regression. The lasso implicitly assumes that a number of 
-the feature coefficients or weight truly equal to zero. In general, the lasso 
-performs better than ridge regression in situations where a small number of 
-features account for most of the variability in the target outcome, and the 
-remaining features have coefficients that are very small or equal to zero. 
-By contrast, ridge regression performs better when the target is a function 
-of a large number of predictors that contribute approximately equally to the
-coefficients. Cross-validation can be used to determine the optimal value
-of the parameter lambda and also which approach is better. 
-
-
-
-
-
+The results revealed that student performance was better in Portugese than 
+the mathematics course and course subject was a significant predictor across 
+all of the models. The supervised learning models differed, however, in the 
+sets of features they identified as important for predicting performance. 
+The general linear model selected thirteen predictors variables in the training
+set, of which, only six variables were significant predictors of student 
+performance in the test set. Plans for higher education, mother's education 
+level, and weekly study time were positively correlated with performance, 
+whereas course subject, school support, and romantic relationships were 
+negatively associated with performance. Ridge regression reduced model error 
+by shrinking the coefficient estimates towards (not exactly) zero, but 
+included the full set of 27 predictor variables, with a tradeoff of slightly 
+higher bias and risk of underfitting the relationships between the features 
+and the target outcome. The lasso model lasso performed variable selection by 
+forcing 7 non-relevant coefficient estimates to exactly zero which produced a 
+simpler model based on a subset of 20 features. The features with the largest 
+coefficients were course subject, plans for higher education, school support, 
+home internet access, and romantic relationships. The coefficient estimates for 
+mother's level of education and weekly study time were smaller in the ridge and 
+lasso models than the general linear model. Although the lasso model with 20 
+features produced a more interpretable solution than the ridge regression, 
+the solution from the final general linear model with 13 independent variables
+was more interpretable than the lasso model with 20 variables. 
 
 
 previous course failures, course topic, school support, romantic relationship, 
@@ -994,6 +980,11 @@ going out with friends, and overall health were negatively correlated with
 student performance, whereas plans for higher education, study time, mother's
 education level, internet access, quality of family relations, and father's 
 job were positively related to student achievement.
+
+
+Tree based models would be preferred if student performance is non-linear. 
+ 
+
 
 
 showed that prescription opioid use, misuse, and abuse in this 
