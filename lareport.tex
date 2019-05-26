@@ -193,7 +193,7 @@ well by reducing error, but ridge regression introduces a shrinkage penalty
 (L2) that has the effect of shrinking the coefficient estimates towards zero. 
 When the tuning parameter (lambda) is set to zero, the shrinkage penalty has 
 no effect and ridge regression produces the least squares estimates. As the 
-value of lambda increases, the estatimed regression coefficients approach zero 
+value of lambda increases, the estimated regression coefficients approach zero 
 \cite{statlearn13}. The advantage of ridge regressions over least squares is 
 based on the bias-variance tradeoff. As the tuning parameter lambda increases, 
 the flexibility of the ridge regression decreases, leading to decreased variance 
@@ -952,11 +952,39 @@ average of all the predictor values in the model.
 
 The results revealed that the supervised learning models identified different 
 sets of features as important for predicting student performance. The general 
-linear model selected thirteen predictors variables in the training set, only 
-six of which significantly predicted performance in the test set. Plans for 
-higher education, mother's education level, weekly study time were positively
-correlated with performance, whereas course subject, school support, and 
-romantic relationships were negatively associated with performance. 
+linear model selected thirteen predictors variables in the training set, of
+which, only six significantly predicted student performance in the test set. 
+Plans for higher education, mother's education level, and weekly study time 
+were positively correlated with performance, whereas course subject, school 
+support, and romantic relationships were negatively associated with performance. 
+Ridge regression reduces error by shrinking the coefficient estimates towards 
+zero, but includes the full set of 27 predictor variables, with a tradeoff of
+slightly higher bias and risk of underfitting the relationships between the 
+features and target outcome. The lasso model lasso performed variable 
+selection by forcing 7 of the non-relevant coefficient estimates to zero. 
+This produced a simpler model based on subset of 20 features; however, the
+final general linear model with 13 independent variables was more interpretable
+than the lasso model. 
+
+
+
+
+over ridge regression as it 
+
+, and produces 
+sparse models based on a subset of the features, which are generally easier to 
+interpret than ridge regression. The lasso implicitly assumes that a number of 
+the feature coefficients or weight truly equal to zero. In general, the lasso 
+performs better than ridge regression in situations where a small number of 
+features account for most of the variability in the target outcome, and the 
+remaining features have coefficients that are very small or equal to zero. 
+By contrast, ridge regression performs better when the target is a function 
+of a large number of predictors that contribute approximately equally to the
+coefficients. Cross-validation can be used to determine the optimal value
+of the parameter lambda and also which approach is better. 
+
+
+
 
 
 
