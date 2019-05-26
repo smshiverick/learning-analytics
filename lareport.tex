@@ -810,18 +810,16 @@ similar to the ridge regression, but the lasso has an advantage over ridge
 regression in that the resulting coefficient estimates are sparse and the 
 model selected a subset of the predictor variables. 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Decision Tree Models}
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
   \caption{Regression Tree Model of Student Performance on the 
-  Training Set (\textit{n}=700)}
+  Traing Set (\textit{n}=700)}
   \label{f:Figure4}
 \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Regression Trees}
 
@@ -974,6 +972,35 @@ features produced a more interpretable solution than the ridge regression,
 the solution from the final general linear model with 13 independent variables
 was more interpretable than the lasso model with 20 variables. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The simple regression tree models wwre prepruned to a depth of four, as 
+unpruned trees can be very complex and difficult to interpret. In the training 
+set, the algorithm selected course subject, mother's education level, weekly 
+study time, absences, mother's job, and student age, as the most informative 
+variables for predicting student performance. In the testing set, plans for 
+higher education was the root node, mother's education, rural or urban area, 
+course subject, and absences were selected as the most informative features. 
+A single decision tree is highly prone to overfitting the training data, and 
+the random forests regression corrects for this by constructing many trees 
+and averaging the predicted values across tress. 
+
+are preferred for modeling non-linear relationship and 
+if unpruned can result in very complex models .
+The regression tree model created a solution
+
+the
+random forest regression selected Tranquilizers as most informative of
+pain reliever misuse, which is consistent with the results of the gradient
+boosting model tree ensemble (shown in Table 3). 
+
+A limitation of decision tree models is overfitting to data in the training set. 
+
+in 
+data student performance the independent variables is
+non-linearare preferred if student performance is non-linear. 
+
+
 
 previous course failures, course topic, school support, romantic relationship, 
 going out with friends, and overall health were negatively correlated with 
@@ -982,7 +1009,7 @@ education level, internet access, quality of family relations, and father's
 job were positively related to student achievement.
 
 
-Tree based models would be preferred if student performance is non-linear. 
+
  
 
 
@@ -1008,15 +1035,6 @@ Amphetamine, Any Pain Relievers) explained a significant portion of
 variabilty in pain reliever abuse, and adding more factors did not improve
 the performance greatly. 
 
-The regression tree model created a solution
-with four features (Treatment, Cocaine, Heroin, Tranquilizers), and 
-
-the
-random forest regression selected Tranquilizers as most informative of
-pain reliever misuse, which is consistent with the results of the gradient
-boosting model tree ensemble (shown in Table 3). 
-
-A limitation of decision tree models is overfitting to data in the training set. 
 
 
 Overall, the models 
