@@ -605,49 +605,39 @@ in the regression models to address the issue of multicolinearity.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-Table 3 provides summary statistics for selected attributes. Chi-squared tests 
-of independence were used to compare the proportion of passing and failing 
-students by attribute. Student performance did not vary significantly 
-according to sex ( $\chi 2$, \textit{p}$=$0.20); the performance of male and 
-female students did not vary significantly. Performance did vary significantly 
-by course topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of 
-students in the Portugese course successfully passed, whereas just over half 
-of students in the Math course received a passing grade. There relationship 
-between performance and students' plans for higher education was also significant 
-($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students who received a passing 
-grade had plans to pursue higher education, whereas less than one-quarter of 
-students with no plans for higher education passed their courses. In other words, 
-of students with plans for higher education, one-third received a failing grade; 
-by contrast, the majority of students who received a failing grade had no plans 
-to pursue higher education. 
-
-
-The proportion of passing and failing grades varied by level of mother's 
-education ($\chi 2$ , \textit{p}$<$0.05); however,  he relationship was 
-non-linear. 
-
-
-
-however, Extra educational 
-school support was also significantly related to student performance 
+Table 3 provides descriptive statistics for selected attributes. Chi-squared 
+tests of independence were used to compare the proportion of students who 
+received passing and failing grades by attribute. There was no relationship
+between performance and sex; males and females did not differ significantly 
+in performance ( $\chi 2$ , \textit{p}$=$0.20). Student performance did vary
+according to mother's level of education ($\chi 2$ , \textit{p}$<$0.05), but 
+as seen in Table 3, the relationship between performance and mother's 
+education was non-linear. Performance did vary significantly by course 
+topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of students in the 
+Portugese course successfully passed, whereas just over half of students in 
+the mathematics course received a passing grade. The relationship between 
+students' performance and their plans for higher education was also significant 
+($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students with plans to pursue 
+higher education received a passing grade, whereas less than one-quarter of 
+students with no plans for higher education passed their courses. Extra 
+educational school support was also significantly related to performance 
 ($\chi 2$ , \textit{p}$<$0.001). Just over half of students who received 
-extra educational support school received a passing grade compared to nearly 
-two-thirds of students who did not receive extra support. In addition, 
+extra educational support at school received a passing grade compared to 
+nearly two-thirds of students who did not receive extra support. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-Study time was significantly associated with student performance 
-($\chi 2$ , \textit{p}$<$0.001). The proportion of passing and failing 
-grades significantly different for students who studied 5 hours or more 
-per week compared to students who studied less than 5 hours per week. 
-The association between student performance and romantic relationships
+As expected, weekly study time was significantly associated with student 
+performance ($\chi 2$ , \textit{p}$<$0.001). The proportion of passing and 
+failing grades significantly different for students who studied 5 hours or 
+more per week compared to students who studied less than 5 hours per week. 
+The association between romantic relationships and student performance 
 was marginally significant ($\chi 2$ , \textit{p}$<$0.06). The proportion 
 of passing and failing grades was significantly different for students in 
-a relationship than students who were not in a relationship. The relationship 
-between internet access and student performance was also marginally significant 
-($\chi 2$ , \textit{p}$<$0.06). The proportion of passing and failing grades 
-was significantly different for students with access to the internet at home
-compared to students without home internet access ($\chi 2$ , \textit{p}$<$0.05).
+a romantic relationship than students not in a romantic relationship. The 
+relation between internet access and student performance was also marginally 
+significant ($\chi 2$ , \textit{p}$<$0.06). The proportion of passing and
+failing grades was significantly different for students with access to the 
+internet at home compared to students without home internet access 
+($\chi 2$ , \textit{p}$<$0.05).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -667,9 +657,9 @@ independent variables, accounting for 20.4\% of the variability in
 predicted performance, \textit{F}(12, 717) = 21.79, \textit{p} $<$ 0.001 
 ($R^2$=0.219, adjusted $R^2$=0.204). An ANOVA test showed no significant 
 difference between the two models (\textit{F}$<$ 1.0, \textit{p} $=$ 0.91) 
-and the simpler model with thirteen predictor variables was retained as 
-the final model. The estimated coefficients, standard error, and t-value 
-on the testing set are presented in the left side of Table 3.
+and the simpler model with thirteen predictor variables was retained as the 
+final model. The estimated coefficients, standard error, and t-value on the 
+testing set (ranked by t-Value) are presented in the left side of Table 3.
 
 %\begin{equation*}
 % \begin{aligned}
@@ -688,17 +678,17 @@ a significant relationship between student performance and the independent
 variables, accounting for 17.1\% of the variability of the predicted value 
 of student performance, taking into account the number of independent 
 variables, \textit{F}(13, 300) = 5.96, \textit{p} $<$ 0.001 ($R^2$=0.205, 
-adjusted $R^2$=0.171). As shown in Table 3, only 6 of the 13 independent
+adjusted $R^2$=0.171). As shown in Table 3, 6 of the 13 independent
 variables in the testing set were significant, which suggests that the 
 model was overfit to data in the training set, The predicted values of
-student performance would be explained by the combined effect, or 
+student performance are be explained by the combined effect, or 
 weighted average, of the coefficient estimates and the observed values 
 for each significant independent variable in the model (Equation 2).
 
 \begin{equation*}
  \begin{aligned}
-  Y = 6.955 - 1.162(Course) - 1.481(SchoolSupport) + 4.101(HighEd) + \\
-  0.473(MotherEd) + 0.893(StudyTime) - 1.127(RomanticRelation)
+  Y = 6.955 - 1.162(Course) 0.473(MotherEd) + 4.101(HighEd) + 0.893(StudyTime) \\
+    - 1.481(SchoolSupport) - 1.127(RomanticRelation) \\
  \end{aligned}
 \end{equation*}
 
@@ -706,17 +696,18 @@ for each significant independent variable in the model (Equation 2).
 
 On the testing set, there was a 1.16 decrease in predicted performance 
 for students in the math course compared to students in the Portugese course, 
-controlling for all other independent variables. Students receiving school 
-support had a 1.48 lower predicted final course grade than students who did not 
-receive school support, holding all other variables constant. Students with plans 
-for higher education had a 4.10 higher predicted final grade than students with 
-no plans for higher education, controlling for other variables. A unit change 
-in mother's level of education was associated with a 0.47 increase in predicted 
-student performance, controlling for all other variables. A one-unit change in 
-weekly study time resulted in a 0.89 increase in predicted student performance, 
-holding constant the effect of other variables. Finally, there was a -1.13 
-decrease in predicted performance for students in a romantic relationship 
-compared to students who were not in a relationship, all else being equal. 
+controlling for all other independent variables. A unit change in mother's 
+level of education was associated with a 0.47 increase in predicted student 
+performance, controlling for all other variables. Students with plans to pursue
+higher education had a 4.10 higher predicted final grade than students with 
+no plans for higher education, controlling for other variables. A one-unit 
+change in weekly study time resulted in a 0.89 increase in predicted student 
+performance, holding constant the effect of other variables. Students receiving 
+school support had a 1.48 lower predicted final course grade than students who 
+did not receive school support, holding all other variables constant. Finally, 
+there was a -1.13 decrease in predicted performance for students in a romantic 
+relationship compared to students not in a romantic relationship, controlling
+for all other independent variables. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -955,46 +946,43 @@ the gradient boosted model.
 
 \section{DISCUSSION}
 
-The different models identified many of the same features as important for 
-predicting student performance. The models differed, however, in the number of 
-variables and ordering of their respective importance. 
-
-
-
-student performance was better in Portugese than 
-the mathematics course and course subject was a significant predictor across 
-all of the models. The supervised learning models differed, however, in the 
-sets of features they identified as important for predicting performance. 
-The general linear model selected thirteen predictors variables in the training
-set, of which, only six variables were significant predictors of student 
-performance in the test set. Plans for higher education, mother's education 
-level, and weekly study time were positively correlated with performance, 
-whereas course subject, school support, and romantic relationships were 
-negatively associated with performance. Ridge regression reduced model error 
-by shrinking the coefficient estimates towards (not exactly) zero, but 
-included the full set of 27 predictor variables, with a tradeoff of slightly 
-higher bias and risk of underfitting the relationships between the features 
-and the target outcome. The lasso model lasso performed variable selection by 
-forcing 7 non-relevant coefficient estimates to exactly zero which produced a 
-simpler model based on a subset of 20 features. The features with the largest 
-coefficients were course subject, plans for higher education, school support, 
-home internet access, and romantic relationships. The coefficient estimates for 
-mother's level of education and weekly study time were smaller in the ridge and 
-lasso models than the general linear model. Although the lasso model with 20 
-features produced a more interpretable solution than the ridge regression, 
-the final general linear model with 13 independent variables provided a 
-solution that was simpler and more parsimonious than the lasso model. 
-The predicted value of 
-student performance is determined by the linear combination or weighted
-average of all the predictor values in the model. 
-
-
-
-, which was higher than the random forests regression model. 
-In contrast to the 
-single regression tree and random forest model.
+The different predictive models identified many of the same variables as 
+important for predicting student performance. The linear regression models 
+and single regression tree selected course subject as the most informative 
+variable for predicting student performance, with students in the Portugese 
+course performing better than students in the mathematics course. The models 
+differed, however, in the number of variables selected and respective order
+of importance assigned to mother's level of education, plans for higher 
+education, weekly study time, school educational support, absences, going 
+out with friends and involvement in romantic relationships. The general linear 
+model selected thirteen predictors variables in the training set, of which, 
+only six were significant predictors of student performance in the test set. 
+Mother's education level, students' plans for higher education, and weekly 
+study time were positively correlated with performance, whereas school support 
+and romantic relationships were negatively associated with performance. 
+Ridge regression reduced model error by shrinking the coefficient estimates 
+towards zero, with a tradeoff of slightly higher bias and risk of underfitting 
+the relationships between the features and the target outcome. The lasso model
+performed variable selection by forcing the value of seven non-relevant 
+coefficient estimates to exactly zero which produced a model based 
+on a subset of twenty features. Although the lasso yielded a simpler model 
+than the ridge regression, the final model from the multivariate regression 
+provided a more parsimonious solution that was more interpretable. It is 
+important to note that the predicted value of student performance is 
+obtained by the linear combination of all the predictor values in the model.
+Ridge regression and the lasso perform better than ordinary least squares when 
+working with a very large number of predictors ($\textit{p}>>\textitP{n}$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In other words, 
+one-third of students with plans for higher education failed the course and
+over three-
+had 
+plans to pursue higher education, whereas less than  of students ,  received a failing grade; by contrast, more than
+three quarters of students with no plans for higher education received a 
+failing grade. 
+
 
 
 
