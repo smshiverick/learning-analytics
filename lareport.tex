@@ -516,20 +516,20 @@ and interaction depth of 4 splits.
     Portugese       & 452 & 69.6\% & & 197 & 30.4\%  \\
     Math            & 209 & 52.9\% & & 186 & 47.1\%  \\  
     \midrule
-    \textbf{School Support} &  &  &  &  & \\
-    Received        &  63 & 52.9\% & &  56 & 47.1\%  \\
-    None            & 598 & 64.6\% & & 327 & 33.4\%  \\ 
-    \midrule    
-    \textbf{Higher Education Plans} &  &  &  &  & \\
-    Planned         & 640 & 67.0\% & & 315 & 33.0\%  \\
-    No Plans        &  21 & 23.6\% & &  68 & 76.4\%  \\
-    \midrule
     \textbf{Mother's Education} &  &  &  &  & \\
     Higher Ed       & 235 & 76.8\% & &  71 & 23.2\% \\
     Secondary       & 143 & 49.5\% & &  95 & 32.9\% \\
     Grades 5 to 9   & 180 & 75.6\% & & 109 & 45.8\% \\
     Primary         &  98 & 47.5\% & & 106 & 52.5\% \\
     None            &   7 & 77.8\% & &   2 & 22.2\% \\
+    \midrule   
+    \textbf{Higher Education Plans} &  &  &  &  & \\
+    Planned         & 640 & 67.0\% & & 315 & 33.0\%  \\
+    No Plans        &  21 & 23.6\% & &  68 & 76.4\%  \\
+    \midrule
+    \textbf{School Support} &  &  &  &  & \\
+    Received        &  63 & 52.9\% & &  56 & 47.1\%  \\
+    None            & 598 & 64.6\% & & 327 & 33.4\%  \\ 
     \midrule    
     \textbf{Study Time} &   &  &  &  &     \\
     More than 10 hrs. &  45 & 72.6\% & &  17 & 27.4\% \\
@@ -560,18 +560,18 @@ and interaction depth of 4 splits.
     \midrule
     Variables           & Coefficient        & S.E.  & t-value & Coefficient & S.E. & t-Value  \\
     \midrule
- Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
+    Intercept           &       13.289***    & 2.166 &  6.14  &          6.955*     & 3.629 &  1.92 \\
     Course              & \textbf{-2.225}*** & 0.261 & -8.53  & \textbf{-1.162}***  & 0.445 & -2.61 \\
-    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}**   & 0.647 & -2.29 \\
-    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\
-    Going Out           & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.097      & 0.178 & -0.55 \\
     Mother's Education  & \textbf{ 0.485}*** & 0.122 &  3.97  & \textbf{ 0.473}**   & 0.213 &  2.25 \\
+    Go Out with Friends & \textbf{-0.442}*** & 0.114 & -3.89  &         -0.097      & 0.178 & -0.55 \\
+    Higher Ed           & \textbf{ 1.695}*** & 0.487 &  3.48  & \textbf{ 4.101}***  & 0.772 &  5.31 \\    
+    School Support      & \textbf{-1.435}*** & 0.416 & -3.45  & \textbf{-1.481}**   & 0.647 & -2.29 \\
     Health              & \textbf{-0.262}*** & 0.088 & -2.97  &         -0.008      & 0.152 & -0.05 \\
     Study Time          & \textbf{ 0.454}*** & 0.156 &  2.91  & \textbf{ 0.893}***  & 0.260 &  3.43 \\
-    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.096      & 0.215 & -0.45 \\
-    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  &         -0.034      & 0.191 & -0.18 \\
-    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.127}**   & 0.461 & -2.45 \\
     Internet Access     & \textbf{ 0.819}**  & 0.321 &  2.55  &          0.420      & 0.542 &  0.77 \\
+    Family Relations    & \textbf{ 0.340}**  & 0.140 &  2.43  &         -0.096      & 0.215 & -0.45 \\
+    Romantic Relation   & \textbf{-0.600}**  & 0.266 & -2.26  & \textbf{-1.127}**   & 0.461 & -2.45 \\
+    Age                 & \textbf{-0.250}**  & 0.114 & -2.20  &         -0.034      & 0.191 & -0.18 \\
     Family Size         & \textbf{-0.500}*   & 0.278 & -1.80  &         -0.594      & 0.458 & -1.30 \\
     Father's Job        & \textbf{ 0.278}*   & 0.145 &  1.92  &         -0.050      & 0.245 & -0.20 \\
     \midrule
@@ -607,28 +607,36 @@ in the regression models to address the issue of multicolinearity.
 
 Table 3 provides summary statistics for selected attributes. Chi-squared tests 
 of independence were used to compare the proportion of passing and failing 
-students by attribute. Performance did not vary by sex ( $\chi 2$ , 
-\textit{p}$=$0.20); however, student performance did vary significantly by 
-course topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of students 
-in the Portugese course received a passing grade, but only slightly more than 
-half of students in the Math course successfully passed. Extra educational 
+students by attribute. Student performance did not vary significantly 
+according to sex ( $\chi 2$, \textit{p}$=$0.20); the performance of male and 
+female students did not vary significantly. Performance did vary significantly 
+by course topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of 
+students in the Portugese course successfully passed, whereas just over half 
+of students in the Math course received a passing grade. There relationship 
+between performance and students' plans for higher education was also significant 
+($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students who received a passing 
+grade had plans to pursue higher education, whereas less than one-quarter of 
+students with no plans for higher education passed their courses. In other words, 
+of students with plans for higher education, one-third received a failing grade; 
+by contrast, the majority of students who received a failing grade had no plans 
+to pursue higher education. 
+
+
+The proportion of passing and failing grades varied by level of mother's 
+education ($\chi 2$ , \textit{p}$<$0.05); however,  he relationship was 
+non-linear. 
+
+
+
+however, Extra educational 
 school support was also significantly related to student performance 
 ($\chi 2$ , \textit{p}$<$0.001). Just over half of students who received 
 extra educational support school received a passing grade compared to nearly 
-two-thirds of students who did not receive extra support. In addition, there 
-was a significant relationship between performance and students' plans for 
-higher education ($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students 
-who received a passing grade had plans to pursue higher education, whereas 
-less than one-quarter of students with no plans for higher education passed 
-their courses. In other words, of students with plans for higher education, 
-one-third received a failing grade; by contrast, the majority of students who 
-failed had no plans to pursue higher education. 
+two-thirds of students who did not receive extra support. In addition, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-The proportion of passing and failing grades varied by level of mother's 
-education ($\chi 2$ , \textit{p}$<$0.05); however, the relationship was 
-non-linear. Study time was significantly associated with student performance 
+Study time was significantly associated with student performance 
 ($\chi 2$ , \textit{p}$<$0.001). The proportion of passing and failing 
 grades significantly different for students who studied 5 hours or more 
 per week compared to students who studied less than 5 hours per week. 
@@ -639,7 +647,7 @@ a relationship than students who were not in a relationship. The relationship
 between internet access and student performance was also marginally significant 
 ($\chi 2$ , \textit{p}$<$0.06). The proportion of passing and failing grades 
 was significantly different for students with access to the internet at home
-compared to students without home internet access.
+compared to students without home internet access ($\chi 2$ , \textit{p}$<$0.05).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -649,7 +657,7 @@ compared to students without home internet access.
 
 Student performance was first regressed on the 27 independent variables 
 (Table 1) with the training set; this regression was statistically 
-significant, and accounted for 19.7\% of the variance in the predicted
+significant and accounted for 19.7\% of the variance in the predicted
 value of student performance, taking into account the number of 
 independent variables, \textit{F}(27, 702) = 7.62, \textit{p} $<$ 0.001 
 ($R^2$=0.227, adjusted $R^2$=0.197). The regression model was rerun, 
@@ -880,36 +888,37 @@ with one or more absences, had a mean predicted performance of 4.6.
     \midrule   
     Predictor           & \% Increase MSE & & Predictor &  Relative Importance \\    
     \midrule
-    Mother's Education  &  1.368 &   &      Absences	        &  16.042	\\
-    Absences            &  0.884 &   &      Course	            &  11.669   \\
-    Area (Urban/Rural)  &  0.592 &   &      Mother's Education  &   7.749	\\
-    Higher Education    &  0.575 &   &      Age	                &   7.488   \\   
-    Course              &  0.481 &   &      Go Out Friends	    &   6.560   \\ 
-    Weekly Alcohol      &  0.473 &   &      Study Time          &   4.506   \\
-    Mother's Job        &  0.463 &   &      Health	            &   3.875   \\  
-    Father's Education  &  0.399 &   &      Weekly Alcohol 	    &   3.549	\\      
-    Go Out Friends      &  0.389 &   &      Family Relations 	&   3.446	\\
-    Daily Alcohol       &  0.373 &   &      Free Time	        &   3.330	\\
-    Age                 &  0.370 &   &      Father's Job        &   2.839   \\
-    School Support      &  0.347 &   &      Higher Education    &   2.478   \\  
-    Study Time          &  0.321 &   &      School Support  	&   2.472   \\
-    Sex                 &  0.318 &   &      Extra Activities	&   2.428   \\
-    Father's Job        &  0.278 &   &      Daily Alcohol 	    &   2.278   \\     
-    Free Time           &  0.272 &   &      Mother's Job        &   2.123	\\
-    Internet Access     &  0.204 &   &      Family Size         &   2.104   \\   
-    Family Relations    &  0.181 &   &      Father's Education 	&   2.065   \\
-    Extra Activities    &  0.179 &   &      Guardian	        &   2.038   \\
-    Travel Time         &  0.122 &   &      Sex	                &   1.824   \\ 
-    Guardian            &  0.121 &   &      Romantic Relation	&   1.780	\\
-    Family Size         &  0.112 &   &      Internet Access	    &   1.760	\\
-    Family Support      &  0.103 &   &      Travel Time	        &   1.574   \\
-    Health              &  0.097 &   &      Paid Extra Courses	&   1.286	\\ 
-    Romantic Relation   &  0.093 &   &      Family Support    	&   1.221   \\
-    Paid Extra Courses  &  0.075 &   &      Area (Urban/Rural)	&   1.218	\\
-    Parents' Relation   &  0.056 &   &      Parents' Relation   &   0.301   \\
+    Mother's Education  &  1.368 &   &      Absences	        &  16.754	\\
+    Absences            &  0.884 &   &      Course	            &  11.151   \\
+    Area (Urban/Rural)  &  0.592 &   &      Mother's Education  &   7.926	\\
+    Higher Education    &  0.575 &   &      Age	                &   7.460   \\   
+    Course              &  0.481 &   &      Go Out Friends	    &   5.566   \\ 
+    Weekly Alcohol      &  0.473 &   &      Study Time          &   4.618   \\
+    Mother's Job        &  0.463 &   &      Health	            &   3.942   \\  
+    Father's Education  &  0.399 &   &      Free Time	        &   3.284	\\      
+    Go Out Friends      &  0.389 &   &      Family Relations 	&   3.213	\\
+    Daily Alcohol       &  0.373 &   &      Weekly Alcohol      &   3.150	\\
+    Age                 &  0.370 &   &      Daily Alcohol       &   2.848   \\
+    School Support      &  0.347 &   &      Extra Activities    &   2.635   \\  
+    Study Time          &  0.321 &   &      School Support  	&   2.550   \\
+    Sex                 &  0.318 &   &      Higher Education	&   2.544   \\
+    Father's Job        &  0.278 &   &      Father's Job 	    &   2.522   \\     
+    Free Time           &  0.272 &   &      Guardian            &   2.124	\\
+    Internet Access     &  0.204 &   &      Father's Education  &   2.059   \\   
+    Family Relations    &  0.181 &   &      Family Size	        &   1.960   \\
+    Extra Activities    &  0.179 &   &      Romantic Relation	&   1.889   \\
+    Travel Time         &  0.122 &   &      Internet Access     &   1.875   \\ 
+    Guardian            &  0.121 &   &      Sex	        	    &   1.776	\\
+    Family Size         &  0.112 &   &      Family Support 	    &   1.762	\\
+    Family Support      &  0.103 &   &      Travel Time	        &   1.761   \\
+    Health              &  0.097 &   &      Mother's Job    	&   1.757	\\ 
+    Romantic Relation   &  0.093 &   &      Paid Extra Courses  &   1.430   \\
+    Paid Extra Courses  &  0.075 &   &      Area (Urban/Rural)	&   1.105	\\
+    Parents' Relation   &  0.056 &   &      Parents' Relation   &   0.345   \\
     \bottomrule
-  \end{tabular}
+  \end{tabular}	
 \end{table*}
+	
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -933,25 +942,22 @@ variables were not given as prominent a position as in the single tree.
 \subsubsection{Gradient Boosting Regression}
 
 The mean squared error (MSE) for the gradient boosted regression tree model  
-was 19.687, which was higher than the random forests regression model. 
-Feature importance for the gradient boosted regression trees is presented on 
-the right side of Table 6. Absences and course subject were selected as the
-two most important features for predicting student performance. The algorithm
-selected mother's education level, student age, going out with friends, and
-weekly study time as the next most informative variables, in descending order 
-of importance. Plans for higher education was not selected among the most 
-important variables for predicting student performance, In contrast to the 
-single regression tree and random forest model. The predicted value of 
-student performance is determined by the linear combination or weighted
-average of all the predictor values in the model.  
+was 18.124. Feature importance for the gradient boosted regression trees is 
+presented on the right side of Table 6. Absences and course subject were 
+selected as the two most important features for predicting student performance. 
+The algorithm selected mother's education level, student age, going out with 
+friends, and weekly study time as the next most informative variables, in 
+descending order of importance. Plans for higher education was not selected 
+among the most important variables for predicting student performance in 
+the gradient boosted model.   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{DISCUSSION}
 
-The results revealed that the different models identified many of the same 
-features as important for predicting student performance. The models differed 
-in the number of variables and ordering of their respective importance. 
+The different models identified many of the same features as important for 
+predicting student performance. The models differed, however, in the number of 
+variables and ordering of their respective importance. 
 
 
 
@@ -978,6 +984,15 @@ lasso models than the general linear model. Although the lasso model with 20
 features produced a more interpretable solution than the ridge regression, 
 the final general linear model with 13 independent variables provided a 
 solution that was simpler and more parsimonious than the lasso model. 
+The predicted value of 
+student performance is determined by the linear combination or weighted
+average of all the predictor values in the model. 
+
+
+
+, which was higher than the random forests regression model. 
+In contrast to the 
+single regression tree and random forest model.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1060,9 +1075,10 @@ the performance greatly.
 
 A limitation of this study is that variable importance is not a well defined 
 concept and lacks a theoretically based quantitative metric \cite{gromping09}. 
-In the general linear regression, significance tests are used to select 
-significant predictors of the target outcome and non-significant predictors 
-are excluded from the revised final model.
+In the multivariate linear regression, significance tests are used to select
+the variables that significantly predictor the target outcome and non-
+significant predictors are excluded from the final model. The t-value provides
+a measure of the general effect size of a given variable.
 
 variable selection is performed by 
  and  With random forests regression, variable importance is typically
