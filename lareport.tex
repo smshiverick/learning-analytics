@@ -41,7 +41,7 @@ Model interpretation is an important aspect of predictive analytics.
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.}
 
 \end{abstract}
-\keywords{Predictive Modeling, Supervised Learning, Classification Models}
+\keywords{Predictive Modeling, Supervised Learning, Variable Importance}
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -261,18 +261,19 @@ the maximum depth of the tree.
 A random forest is a collection of decision trees that are slightly different 
 where each tree overfits the data in a different way. This approach reduces 
 overfitting by building many trees and averaging their results. Randomness is 
-introduced into the tree building process by drawing a bootstrap sample of the 
-data and selecting features at each node branch \cite{muller17, raschka17}. 
-In building the random forest, you must first decide how many trees to build  
-and the algorithm makes different random choices so that each tree is distinct. 
-The bootstrapping method repeatedly draws random samples of size \textit{n} 
-from the dataset with replacement. The decision trees are built on these 
-random samples that are the same size as the original data, with some points 
-missing and some data points repeated. In addition, the algorithm selects a 
-random subset of p features, that are repeated separately at each node, so 
-that each decision at the node branch is based on a different subset of 
-features. These two processes help ensure that all of the decision trees in 
-the random forest are different. 
+introduced into the tree building process in two ways: first, by drawing a 
+random subset (i.e., bootstrap sample) of the data, and second by selecting 
+a random subset of features at each node branch \cite{breiman01}. In building 
+the random forest, the user must first decide how many trees to build and the 
+algorithm makes different random choices so that each tree is distinct
+\cite{muller17, raschka17}. The bootstrapping method repeatedly draws random 
+samples of size \textit{n} from the dataset with replacement. The decision 
+trees are built on these random samples that are the same size as the original 
+data, with some points missing and some data points repeated. The algorithm 
+also selects a random subset of p features, that are repeated separately at 
+each node, so that each decision at the node branch is based on a different 
+subset of features. These two processes help ensure that all of the decision 
+trees in the random forest are different. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -931,8 +932,8 @@ variables were not given as prominent a position as in the single tree.
 
 \subsubsection{Gradient Boosting Regression}
 
-The mean squared error (MSE) for the gradient boosted regression tress  was 
-19.687, which indicates this model did not perform better than random forests. 
+The mean squared error (MSE) for the gradient boosted regression tree model  
+was 19.687, which was higher than the random forests regression model. 
 Feature importance for the gradient boosted regression trees is presented on 
 the right side of Table 6. Absences and course subject were selected as the
 two most important features for predicting student performance. The algorithm
@@ -948,7 +949,13 @@ average of all the predictor values in the model.
 
 \section{DISCUSSION}
 
-The results revealed that student performance was better in Portugese than 
+The results revealed that the different models identified many of the same 
+features as important for predicting student performance. The models differed 
+in the number of variables and ordering of their respective importance. 
+
+
+
+student performance was better in Portugese than 
 the mathematics course and course subject was a significant predictor across 
 all of the models. The supervised learning models differed, however, in the 
 sets of features they identified as important for predicting performance. 
@@ -974,9 +981,7 @@ solution that was simpler and more parsimonious than the lasso model.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Overall, the models 
-agreed in selecting the top five most influential predictors of pain
-reliever abuse, but there was some variation in the ordering of importance. 
+
 
 The linear models showed that substance treatment had the highest
 coefficients (followed by heroin use), whereas the tree ensemble methods
@@ -1052,6 +1057,30 @@ the performance greatly.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Limitations}
+
+A limitation of this study is that variable importance is not a well defined 
+concept and lacks a theoretically based quantitative metric \cite{gromping09}. 
+In the general linear regression, significance tests are used to select 
+significant predictors of the target outcome and non-significant predictors 
+are excluded from the revised final model.
+
+variable selection is performed by 
+ and  With random forests regression, variable importance is typically
+used for feature selection using
+MSE reduction, 
+
+with randome forests 
+
+
+
+
+random forest variable importance measures are a sensible means for variable 
+selection in many applications, but are not reliable in situations where potential 
+predictor variables vary in their scale of measurement or their number of categories
+as in the student performance data
+
+. 
+\cite{strohl}
 
 Educational institutions collect large amounts of students data yet much of
 this information is protected due to privacy. Responses to anonymous surveys 
@@ -1142,6 +1171,7 @@ Social network analysis
 (SNA) provides a valuable tool for exploring interactions among learners in 
 various contexts. Visualization tools help to reveal connections in large 
 datasets and analyze collaboration in online learning platforms (Dawson, 2009). 
+
 Content analysis and automated recommender systems have also been used to guide 
 learners toward more personalized learning environments (PLE) (Siemens, 2012, 2013). 
 
@@ -1149,8 +1179,8 @@ Individual differences in metacognitive (e.g., self-reflection, self-awareness),
 disposition, experience and motivation are influential for developing learning 
 relationships (Dawson, et al., 2014; Gašević, et al., 2015). 
 
-Affect and motivation are also 
-influential for predicting performance; notably, concentration and 
+Affect and motivation are also influential for predicting performance; notably, 
+concentration and 
 frustration are significantly correlated with final grades, but boredom and 
 confusion were negatively related to performance (Pardos et al., 2013). 
 Using data-driven machine learning algorithms on student profiles and data 
@@ -1169,7 +1199,9 @@ falling behind using statistical analysis of LMS data \cite{arnoldPistilli12}.
 In addition to grades, demographic information, academic history, and student 
 interaction on the Blackboard LMS were used to track student performance. A 
 predictive algorithm was used to calculate likelihood of student success based 
-on performance, effort, history, and student characteristics. The course signals 
+on performance, effort, history, and student characteristics. 
+
+The course signals 
 provided students with real-time feedback about their status via the LMS as 
 traffic signal indicators (i.e., red=high risk, yellow=moderate risk, green=low 
 risk). Instructors enacted interventions for high risk students providing them 
@@ -1226,9 +1258,10 @@ opioid abuse, addiction, and death. The findings reported here seek to raise
 awareness about the risk factors for prescription opioid addiction for patients 
 and health care providers in order to help reduce opioid overdose deaths. 
 
-Additional research 
-is needed to understand the relationships among the variables identified by 
-predictive models. The findings may inform decision making and policy efforts 
+Additional research is needed to understand the relationships among variables 
+that predict student performance. The findings may inform decision making and 
+
+policy efforts 
 to address the opioid crisis and reduce the risk of overdose death. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
