@@ -1004,56 +1004,36 @@ mother's education, student age, going out with friends, and study time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Limitations}
+\subsubsection{Limitation}
 
-A limitation of this study is that variable importance is not a well defined 
-concept and lacks a theoretically based quantitative metric \cite{gromping09}. 
-In the multivariate linear regression, significance tests are used to select
-the variables that significantly predict the target outcome and non-significant 
-predictors are excluded from the final model. The t-value provides a general
-measure of the size of the effect of a given predictor.
+This study compares different methods for identifying and selecting variables 
+that predict student performance. A limitation is that variable importance is 
+not a well defined concept and lacks a theoretically based quantitative metric 
+\cite{gromping09}. The linear regression model uses significance tests to 
+select the variables that best predict the target outcome and non-significant 
+regressors are excluded from the final model. The t-value provides a general 
+measure of the effect size for a given predictor. With random forests, variable 
+importance is used for variable selection, node purity is used to measure 
+homogeneity at branches for classification tasks, whereas MSE reduction is used 
+for regression. With random forests, the variable importance is affected by 
+the number of categories and scale of measurement of the predictor variables
+\cite{strobl07} and does not provide direct indicators of the true importance 
+of the variable. Variable importance can be biased when predictor variables 
+are measured on different scales or vary in number of categories. Educational 
+institutions collect large amounts of student data, much of the data measured
+on different scales. One approach for normalizing or regularizing data is to
+transform variables measured on different scales to the same scale, with a 
+mean of zero and standard deviation of one. Future studies should examine
+variable importance for datasets where variables have been normalized to
+the same scale for comparison. 
 
-Variable importance With random forests regression can be biased \cite{strobl07} 
-variable importance is typically
-used for feature selection using
-MSE reduction, 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-with random forests 
-
-random forest variable importance measures are a sensible means for variable selection in many applications, but are not reliable in situations where potential predictor variables vary in their scale of measurement or their number of categories. \cite{strobl07} 
-
-original random forest method the variable importance measures are affected by the number of categories and scale of measurement of the predictor variables, which are no direct indicators of the true importance of the variable.
-
-
-random forest variable importance measures are a sensible means for variable 
-selection in many applications, but are not reliable in situations where potential 
-predictor variables vary in their scale of measurement or their number of categories
-as in the student performance data
-
-. 
-\cite{strohl}
-
-Educational institutions collect large amounts of students data yet much of
-this information is protected due to privacy. Responses to anonymous surveys 
-are designed to preserve confidentiality and can help to assure`privacy. 
+\subsubsection{EDM and Learning Analytics}
 
 
-measures of student satisfaction can vary according 
-to their perceived usefulness or efficiency of training courses.
-
-This paper reviews LA methodologies, applications, and considers challenges 
-and opportunities for implementing LA in education.
-
-A surprising finding is that 
-
-A limitation of the study is that only a small proportion of the sample 
-reported having used or misused prescription opioids. It is possible that the 
-level of opioid use in the sample was not representative of opioid use in the 
-general population. 
-
-The development of LA as a field of 
-inquiry have been primarily driven by big data in education and the shift 
-toward online learning. 
+The development of LA as a field of inquiry have been primarily driven by 
+big data in education and the shift toward online learning. 
 
  The ability to mine large scale data from online 
 learning platforms has applications for student success, course design, and 
