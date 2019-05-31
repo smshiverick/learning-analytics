@@ -477,10 +477,10 @@ and interaction depth of 4 splits.
     \toprule
     Variable    & Failures  & Grade 1 & Grade 2 & Grade 3  \\
     \midrule
-    Failures    &  1,00     &  0.37***  & 0.38***   &  0.38***  \\
-    Grade 1     &  0.37***  &  1,00     & 0.86***   &  0.81***  \\
-    Grade 2     &  0.38***  &  0.86***  & 1.00      &  0.91***  \\  
-    Grade 3     &  0.38***  &  0.81***  & 0.91***   &  1.00     \\    
+    Failures    &  1.00     &  0.37***  & 0.38***   &  0.38***  \\
+    Grade 1     &           &  1.00     & 0.86***   &  0.81***  \\
+    Grade 2     &           &           & 1.00      &  0.91***  \\  
+    Grade 3     &           &           &           &  1.00     \\    
     \bottomrule
     Note. *** \textit{p}$<$0.001 & & &
   \end{tabular}
@@ -613,13 +613,13 @@ in performance ( $\chi 2$ , \textit{p}$=$0.20). Student performance did vary
 according to mother's level of education ($\chi 2$ , \textit{p}$<$0.05), but 
 as seen in Table 3, the relationship between performance and mother's 
 education was non-linear. Performance did vary significantly by course 
-topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of students in the 
-Portugese course successfully passed, whereas just over half of students in 
-the mathematics course received a passing grade. The relationship between 
-students' performance and their plans for higher education was also significant 
-($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students with plans to pursue 
+topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of students in 
+the Portugese course successfully passed, whereas just over half of students 
+in the mathematics course received a passing grade. The relationship between 
+student performance and plans for higher education was also significant 
+($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students with plans for 
 higher education received a passing grade, whereas less than one-quarter of 
-students with no plans for higher education passed their courses. Extra 
+students with no plans for higher education passed their course. Extra 
 educational school support was also significantly related to performance 
 ($\chi 2$ , \textit{p}$<$0.001). Just over half of students who received 
 extra educational support at school received a passing grade compared to 
@@ -949,27 +949,28 @@ the gradient boosted model.
 The different predictive models identified many of the same variables as 
 important for predicting student performance. The linear regression models 
 and single regression tree selected course subject as the most informative 
-variable for predicting student performance, with students in the Portugese 
-course performing better than students in the mathematics course. The models 
-differed, however, in the number of variables selected and respective order
-of importance assigned to mother's level of education, plans for higher 
-education, weekly study time, school educational support, absences, going 
-out with friends and involvement in romantic relationships. The general linear 
-model selected thirteen predictors variables in the training set, of which, 
-only six were significant predictors of student performance in the test set. 
-Mother's education level, students' plans for higher education, and weekly 
-study time were positively correlated with performance, whereas school support 
-and romantic relationships were negatively associated with performance. 
+variable for predicting student performance. Students in the Portugese course 
+received larger proportion of passing grades than students in mathematics. 
+The models differed, however, in the number of variables selected and 
+importance given to predictors of student performance, including: mother's 
+level of education, plans for higher education, weekly study time, school 
+educational support, absences, going out with friends, and romantic 
+relationships. The general linear model selected thirteen predictors 
+variables in the training set, of which, only six significantly predicted 
+student performance in the test set. Mother's education level, students' 
+plans for higher education, and weekly study time were related to 
+increases in student performance, whereas course subject, school support, 
+and romantic relationships were associated with decreases in performance. 
 Ridge regression reduced model error by shrinking the coefficient estimates 
-towards zero, with a tradeoff of slightly higher bias and risk of underfitting. 
-The lasso model performed variable selection and produced a model based 
-on a subset of twenty features; although the lasso model was simpler than 
-the ridge regression, the final multivariate regression model with thirteen
-variables that was more parsimonious. Linear regression performs well with 
-standard datasets when the number of observation is larger than the number of 
-features ($\textit{n}>>\textit{p}$); however, ridge regression and the lasso 
-models perform better when a dataset has a very large number of predictors 
-($\textit{p}>>\textit{n}$).
+towards zero, but with slightly higher bias and risk of underfitting. The 
+lasso model performed variable selection by shrinking the coefficient values 
+of seven non-relevant predictors to zero, which yielded a model with a subset 
+of twenty features. Although the lasso model was simpler than ridge regression, 
+the final multivariate regression model with thirteen variables was more 
+parsimonious. Linear regression performs well when the number of observations 
+is larger than the number of features ($\textit{n}>>\textit{p}$); however, 
+ridge regression and the lasso are preferred with a very large number of 
+predictors ($\textit{p}>>\textit{n}$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -983,98 +984,34 @@ key nodes. The single regression tree provides a simple model that is easily
 interpreted and gives the mean predicted value of student performance at each 
 node. Predicted performance was highest among students with plans for higher 
 education, whose mothers had attained at least a 5th grade education, from
-urban areas (M=13). The lowest predicted performance was found among students 
-with no plans for higher education who had one or more absences (M=4.6).
+urban areas. The lowest predicted performance was found among students 
+with no plans for higher education who had one or more absences.
 
 Random forests regression corrects for overfitting in a single regression tree 
-by constructing many trees and averaging across the 
-predicted values. Feature importance generated by the random forests regression 
-identified mother's education as the most informative variable based on the 
-percent change in mean squared error, followed by student absences, area, 
-plans for higher education, course subject, weekly alcohol consumption, and 
-mother's job as the most informative predictors of performance. Counter to
-expectation, the gradient boosting regression had a higher model error than 
-the reandom forests regression, which was surprising given that the gradient
-boosted model generates a large number of short trees (stumps), with each new 
-tree correcting for the mistakes of previous trees. The feature importance for 
-the gradient boosted model selected student absences as the most important 
-feature, followed in descending order of importance by course subject, 
-mother's education, student age, going out with friends, and study time, 
-among others.
-
+by constructing many trees and averaging across the predicted values. Feature 
+importance generated by the random forests regression identified mother's 
+education as the most informative variable based on the percent change in 
+mean squared error (MSE), followed (in descending order) by student absences, 
+area, plans for higher education, course subject, weekly alcohol consumption, 
+and mother's job as among the most important variables for predicting student 
+performance. Counter to expectation, the error for the gradient boosted 
+regression model was higher than for the random forests regression, which was 
+surprising given that the gradient boosted model generates a large number
+of short trees (i.e., stumps) and tries to iteratively correct for mistakes 
+in previous trees. Feature importance for the gradient boosted model selected 
+student absences as the most important feature, followed by course subject, 
+mother's education, student age, going out with friends, and study time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In other words, 
-one-third of students with plans for higher education failed the course and
-over three-
-had 
-plans to pursue higher education, whereas less than  of students ,  received a failing grade; by contrast, more than
-three quarters of students with no plans for higher education received a 
-failing grade. 
-
-
-
-
-The linear models showed that substance treatment had the highest
-coefficients (followed by heroin use), whereas the tree ensemble methods
-indicated that tranquilizer use was the most important feature. Given the 
-relatively low rates of prescription opioid and heroin use in the sample, 
-additional evidence is needed to clarify questions regarding the importance
-of various features for predicting opioid misuse and abuse. 
-
-
-
-random forest regression selected Tranquilizers as most informative of
-pain reliever misuse, which is consistent with the results of the gradient
-boosting model tree ensemble (shown in Table 3). 
-
-A limitation of decision tree models is overfitting to data in the training set. 
-
-previous course failures, course topic, school support, romantic relationship, 
-going out with friends, and overall health were negatively correlated with 
-student performance, whereas plans for higher education, study time, mother's
-education level, internet access, quality of family relations, and father's 
-job were positively related to student achievement.
-
-
-showed that prescription opioid use, misuse, and abuse in this 
-sample was higher than use of illicit opioids such as heroin and fentanyl. 
-The use of Hydrocodone (Vicodan) was double that of Oxycodone (Oxycodone) 
-across almost all age groups. Illicit drug use was highest between the ages 
-of 18 to 25. Almost twice as many young adults reported a need for substance 
-use treatment, but had not received treatment, compared to the youngest age 
-group. Of individuals who reported misusing prescription opioid medications, 
-twice as many said they had used heroin than had not (see Figure 1), which is 
-consistent with the hypothesis that prescription opioid misuse is associated 
-with heroin use. The different learning models provided different estimates 
-of the features important for predicting pain reliever misuse and abuse. 
-
-
-The multiple regression showed multiple features together significantly 
-predicted pain reliever abuse, but there may be non-linear trends in the data.
-
-Compared to ridge regression, the lasso performed variable selection, 
-indicating that a model with five features (Treatment, Heroin, Cocaine, 
-Amphetamine, Any Pain Relievers) explained a significant portion of
-variabilty in pain reliever abuse, and adding more factors did not improve
-the performance greatly. 
-
-
-
-
- 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Limitations}
+\subsubsection{Limitations}
 
 A limitation of this study is that variable importance is not a well defined 
 concept and lacks a theoretically based quantitative metric \cite{gromping09}. 
 In the multivariate linear regression, significance tests are used to select
-the variables that significantly predictor the target outcome and non-
-significant predictors are excluded from the final model. The t-value provides
-a measure of the general effect size of a given variable.
+the variables that significantly predict the target outcome and non-significant 
+predictors are excluded from the final model. The t-value provides a general
+measure of the size of the effect of a given predictor.
 
 Variable importance With random forests regression can be biased \cite{strobl07} 
 variable importance is typically
@@ -1083,7 +1020,9 @@ MSE reduction,
 
 with random forests 
 
+random forest variable importance measures are a sensible means for variable selection in many applications, but are not reliable in situations where potential predictor variables vary in their scale of measurement or their number of categories. \cite{strobl07} 
 
+original random forest method the variable importance measures are affected by the number of categories and scale of measurement of the predictor variables, which are no direct indicators of the true importance of the variable.
 
 
 random forest variable importance measures are a sensible means for variable 
@@ -1247,6 +1186,15 @@ behavior and assessing functionality in intelligent tutoring systems (ITS)
 
 A general conclusion is that... 
 The findings...
+
+In other words, 
+one-third of students with plans for higher education failed the course and
+over three-
+had 
+plans to pursue higher education, whereas less than  of students ,  received a failing grade; by contrast, more than
+three quarters of students with no plans for higher education received a 
+failing grade. 
+
 
 A general conclusion is that people who reported misusing prescription opioids 
 were also likely to have received substance treatment. More than any other 
