@@ -23,6 +23,10 @@ secondary schools in Portugal \cite{cortez08}. Performance was assessed by
 final grade (range; 0-20) in two courses, mathematics and Portugese. The models
 were fit to a subset of training data and evaluated on a hold out testing set. 
 
+The models differed in the weighting, order, and importance given to predictor
+variables. 
+
+
 The linear regression model revealed that plans for higher education, mother's 
 education level, and weekly study time were positively associated with student 
 performance, whereas course subject, school support, and romantic relations
@@ -228,7 +232,11 @@ remaining features have coefficients that are very small or equal to zero.
 By contrast, ridge regression performs better when the target is a function 
 of a large number of predictors that contribute approximately equally to the
 coefficients. Cross-validation can be used to determine the optimal value
-of the parameter lambda and also which approach is better. 
+of the parameter lambda and also which approach is better. In general, least 
+squares regression (OLS) performs well when the number of observations is 
+larger than the number of features ($\textit{n}>>\textit{p}$); however, ridge 
+regression and the lasso are preferred when working with a very large number 
+of predictors ($\textit{p}>>\textit{n}$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -946,31 +954,27 @@ the gradient boosted model.
 
 \section{DISCUSSION}
 
-The different predictive models identified many of the same variables as 
-important for predicting student performance. The linear regression models 
-and single regression tree selected course subject as the most informative 
-variable for predicting student performance. Students in the Portugese course 
-received larger proportion of passing grades than students in mathematics. 
-The models differed, however, in the number of variables selected and 
-importance given to predictors of student performance, including: mother's 
-level of education, plans for higher education, weekly study time, school 
-educational support, absences, going out with friends, and romantic 
-relationships. The general linear model selected thirteen predictors 
-variables in the training set, of which, only six significantly predicted 
-student performance in the test set. Mother's education level, students' 
-plans for higher education, and weekly study time were related to 
-increases in student performance, whereas course subject, school support, 
-and romantic relationships were associated with decreases in performance. 
+Overall, students in the Portugese course performed better than students in 
+the mathematics course. The various models identified many of the same variables 
+as important for predicting student performance, including course mother's 
+education, plans for higher education, weekly study time, school support, 
+absences, going out with friends, and romantic relationships. The models 
+differed in the number, weighting, order, and importance of selected predictors 
+of student performance. With linear regression, the predicted outcome is based
+on the weighted average or combination of all the predictor variables. The 
+general linear model regression tree identified thirteen regressor variables 
+in the training set, of which, only six were significant predictors of student 
+performance in the test set, which suggests overfitting to the training data.
+Mother's education level, students' plans for higher education, and weekly study 
+time were associated with increased student performance, whereas course subject, 
+school support, and romantic relationships were related to decreased performance. 
 Ridge regression reduced model error by shrinking the coefficient estimates 
 towards zero, but with slightly higher bias and risk of underfitting. The 
 lasso model performed variable selection by shrinking the coefficient values 
 of seven non-relevant predictors to zero, which yielded a model with a subset 
 of twenty features. Although the lasso model was simpler than ridge regression, 
-the final multivariate regression model with thirteen variables was more 
-parsimonious. Linear regression performs well when the number of observations 
-is larger than the number of features ($\textit{n}>>\textit{p}$); however, 
-ridge regression and the lasso are preferred with a very large number of 
-predictors ($\textit{p}>>\textit{n}$).
+the final regression model with thirteen variables was more parsimonious. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
