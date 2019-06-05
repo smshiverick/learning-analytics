@@ -1024,44 +1024,46 @@ important for predicting student performance. A limitation is that variable
 importance is not a well defined concept and lacks a theoretically based 
 quantitative metric \cite{gromping09}. The linear regression model uses 
 significance tests to select the variables that best predict the target outcome 
-and non-significant regressors are excluded from the final model. The t-value 
-provides a general measure of the effect of a given predictor. With random 
-forests, node purity is a measure of branch homogeneity for classification 
-tasks, whereas MSE reduction is used for variable selection for regression. 
-Variable importance with random forests regression is affected by the number 
-of categories and scale of measurement of the predictor variables 
-\cite{strobl07} and does not provide direct indicators of the true importance 
-of the variable. Variable importance can be biased when predictor variables 
-are measured on different scales or vary in number of categories. Much of the 
-student data collected by educational institutions is measured on different 
-scales. One approach for normalizing or regularizing data is to transform 
-variables measured on different scales to the same scale, with a mean of zero
-and standard deviation of one. Future studies should examine variable importance 
-for datasets where variables have been converted to the same scale for comparison. 
+and non-significant regressors are excluded from the final model. In this sense,
+the t-value provides a general measure of the importance of a given predictor. 
+With random forests, node purity measures branch homogeneity for classification 
+tasks, whereas MSE reduction is used for variable selection on regression tasks. 
+Variable importance with random forests is affected by the number of categories
+and scale of measurement of the predictor variables \cite{strobl07}, but does 
+not provide direct indicators of the true importance of the variable. 
+Furthermore, variable importance with random forests can be biased when 
+predictors are measured on different scales or vary in number of categories. 
+Much of the student data collected by educational institutions is measured on 
+different scales. Researchers investigating feature importance with student data 
+typically normalize or regularize the data by transforming variables measured 
+on different scales to the same scale (M=0, SD=1). However, to facilitate 
+interpretation of results, it is necessary to convert transformed variables 
+back to their original scales. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{EDM and Learning Analytics}
 
-The development of EDM and LA has primarily been driven by big data in education 
-and the shift toward online learning. The ability to mine large scale data from 
-online learning platforms has applications for student success, course design, 
-and institutional programs \cite{Lester19}. Obtaining personal and educational
-information from students can be difficult due to privacy protections for 
-confidential information taken by education institutions.  
+The results of the present study showed that demographic characteristics 
+(e.g., plans for higher education, weekly study time, romantic relationships) 
+play an important role in predicting student performance. A secondary issue 
+involves the reliability of self-report survey data. It can be difficult to 
+obtain reliable student information from educational institutions owing to 
+privacy protections and confidentiality of student data. This study used 
+archived data from a public repository (UCI-MLR) that included information 
+from both school records a student survey. The development of EDM and LA 
+has primarily been driven by big data in education and the shift toward 
+online learning. The ability to mine large scale data from LMS and online 
+learning platforms allows researchers to obtain behavior data from students
+in real time. Online learning platforms suffer from other problems such as 
+student attention, retention, and gaming the system \cite{baker14}. 
 
 
-reliable information about medication consumption can be difficult 
-based on self-reports. Survey data can be biased by under-reporting or by 
-minimizing reports of illicit substance use. People may also be reluctant to 
-disclose mental health issues or health problems (e.g., STDs, HIV, suicide 
-attempts). Another consideration is that,
+
+has applications 
+for student success, course design, and institutional programs \cite{Lester19}. 
 
 
-Alternatively, individuals who...
-
-The results of the present analysis showed that demographic 
-characteristics played a relatively...  
 
 Other areas of interest for LA/EDM research include 
 increasing (self-)reflection and (self-)awareness, analyzing connections among 
