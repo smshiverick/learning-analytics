@@ -3,7 +3,8 @@
 \input{format/final}
 
 \begin{document}
-  \title{Modeling Student Performance for Data-Driven Learning Analytics}
+  \title{Predictive Models of Student Performance for Data-Driven 
+  Learning Analytics}
   \author{Sean M. Shiverick}
   \affiliation{\institution{smshiverick@gmail.com}
   }
@@ -13,25 +14,32 @@
 
 \begin{abstract}
 
-Predictive modeling approaches help researchers and educators identify patterns 
-in education data and identify factors that influence student performance. This 
-paper compares several models of student performance (linear regression, ridge
-regression, the lasso, regression trees, random forests regression, gradient 
-boosting) for features selection, feature importance and model interpretability. 
-The student performance dataset consisted of N=1044 observations from two 
-secondary schools in Portugal \cite{cortez08}. Performance was assessed by 
-final grade (range; 0-20) in two courses, mathematics and Portugese. The models
-were fit to a subset of training data and evaluated on a hold out testing set. 
+Predictive modeling is useful for detecting patterns in education data and 
+identifying factors that contribute to student learning and performance. 
+This paper compares several models of student performance (linear regression, 
+ridge regression, lasso, regression trees, random forests regression, gradient 
+boosting) using for feature importance for feature selection. The student 
+performance dataset consisted of N=1044 observations from two secondary schools 
+in Portugal \cite{cortez08}. Performance was assessed by students' final grades 
+(range; 0-20) in two courses: mathematics and Portugese. The models were fit 
+to a subset of training data and evaluated on a hold out set of testing data. 
+
+The 
+
+
+linear regression model revealed that plans for higher education, mother's 
+education level, and weekly study time were positively associated with student 
+performance, whereas course subject, school support, and romantic relations
+were negatively related to performance. Non-linear trend in the data indicated
+that tree-based models may better . 
+
+
+model interpretability. 
 
 The models differed in the weighting, order, and importance given to predictor
 variables. 
 
 
-The linear regression model revealed that plans for higher education, mother's 
-education level, and weekly study time were positively associated with student 
-performance, whereas course subject, school support, and romantic relations
-were negatively related to performance. Non-linear trend in the data indicated
-that tree-based models may better . 
 
 All models identified as the most informative feature for predicting 
 student performance. 
@@ -979,17 +987,18 @@ the final regression model with thirteen variables was more parsimonious.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The simple regression tree model selected course subject as the root node in 
-the training set, and split on mother's education, weekly study time, absences, 
-mother's job, and student age as key nodes for predicting student performance. 
-In the testing set, plans for higher education was selected as the root node,
-which may indicate overfitting, and the algorithm split on mother's education, 
-residence area (rural versus urban), course subject, and student absences as 
-key nodes. The single regression tree provides a simple model that is easily
-interpreted and gives the mean predicted value of student performance at each 
-node. Predicted performance was highest among students with plans for higher 
-education, whose mothers had attained at least a 5th grade education, from
-urban areas. The lowest predicted performance was found among students 
-with no plans for higher education who had one or more absences.
+the training set, and branched on mother's education, weekly study time, 
+absences, mother's job, and student age as key nodes for predicting student 
+performance. In the testing set, plans for higher education was selected as 
+the root node, which may indicate overfitting, and the algorithm branched on
+mother's education, residence area (rural versus urban), course subject, and 
+student absences as key nodes. The single regression tree provides a simple 
+model that is easily interpreted and gives the mean predicted value of 
+student performance at each node. Predicted performance was highest among 
+students with plans for higher education, whose mothers had attained at 
+least a 5th grade education, from urban areas. The lowest predicted 
+performance was found among students with no plans for higher education 
+who had one or more absences.
 
 Random forests regression corrects for overfitting in a single regression tree 
 by constructing many trees and averaging across the predicted values. Feature 
@@ -1010,26 +1019,25 @@ mother's education, student age, going out with friends, and study time.
 
 \subsubsection{Limitations}
 
-This study compares different methods for identifying and selecting variables 
-that predict student performance. A limitation is that variable importance is 
-not a well defined concept and lacks a theoretically based quantitative metric 
-\cite{gromping09}. The linear regression model uses significance tests to 
-select the variables that best predict the target outcome and non-significant 
-regressors are excluded from the final model. The t-value provides a general 
-measure of the effect size for a given predictor. With random forests, variable 
-importance is used for variable selection, node purity is used to measure 
-homogeneity at branches for classification tasks, whereas MSE reduction is used 
-for regression. With random forests, the variable importance is affected by 
-the number of categories and scale of measurement of the predictor variables
+This study compared different methods for identifying and selecting variables 
+important for predicting student performance. A limitation is that variable 
+importance is not a well defined concept and lacks a theoretically based 
+quantitative metric \cite{gromping09}. The linear regression model uses 
+significance tests to select the variables that best predict the target outcome 
+and non-significant regressors are excluded from the final model. The t-value 
+provides a general measure of the effect of a given predictor. With random 
+forests, node purity is a measure of branch homogeneity for classification 
+tasks, whereas MSE reduction is used for variable selection for regression. 
+Variable importance with random forests regression is affected by the number 
+of categories and scale of measurement of the predictor variables 
 \cite{strobl07} and does not provide direct indicators of the true importance 
 of the variable. Variable importance can be biased when predictor variables 
-are measured on different scales or vary in number of categories. Educational 
-institutions collect large amounts of student data, much of the data measured
-on different scales. One approach for normalizing or regularizing data is to
-transform variables measured on different scales to the same scale, with a 
-mean of zero and standard deviation of one. Future studies should examine
-variable importance for datasets where variables have been normalized to
-the same scale for comparison. 
+are measured on different scales or vary in number of categories. Much of the 
+student data collected by educational institutions is measured on different 
+scales. One approach for normalizing or regularizing data is to transform 
+variables measured on different scales to the same scale, with a mean of zero
+and standard deviation of one. Future studies should examine variable importance 
+for datasets where variables have been converted to the same scale for comparison. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
