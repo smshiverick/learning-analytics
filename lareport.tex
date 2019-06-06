@@ -14,40 +14,36 @@
 
 \begin{abstract}
 
-Predictive modeling is useful for detecting patterns in education data and 
-identifying factors that contribute to student learning and performance. 
-This paper compares several models of student performance (linear regression, 
-ridge regression, lasso, regression trees, random forests regression, gradient 
-boosting) using for feature importance for feature selection. The student 
-performance dataset consisted of N=1044 observations from two secondary schools 
-in Portugal \cite{cortez08}. Performance was assessed by students' final grades 
-(range; 0-20) in two courses: mathematics and Portugese. The models were fit 
-to a subset of training data and evaluated on a hold out set of testing data. 
+Predictive modeling was used to detect patterns in education data and identify 
+factors that contribute to student learning and performance. This paper 
+compared six models of student performance (linear regression, ridge regression, 
+lasso, regression trees, random forests regression, gradient boosting) and used 
+feature importance to identify which variables were important for predicting 
+performance. The sample dataset consisted of N=1044 observations from two 
+secondary schools in Portugal \cite{cortez08}. Performance was assessed by 
+final grades (range; 0-20) in two courses, mathematics and Portugese. The models 
+were fit to a subset of training data and evaluated on a hold out testing set. 
+The models all selected a similar set of variables as important for predicting 
+student performance, but the models differed in the number, weighting, order and 
+importance they gave to the predictor variables. Course subject was selected as 
+an important predictor of performance in all of the models; students in the 
+Portugese course performed better than students in mathematics. Linear regression 
+selected thirteen predictors of student performance in the training set, of which, 
+six were significant in the test set. Plans for higher education, mother's 
+education level, and weekly study time were positively correlated with student 
+performance, whereas course subject, school support, and romantic relations were
+negatively associated with performance. 
 
-The 
-
-
-linear regression model revealed that plans for higher education, mother's 
-education level, and weekly study time were positively associated with student 
-performance, whereas course subject, school support, and romantic relations
-were negatively related to performance. Non-linear trend in the data indicated
-that tree-based models may better . 
-
+The regression trees model . 
 
 model interpretability. 
 
 The models differed in the weighting, order, and importance given to predictor
 variables. 
 
-
-
-All models identified as the most informative feature for predicting 
-student performance. 
-
-The models differed in the importance they assigned to
-
 Advantages and limitations of the different models are  discussed. 
 Model interpretation is an important aspect of predictive analytics.
+
 
 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.}
@@ -815,7 +811,7 @@ a function of the log value of lambda, with the number of associated features
 listed across the top of the plot. The plot shows that as the values of lambda 
 increase, the L2 penalty shrinks many of the coefficient values to be equal 
 exactly to zero. Cross-validation was used to obtain the best value of lambda, 
-$\lambda$ = 0.071 (ln$\lambda$)= -2.65). The lasso model was rerun using the 
+$\lambda$ = 0.071 (ln$\lambda$ = -2.65). The lasso model was rerun using the 
 optimal value of lambda selected by cross validation with 20 predictor 
 variables; the model had a mean squared error (MSE) of 13.895 and accounted 
 for approximately 20 percent of the variability in student performance. 
@@ -889,9 +885,9 @@ with one or more absences, had a mean predicted performance of 4.6.
   \label{tab:freq}
   \begin{tabular}{lllll}
     \toprule
-            &           &  & Model & \\ 
+                        &           &  & Model & \\ 
     \midrule  
-            & Random Forests & & &  Gradient Boosting \\    
+                        & Random Forests & & &  Gradient Boosting \\    
     \midrule   
     Predictor           & \% Increase MSE & & Predictor &  Relative Importance \\    
     \midrule
@@ -1075,58 +1071,31 @@ increase in satisfactory grades, decrease in withdrawals, and improved retention
 
 Learning is a complex phenomenon that is not always directly observable and 
 often inferred from behavior. In addition to quantitative measures of online
-activities, ideally, a meaningful analytics system would include qualitative
-measures about a student's affective states (i.e., boredom, frustration, 
-confusion) or motivation to model engagement in learning activities
-\cite{baker14, pardos14}.
+activities, ideally, a meaningful analytics system could include qualitative
+measures of students' affective states (i.e., boredom, frustration, confusion) 
+or motivation to model engagement in learning activities 
+\cite{baker14, pardos14}. In addition, LA/EDM researhers have investigated
+interactions among learners \cite{dawson14}. Theories of Social learning have 
+demonstrated the importance of collaboration in learning \cite{vygotsky78}. 
+From a social constructivist perspective, knowledge is constructed through 
+interaction with more knowledgeable partners, including parents, siblings, 
+teachers, or peers. Sociological research has also investigated the structure 
+of connections in social networks \cite{granovetter73}. Social network analysis
+(SNA) provides a useful methodology to explore the role of collaboration in 
+learning and visualize connections among learners \cite{siemens13}.
+Past research has also revealed that individual differences in students
+metacognitive abilities (i.e., self-awareness, self-reflection), disposition, 
+experience, and motivation are influential for developing learning relationships 
+\cite{gasevic15 lang17,lester19, papamitsiou14}. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
-Social learning theories have demonstrated 
-the importance of collaboration in learning. From the social constructivist 
-perspective, knowledge is constructed through interaction with more 
-knowledgeable partners, including parents, siblings, teachers, or peers 
-\cite{vygotsky78}. Sociological research has also investigated the structure 
-of connections in social networks \cite{granovetter73}, Visualizing the 
-connections among between students in online learning platforms can help
-to clarify the role of collaboration in learning \cite{dawson14}. Other areas 
-of interest for LA/EDM researchers include increasing (self-)reflection, 
-(self-)awareness, and recommending educational resources 
-\cite{lang17,lester19, papamitsiou14}. Past research has revealed that 
-individual differences in metacognitive abilities (i.e., self-awareness, 
-self-reflection), disposition, experience, and motivation are influential 
-for developing learning relationships \cite{dawson14, gasevic15}.
+\section{Conclusion}
 
 Merging data from LMS or online learning platforms with institutional data 
 can provide a more complete insight into student performance and the conditions 
 for successful learning \cite{hora19}. 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-Predictive approaches are used also for modeling student 
-behavior and assessing functionality in intelligent tutoring systems (ITS)
-\cite{penaayala14}. 
-
-
-LA provided faculty with a useful tool for 
-identifying struggling students and encouraging them to take corrective actions. 
-This information can be used by instructors and designers to develop more 
-personalized learning environments \cite{siemens13}. 
-
-has applications 
-for student success, course design, and institutional programs \cite{Lester19}. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Conclusion}
 
 Using data-driven machine learning algorithms on student profiles and data 
 about activity within the LMS can facilitate early detection of at-risk 
