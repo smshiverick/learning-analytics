@@ -24,27 +24,24 @@ secondary schools in Portugal \cite{cortez08}. Performance was assessed by
 final grades (range; 0-20) in two courses, mathematics and Portugese. The models 
 were fit to a subset of training data and evaluated on a hold out testing set. 
 The models all selected a similar set of variables as important for predicting 
-student performance, but the models differed in the number, weighting, order and 
-importance they gave to the predictor variables. Course subject was selected as 
-an important predictor of performance in all of the models; students in the 
-Portugese course performed better than students in mathematics. Linear regression 
-selected thirteen predictors of student performance in the training set, of which, 
-six were significant in the test set. Plans for higher education, mother's 
-education level, and weekly study time were positively correlated with student 
-performance, whereas course subject, school support, and romantic relations were
-negatively associated with performance. 
-
-The regression trees model . 
-
-model interpretability. 
-
-The models differed in the weighting, order, and importance given to predictor
-variables. 
-
-Advantages and limitations of the different models are  discussed. 
-Model interpretation is an important aspect of predictive analytics.
-
-
+student performance; the models differed in the number, weighting, order and 
+importance they gave to the predictor variables. Feature importance was used
+for variable selction. Course subject was selected as an important predictor of 
+performance in all of the models; students in the Portugese course performed 
+better than students in mathematics. Linear regression selected thirteen 
+predictors of student performance in the training set, of which, six were 
+significant in the test set. Plans for higher education, mother's education 
+level, and weekly study time were positively correlated with student performance, 
+whereas course subject, school support, and romantic relations were negatively 
+associated with performance. The regression trees model selected students' plans 
+for higher education, mother's education, residence area (rural/urban), course 
+subject, and student absences as key nodes. Random forests regression selected 
+mother's education as the most informative variable for predicting performance, 
+whereas the gradient boosted regression tree selected student absences as the 
+most important feature for predicting student performance. There was a tradeoff 
+between model complexity and interpretability. Simple linear regression and a 
+single decision tree were easier to interpret than more complex models. The 
+advantages and limitations of the different models are discussed. 
 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.}
 
@@ -895,11 +892,11 @@ with one or more absences, had a mean predicted performance of 4.6.
     Absences            &  0.884 &   &      Course	            &  11.151   \\
     Area (Urban/Rural)  &  0.592 &   &      Mother's Education  &   7.926	\\
     Higher Education    &  0.575 &   &      Age	                &   7.460   \\   
-    Course              &  0.481 &   &      Go Out Friends	    &   5.566   \\ 
+    Course              &  0.481 &   &      Go Out w/ Friends	&   5.566   \\ 
     Weekly Alcohol      &  0.473 &   &      Study Time          &   4.618   \\
     Mother's Job        &  0.463 &   &      Health	            &   3.942   \\  
     Father's Education  &  0.399 &   &      Free Time	        &   3.284	\\      
-    Go Out Friends      &  0.389 &   &      Family Relations 	&   3.213	\\
+    Go Out w/ Friends   &  0.389 &   &      Family Relations 	&   3.213	\\
     Daily Alcohol       &  0.373 &   &      Weekly Alcohol      &   3.150	\\
     Age                 &  0.370 &   &      Daily Alcohol       &   2.848   \\
     School Support      &  0.347 &   &      Extra Activities    &   2.635   \\  
@@ -1040,8 +1037,8 @@ back to their original scales.
 
 This study revealed several demographic characteristics (e.g., plans for 
 higher education, weekly study time, romantic relationships) that play an
-important role in predicting student performance. A secondary issue involves 
-the reliability of self-report survey data. It can be difficult to obtain 
+important role in predicting student performance. The reliability of self-
+report survey data is a potential concern. It can be difficult to obtain 
 student information from educational institutions owing to privacy protections 
 and confidentiality of student data. This study used archived data from a 
 public repository (UCI-MLR) that included information from both school records 
@@ -1074,7 +1071,7 @@ often inferred from behavior. In addition to quantitative measures of online
 activities, ideally, a meaningful analytics system could include qualitative
 measures of students' affective states (i.e., boredom, frustration, confusion) 
 or motivation to model engagement in learning activities 
-\cite{baker14, pardos14}. In addition, LA/EDM researhers have investigated
+\cite{baker14, pardos14}. In addition, LA/EDM researchers have investigated
 interactions among learners \cite{dawson14}. Theories of Social learning have 
 demonstrated the importance of collaboration in learning \cite{vygotsky78}. 
 From a social constructivist perspective, knowledge is constructed through 
@@ -1092,9 +1089,21 @@ experience, and motivation are influential for developing learning relationships
 
 \section{Conclusion}
 
-Merging data from LMS or online learning platforms with institutional data 
-can provide a more complete insight into student performance and the conditions 
-for successful learning \cite{hora19}. 
+Predictive models and learning analytics are essential for detecting patterns
+in the large amounts of education data and gaining insights about student 
+learning and the contexts in which it occurs \cite{siemens12}.
+
+
+
+Educational data mining (EDM) and learning analytics (LA) are 
+multidisciplinary fields at the intersection of learning science, social science, 
+statistics, and computer science that leverage big data to understand learning 
+and the environments in which it occurs \cite{siemens13, siemensbaker12}. 
+Predictive modeling provides useful methods for analyzing the factors that 
+contribute to student success and identifying individuals at risk for failure
+or dropping out. This study reviewed EDM and LA findings and compared several 
+supervised learning models with sample data to determine which approach is 
+best for modeling student performance and success. 
 
 
 Using data-driven machine learning algorithms on student profiles and data 
