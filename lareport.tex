@@ -598,7 +598,7 @@ Preliminary examination of the data revealed significant correlations
 between previous course failures and the course evaluation variables,
 Grade 1, Grade 2, and Grade 3 (Table 2). A chi-squared test of independence 
 showed the proportion of passing and failing final grades (G3) was 
-significantly related to previous course failures ($\chi 2$ ,
+significantly related to previous course failures ($\chi^2$,
 \textit{p}$=$0.001)(Figure 1). The majority of students with no past failures 
 successfully passed their courses, but only a minority of students with one
 or more previous failures received a passing grade. Past course failures 
@@ -611,35 +611,35 @@ Table 3 provides descriptive statistics for selected attributes. Chi-squared
 tests of independence were used to compare the proportion of students who 
 received passing and failing grades by attribute. There was no relationship
 between performance and sex; males and females did not differ significantly 
-in performance ( $\chi 2$ , \textit{p}$=$0.20). Student performance did vary
-according to mother's level of education ($\chi 2$ , \textit{p}$<$0.05), but 
+in performance ( $\chi^2$ , \textit{p}$=$0.20). Student performance did vary
+according to mother's level of education ($\chi^2$ , \textit{p}$<$0.05), but 
 as seen in Table 3, the relationship between performance and mother's 
-education was non-linear. Performance did vary significantly by course 
-topic ($\chi 2$ , \textit{p}$<$0.001); more than two-thirds of students in 
+education was non-linear. Performance also varied significantly by course 
+subject ($\chi^2$ , \textit{p}$<$0.001); more than two-thirds of students in 
 the Portugese course successfully passed, whereas just over half of students 
 in the mathematics course received a passing grade. The relationship between 
-student performance and plans for higher education was also significant 
-($\chi 2$ , \textit{p}$<$0.001). Two-thirds of students with plans for 
+student performance and plans for higher education was significant 
+($\chi^2$ , \textit{p}$<$0.001). Two-thirds of students with plans for 
 higher education received a passing grade, whereas less than one-quarter of 
 students with no plans for higher education passed their course. Extra 
-educational school support was also significantly related to performance 
-($\chi 2$ , \textit{p}$<$0.001). Just over half of students who received 
+educational school support was significantly related to performance 
+($\chi^2$ , \textit{p}$<$0.001). Just over half of students who received 
 extra educational support at school received a passing grade compared to 
 nearly two-thirds of students who did not receive extra support. 
 
 As expected, weekly study time was significantly associated with student 
-performance ($\chi 2$ , \textit{p}$<$0.001). The proportion of passing and 
+performance ($\chi^2$ , \textit{p}$<$0.001). The proportion of passing and 
 failing grades significantly different for students who studied 5 hours or 
 more per week compared to students who studied less than 5 hours per week. 
 The association between romantic relationships and student performance 
-was marginally significant ($\chi 2$ , \textit{p}$<$0.06). The proportion 
+was marginally significant ($\chi^2$ , \textit{p}$<$0.06). The proportion 
 of passing and failing grades was significantly different for students in 
 a romantic relationship than students not in a romantic relationship. The 
 relation between internet access and student performance was also marginally 
-significant ($\chi 2$ , \textit{p}$<$0.06). The proportion of passing and
+significant ($\chi^2$ , \textit{p}$<$0.06). The proportion of passing and
 failing grades was significantly different for students with access to the 
 internet at home compared to students without home internet access 
-($\chi 2$ , \textit{p}$<$0.05).
+($\chi^2$ , \textit{p}$<$0.05).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -932,7 +932,7 @@ variables were not given as prominent a position as in the single tree.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Gradient Boosting Regression}
+\subsubsection{Gradient Boosted Regression}
 
 The mean squared error (MSE) for the gradient boosted regression tree model  
 was 18.124. Feature importance for the gradient boosted regression trees is 
@@ -950,15 +950,15 @@ the gradient boosted model.
 
 Overall, students in the Portugese course performed better than students in 
 the mathematics course. The various models identified many of the same variables 
-as important for predicting student performance, including course mother's 
-education, plans for higher education, weekly study time, school support, 
-absences, going out with friends, and romantic relationships. The models 
-differed in the number, weighting, order, and importance of selected predictors 
-of student performance. With linear regression, the predicted outcome is based
+as important for predicting student performance, including course subject, 
+mother's education, plans for higher education, weekly study time, school 
+support, absences, going out with friends, and romantic relationships. The 
+models differed in the number, weighting, order, and importance of the 
+selected predictors. With linear regression, the predicted outcome is based
 on the weighted average or combination of all the predictor variables. The 
 general linear model regression tree identified thirteen regressor variables 
 in the training set, of which, only six were significant predictors of student 
-performance in the test set, which suggests overfitting to the training data.
+performance in the test set, which indicates possible overfitting.
 Mother's education level, students' plans for higher education, and weekly study 
 time were associated with increased student performance, whereas course subject, 
 school support, and romantic relationships were related to decreased performance. 
@@ -967,8 +967,7 @@ towards zero, but with slightly higher bias and risk of underfitting. The
 lasso model performed variable selection by shrinking the coefficient values 
 of seven non-relevant predictors to zero, which yielded a model with a subset 
 of twenty features. Although the lasso model was simpler than ridge regression, 
-the final regression model with thirteen variables was more parsimonious. 
-
+the final OLS model with thirteen variables was more parsimonious. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
