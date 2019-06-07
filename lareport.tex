@@ -956,18 +956,18 @@ support, absences, going out with friends, and romantic relationships. The
 models differed in the number, weighting, order, and importance of the 
 selected predictors. With linear regression, the predicted outcome is based
 on the weighted average or combination of all the predictor variables. The 
-general linear model regression tree identified thirteen regressor variables 
-in the training set, of which, only six were significant in the test set, 
-which indicates overfitting. Mother's education level, students' plans for 
-higher education, and weekly study time were associated with increased student 
-performance, whereas course subject, school support, and romantic relationships 
-were related to decreased performance. Ridge regression reduced model error by 
-shrinking the coefficient estimates towards zero, but with slightly higher bias 
-and risk of underfitting. The lasso model performed variable selection by 
-shrinking the coefficient values of seven non-relevant predictors to zero, which 
-yielded a model with a subset of twenty features. Although the lasso model was 
-simpler than ridge regression, the final OLS model with thirteen variables was 
-more parsimonious. 
+OLS linear regression identified thirteen regressor variables in the training 
+set, of which, only six were significant predictors of student performance in 
+the test set, which indicates overfitting. Mother's education level, students' 
+plans for higher education, and weekly study time were associated with increased 
+student performance, whereas course subject, school support, and romantic 
+relationships were related to decreased performance. Ridge regression reduced 
+model error by shrinking the coefficient estimates towards zero, but with 
+slightly higher bias and risk of underfitting. The lasso model performed variable 
+selection by shrinking the coefficient values of seven non-relevant predictors 
+to exactly zero, which yielded a model with a subset of twenty features. Although 
+the lasso model was simpler than ridge regression, the final OLS model with thirteen
+variables was more parsimonious. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
