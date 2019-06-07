@@ -283,9 +283,9 @@ trees in the random forest are different.
 Similar to random forests, gradient boosting is an ensemble approach that 
 builds many smaller trees; however, with each new tree, the gradient boosting 
 algorithm  attempts to correct for deficiencies of the current ensemble. 
-In contrast to randome forests, gradient boosting grows smaller, stubbier 
+In contrast to random forests, gradient boosting grows smaller, stubbier 
 trees, and goes after bias. \cite{jamesetal13, kuhn13}. Gradient boosted 
-regression trees use strong pre-pruning, with shallow trees of a depth of 
+regression trees use strong prepruning, with shallow trees of a depth of 
 one to five; thus, each tree provides an estimate of part of the data. 
 Combining many shallow trees iteratively improves model performance. 
 Gradient boosting and random forests perform well on similar tasks and data. 
@@ -338,7 +338,7 @@ boosting to improve model accuracy \cite{muller17}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Project Goals} 
+\subsection{Study Goals} 
 
 The project examines the relationships between student characteristics,  
 behavior, and performance. Data on student performance was obtained from two 
@@ -386,17 +386,17 @@ exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
 
 \subsubsection{Linear Regression (OLS)} 
 
-All models were constructed in R (using Rstudio) following examples from
-James, Witten, Hastie, and Tibshirani (2013), \emph{An Introduction to 
-Statistical Learning with Applications in R}\cite{jamesetal13}. After 
-preliminary exploration of the data, the sample was divided into the training 
-set ($n_1$=731) and testing set ($n_2$=313) using a 70 to 30 percent split. 
-Each model was first fit to training data and evaluated on the testing set. 
-Student performance was regressed on 27 independent variables shown in Table 1 
-using the general linear model (OLS). The regression model was run on the 
-training set with the full set of predictor variables; the model was then 
-rerun excluding all non-significant predictors variables from model. The final 
-model was then evaluated on the testing set. 
+All models were constructed in R (Rstudio) following examples from
+\emph{An Introduction to Statistical Learning with Applications in R}
+\cite{jamesetal13}. After preliminary exploration of the data, the sample 
+was divided into the training set ($n_1$=731) and testing set ($n_2$=313) 
+using a 70 to 30 percent split. Each model was first fit to training data 
+and evaluated on the testing set. Student performance was regressed on 
+27 independent variables shown in Table 1 using the general linear model 
+(OLS). The regression model was run on the training set with the full 
+set of predictor variables; the model was then rerun excluding all 
+non-significant predictors variables from model. The final model was then 
+evaluated on a subset of hold-out data in the testing set. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
