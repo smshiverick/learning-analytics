@@ -14,34 +14,28 @@
 
 \begin{abstract}
 
-Predictive modeling was used to detect patterns in education data and identify 
-factors that contribute to student learning and performance. This paper 
-compared six models of student performance (linear regression, ridge regression, 
-lasso, regression trees, random forests regression, gradient boosting) and used 
-feature importance to identify which variables were important for predicting 
-performance. The sample dataset consisted of N=1044 observations from two 
-secondary schools in Portugal \cite{cortez08}. Performance was assessed by 
-final grades (range; 0-20) in two courses, mathematics and Portugese. The models 
-were fit to a subset of training data and evaluated on a hold out testing set. 
-The models all selected a similar set of variables as important for predicting 
-student performance; the models differed in the number, weighting, order and 
-importance they gave to the predictor variables. Feature importance was used
-for variable selction. Course subject was selected as an important predictor of 
-performance in all of the models; students in the Portugese course performed 
-better than students in mathematics. Linear regression selected thirteen 
-predictors of student performance in the training set, of which, six were 
-significant in the test set. Plans for higher education, mother's education 
-level, and weekly study time were positively correlated with student performance, 
-whereas course subject, school support, and romantic relations were negatively 
-associated with performance. The regression trees model selected students' plans 
-for higher education, mother's education, residence area (rural/urban), course 
-subject, and student absences as key nodes. Random forests regression selected 
-mother's education as the most informative variable for predicting performance, 
-whereas the gradient boosted regression tree selected student absences as the 
-most important feature for predicting student performance. There was a tradeoff 
-between model complexity and interpretability. Simple linear regression and a 
-single decision tree were easier to interpret than more complex models. The 
-advantages and limitations of the different models are discussed. 
+Analytic tools can detect patterns in education data and provide insights about 
+student learning and performance. This study compared six supervised learning 
+algorithms (linear regression, ridge regression, lasso, regression trees, 
+random forests regression, gradient boosted regression) and identified features 
+important for predicting student performance. The sample data consisted of 
+N=1044 observations from two secondary schools in Portugal \cite{cortez08}. 
+Performance was assessed by final grades (range; 0-20) in two courses, 
+mathematics and Portugese. The models were fit to training data with 27
+independent variables and evaluated on a testing subset. Performance was
+lower for students in mathematics than Portugese. The models selected a 
+similar set of variables as important for predicting performance: mother's 
+education level, student plans for higher education, and weekly study time 
+was positively related to predicted performance, whereas course subject, 
+school educational support, and romantic relationships were associated with 
+decreased student performance. The models differed in the number, weighting, 
+order and importance they gave to the predictor variables. Shrinkage methods,
+ridge regression and the lasso, reduced the coefficient estimates and the
+lasso performed variable selection. There was a tradeoff between model 
+complexity and interpretability. More complex models, random forests and 
+gradient boosting, decreased overfitting, but were more difficult to interpret.   
+The advantages and limitations of the different models and applications
+for educational data mining (EDM) and learning analytics (LA) are discussed. 
 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.}
 
@@ -1089,78 +1083,29 @@ experience, and motivation are influential for developing learning relationships
 
 \section{Conclusion}
 
-Predictive modeling provides a set of analytic tools for detecting patterns in 
-education data, selecting important features for predicting student success 
-and identifying students potentially at risk. This study compared several 
-supervised learning models with sample data to determine which approach is 
-best for modeling student performance and success. 
-
-
-
-Rather than relying on the 
-result of a single statistical model, this work suggests that comparing the
-results of several models is useful for selecting the best model given the
-question at hand and the available data. Educational data mining (EDM) and 
-learning analytics (LA) reserchers are increasingly focused on outcomes from
-learning in online platforms, and in future it will become important to 
-combine data from learning management systems
-
-Merging data from LMS or online learning platforms with institutional data 
-can provide a more complete insight into student performance and the conditions 
-for successful learning \cite{hora19}. 
-
-
-Predictive modeling provides useful methods for analyzing the factors that 
-contribute to student success and identifying individuals at risk for failure
-or dropping out. 
-
-reviewed EDM and LA findings and 
-
-
-Using data-driven machine learning algorithms on student profiles and data 
-about activity within the LMS can facilitate early detection of at-risk 
-students \cite{Dekkar09}. 
-
-A general conclusion is that... 
-The findings...
-
-In other words, 
-one-third of students with plans for higher education failed the course and
-over three-
-had plans to pursue higher education, whereas less than  of students ,  received a failing grade; by contrast, more than three quarters of students with no plans for higher education received a 
-failing grade. 
-
-A general conclusion is that student performance is affected by a number of
-personal, motivational, and behavioral factors. 
-
-
-people who reported misusing prescription opioids 
-were also likely to have received substance treatment. More than any other 
-demographic features, a history of prescription medication use, or illicit drug 
-use, both seemed to contribute highly to the abuse of pain reliever medications, 
-particularly for those who reported using tranquilizers, heroin, cocaine, or 
-amphetamines. The findings suggest that the opioid crisis may be driven by the 
-widespread availability of prescription medications. Even for people with no 
-previous history of mental health issues, exposure to highly addictive opioid 
-medications puts people at risk for drug dependency and addiction. As mentioned 
-in the introduction, even for those who have been in drug treatment programs, 
-a lack of continuity in treatment can leave many people in recovery at risk 
-for relapse or possible overdose as they are released back into environments 
-associated with their drug use. The sharp increase in overdose deaths in the 
-U.S. due to synthetic opioids (other than methadone) has coincided with the 
-increased availability of illicitly manufactured fentanyl \cite{nida17}. 
-Because the dosage levels and potency of illicit opioids are largely unknown, 
-there is greater risk of drug overdose death. Recent findings suggest the 
-opioid overdose epidemic is getting worse, and requires urgent action to prevent 
-opioid abuse, addiction, and death. The findings reported here seek to raise 
-awareness about the risk factors for prescription opioid addiction for patients 
-and health care providers in order to help reduce opioid overdose deaths. 
-
-Additional research is needed to understand the relationships among variables 
-that predict student performance. The findings may inform decision making and 
-
-policy efforts to address the student retention and reduce the risk of dropouts. 
-
+Predictive modeling offers a set of analytic tools for detecting patterns in 
+education data and understanding the factors that contribute to successful
+learning. This study compared six supervised learning models of student 
+performance that varied in complexity and interpretability. Simpler models 
+provided solutions that were easy to interpret but prone to overfitting;
+more complex models reduced overfitting and decreased model error, but 
+provided solutions that were more difficult to interpret. A general conclusion 
+is that comparing the results of several models provides a more complete 
+picture of factors that contribute to student performance than examining any 
+single model. LA/EDM research is increasingly focused on learning outcomes in 
+online platforms. Merging data from LMS or online learning platforms with 
+institutional data about student demographic characteristics can provide a 
+better understanding of student learning and the conditions in which it 
+occurs \cite{hora19, siemens12}. In some cases, past history of student 
+absences or failures may be a good indication of future performance;
+however, a student's future orientation to pursue higher education can 
+reveal a great deal about his or her motivation to succeed. Using a 
+data-driven approach to learning analytics based on student profiles and 
+LMS activity can also facilitate early detection of at-risk students 
+\cite{Dekkar09}. Additional research is needed to understand the relationships 
+among variables that predict student performance. These findings may inform 
+decision making and policy efforts to address student retention and reduce the 
+risk of student dropouts.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acks}
