@@ -14,31 +14,30 @@
 
 \begin{abstract}
 
-Analytic tools can detect patterns in education data and provide insights about 
-student learning and performance. This study compared six supervised learning 
-algorithms (linear regression, ridge regression, lasso, regression trees, 
-random forests regression, gradient boosted regression) and identified features 
-important for predicting student performance. The sample data consisted of 
-N=1044 observations from two secondary schools in Portugal \cite{cortez08}. 
-Performance was assessed by final grades (\textit{range}: 0-20) in two courses, 
-mathematics and Portugese. The models were fit to training data with 27
-independent variables and evaluated on a testing subset. Performance was
-lower for students in mathematics than Portugese. The models selected a 
-similar set of variables as important for predicting performance: mother's 
-education level, student plans for higher education, and weekly study time 
-was positively related to predicted performance, whereas course subject, 
-school educational support, and romantic relationships were associated with 
-decreased student performance. The models differed in the number, weighting, 
-order and importance they gave to the predictor variables. Shrinkage methods,
-ridge regression and the lasso, reduced the coefficient estimates and the
-lasso performed variable selection. There was a tradeoff between model 
-complexity and interpretability. More complex models, random forests and 
-gradient boosting, decreased overfitting, but were more difficult to interpret.   
-The advantages and limitations of the different models and applications for 
-educational data mining (EDM) and learning analytics (LA) are discussed. 
-
+Analytic tools are useful for detecting patterns in education data and 
+providing insights about student performance and learning. This study compared 
+six supervised learning algorithms (linear regression, ridge regression, the 
+lasso, regression trees, random forests regression, gradient boosted regression) 
+and identified features important for predicting student performance. The 
+dataset consisted of N=1044 observations from two secondary schools in 
+Portugal \cite{cortez08}. Performance was assessed by final grades 
+(\textit{range}: 0-20) in two courses, mathematics and Portugese. The models 
+were fit to training data with 27 independent variables and evaluated on a 
+testing subset. Overall, performance was lower for students in mathematics 
+than Portugese. The models selected a similar set of variables as important 
+for predicting performance: mother's education level, student plans for higher 
+education, and weekly study time was positively related to predicted 
+performance, whereas course subject, school educational support, and romantic 
+relationships were associated with decreased student performance. The models 
+differed in the number, weighting, order and importance given to the predictor 
+variables. Ridge regression shrank the coefficient estimates toward zero; the 
+lasso performed variables selection with 20 predictors. There was a tradeoff 
+between model complexity and interpretability. More complex models, random 
+forests and gradient boosting, decreased overfitting, but were more difficult 
+to interpret. Advantages and limitations of the different models are discussed. Applications for educational data mining (EDM) and learning analytics (LA) 
+are considered. 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.
-First draft completed June 7, 2019; final version submitted June 10, 2019.}
+First draft completed June 7, 2019; final version submitted June 14, 2019.}
 
 \end{abstract}
 \keywords{Predictive Modeling, Variable Importance, Learning Analytics}
@@ -1094,16 +1093,15 @@ single model. LA/EDM research is increasingly focused on learning outcomes in
 online platforms. Merging data from LMS or online learning platforms with 
 institutional data about student demographic characteristics can provide a 
 better understanding of student learning and the conditions in which it 
-occurs \cite{hora19, siemens12}. In some cases, past history of student 
-absences or failures may be a good indication of future performance;
-however, a student's future orientation to pursue higher education can 
-reveal a great deal about his or her motivation to succeed. Using a 
-data-driven approach to learning analytics based on student profiles and 
-LMS activity can also facilitate early detection of at-risk students 
-\cite{Dekkar09}. Additional research is needed to understand the relationships 
-among variables that predict student performance. These findings may inform 
-decision making and policy efforts to address student retention and reduce the 
-risk of student dropouts.
+occurs \cite{hora19, siemens12}. Past history of student absences or failures 
+are strong indicators of future performance; however, a student's future 
+orientation to pursue higher education can reveal a great deal about his 
+or her motivation to succeed. Using a data-driven approach to learning 
+analytics based on student profiles and LMS activity can also facilitate early 
+detection of at-risk students \cite{Dekkar09}. Additional research is needed to 
+understand the relationships among variables that predict student performance. 
+These findings may inform decision making and policy efforts to address student 
+retention and direct resources to improve successful learning outcomes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acks}
