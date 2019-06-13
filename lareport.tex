@@ -30,12 +30,15 @@ education, and weekly study time was positively related to predicted
 performance, whereas course subject, school educational support, and romantic 
 relationships were associated with decreased student performance. The models 
 differed in the number, weighting, order and importance given to the predictor 
-variables. Ridge regression shrank the coefficient estimates toward zero; the 
-lasso performed variables selection with 20 predictors. There was a tradeoff 
-between model complexity and interpretability. More complex models, random 
-forests and gradient boosting, decreased overfitting, but were more difficult 
-to interpret. Advantages and limitations of the different models are discussed. Applications for educational data mining (EDM) and learning analytics (LA) 
-are considered. 
+variables. Linear regression provided a model with 13 predictors. Ridge 
+regression shrank the coefficient estimates toward zero; the lasso performed 
+variables selection for a model with 20 predictors. There was a tradeoff 
+between model complexity and interpretability. The pruned regression tree 
+provided an interpretable non-linear solution with four branches. More complex 
+models, random forests and gradient boosting, reduced overfitting, but were 
+more difficult to interpret. Advantages and limitations of the different models 
+are discussed. Applications for educational data mining (EDM) and learning 
+analytics (LA) are considered. 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.
 First draft completed June 7, 2019; final version submitted June 14, 2019.}
 
@@ -56,21 +59,21 @@ fields at the intersection of learning science, social science, statistics, and
 computer science that leverage big data to understand learning and the 
 environments in which it occurs \cite{siemens13, siemensbaker12}. Predictive 
 modeling provides useful methods for analyzing the factors that contribute to 
-student success and identifying individuals at risk for failure or dropping out. 
+student success and identifying individuals at risk for dropping out. 
 Evaluating different predictive models and approaches to feature selection is 
 useful for determining which approach is best for predicting student performance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The fields of LA and EDM both share the goal of using research methods and
+The fields of EDM and LA both share the goal of using research methods and
 predictive analysis to improve student performance and instructional design 
 \cite{baker09, ferguson12, lester19}. EDM research has focused more on the 
 technical challenges of extracting value from big data in education 
 \cite{penaAyala14, romero10}, whereas LA takes a more holistic, education-
-focused approach to learning to inform and empower instructors and learners 
-\cite{lang17, papamitsiou14}. Despite differences in their respective origins 
-and emphasis, LA and EDM are complementary approaches that use similar 
-methodologies. Together, LA and EDM represent an ecosystem of techniques for 
+focused approach to learning that seeks to inform and empower instructors and 
+learners \cite{lang17, papamitsiou14}. Despite differences in their respective 
+origins and emphasis, LA and EDM are complementary approaches that use similar 
+methodologies. Together, EDM and LA represent an ecosystem of techniques for 
 gathering, processing, and acting on data to promote learning. These procedures 
 facilitate the preparation, measurement, and collection of data about learning 
 activities for subsequent analysis, interpretation, and reporting. 
@@ -78,20 +81,24 @@ activities for subsequent analysis, interpretation, and reporting.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Historically, education institutions have tracked student performance, 
-dropout, and retention and used analytic tools to identify factors important 
-for learning such as persistence and social integration \cite{ferguson12}. 
-As extensive education datasets became available for analysis, LA/EDM 
-researchers have applied a diverse range of descriptive, correlational, and 
-predictive methodologies to discover potentially useful patterns in data for 
-understanding students and the contexts in which they learn. Student 
-characteristics are often modeled in terms of domain knowledge, motivation, 
-metacognitive abilities (i.e., thinking about thinking), learning strategies, 
-attitudes, and affect \cite{papamitsiou14}. The main analytic approaches used 
-in EDM/LA research include discovery with models (i.e., predictive modeling), 
-similarity grouping, relationship mining, content analysis, and social network 
-analysis (SNA) \cite{baker09}. This paper focuses on predicting modeling of
-student performance as a form of data-driven learning analytics
-\cite{verbert12}. 
+dropout, and retention and used analytic tools to identify factors central 
+to learning such as persistence and social integration \cite{ferguson12}. 
+As extensive education datasets became available for analysis, EDM/LA 
+researchers applied a diverse range of descriptive, correlational, and 
+predictive methodologies to discover potentially useful patterns in the data 
+for understanding learners and learning in different contexts \cite{siemens11}. 
+Student characteristics are often modeled in terms of domain knowledge, 
+motivation, metacognitive abilities (i.e., thinking about thinking), learning 
+strategies, attitudes, and affect \cite{papamitsiou14}. The main analytic
+approaches used in EDM/LA research include discovery with models, similarity 
+grouping, relationship mining, content analysis, and social network analysis 
+(SNA) \cite{baker09, siemensbaker12}. Analyses of learner data and patterns
+identified within these data are directed at predicting learning outcomes, 
+recommending resources, and detecting error patterns \cite{verbert12}. The
+output of this research activity has provided valuable resources for various 
+stakeholders, namely learners, educators, and educational administrators. 
+This paper focuses on predictive modeling of student performance as a form 
+of data-driven learning analytics. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
