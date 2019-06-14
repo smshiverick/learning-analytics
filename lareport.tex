@@ -349,16 +349,16 @@ boosting to improve model accuracy \cite{muller17}.
 This project examines the relationships between student characteristics,  
 behavior, and performance. Data on student performance from two secondary 
 schools in Portugal was obtained from the UC-Irvine machine learning 
-repository \cite{cortez08}. The dataset included information from a student 
-survey and school grade records. The data were fit using several supervised 
-learning regression models (described above). The predictor variables of 
-interest were demographic features, family characteristics, and student 
-behaviors (e.g., weekly study hours, romantic relationships). The different 
-models explored various dimensions of student performance by: (i) Analyzing 
-the combination of factors that best predict student performance, (ii) 
-Selecting the variables most important for predicting performance, and 
-(iii) Identifying the most accurate and interpretable model of predicted 
-student performance. 
+repository (UCI-MLR) \cite{cortez08}. The dataset included information 
+from a student survey and school grade records. The data were fit using 
+several supervised learning regression models (described above). The 
+predictor variables of interest were demographic features, family 
+characteristics, and student behaviors (e.g., weekly study hours, romantic 
+relationships). The different models explored various dimensions of student 
+performance by: (i) Analyzing the combination of factors that best predict 
+student performance, (ii) Selecting the variables most important for 
+predicting performance, and (iii) Identifying the most accurate and 
+interpretable model of predicted student performance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -366,24 +366,24 @@ student performance.
 
 \subsection{Data}
 
-The student performance dataset was downloaded from the UC-Irvine machine 
-learning repository (UCI-MLR) and saved as a data frame object in a python 
-interactive notebook. The data was collected from two secondary schools in 
-the Alentejo region of Portugal during the 2005-2006 school year and 
-contained information from a questionnaire and school reports of student 
-grades \cite{cortez08}. The sample consisted of 1044 students (56.6\% female, 
-\textit{M} age=16.71 years, \textit{SD}=1.19, \textit{Median}=17 years, 
-\textit{range}=15-22). Age was measured as a categorical variable 
-(\textit{n}=10 individuals between 20 to 22 years were included in the 19+ 
-years group). The dataset consisted of thirty independent variables, 
-including demographic information, social/ emotional attributes, school-
-related variables, and student behaviors (see Table 1). The target variable, 
-Student performance was evaluated on a 20 point scale--as in other European 
-countries (e.g., France)--at three points during the school year (i.e., 
-Grade1, Grade2, Grade3) for two courses (Mathematics n=395; Portugese, n=649). 
-The target variable of interest was the final course grade. A binary dummy 
-variable of student performance was calculated based on the measure of final 
-exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
+The student performance dataset downloaded from the UCI-MLR was saved as a 
+data frame object in a python interactive notebook. The data was collected 
+from two secondary schools in the Alentejo region of Portugal during the 
+2005-2006 school year and contained information from a questionnaire and 
+school reports of student grades \cite{cortez08}. The sample consisted of 
+1044 students (56.6\% female, \textit{M}age=16.71 years, \textit{SD}=1.19,
+\textit{Median}=17 years, \textit{range}=15-22). Age was measured as a 
+categorical variable (\textit{n}=10 individuals between 20 to 22 years 
+were included in the category: 19+). The dataset consisted of 30 independent
+variables, including demographic information, social/ emotional attributes,
+school-related variables, and student behaviors (see Table 1). The target 
+variable, student performance was evaluated on a 20 point scale--as in other 
+European countries (e.g. France)--at three points during the school year 
+(i.e., Grade1, Grade2, Grade3) for two courses: Mathematics (\textit{n=395})
+and Portugese (\textit{n=649}). The target variable of interest was the final 
+course grade (G3). A binary dummy variable of student performance was 
+calculated based on the measure of final exam grades (Pass: \textit{G3}$>$10, 
+Fail: \textit{G3}$<=$10) for descriptive purposes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -391,9 +391,9 @@ exam grades (Pass$>$10, Fail$<=$10) for descriptive purposes.
 
 \subsubsection{Linear Regression (OLS)} 
 
-All models were constructed in R (Rstudio) following examples from
-\emph{An Introduction to Statistical Learning with Applications in R}
-\cite{jamesetal13}. After preliminary exploration of the data, the sample 
+All models were constructed in \textit{R} (using \textit{Rstudio}) following
+examples from \emph{An Introduction to Statistical Learning with Applications 
+in R} \cite{jamesetal13}. After preliminary exploration of the data, the sample 
 was divided into the training set ($n_1$=731) and testing set ($n_2$=313) 
 using a 70 to 30 percent split. Each model was first fit to training data 
 and evaluated on the testing set. Student performance was regressed on 
