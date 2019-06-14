@@ -247,13 +247,13 @@ models are built on a hierarchy of \textit{if-else} questions that proceeds
 from a root node as the starting point and continues through a series of 
 decisions. Each node in the tree represents either a question or a terminal 
 node (i.e.,leaf) that contains the outcome. In constructing the tree, the 
-algorithm searches through all possible decisions or tests, and finds a 
+algorithm searches through all possible decisions, or tests, and finds a 
 solution that is most informative about the target outcome. The recursive 
 branching process of tree based models yields a binary tree of decisions, 
 with each node representing a test that considers a single feature. This 
 process of recursive partitioning is repeated until each leaf in the decision 
 tree contains only a single target. Prediction for a new data point proceeds 
-by checking which region of the partition a new point falls into, and 
+by checking which region of the partition the new point falls into and 
 predicting the majority in that feature space. Tree based models require 
 little adjustment and are easy to interpret. A drawback is that they can lead 
 to very complex models that highly overfit data used to train the model. A 
@@ -265,22 +265,22 @@ the maximum depth of the tree.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Random Forest Regression}
 
-A random forest is a collection of decision trees that are slightly different 
-where each tree overfits the data in a different way. This approach reduces 
-overfitting by building many trees and averaging their results. Randomness is 
-introduced into the tree building process in two ways: first, by drawing a 
-random subset (i.e., bootstrap sample) of the data, and second by selecting 
-a random subset of features at each node branch \cite{breiman01}. In building 
-the random forest, the user must first decide how many trees to build and the 
-algorithm makes different random choices so that each tree is distinct
-\cite{muller17, raschka17}. The bootstrapping method repeatedly draws random 
-samples of size \textit{n} from the dataset with replacement. The decision 
-trees are built on these random samples that are the same size as the original 
-data, with some points missing and some data points repeated. The algorithm 
-also selects a random subset of p features, that are repeated separately at 
-each node, so that each decision at the node branch is based on a different 
-subset of features. These two processes help ensure that all of the decision 
-trees in the random forest are different. 
+A random forest is a collection of decision trees that are each slightly 
+different, with each tree overfitting the data in a different way. This 
+approach reduces overfitting by building many trees and averaging their results. 
+Randomness is introduced into the tree building process in two ways: first, 
+by drawing a random subset (i.e., bootstrap sample) of the data, and second 
+by selecting a random subset of features at each node branch \cite{breiman01}. 
+In building the random forest, the user must first decide how many trees to 
+build and the algorithm makes different random choices so that each tree is
+distinct \cite{muller17, raschka17}. The bootstrapping method repeatedly draws 
+random samples of size \textit{n} from the dataset with replacement. The 
+decision trees are built on these random samples that are the same size as 
+the original data, with some points missing and some data points repeated. 
+The algorithm also selects a random subset of \textit{p} features, that are 
+repeated separately at each node, so that each decision at the node branch is 
+based on a different subset of features. These two processes help ensure that 
+all of the decision trees in the random forest are different. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
