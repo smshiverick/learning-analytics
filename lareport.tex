@@ -26,16 +26,16 @@ were fit to training data with 27 independent variables and evaluated on a
 testing subset. Overall, performance was lower for students in mathematics 
 than Portugese. The models selected a similar set of variables as important 
 for predicting performance: mother's education level, student plans for higher 
-education, and weekly study time was positively related to predicted 
+education, and weekly study time were positively related to predicted 
 performance, whereas course subject, school educational support, and romantic 
 relationships were associated with decreased student performance. The models 
-differed in the number, weighting, order and importance given to the predictor 
+differed in the number, weighting, order and importance given to predictor 
 variables. Linear regression provided a model with 13 predictors. Ridge 
 regression shrank the coefficient estimates toward zero; the lasso performed 
 variables selection for a model with 20 predictors. There was a tradeoff 
-between model complexity and interpretability. The pruned regression tree 
-provided an interpretable non-linear solution with four branches. More complex 
-models, random forests and gradient boosting, reduced overfitting, but were 
+between model complexity and interpretability. The single pruned regression 
+tree provided a simple, interpretable non-linear model with four features. Random 
+forests regression and gradient boosting reduced overfitting, but were 
 more difficult to interpret. Advantages and limitations of the different models 
 are discussed. Applications for educational data mining (EDM) and learning 
 analytics (LA) are considered. 
@@ -66,7 +66,7 @@ useful for determining which approach is best for predicting student performance
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Historically, education institutions have tracked student performance, 
-dropout and retention, and used analytic tools to identify factors central 
+dropout, retention, and used analytic tools to identify factors central 
 to learning such as persistence and social integration \cite{ferguson12}. 
 As extensive education datasets became available for analysis, EDM/LA 
 researchers have applied a diverse range of descriptive, correlational, and 
@@ -86,17 +86,17 @@ methodologies.
 
 Together, EDM and LA represent an ecosystem of techniques for gathering, 
 processing, and acting on data to promote learning. The main analytic approaches 
-used in these areas include discovery with models, similarity grouping, 
-relationship mining, content analysis, and social network analysis (SNA) 
-\cite{baker09, siemensbaker12}. These procedures facilitate the preparation, 
-measurement, and collection of data about learning activities for subsequent 
-analysis, interpretation, and reporting. Student characteristics are often 
-modeled in terms of domain knowledge, motivation, metacognitive abilities 
-(i.e., thinking about thinking), learning strategies, attitudes, and affect
-\cite{papamitsiou14}. Analyses of learner data and patterns identified within 
-these data have been directed at predicting learning outcomes, recommending 
-resources, and detecting error patterns \cite{verbert12}. The output from 
-EDM/LA research has provided insights for various stakeholders, 
+used in these areas include discovery with models (i.e. modeling), similarity 
+grouping, relationship mining, content analysis, and social network analysis 
+(SNA) \cite{baker09, siemensbaker12}. These procedures facilitate the 
+preparation, measurement, and collection of data about learning activities 
+for subsequent analysis, interpretation, and reporting. Student characteristics 
+are often modeled in terms of domain knowledge, motivation, metacognitive 
+abilities (i.e. thinking about thinking), learning strategies, attitudes, and 
+affect \cite{papamitsiou14}. Analyses of learner data and patterns identified 
+within these data have been directed at predicting learning outcomes, 
+recommending resources, and detecting error patterns \cite{verbert12}. The 
+output from EDM/LA research has provided insights for various stakeholders, 
 including learners, educators, and administrators. This paper focuses on 
 predictive modeling of student performance as a form of data-driven 
 learning analytics. 
@@ -105,27 +105,27 @@ learning analytics.
 
 \subsection{Predictive Modeling}
 
-Predictive modeling involves a set of procedures and automated processes for 
-extracting knowledge from data \cite{jamesetal13, kuhn13}. The two main 
-branches of predictive modeling are supervised learning and unsupervised 
+Predictive modeling involves a set of statistical procedures and automated 
+processes for extracting knowledge from data \cite{jamesetal13, kuhn13}. Two 
+main branches of predictive modeling are supervised learning and unsupervised 
 learning. Supervised learning problems involve prediction about a specific 
-outcome or target variable (i.e., course grade) when examples of input/output 
+outcome or target variable (i.e. course grade) when examples of input/output 
 pairs are available in the data. If a dataset has no target outcome, 
 unsupervised learning methods (e.g. clustering) can reveal structure in 
-unlabeled data. Clustering can be used to group individuals together based 
+unlabeled data. Clustering can be used to group individuals based 
 on similar learning profiles. In this study, student performance is analyzed
 as a supervised learning problem based on final course grades. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Two main approaches for supervised learning problems are classification and 
-regression. For a binary or categorical outcome represented as a class label 
-(i.e., `pass`/`fail`), a classification model will predict which class or 
+regression. For a binary or categorical outcome that is represented as a class 
+label (e.g., pass, fail), a classification model will predict which class or 
 category that new instances are assigned to. When the target variable to be 
 predicted is measured on a continuous scale (e.g. GPA), a regression model 
 tests how a set of attributes or features predicts the target outcome. 
-Classification is the most commonly used data analytic methods for modeling 
-students and their behavior, and can include methods such as logistic 
+Classification is the most commonly used data analytic method for modeling 
+students and their behavior and can include methods such as logistic 
 regression, support vector machines, naive Bayes, decision trees, and 
 neural networks \cite{Lykourentzou09}. 
 
@@ -133,15 +133,16 @@ neural networks \cite{Lykourentzou09}.
 
 The present study compares several regression models of student performance 
 to identify the set of features that best predict student performance. Each 
-model is trained on a set of input-output pairs and then used to make 
-predictions about new observations that were previously set aside. Comparing 
-different predictive models can help determine which model is best for a given 
-problem with the data available \cite{raschka17}. Past empirical findings 
-indicate that, in addition to course assessments (i.e., number of quizzes 
-passed), student engagement and participation in course activities are the most 
-influential predictors of final grades \cite{papamitsiou14, romero10}. 
-A student's sense of belonging is essential for engagement and improved course 
-satisfaction, which in turn can reduce student dropout rate. 
+model was first trained on a set of input-output pairs and then used 
+to make predictions about new observations that were previously set aside. 
+Comparing different predictive models can help determine which model is best
+for a given problem with the data available \cite{raschka17}. Past empirical 
+findings indicate that, in addition to course assessments (i.e. number of
+quizzes passed), student engagement and participation in course activities 
+are the most influential predictors of final grades 
+\cite{papamitsiou14, romero10}. A student's sense of belonging is also 
+essential for engagement and improved course satisfaction, which can in 
+turn lead to reduced student dropout. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Linear Models} 
@@ -176,17 +177,18 @@ that produce better prediction accuracy and model interpretability
 In many regression analyses, it is often the case that multiple independent 
 variables or features will not be correlated with the target outcome. Three 
 methods for improving the fit of linear models are: (a) subset selection, 
-(b) dimension reduction, and (c) regularization (i.e.., shrinkage. Determining 
+(b) dimension reduction, and (c) regularization (i.e.., shrinkage). Determining 
 which set of features is best for representing the predicted outcome is 
-essential. A straight forward approach to feature selection is to conduct a 
-regression including all the independent variables and then to rerun the 
-regression with non-significant variables excluded from the model.
-Another approach termed regularization includes all \textit{p} predictor 
-variables, but constrains (i.e., `regularizes`) the coefficient estimates of 
-the independent variables by shrinking them towards zero. Regularization 
-reduces variablity, which in turn improves test set accuracy with a slight 
-increase in bias. Shrinking the coefficient estimates of irrelevant features 
-toward zero reduces overfitting and provides a more interpretable model. 
+essential for model interpretation. A straightforward approach to feature 
+selection is to first conduct a regression including all the independent 
+variables and then rerun the regression while excluding non-significant 
+variables from the model. Another approach, termed \textit{regularization}, 
+includes all \textit{p} predictor variables, but constrains (i.e., regularizes) 
+the coefficient estimates of the independent variables by shrinking them 
+towards zero. Regularization reduces variablity, which in turn improves 
+model accuracy with new observations, with a slight increase in bias. 
+Shrinking the coefficient estimates of irrelevant features toward zero 
+reduces overfitting and can aid model interpretation. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
