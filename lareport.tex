@@ -223,21 +223,19 @@ a major advantage over ridge regression as it produces simpler, more
 interpretable models based on a subset of features. The lasso uses the L1 
 penalty which has the effect of forcing some of the coefficient estimates to be
 equal exactly to zero when the tuning parameter lambda is sufficiently large 
-\cite{statlearn13}. Thus, the lasso performs variable selection, and produces 
-sparse models based on a subset of the features, which are generally easier to 
-interpret than ridge regression. The lasso implicitly assumes that a number of 
-the feature coefficients or weight truly equal to zero. In general, the lasso 
-performs better than ridge regression in situations where a small number of 
-features account for most of the variability in the target outcome, and the 
-remaining features have coefficients that are very small or equal to zero. 
-By contrast, ridge regression performs better when the target is a function 
+\cite{kuhn13}. The lasso performs variable selection and produces sparse models 
+based on a subset of features, which are generally easier to interpret than 
+ridge regression. The lasso implicitly assumes that a number of the feature 
+coefficients or weight truly equal to zero. In general, the lasso performs 
+better than ridge regression in situations where a small number of features 
+account for most of the variability in the target outcome, and the remaining 
+features have coefficients that are very small or equal to zero. By contrast, 
+ridge regression performs better when the target is a function 
 of a large number of predictors that contribute approximately equally to the
-coefficients. Cross-validation can be used to determine the optimal value
-of the parameter lambda and also which approach is better. In general, least 
-squares regression (OLS) performs well when the number of observations is 
-larger than the number of features ($\textit{n}>>\textit{p}$); however, ridge 
-regression and the lasso are preferred when working with a very large number 
-of predictors ($\textit{p}>>\textit{n}$).
+coefficients. Cross-validation is used to determine which value of the lambda 
+parameter is optimal. In general, least squares regression (OLS) performs well 
+when the number of observations is larger than the number of features ($\textit{n}>>\textit{p}$); however, ridge regression and the lasso are 
+preferred when working with a very large number of predictors ($\textit{p}>>\textit{n}$).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
