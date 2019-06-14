@@ -391,9 +391,8 @@ Fail: \textit{G3}$<=$10) for descriptive purposes.
 
 \subsubsection{Linear Regression (OLS)} 
 
-All models were constructed in \textit{R} (using \textit{Rstudio}) following
-examples from \emph{An Introduction to Statistical Learning with Applications 
-in R} \cite{jamesetal13}. After preliminary exploration of the data, the sample 
+All models were constructed in \textit{R} (using \textit{Rstudio})
+\cite{jamesetal13}. After preliminary exploration of the data, the sample 
 was divided into the training set ($n_1$=731) and testing set ($n_2$=313) 
 using a 70 to 30 percent split. Each model was first fit to training data 
 and evaluated on the testing set. Student performance was regressed on 
@@ -408,18 +407,18 @@ evaluated on a subset of hold-out data in the testing set.
 \subsubsection{Ridge regression (L2 penalty)} 
 
 The glmnet package was used to fit the ridge regression and lasso models. 
-The glmnet() function does not use model formula language (i.e., y \~\ x), 
-so the X matrix of predictors and target vector Y were passed to the model. 
-The `model.matrix()` function produced a matrix corresponding to the 27 
-predictors and automatically transformed any qualitative variables into
-dummy variables. The `alpha` parameter in the glmnet() function determines 
-what kind of model is fit: alpha=0 is used to fit ridge regression. It is
-important to select an appropriate value of the parameter lambda, as the
-algorithm generates a different set of coefficients for each value of 
-lambda. By default, the glmnet() function performs ridge regression for an 
-automatically selected range of lambda values (e.g., 100). The glmnet 
-function also standardizes the variables so they are all on the same scale.
-The shrinkage penalty is applied to every feature, but not the intercept. 
+The glmnet() function does not use model formula language, so the X matrix 
+of predictors and target vector Y were passed to the model. The model.matrix()
+function produced a matrix corresponding to the 27 predictors and automatically
+transformed any qualitative variables into dummy variables. The \textit{alpha} 
+parameter in the glmnet() function determines what kind of model is fit: 
+\textit{alpha} = 0 is used to fit ridge regression. It is important to select 
+an appropriate value of the parameter \textit{lambda}, as the algorithm 
+generates a different set of coefficients for each value of lambda. By default, 
+the glmnet() function performs ridge regression for an automatically selected 
+range of lambda values (e.g. 100). The glmnet function also standardizes the 
+variables so they are all on the same scale. The shrinkage penalty is applied 
+to every feature, but not the intercept. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -431,17 +430,16 @@ values. Cross-validation was used to select an optimal value of the tuning
 parameter lambda. The lasso is similar to best subset selection as it tries 
 to find the set of coefficient estimates that leads to the smallest error (RSS). 
 In terms of the bias-variance tradeoff, the lasso is qualitatively similar to 
-ridge regression. As lambda increases, the variances decreases and bias 
-increases somewhat; however, the variance of ridge regression is slightly 
-lower than the variance of the lasso. 
- 
+ridge regression. As the value of \textit{lambda} increases, the variance
+decreases and bias increases somewhat. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Regression Trees} 
 
 The regression tree model of student performance was fit to the training data 
 using the rpart() function in R, with all 27 independent variables. The decision
-tree uses recursive binary splitting to constructed to grow a large tree on the 
+tree uses recursive binary splitting to construct a large tree on the 
 training data. Cross-validation was used to determine the optimal tree complexity.
 The model was prepruned to a maximum depth of 3, which means the algorithm split 
 on three consecutive features.
@@ -459,7 +457,7 @@ look at all of the features in the dataset or a limited number. A high value
 for \emph{maximum-features} will produce trees in the random forest that are 
 very similar and will fit the data easily based on the most distinctive features, 
 whereas a low value will produce trees that are very different from each other, 
-and reduces overfitting. 
+which reduces overfitting. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -469,9 +467,9 @@ In addition to pre-pruning and the number of trees, an important parameter
 for gradient boosting is the \emph{learning rate} which determines how 
 strongly each tree tries to correct for mistakes of previous trees. A high 
 learning rate produces stronger corrections, allowing for more complex models. 
-The gbm package ("Gradient Boosted Machines", Friedman) was loaded, and the 
+The gbm package (\textit{Gradient Boosted Machines}) was loaded, and the 
 gbm() function was called on student performance (final grade) using the 
-Gaussian distribution, with 1000 shallow trees, a shrinkage parameters=0.01, 
+Gaussian distribution, with 1000 shallow trees, a shrinkage parameter = 0.01, 
 and interaction depth of 4 splits. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
