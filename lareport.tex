@@ -319,8 +319,8 @@ boosting to improve model accuracy \cite{muller17}.
     6. Mother's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & MEDU  \\
     7. Father's education (0=None, 1=Primary, 2=Grades 5-9,  3=Secondary, 4=Higher education) & FEDU  \\
     8. Mother's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & MJOB  \\
-    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & Fjob  \\
-    10. Student's guardian (0=Other, 1=Father, 2=Mother) & Guardian  \\
+    9. Father's job (0=At home, 1=Other, 2=Civil Services, 3=Health Care, 4=Teacher) & FJOB  \\
+    10. Student's guardian (0=Other, 1=Father, 2=Mother) & GUARDIAN  \\
     11. Time from home to school (1=<15 min, 2=15-30 min, 3=30-60 min, 4=>60 min) & TRAVEL  \\
     12. Weekly study time (1=<2 hours, 2=2-5 hours, 3=5-10 hours, 4=>10 hours) & STUDY  \\
     13. Extra educational support (0=No, 1=Tes) & SCHOOLSUP  \\
@@ -373,17 +373,17 @@ from two secondary schools in the Alentejo region of Portugal during the
 school reports of student grades \cite{cortez08}. The sample consisted of 
 1044 students (56.6\% female, \textit{M}age=16.71 years, \textit{SD}=1.19,
 \textit{Median}=17 years, \textit{range}=15-22). Age was measured as a 
-categorical variable (\textit{n}=10 individuals between 20 to 22 years 
-were included in the category: 19+). The dataset consisted of 30 independent
-variables, including demographic information, social/ emotional attributes,
-school-related variables, and student behaviors (see Table 1). The target 
-variable, student performance was evaluated on a 20 point scale--as in other 
-European countries (e.g. France)--at three points during the school year 
-(i.e., Grade1, Grade2, Grade3) for two courses: Mathematics (\textit{n=395})
-and Portugese (\textit{n=649}). The target variable of interest was the final 
-course grade (G3). A binary dummy variable of student performance was 
-calculated based on the measure of final exam grades (Pass: \textit{G3}$>$10, 
-Fail: \textit{G3}$<=$10) for descriptive purposes.
+categorical variable (\textit{n}=10 individuals between the ages of 20 to 22 
+were included in the category: 19+ years). The dataset consisted of 30 
+independent variables, including demographic information, social/ emotional
+attributes, school-related variables, and student behaviors (see Table 1). 
+The target variable, student performance was evaluated on a 20 point scale
+\-\ as in other European countries (e.g. France)\-\ at three points during 
+the school year (i.e., Grade1, Grade2, Grade3) for two courses: Mathematics
+(\textit{n=395}) and Portugese (\textit{n=649}). The target variable of 
+interest was the final course grade (G3). A binary dummy variable of
+student performance was calculated based on the measure of final exam grades 
+(Pass: \textit{G3}$>$10, Fail: \textit{G3}$<=$10) for descriptive purposes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -407,18 +407,18 @@ evaluated on a subset of hold-out data in the testing set.
 \subsubsection{Ridge regression (L2 penalty)} 
 
 The glmnet package was used to fit the ridge regression and lasso models. 
-The glmnet() function does not use model formula language, so the X matrix 
-of predictors and target vector Y were passed to the model. The model.matrix()
-function produced a matrix corresponding to the 27 predictors and automatically
-transformed any qualitative variables into dummy variables. The \textit{alpha} 
-parameter in the glmnet() function determines what kind of model is fit: 
-\textit{alpha} = 0 is used to fit ridge regression. It is important to select 
-an appropriate value of the parameter \textit{lambda}, as the algorithm 
-generates a different set of coefficients for each value of lambda. By default, 
-the glmnet() function performs ridge regression for an automatically selected 
-range of lambda values (e.g. 100). The glmnet function also standardizes the 
-variables so they are all on the same scale. The shrinkage penalty is applied 
-to every feature, but not the intercept. 
+The glmnet() function does not use model formula language, so the \textit{X} 
+matrix of predictors and target vector \textit{Y} were passed to the model. 
+The model.matrix() function produced a matrix corresponding to the 27 predictors 
+and automatically transformed any qualitative variables into dummy variables. 
+The \textit{alpha} parameter in the glmnet() function determines what kind of 
+model is fit: \textit{alpha} = 0 is used to fit ridge regression. It is 
+important to select an appropriate value of the parameter \textit{lambda}, 
+as the algorithm generates a different set of coefficients for each value of
+lambda. By default, the glmnet() function performs ridge regression for an
+automatically selected range of lambda values (e.g. 100). The glmnet function 
+also standardizes the variables so they are all on the same scale. The 
+shrinkage penalty is applied to every feature, but not the intercept. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -461,16 +461,15 @@ which reduces overfitting.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Gradient Boosted Model} 
+\subsubsection{Gradient Boosted Regression Trees} 
 
 In addition to pre-pruning and the number of trees, an important parameter 
 for gradient boosting is the \emph{learning rate} which determines how 
 strongly each tree tries to correct for mistakes of previous trees. A high 
 learning rate produces stronger corrections, allowing for more complex models. 
-The gbm package (\textit{Gradient Boosted Machines}) was loaded, and the 
-gbm() function was called on student performance (final grade) using the 
-Gaussian distribution, with 1000 shallow trees, a shrinkage parameter = 0.01, 
-and interaction depth of 4 splits. 
+The gbm package was loaded, and the gbm() function was called on student
+performance (final grade) using the Gaussian distribution, with 1000 shallow 
+trees, a shrinkage parameter = 0.01, and interaction depth of 4 splits. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -597,16 +596,13 @@ and interaction depth of 4 splits.
 
 \subsection{Exploratory Data Analysis}
 
-Preliminary examination of the data revealed significant correlations 
-between previous course failures and the course evaluation variables,
-Grade 1, Grade 2, and Grade 3 (Table 2). A chi-squared test of independence 
-showed the proportion of passing and failing final grades (G3) was 
-significantly related to previous course failures ($\chi^2$,
-\textit{p}$=$0.001)(Figure 1). The majority of students with no past failures 
-successfully passed their courses, but only a minority of students with one
-or more previous failures received a passing grade. Past course failures 
-and the first two course grades (i.e., Grade 1, Grade 2) were not included 
-in the regression models to address the issue of multicolinearity.
+Preliminary examination of the data revealed significant inter-correlations 
+between the course evaluation variables Grades 1, Grade 2, and Grade 3 
+which accounted for significant portions of variance in the target outcome 
+(see Table 2). In addition, previous course failures was significantly 
+correlated with all three course grade measures. To address the issue of 
+multicolinearity, Grade 1, Grade 2, and past course failures were not included 
+in the regression analyses reported below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
