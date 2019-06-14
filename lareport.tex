@@ -269,7 +269,7 @@ A random forest is a collection of decision trees that are each slightly
 different, with each tree overfitting the data in a different way. This 
 approach reduces overfitting by building many trees and averaging their results. 
 Randomness is introduced into the tree building process in two ways: first, 
-by drawing a random subset (i.e., bootstrap sample) of the data, and second 
+by drawing a random subset (i.e. bootstrap sample) of the data, and second 
 by selecting a random subset of features at each node branch \cite{breiman01}. 
 In building the random forest, the user must first decide how many trees to 
 build and the algorithm makes different random choices so that each tree is
@@ -287,12 +287,12 @@ all of the decision trees in the random forest are different.
 \subsubsection{Gradient Boosting}
 
 Similar to random forests, gradient boosting is an ensemble approach that 
-builds many smaller trees; however, with each new tree, the gradient boosting 
-algorithm  attempts to correct for deficiencies of the current ensemble. 
+builds many smaller trees; however, with each new tree the gradient boosting 
+algorithm attempts to correct for deficiencies of the current ensemble. 
 In contrast to random forests, gradient boosting grows smaller, stubbier 
-trees, and goes after bias. \cite{jamesetal13, kuhn13}. Gradient boosted 
+trees, and goes after bias \cite{jamesetal13, kuhn13}. Gradient boosted 
 regression trees use strong prepruning, with shallow trees of a depth of 
-one to five; thus, each tree provides an estimate of part of the data. 
+one to five. Thus, each tree provides an estimate of part of the data. 
 Combining many shallow trees iteratively improves model performance. 
 Gradient boosting and random forests perform well on similar tasks and data. 
 A common practice is to first construct random forests and then use gradient 
@@ -346,20 +346,19 @@ boosting to improve model accuracy \cite{muller17}.
 
 \subsection{Study Goals} 
 
-The project examines the relationships between student characteristics,  
-behavior, and performance. Data on student performance was obtained from two 
-secondary schools in Portugal \cite{cortez08}. The dataset included information
-collected from a student survey and school grade records. The data were fit
-using several supervised machine learning models (described above) to identify 
-the set of features that best predicted student success and characteristics 
-associated with course failure. The target variable was final course grade in 
-two courses, mathematics and Portugese. The predictors variables of interest 
-were demographic variables, family characteristics, and student behaviors 
-(e.g., weekly study hours). This method can help to explore important factors 
-that contribute to student performance by: (i) Identify demographic factors 
-related to students success and failure, (ii) Identify associations between 
-students performance and the independent variables, (iii) Identify which model
-provides the most accurate and interpretable solution. 
+This project examines the relationships between student characteristics,  
+behavior, and performance. Data on student performance was obtained from 
+two secondary schools in Portugal \cite{cortez08}. The dataset included 
+information collected from a student survey and school grade records. 
+The data were fit using several supervised machine learning models (described 
+above). The target variable was final course grade in two courses, mathematics 
+and Portugese. The predictors variables of interest were demographic variables, 
+family characteristics, and student behaviors (e.g., weekly study hours, 
+romantic relationships). The different models explored various dimensions of
+student performance by: (i) Analyzing the combination of factors that best
+predict student performance, (ii) Performing variable selection for the 
+features that are most important for predicting performance, and (iii) 
+Identifying the most accurate and interpretable model for predicted perfomance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
