@@ -16,7 +16,7 @@
 
 Analytic tools are useful for detecting patterns in education data and 
 providing insights about student performance and learning. This study compared 
-six supervised learning algorithms (linear regression, ridge regression, the 
+six supervised learning algorithms (e.g., linear regression, ridge regression, 
 lasso, regression trees, random forests regression, gradient boosted regression) 
 and identified features important for predicting student performance. The 
 dataset consisted of N=1044 observations from two secondary schools in 
@@ -25,20 +25,20 @@ Portugal \cite{cortez08}. Performance was assessed by final grades
 were fit to training data with 27 independent variables and evaluated on a 
 testing subset. Overall, performance was lower for students in mathematics 
 than Portugese. The models selected a similar set of variables as important 
-for predicting performance: mother's education level, student plans for higher 
+for predicting performance: Mother's education level, student plans for higher 
 education, and weekly study time were positively related to predicted 
 performance, whereas course subject, school educational support, and romantic 
 relationships were associated with decreased student performance. The models 
-differed in the number, weighting, order and importance given to predictor 
+differed in the number, weighting, order and importance given to the predictor 
 variables. Linear regression provided a model with 13 predictors. Ridge 
 regression shrank the coefficient estimates toward zero; the lasso performed 
 variables selection for a model with 20 predictors. There was a tradeoff 
 between model complexity and interpretability. The single pruned regression 
-tree provided a simple, interpretable non-linear model with four features. Random 
-forests regression and gradient boosting reduced overfitting, but were 
-more difficult to interpret. Advantages and limitations of the different models 
-are discussed. Applications for educational data mining (EDM) and learning 
-analytics (LA) are considered. 
+tree provided a simple, interpretable non-linear model that branched on four 
+features. Random forests regression and gradient boosting reduced overfitting, 
+but were more difficult to interpret. Advantages and limitations of the 
+different models are considered. Applications for educational data mining (EDM) 
+and learning analytics (LA) are discussed. 
 \footnote{Address correspondence to \textit{smshiverick@gmail.com}.
 First draft completed June 7, 2019; final version submitted June 14, 2019.}
 
@@ -822,6 +822,8 @@ model selected a subset of the predictor variables.
   \label{f:Figure4}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Regression Trees}
 
 The decision tree model was fit to the training set, with a maximum depth of 3;
@@ -861,8 +863,8 @@ performance of 11. On the left branch, students whose mother's had attended
 secondary school or lower (17\%), the mean predicted performance was 10. This 
 branch split next on course topic, and students in the Portugese course (12\%) 
 had a mean predicted performance of 11, whereas the mean performance for 
-students in the mathematics course (5\%) was 8.2. For students with no plans for 
-higher education (9\%), the next node split on absences, where the mean 
+students in the mathematics course (5\%) was 8.2. For students with no plans 
+for higher education (9\%), the next node split on absences, where the mean 
 predicted performance for students with no absences (5\%) was 9.1, and students 
 with one or more absences, had a mean predicted performance of 4.6. 
 
@@ -1018,7 +1020,7 @@ predictors are measured on different scales or vary in number of categories.
 Much of the student data collected by educational institutions is measured on 
 different scales. Researchers investigating feature importance with student data 
 typically normalize or regularize the data by transforming variables measured 
-on different scales to the same scale (M=0, SD=1). However, to facilitate 
+on different scales to the same scale. However, to facilitate 
 interpretation of results, it is necessary to convert transformed variables 
 back to their original scales. 
 
