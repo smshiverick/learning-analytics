@@ -952,8 +952,8 @@ the gradient boosted model.
 The different models identified many of the same variables as important for 
 predicting student performance, including course subject, mother's education, 
 plans for higher education, weekly study time, school support, absences, 
-going out with friends, and romantic relationships. Overall, students in the 
-Portugese course performed better than students in mathematics, which is likely 
+going out with friends, and romantic relationships. Overall, the performance of
+students in mathematics was lower than students in the Portugese course, likely 
 due to the difficulty of the subject material. The models differed, however, 
 in the number, weighting, order, and importance of the selected predictors. 
 With linear regression, the predicted outcome is based on the weighted average 
@@ -961,19 +961,19 @@ or combination of all the predictor variables. The OLS linear regression
 identified thirteen regressor variables in the training set, of which, only 
 six were significant predictors of student performance in the test set, which 
 indicates overfitting. Mother's education level, student plans for higher 
-education, and weekly study time were associated with improved student 
-performance, whereas course subject, school support, and romantic relationships 
-were related to decreased performance. Ridge regression reduced model error by 
-shrinking the coefficient estimates towards zero, but with slightly higher bias 
-and risk of underfitting. The 
-lasso model performed variable selection by shrinking the coefficient values 
-of seven non-relevant predictors to exactly zero, which yielded a model with
-a subset of twenty features. Although the lasso model was simpler than 
-ridge regression, the final OLS model was more parsimonious than the lasso. 
+education, and weekly study time were associated with improved performance, 
+whereas course subject, school support, and romantic relationships were related 
+to decreased performance. The ridge regression reduced model error by shrinking 
+the coefficient estimates towards zero, but with slightly higher bias and risk 
+of underfitting. The lasso model performed variable selection by shrinking the 
+coefficient values of seven non-relevant predictors to exactly zero, which 
+yielded a model with a subset of twenty features. Although the lasso model 
+was simpler than ridge regression, the final OLS model was more parsimonious 
+than the lasso. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The simple regression tree model selected course subject as the root node in 
+The regression tree model selected course subject as the root node in 
 the training set, and branched on mother's education, weekly study time, 
 absences, mother's job, and student age as key nodes for predicting student 
 performance. In the testing set, plans for higher education was selected as 
@@ -1023,8 +1023,8 @@ different scales. Researchers investigating feature importance with student data
 typically transform variables measured on different scales to the same scale. 
 it is essential that the transformed variables are converted back to their 
 original scales for meaningful interpretation of the results. Furthermore, 
-it is important to consider that learning a complex concept that is not easily 
-reduced to a single measure of performance such as a final course grade.
+it is important to consider that learning cannot easily be reduced to a single 
+measure of performance such as a final course grade.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1078,8 +1078,8 @@ learning and visualize connections among learners \cite{siemens13}.
 Past research has also revealed that individual differences in students
 metacognitive abilities (i.e., self-awareness, self-reflection), disposition, 
 experience, and motivation are influential for developing learning relationships 
-\cite{gasevic15 lang17,lester19, papamitsiou14}. Additional research would help 
-to clarify the relationships among variables that predict student performance. 
+\cite{gasevic15 lang17,lester19, papamitsiou14}. Additional research could help 
+explore the relationships among variables that contribute to student performance. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1104,7 +1104,8 @@ orientation to pursue higher education can reveal a great deal about his
 or her motivation to succeed. Using a data-driven approach to learning 
 analytics based on student profiles and LMS activity can also facilitate early 
 detection of at-risk students. These findings may inform decision making and 
-policy efforts to address student retention and direct resources to improve successful learning outcomes.
+policy efforts to address student retention and direct resources to improve 
+successful learning outcomes.
 
 %\cite{dekkar09}
 
