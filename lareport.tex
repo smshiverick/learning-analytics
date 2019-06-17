@@ -949,23 +949,23 @@ the gradient boosted model.
 
 \section{DISCUSSION}
 
-The supervised learning models identified many of the same variables as 
-important for predicting student performance, including course subject, 
-mother's education, plans for higher education, weekly study time, school 
-support, absences, going out with friends, and romantic relationships. 
-Overall, students in the Portugese course performed better than students 
-in mathematics likely due to a difference in difficulty of the material. 
-The models differed, however, in the number, weighting, order, and 
-importance of the selected predictors. With linear regression, the predicted 
-outcome is based on the weighted average or combination of all the predictor 
-variables. The OLS linear regression identified thirteen regressor variables 
-in the training set, of which, only six were significant predictors of student 
-performance in the test set, which indicates overfitting. Mother's education 
-level, student plans for higher education, and weekly study time were 
-associated with increased student performance, whereas course subject, school 
-support, and romantic relationships were related to decreased performance. 
-Ridge regression reduced model error by shrinking the coefficient estimates 
-towards zero, but with slightly higher bias and risk of underfitting. The 
+The different models identified many of the same variables as important for 
+predicting student performance, including course subject, mother's education, 
+plans for higher education, weekly study time, school support, absences, 
+going out with friends, and romantic relationships. Overall, students in the 
+Portugese course performed better than students in mathematics, which is likely 
+due to the difficulty of the subject material. The models differed, however, 
+in the number, weighting, order, and importance of the selected predictors. 
+With linear regression, the predicted outcome is based on the weighted average 
+or combination of all the predictor variables. The OLS linear regression 
+identified thirteen regressor variables in the training set, of which, only 
+six were significant predictors of student performance in the test set, which 
+indicates overfitting. Mother's education level, student plans for higher 
+education, and weekly study time were associated with improved student 
+performance, whereas course subject, school support, and romantic relationships 
+were related to decreased performance. Ridge regression reduced model error by 
+shrinking the coefficient estimates towards zero, but with slightly higher bias 
+and risk of underfitting. The 
 lasso model performed variable selection by shrinking the coefficient values 
 of seven non-relevant predictors to exactly zero, which yielded a model with
 a subset of twenty features. Although the lasso model was simpler than 
@@ -1020,10 +1020,11 @@ Furthermore, variable importance with random forests can be biased when
 predictors are measured on different scales or vary in number of categories. 
 Much of the student data collected by educational institutions is measured on 
 different scales. Researchers investigating feature importance with student data 
-typically normalize or regularize the data by transforming variables measured 
-on different scales to the same scale. However, to facilitate 
-interpretation of results, it is necessary to convert transformed variables 
-back to their original scales. 
+typically transform variables measured on different scales to the same scale. 
+it is essential that the transformed variables are converted back to their 
+original scales for meaningful interpretation of the results. Furthermore, 
+it is important to consider that learning a complex concept that is not easily 
+reduced to a single measure of performance such as a final course grade.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
