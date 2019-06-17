@@ -990,11 +990,10 @@ across the predicted values. Feature importance in the random forests model
 identified mother's education as the most informative variable based on the 
 percent change in mean squared error (MSE), followed by student absences, 
 area, plans for higher education, course subject, weekly alcohol consumption, 
-and mother's job (in descending order) as among the most important variables
-for predicting student performance. The gradient boosted regression model 
-had a higher error than for the random forests regression, which was surprising, 
-given that the gradient boosted model tries to correct for mistakes in previous 
-trees iteratively. Feature importance for the gradient boosted model selected 
+and mother's job (in descending order). The gradient boosted regression had a 
+higher model error than for the random forests regression, which was surprising, 
+given that the gradient boosted model tries to iteratively correct for mistakes 
+in previous trees. Feature importance for the gradient boosted model selected 
 student absences as the most important feature as the most informative feature
 for predicting performance, followed by course subject, mother's education, 
 student age, going out with friends, and study time.
@@ -1020,10 +1019,10 @@ predictors are measured on different scales or vary in number of categories.
 Much of the student data collected by educational institutions is measured on 
 different scales. Researchers investigating feature importance with student data 
 typically transform variables measured on different scales to the same scale. 
-it is essential that the transformed variables are converted back to their 
+It is essential that the transformed variables are converted back to their 
 original scales for meaningful interpretation of the results. Furthermore, 
-it is important to consider that learning cannot easily be reduced to a single 
-measure of performance such as a final course grade.
+it may not be feasible to assess the broader construct of learning using a 
+single measure of performance such as a final course grade.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
