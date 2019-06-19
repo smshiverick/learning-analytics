@@ -954,75 +954,75 @@ predicting student performance: course subject, mother's education, student
 plans for higher education, weekly study time, school support, absences, 
 going out with friends, and romantic relationships. Overall, the performance of
 students in mathematics was lower than students in the Portugese course, likely 
-due to the difficulty of the subject material. The models differed, however, 
-in the number, weighting, order, and importance of the selected predictors. 
-With linear regression, the predicted outcome is based on the weighted average 
-or combination of all the predictor variables. The OLS linear regression 
-identified thirteen regressor variables in the training set, of which, only 
-six were significant predictors of student performance in the test set, which 
-indicates overfitting. Mother's education level, student plans for higher 
-education, and weekly study time were associated with improved performance, 
-whereas course subject, school support, and romantic relationships were related 
-to decreased performance. The ridge regression reduced model error by shrinking 
-the coefficient estimates towards zero, but with slightly higher bias and risk 
-of underfitting. The lasso model performed variable selection by shrinking the 
-coefficient values of seven non-relevant predictors to exactly zero, which 
-yielded a model with a subset of twenty features. Although the lasso model 
-was simpler than ridge regression, the final OLS model was more parsimonious 
-than the lasso. 
+owing to the a difference in the difficulty of the subject material. The models 
+differed in the number, weighting, order, and importance given to selected 
+predictors. With linear regression, the predicted outcome is based on the 
+weighted average or combination of all the predictor variables. The OLS linear 
+regression identified thirteen regressor variables in the training set, of 
+which, only six were significant predictors of student performance in the test 
+set, which indicates overfitting. Mother's education level, student plans for 
+higher education, and weekly study time were associated with improved 
+performance, whereas course subject, school support, and romantic relationships 
+were related to decreased performance. The ridge regression reduced model error 
+by shrinking the coefficient estimates towards zero, but with slightly higher 
+bias and risk of underfitting. The lasso model performed variable selection by 
+shrinking the coefficient values of seven non-relevant predictors to exactly 
+zero, which yielded a model with a subset of twenty features. Although the 
+lasso model was simpler than ridge regression, the final OLS model was more 
+parsimonious than the lasso. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The single regression tree provides a simple model that is easily interpreted 
+The single regression tree provided a simple model that is easy to interpret 
 and gives the mean predicted value of student performance at each node. The 
 algorithm selected course subject as the root node in the training set and 
 branched on mother's education, weekly study time, absences, mother's job, 
 and student age as key nodes for predicting performance. In the testing set, 
 plans for higher education was selected as the root node (which may indicate 
-overfitting), and the algorithm branched on mother's education, residence area 
-(rural versus urban), course subject, and student absences as key nodes. 
-Predicted performance was highest among students with plans for higher 
-education, whose mothers had attained at least a 5th grade education, from 
-urban areas. The lowest predicted performance was found among students with 
-no plans for higher education who had one or more absences. Random forests 
+overfitting) and the algorithm branched on mother's education, residence 
+area (i.e., rural, urban), course subject, and student absences as key nodes. 
+Predicted performance was highest among students from urban areas, whose 
+mothers had attained at least a 5th grade education, with plans for higher 
+education. The lowest predicted performance was found among students who had 
+one or more absences, with no plans for higher education. Random forests 
 regression corrected for overfitting by constructing many trees and averaging 
 across the predicted values. Feature importance in the random forests model 
-identified mother's education as the most informative variable based on the 
-percent change in mean squared error (MSE), followed by student absences, 
-area, plans for higher education, course subject, weekly alcohol consumption, 
-and mother's job (in descending order). The gradient boosted regression had a 
-higher model error than for the random forests regression, which was surprising, 
-given that the gradient boosted model tries to iteratively correct for mistakes 
-in previous trees. Feature importance for the gradient boosted model selected 
-student absences as the most important feature as the most informative feature
-for predicting performance, followed by course subject, mother's education, 
-student age, going out with friends, and study time.
+identified mother's education as the most informative variable, followed in 
+descending order by student absences, residence area, plans for higher 
+education, course subject, weekly alcohol consumption, and mother's job. 
+A surprising finding is that the gradient boosted model had a higher error 
+than the random forests regression, given that the gradient boosted algorithm
+tries to correct for mistakes in previous trees in an iterative process. In 
+terms of feature importance, the gradient boosted model selected student 
+absences as the most informative feature for predicting performance, followed 
+by course subject, mother's education, student age, going out with friends, 
+and study time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Limitations}
 
-This study compared different methods for identifying and selecting variables 
-important for predicting student performance. A limitation is that variable 
-importance is not a well defined concept and lacks a theoretically based 
-quantitative metric \cite{gromping09}. The linear regression model uses 
-significance tests to select the variables that best predict the target outcome 
-and non-significant regressors are excluded from the final model. In this sense,
-the t-value provides a general measure of the importance of a given predictor. 
-With random forests, node purity measures branch homogeneity for classification 
-tasks, whereas MSE reduction is used for variable selection on regression tasks. 
-Variable importance with random forests is affected by the number of categories
-and scale of measurement of the predictor variables \cite{strobl07}, but does 
-not provide direct indicators of the true importance of the variable. 
-Furthermore, variable importance with random forests can be biased when 
+A limitation of the present study is that variable importance is not a 
+well-defined concept and lacks a theoretically based quantitative metric 
+\cite{gromping09}. The linear regression model uses significance tests to 
+select the regressors that best predict the target outcome, with non-relevant 
+variables excluded from the final model. In this sense, the t-value provides 
+a measure of the importance of a given predictor. With random forests, node 
+purity measures branch homogeneity for classification tasks, whereas MSE 
+reduction is used for variable selection on regression tasks. Variable 
+importance with random forests is affected by the number of categories
+and scale of measurement of the predictor variables \cite{strobl07}, but it
+does not provide a direct indication of the true importance of the variable. 
+In addition, variable importance with random forests can be biased when 
 predictors are measured on different scales or vary in number of categories. 
 Much of the student data collected by educational institutions is measured on 
 different scales. Researchers investigating feature importance with student data 
 typically transform variables measured on different scales to the same scale. 
-It is essential that the transformed variables are converted back to their 
-original scales for meaningful interpretation of the results. Furthermore, 
-it may not be feasible to assess the broader construct of learning using a 
-single measure of performance such as a final course grade.
+Transformed variables must be converted back to their original scales for 
+meaningful interpretation of the results. Furthermore, it may not be feasible to
+assess the broader construct of learning using a single measure of performance 
+such as a final course grade. A thorough comparison of different predictive
+models could include multiple dependent measures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1043,8 +1043,8 @@ learning. Much LA/EDM research data is collected within a learning management
 system (LMS), virtual learning environment (VLE), or massive open online 
 course (MOOC). The Course Signals program was one of the most widely known 
 platforms for tracking students at risk of falling behind using statistical 
-analysis of LMS data \cite{arnoldPistilli12}. In addition to grades, course
-signals combined student demographic information, academic history, and student 
+analysis of LMS data \cite{arnold12}. In addition to grades, course signals 
+combined student demographic information, academic history, and student 
 interaction on the Blackboard LMS to track performance. A predictive algorithm 
 was used to calculated the likelihood of student success based on performance, 
 effort, history, and student characteristics. Course signals provided students 
@@ -1052,7 +1052,7 @@ with real-time feedback about their status in the LMS as traffic indicators
 (i.e., red, yellow, green). The assessment allowed instructors to enact 
 interventions for high risk students via emails, texts, or face to face 
 meetings with referrals to academic advising and academic resources center.
-Courses that implemented the Signals program and provided feedback showed an 
+Courses that implemented the signals program and provided feedback showed an 
 increase in satisfactory grades, decrease in withdrawals, and improved retention. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
