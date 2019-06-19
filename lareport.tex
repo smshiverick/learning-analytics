@@ -1005,12 +1005,13 @@ and study time.
 A limitation of the present study is that variable importance is not a 
 well-defined concept and lacks a theoretically based quantitative metric 
 \cite{gromping09}. The linear regression model uses significance tests to 
-select the regressors that best predict the target outcome, with non-relevant 
-variables excluded from the final model. In this sense, the t-value provides 
-a measure of the importance of a given predictor. With random forests, node 
-purity measures branch homogeneity for classification tasks, whereas MSE 
-reduction is used for variable selection on regression tasks. Variable 
-importance with random forests is affected by the number of categories
+select the regressors that best predict the target outcome, with 
+non-significant variables excluded from the final model. In this sense, 
+the t-value provides a measure of the importance of a given predictor, 
+and model construction involves a form of variables selection. With random 
+forests, node purity measures branch homogeneity for classification tasks, 
+whereas MSE reduction is used for variable selection on regression tasks. 
+Variable importance with random forests is affected by the number of categories
 and scale of measurement of the predictor variables \cite{strobl07}, but it
 does not provide a direct indication of the true importance of the variable. 
 In addition, variable importance with random forests can be biased when 
@@ -1018,11 +1019,11 @@ predictors are measured on different scales or vary in number of categories.
 Given that much of student data collected by educational institutions is 
 measured on different scales, researchers typically transform variables of 
 interest to the same scale. Transformed variables must be converted back to 
-their original scales for meaningful interpretation of the results. Furthermore, 
-it may not be feasible to assess the broader construct of learning using a 
-single measure of performance such as a final course grade. A thorough 
-comparison of predictive models could include multiple dependent measures 
-of student performance.
+their original scales for meaningful interpretation of the relationship
+between the predictors and the target outcome. Furthermore, it may not be
+feasible to assess the broad construct of learning using a single measure 
+of performance such as a final course grade. A comprehensive analysis of 
+predicted student performance could include multiple dependent measures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
